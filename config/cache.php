@@ -28,18 +28,18 @@ return [
 
     'stores' => [
 
-        'apc' => [
-            'driver' => 'apc',
-        ],
+//        'apc' => [
+//            'driver' => 'apc',
+//        ],
 
-        'array' => [
-            'driver' => 'array',
-        ],
+//        'array' => [
+//            'driver' => 'array',
+//        ],
 
         'database' => [
             'driver' => 'database',
             'table'  => 'cache',
-            'connection' => null,
+            'connection' => 'mysql',
         ],
 
         'file' => [
@@ -47,19 +47,19 @@ return [
             'path'   => storage_path('framework/cache'),
         ],
 
-        'memcached' => [
-            'driver'  => 'memcached',
-            'servers' => [
-                [
-                    'host' => '127.0.0.1', 'port' => 11211, 'weight' => 100,
-                ],
-            ],
-        ],
+//        'memcached' => [
+//            'driver'  => 'memcached',
+//            'servers' => [
+//                [
+//                    'host' => '127.0.0.1', 'port' => 11211, 'weight' => 100,
+//                ],
+//            ],
+//        ],
 
-        'redis' => [
-            'driver' => 'redis',
-            'connection' => 'default',
-        ],
+//        'redis' => [
+//            'driver' => 'redis',
+//            'connection' => 'default',
+//        ],
 
     ],
 

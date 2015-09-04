@@ -54,7 +54,7 @@ return [
     |
     */
 
-    'from' => ['address' => null, 'name' => null],
+    'from' => ['address' => "mt@migrainetracker.com", 'name' => "Migraine Tracker Notifier"],
 
     /*
     |--------------------------------------------------------------------------
