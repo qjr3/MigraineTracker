@@ -21,23 +21,23 @@ Built on Laravel Framework for PHP.
 
 ### Project Manager and Leads
 
-John Slay () Project Manager
-Michael Kimball () Lead Back End development.
-Quinn Roundy (qjr3@students.uwf.edu) Lead Quality Assurance and Testing.
-Ryan Estevez () Lead Database Engineer.
-Nicholas March () Lead Front End development.
+John Slay () Project Manager<br>
+Michael Kimball () Lead Back End development.<br>
+Quinn Roundy (qjr3@students.uwf.edu) Lead Quality Assurance and Testing.<br>
+Ryan Estevez () Lead Database Engineer.<br>
+Nicholas March () Lead Front End development.<br>
 Christopher Tran () Lead Technical Writer
 
 ### Developers
 
-Quinn Roundy (qjr3@students.uwf.edu) Front End and Backend developer.
-Michael Kimbal () Front End developer.
-John Slay () Back End developer.
+Quinn Roundy (qjr3@students.uwf.edu) Front End and Backend developer.<br>
+Michael Kimbal () Front End developer.<br>
+John Slay () Back End developer.<br>
 Christopher Tran () UI Design
 
 ### Technical Writers and Documentation
 
-Ryan Estevez () Technical Writer
+Ryan Estevez () Technical Writer<br>
 Kyle Cabrillas () Technical Writer
 
 ### Quality Assurance and Testing
