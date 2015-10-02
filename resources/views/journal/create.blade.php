@@ -4,10 +4,6 @@
 
 @stop
 
-@section('extra-head')
-
-@stop
-
 
 @section('header')
 

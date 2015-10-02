@@ -1,16 +1,16 @@
-<!doctype html>
-<html lang="us-en">
+<!doctype html >
+<html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>@yield('title')</title>
+        <title>@yield('title')</title>
+        
 	<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 	<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-	<link rel="stylesheet" src="main.css">
-	
-	@yield('extra-head')
-	
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.12/angular.min.js"></script>
+
 </head>
+
 <body>
+    
 	@yield('header')
 	
 	@yield('content')
@@ -18,4 +18,5 @@
 	@yield('footer')
 	
 </body>
+
 </html>
