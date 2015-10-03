@@ -55,7 +55,7 @@ class UserAccountController extends Controller
 		Disable User Account
 		!future-feature
 	*/
-	public function disable
+	public function disable()
 	{
 	}
 	
