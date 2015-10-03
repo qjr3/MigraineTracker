@@ -6,7 +6,7 @@
 
 
 @section('header')
-
+<h1>Your Profile</h1>
 @stop
 
 

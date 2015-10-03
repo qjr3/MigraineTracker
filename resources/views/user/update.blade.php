@@ -11,7 +11,9 @@
 
 
 @section('content')
+{!! Form::model($user) !!}
 
+{!! Form::close() !!}
 @stop
 
 
