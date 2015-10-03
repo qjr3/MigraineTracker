@@ -42,7 +42,8 @@
     <body>
         <div class="container">
             <div class="content">
-                <div class="title">Laravel 5</div>
+                <div class="title">Migraine Tracker</div>
+                <div class="">Coming Soon</div>
             </div>
         </div>
     </body>
