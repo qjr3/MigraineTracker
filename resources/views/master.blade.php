@@ -3,6 +3,9 @@
 <head>
         <title>@yield('title')</title>
         
+        <!! HTML::style('css/common.css') !!>
+        <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
+
         <!-- Include JQuery from CDN -->
 	<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 	<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>

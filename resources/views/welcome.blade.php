@@ -1,50 +1,25 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <!--AngularJS-->
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.12/angular.min.js"></script>
-	<script src="js/app.js"></script>
-        
-        <title>Laravel</title>
+@extends('master')
 
-        <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
+@section('title')
 
-        <style>
-            html, body {
-                height: 100%;
-            }
+@stop
 
-            body {
-                margin: 0;
-                padding: 0;
-                width: 100%;
-                display: table;
-                font-weight: 100;
-                font-family: 'Lato';
-            }
 
-            .container {
-                text-align: center;
-                display: table-cell;
-                vertical-align: middle;
-            }
+@section('header')
 
-            .content {
-                text-align: center;
-                display: inline-block;
-            }
+@stop
 
-            .title {
-                font-size: 96px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="container">
+
+@section('content')
+<div class="container">
             <div class="content">
                 <div class="title">Migraine Tracker</div>
                 <div class="">Coming Soon</div>
             </div>
-        </div>
-    </body>
-</html>
+</div>
+@stop
+
+
+@section('footer')
+
+@stop

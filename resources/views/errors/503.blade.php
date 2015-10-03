@@ -1,47 +1,24 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Be right back.</title>
+@extends('master')
 
-        <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
+@section('title')
 
-        <style>
-            html, body {
-                height: 100%;
-            }
+@stop
 
-            body {
-                margin: 0;
-                padding: 0;
-                width: 100%;
-                color: #B0BEC5;
-                display: table;
-                font-weight: 100;
-                font-family: 'Lato';
-            }
 
-            .container {
-                text-align: center;
-                display: table-cell;
-                vertical-align: middle;
-            }
+@section('header')
 
-            .content {
-                text-align: center;
-                display: inline-block;
-            }
+@stop
 
-            .title {
-                font-size: 72px;
-                margin-bottom: 40px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="container">
-            <div class="content">
-                <div class="title">Be right back.</div>
-            </div>
-        </div>
-    </body>
-</html>
+
+@section('content')
+<div class="container has-error">
+    <div class="content">
+        <div class="title">Be right back.</div>
+    </div>
+</div>
+@stop
+
+
+@section('footer')
+
+@stop
