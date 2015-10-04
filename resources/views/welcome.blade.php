@@ -12,10 +12,10 @@
 
 @section('content')
 <div class="container">
-            <div class="content">
-                <div class="title">Migraine Tracker</div>
-                <div class="">Coming Soon</div>
-            </div>
+    <div class="content">
+        <div class="title">Migraine Tracker</div>
+        <div class="">Coming Soon...</div>
+    </div>
 </div>
 @stop
 

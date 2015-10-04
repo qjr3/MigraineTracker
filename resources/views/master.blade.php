@@ -3,7 +3,7 @@
 <head>
         <title>@yield('title')</title>
         
-        <!! HTML::style('css/common.css') !!>
+        {!! Html::style('css/main.css') !!}
         <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
 
         <!-- Include JQuery from CDN -->

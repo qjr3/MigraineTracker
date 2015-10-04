@@ -15,7 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-//$router->get('test', 'TestController@index');
+$router->get('test', 'TestController@index');
 
 
 
@@ -24,7 +24,6 @@ $router->resource('journal', 'JournalController');
 $router->resource('medicine', 'MedicineController');
 $router->resource('profile', 'ProfileController');
 
-// These keep causing errors in Laravel? Not sure why
-//$router->post('user/login','UserAccountController@login');
-//$router->get('user/login','UserAccountController@logout');
+$router->post('user/login','UserAccountController@login');
+$router->get('user/logout','UserAccountController@logout');
 
