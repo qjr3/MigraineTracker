@@ -26,7 +26,8 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', 'mysql'),
+//    'default' => env('DB_CONNECTION', 'mysql'),
+    'default' => env('DB_CONNECTION', 'sqlite'),
 
     /*
     |--------------------------------------------------------------------------
@@ -45,17 +46,24 @@ return [
     */
 
     'connections' => [
-        'mysql' => [
-            'driver'    => 'mysql',
-            'host'      => env('DB_HOST', 'sql5.freemysqlhosting.net'),
-            'database'  => env('DB_DATABASE', 'sql588679'),
-            'username'  => env('DB_USERNAME', 'sql588679'),
-            'password'  => env('DB_PASSWORD', 'bZ2*qX2%'),
-            'charset'   => 'utf8',
-            'collation' => 'utf8_unicode_ci',
-            'prefix'    => '',
-            'strict'    => false,
+        
+        'sqlite' => [
+            'driver'   => 'sqlite',
+            'database' => storage_path('database.sqlite'),
+            'prefix'   => '',
         ],
+        
+//        'mysql' => [
+//            'driver'    => 'mysql',
+//            'host'      => env('DB_HOST', 'sql5.freemysqlhosting.net'),
+//            'database'  => env('DB_DATABASE', 'sql588679'),
+//            'username'  => env('DB_USERNAME', 'sql588679'),
+//            'password'  => env('DB_PASSWORD', 'bZ2*qX2%'),
+//            'charset'   => 'utf8',
+//            'collation' => 'utf8_unicode_ci',
+//            'prefix'    => '',
+//            'strict'    => false,
+//        ],
     ],
 
     /*
