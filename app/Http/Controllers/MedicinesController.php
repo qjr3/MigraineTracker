@@ -6,8 +6,14 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-class TriggersController extends Controller
+class MedicinesController extends Controller
 {
+    
+    public function __construct() 
+    {
+        $this->middleware('Auth');
+    }
+    
     /**
      * Display a listing of the resource.
      *

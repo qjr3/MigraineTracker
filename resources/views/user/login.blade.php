@@ -11,7 +11,9 @@
 
 
 @section('content')
+{!! Form::text('username');
 
+{!! Form::text('password');
 @stop
 
 

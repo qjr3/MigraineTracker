@@ -14,8 +14,7 @@ return [
     | Supported: "database", "eloquent"
     |
     */
-
-    'driver' => 'database',
+    'driver' => 'eloquent',
 
     /*
     |--------------------------------------------------------------------------
@@ -29,7 +28,7 @@ return [
     */
 
     'model' => App\User::class,
-
+    'username' => 'user_name',
     /*
     |--------------------------------------------------------------------------
     | Authentication Table

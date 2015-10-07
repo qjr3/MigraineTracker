@@ -1,6 +1,13 @@
 <!doctype html>
 <html lang="en" manifest="a.manifest">
 <head>
+        <!-- Prevent Chrome (and others) from caching. Remove after developement -->
+        <meta http-equiv="cache-control" content="max-age=0" />
+        <meta http-equiv="cache-control" content="no-cache" />
+        <meta http-equiv="expires" content="0" />
+        <meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
+        <meta http-equiv="pragma" content="no-cache" />
+
         <title>@yield('title')</title>
         
         {!! Html::style('css/main.css') !!}
@@ -26,6 +33,7 @@
         
         <!-- Setup for mobile device screen layout -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
         
         <!-- Setup iOS mobile devices icons and interface -->
         <link rel="apple-touch-icon" href="touch-icon-iphone.png">
@@ -37,14 +45,51 @@
         <meta name="apple-mobile-web-app-status-bar-style" content="black">
 </head>
 
-<body>
+<body style='margin: 0; padding: 0; width: 100%;'>
+	<!-- BEGIN Global Header -->
+        <div id='header_nav' class='container navbar navbar-fixed-top '>
+            <table border='1' width="100%" class=''>
+                <tbody>
+                    <tr class=''>
+                        <td id='menu' class='col-lg-3 center-block'>MENU</td>
+                        <td class='col-lg-3 center-block'>
+                            <table class=''>
+                                    <tr class=''><td id='user-name' class='center-block col-lg-1'>USER NAME</td></tr>
+                                    <tr class=''><td id='activity' class='center-block col-lg-1'>ACTIVITY</td></tr>
+                            </table>
+                        </td>
+                        <td id='current_prediction' class='col-lg-3 center-block'>PREDICTED RISK</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- END Global Header -->
+        
+        <div id='header' class='container'>            
+            @yield('header')
+        </div>
+        
+        <div id='content' class='container'>
+            @yield('content')
+        </div>
+        
+        <div id='footer' class='container'>
+            @yield('footer')
+        </div>
 	
-	@yield('header')
-	
-	@yield('content')
-	
-	@yield('footer')
-	
+        <!-- BEGIN Global Footer -->
+        <div id='footer_nav' class='container navbar navbar-fixed-bottom'>
+            <table border='1' width="100%" class=''>
+                <tbody>
+                    <tr>
+                        <td class='col-lg-3 center-block'>Terms of Use</td>
+                        <td class='col-lg-3 center-block'>Copyright 2015</td>
+                        <td class='col-lg-3 center-block'>Privacy Policy</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- END Global Footer -->
 </body>
 
 </html>

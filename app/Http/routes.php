@@ -15,15 +15,21 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-$router->get('test', 'TestController@index');
+Route::model('user', 'App\User');
 
+$router->get('test',                'TestController@index');
 
+$router->get('user/create',         'UserController@create');
+$router->post('user/create',        'UserController@store');
+$router->post('user/login',         'UserController@login');
+$router->get('user/',               'UserController@show');
+$router->get('user/view',           'UserController@show');
+$router->get('user/logout',         'UserController@logout');
 
-$router->resource('profile', 'ProfileController');
-$router->resource('journal', 'JournalController');
-$router->resource('medicine', 'MedicineController');
-$router->resource('profile', 'ProfileController');
+$router->get('journal', 'JournalController@index');
 
-$router->post('user/login','UserAccountController@login');
-$router->get('user/logout','UserAccountController@logout');
-
+//$router->get('user/login',              'UserController@login');
+//$router->post('user/{user}/login',      'UserController@loggingin');
+//$router->resource('journal',            'JournalController');
+//$router->resource('medicines',          'MedicinesController');
+//$router->resource('triggers',           'TriggersController');
