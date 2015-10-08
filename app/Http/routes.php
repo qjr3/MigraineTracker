@@ -21,6 +21,7 @@ $router->get('test',                'TestController@index');
 
 $router->get('user/create',         'UserController@create');
 $router->post('user/create',        'UserController@store');
+$router->get('user/login',          'UserController@login');
 $router->post('user/login',         'UserController@login');
 $router->get('user/',               'UserController@show');
 $router->get('user/view',           'UserController@show');

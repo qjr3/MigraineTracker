@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Auth;
+use App\Http\User;
 
 class UserController extends Controller
 {
@@ -16,9 +18,9 @@ class UserController extends Controller
     /**
             User login
     */
-    public function login(User $user)
+    public function login( )
     {
-        Auth::login($user);
+        return view('user.login');
     }
 
     public function create()
@@ -28,7 +30,7 @@ class UserController extends Controller
     
     public function store(Request $data)
     {
-
+        dd($data);
         return 'Hello World' . $data;
     }
     

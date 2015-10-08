@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" manifest="a.manifest">
+<html lang="en">
 <head>
         <!-- Prevent Chrome (and others) from caching. Remove after developement -->
         <meta http-equiv="cache-control" content="max-age=0" />
@@ -11,20 +11,15 @@
         <title>@yield('title')</title>
         
         {!! Html::style('css/main.css') !!}
+        {!! Html::script('js/jquery-1.11.3.min.js') !!}
+        
+        {!! Html::style('css/bootstrap.min.css') !!}
+        {!! Html::script('js/bootstrap.min.js') !!}
+        
+        {!! Html::script('js/angular.min.js') !!}
+                
         <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
 
-        <!-- Include JQuery from CDN -->
-	<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
-	<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-        
-        <!-- Include AngularJS from CDN -->
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.12/angular.min.js"></script>
-	
-        <!-- Include TwitterBootStrap from CDN -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-	
         <!-- UTF8 FTW -->
         <meta charset="utf-8">
         
@@ -33,7 +28,6 @@
         
         <!-- Setup for mobile device screen layout -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
         
         <!-- Setup iOS mobile devices icons and interface -->
         <link rel="apple-touch-icon" href="touch-icon-iphone.png">

@@ -32,13 +32,13 @@
         <table class='table table-bordered table-striped'>
             <tbody>
                 <tr>
-                    <td>Create User</td>
+                    <td><a href='user/create'>Create User</a></td>
                     <td>[get]/user/create</td>
                     <td>UserAccountController@create</td>
                     <td>/view/journal/create.blade.php</td>
                 </tr>
                 <tr>
-                    <td>User Login</td>
+                    <td><a href='user/login'>User Login</a></td>
                     <td>[get]/user/login</td>
                     <td>UserAccountController@login</td>
                     <td>/view/user/login</td>
