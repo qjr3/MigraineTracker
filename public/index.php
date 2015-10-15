@@ -19,7 +19,11 @@
 |
 */
 
-require __DIR__.'/../bootstrap/autoload.php';
+/* Local Server */
+//require __DIR__.'/../bootstrap/autoload.php';
+
+/* Web Server */
+require __DIR__.'/../../protected/core_migrainetracker/bootstrap/autoload.php';
 
 /*
 |--------------------------------------------------------------------------
@@ -33,7 +37,11 @@ require __DIR__.'/../bootstrap/autoload.php';
 |
 */
 
-$app = require_once __DIR__.'/../bootstrap/app.php';
+/* Local Server */
+//$app = require_once __DIR__.'/../bootstrap/app.php';
+
+/* Web Server */
+$app = require_once __DIR__.'/../../protected/core_migrainetracker/bootstrap/app.php';
 
 /*
 |--------------------------------------------------------------------------
