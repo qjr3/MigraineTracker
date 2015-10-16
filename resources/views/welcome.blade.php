@@ -16,11 +16,13 @@ Welcome to Migraine Tracker
 <div class="container">
     <div class="content">
         <div class="title">Migraine Tracker</div>
-        
+        <?php 
+        	$class = ['class' => 'btn btn-block'];
+        ?>
         <div class="btn-group">
-            <a class='btn btn-block' href='/user/login'>Login</a><br />
-            <a class='btn btn-block' href='/user/create'>New User</a>
-            <a class='btn btn-block has-warning' href='/test'>Testing Area</a>
+        	{!! link_to_action('UserController@login', 'Login', array(), $class) !!}
+        	{!! link_to_action('UserController@create', 'New User', array(), $class) !!}
+        	{!! link_to_action('TestController@index', 'Testing Area', array(), $class) !!}
         </div>
     
     </div>
