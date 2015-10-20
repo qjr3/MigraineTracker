@@ -20,8 +20,8 @@ Welcome to Migraine Tracker
         	$class = ['class' => 'btn btn-block'];
         ?>
         <div class="btn-group">
-        	{!! link_to_action('UserController@login', 'Login', array(), $class) !!}
-        	{!! link_to_action('UserController@create', 'New User', array(), $class) !!}
+        	{!! link_to_action('Auth\AuthController@getLogin', 'Login', array(), $class) !!}
+        	{!! link_to_action('Auth\AuthController@getRegister', 'New User', array(), $class) !!}
         	{!! link_to_action('TestController@index', 'Testing Area', array(), $class) !!}
         </div>
     

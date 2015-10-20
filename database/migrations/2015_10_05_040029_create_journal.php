@@ -32,6 +32,6 @@ class CreateJournal extends Migration
      */
     public function down()
     {
-        Schema::drop('journal');
+        Schema::drop('journals');
     }
 }

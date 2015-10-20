@@ -12,11 +12,13 @@ Create New User
 
 @section('content')
 
-{!! Form::model(User::class) !!}
+@include('errors.list')
+
+{!! Form::open(['action' => 'Auth\AuthController@postRegister']) !!}
 <h1> Create New User </h1>
 <div class='form-group'>
     {!! Form::label('User Name'); !!}
-    {!! Form::text('user_name', null, ['class' => 'form-control'] ); !!}
+    {!! Form::text('name', null, ['class' => 'form-control'] ); !!}
 </div>
 <div class='form-group'>
     {!! Form::label('Email Address') !!}
@@ -25,6 +27,10 @@ Create New User
 <div class='form-group'>
     {!! Form::label('Password') !!}
     {!! Form::password('password', ['class' => 'form-control'] ) !!}
+</div>
+<div class="form-group">
+    {!! Form::label('password_confirmation', 'Password:', ['class' => 'sr-only']) !!}
+    {!! Form::password('password_confirmation', ['class' => 'form-control', 'placeholder' => 'Confirm Password']) !!}
 </div>
 <div class='form-group'>
     {!! Form::submit('Create Account', ['class' => 'btn btn-primary btn-default']) !!}
