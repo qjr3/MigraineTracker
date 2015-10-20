@@ -13,11 +13,11 @@
 @section('content')
 
 
-{!! Form::model('User::class') !!}
+{!! Form::open(['action' => 'Auth\AuthController@postLogin']) !!}
 
 <div class='form-group'>
-    {!! Form::label('User Name') !!}
-    {!! Form::text('username') !!}
+    {!! Form::label('Email') !!}
+    {!! Form::text('email') !!}
 </div>
 
 <div class='form-group'>
