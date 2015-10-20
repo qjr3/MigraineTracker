@@ -12,11 +12,13 @@ class UserController extends Controller
 {
     public function __construct(Request $request) 
     {
-
+    	$this->middleware('auth');
+    	$this->middleware('owner');
     }
 
     public function showProfile($id)
     {
-        return 'profile';
+    	$user = User::findOrFail($id);
+        return $user;
     }
 }

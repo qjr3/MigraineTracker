@@ -19,9 +19,10 @@ class CreateUsersTable extends Migration
             $table->string('password', 60);
             $table->string('first_name')->nullable();
             $table->string('last_name')->nullable();
-            $table->text('bio')->nullable();
-            $table->date('date_of_birth')->nullable();
             $table->string('gender')->nullable();
+            $table->date('date_of_birth')->nullable();
+            $table->text('bio')->nullable();
+            $table->boolean('is_diagnosed_with_migraines')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
