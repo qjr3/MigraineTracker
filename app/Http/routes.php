@@ -29,7 +29,7 @@ $router->post('register', 'Auth\AuthController@postRegister');
 
 $router->get('login', 'Auth\AuthController@getLogin');
 $router->post('login', 'Auth\AuthController@postLogin');
-$router->post('logout', 'Auth\AuthController@getLogout');
+$router->get('logout', 'Auth\AuthController@getLogout');
 
 //$router->get('user/login',              'UserController@login');
 //$router->post('user/{user}/login',      'UserController@loggingin');
