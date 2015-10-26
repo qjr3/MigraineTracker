@@ -32,22 +32,28 @@
         <table class='table table-bordered table-striped'>
             <tbody>
                 <tr>
-                    <td><a href='user/create'>Create User</a></td>
-                    <td>[get]/user/create</td>
-                    <td>UserAccountController@create</td>
-                    <td>/view/journal/create.blade.php</td>
+                    <td>{!! link_to_action('Auth\AuthController@getRegister', 'Create User') !!}</td>
+                    <td>[get]/register</td>
+                    <td>Auth\AuthController@getRegister</td>
+                    <td>/view/user/create.blade.php</td>
                 </tr>
                 <tr>
-                    <td><a href='user/login'>User Login</a></td>
-                    <td>[get]/user/login</td>
-                    <td>UserAccountController@login</td>
+                    <td>{!! link_to_action('Auth\AuthController@getLogin', 'User Login') !!}</td>
+                    <td>[get]/login</td>
+                    <td>Auth\Auth\AuthController@getLogin</td>
                     <td>/view/user/login</td>
                 </tr>
                 <tr>
-                    <td>User Login</td>
-                    <td>[put]/user/login/{user}</td>
-                    <td>UserController@logingin</td>
-                    <td>[No View: Redirect to /journal/index]</td>
+                    <td>{!! link_to_action('UserController@showProfile', 'User Profile', (isset($user) ? $user->id : '?')) !!}</td>
+                    <td>[get]/user/{id}</td>
+                    <td>UserController@showProfile</td>
+                    <td>/view/user/profile</td>
+                </tr>
+                <tr>
+                    <td>{!! link_to_action('Auth\AuthController@getLogout', 'User Logout') !!}</td>
+                    <td>[get]/logout</td>
+                    <td>Auth\AuthController@getLogout</td>
+                    <td>None</td>
                 </tr>
             </tbody>
         </table>

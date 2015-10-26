@@ -39,51 +39,27 @@
         <meta name="apple-mobile-web-app-status-bar-style" content="black">
 </head>
 
-<body style='margin: 0; padding: 0; width: 100%;'>
-	<!-- BEGIN Global Header -->
-        <div id='header_nav' class='container navbar navbar-fixed-top '>
-            <table border='1' width="100%" class=''>
-                <tbody>
-                    <tr class=''>
-                        <td id='menu' class='col-lg-3 center-block'>MENU</td>
-                        <td class='col-lg-3 center-block'>
-                            <table class=''>
-                                    <tr class=''><td id='user-name' class='center-block col-lg-1'>USER NAME</td></tr>
-                                    <tr class=''><td id='activity' class='center-block col-lg-1'>ACTIVITY</td></tr>
-                            </table>
-                        </td>
-                        <td id='current_prediction' class='col-lg-3 center-block'>PREDICTED RISK</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+<body>
+    <div class="container">
+        
+        <!-- BEGIN Global Header -->
+        @include('partials.nav')
         <!-- END Global Header -->
         
-        <div id='header' class='container'>            
-            @yield('header')
-        </div>
-        
-        <div id='content' class='container'>
+        <div id='content' class='row'>
             @yield('content')
         </div>
-        
-        <div id='footer' class='container'>
+    
+        <!-- BEGIN Global Footer -->
+        <div id='footer'>
+            @include('partials.footer') 
             @yield('footer')
         </div>
-	
-        <!-- BEGIN Global Footer -->
-        <div id='footer_nav' class='container navbar navbar-fixed-bottom'>
-            <table border='1' width="100%" class=''>
-                <tbody>
-                    <tr>
-                        <td class='col-lg-3 center-block'>Terms of Use</td>
-                        <td class='col-lg-3 center-block'>Copyright 2015</td>
-                        <td class='col-lg-3 center-block'>Privacy Policy</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
         <!-- END Global Footer -->
+
+
+    </div>
+	   
 </body>
 
 </html>

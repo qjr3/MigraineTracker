@@ -17,17 +17,19 @@ Route::get('/', function () {
 
 Route::model('user', 'App\User');
 
-$router->get('test',                'TestController@index');
-
-$router->get('user/create',         'UserController@create');
-$router->post('user/create',        'UserController@store');
-$router->get('user/login',          'UserController@login');
-$router->post('user/login',         'UserController@login');
-$router->get('user/',               'UserController@show');
-$router->get('user/view',           'UserController@show');
-$router->get('user/logout',         'UserController@logout');
+$router->get('test', 'TestController@index');
 
 $router->get('journal', 'JournalController@index');
+
+$router->get('user/{id}', 'UserController@showProfile');
+
+// Authentication Routes
+$router->get('register', 'Auth\AuthController@getRegister');
+$router->post('register', 'Auth\AuthController@postRegister');
+
+$router->get('login', 'Auth\AuthController@getLogin');
+$router->post('login', 'Auth\AuthController@postLogin');
+$router->get('logout', 'Auth\AuthController@getLogout');
 
 //$router->get('user/login',              'UserController@login');
 //$router->post('user/{user}/login',      'UserController@loggingin');
