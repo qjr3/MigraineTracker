@@ -21,8 +21,9 @@ class CreateUsersTable extends Migration
             $table->string('last_name')->nullable();
             $table->string('gender')->nullable();
             $table->date('date_of_birth')->nullable();
-            $table->text('bio')->nullable();
-            $table->boolean('is_diagnosed_with_migraines')->nullable();
+            $table->boolean('has_diabetes')->nullable();
+            $table->boolean('has_migraines')->nullable();
+            $table->boolean('has_glasses')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
