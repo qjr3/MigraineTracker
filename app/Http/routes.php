@@ -44,14 +44,24 @@ $router->get('logout', function() {
     Auth::logout();
     return redirect('/');
 });
-
 // or
 // $router->get('logout', 'Auth\AuthController@logout'); // why call it get? you're not getting anything in terms of code.
 */
 $router->get('logout', 'Auth\AuthController@getLogout');
 
-//$router->get('user/login',              'UserController@login');
-//$router->post('user/{user}/login',      'UserController@loggingin');
+// Journal Routes
 //$router->resource('journal',            'JournalController');
+$router->get('journal', 'JournalController@index');
+$router->post('journal/create', 'JournalController@store');
+$router->get('journal/create', 'JournalController@create');
+$router->get('journal/{id}', 'JournalController@show');
+$router->get('journal/{id}/edit', 'JournalController@edit');
+Route::patch('journal/{id}/', 'JournalController@update');
+
+$router->get('report/generate', 'ReportController@create');
+//$router->post('report', 'ReportController@store'); // Handled in the create function before viewing
+$router->get('report/{id}', 'ReportController@show');
+$router->get('report', 'ReportController@index');
+
 //$router->resource('medicines',          'MedicinesController');
 //$router->resource('triggers',           'TriggersController');
