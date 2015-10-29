@@ -8,29 +8,9 @@ use App\Trigger;
 class TriggersController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\TriggerRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function store(TriggerRequest $request)
@@ -40,6 +20,7 @@ class TriggersController extends Controller
         $trigger->description = $request->get('description');
         $journal = $request->get('journal');
         $journal->triggers()->save($trigger);
+        Auth::user()->triggers()-save($trigger);
         return 'Success';
     }
 
@@ -51,30 +32,24 @@ class TriggersController extends Controller
      */
     public function show($id)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+        $trigger = Trigger::find($id);
+        return $trigger;
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\TriggerRequest  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function update(TriggerRequest $request, $id)
     {
-        //
+        $trigger = Trigger::find($id);
+        $trigger->name = $request->get('name');
+        $trigger->description = $request->get('description');
+        $trigger->save();
+        return 'Success';
     }
 
     /**
@@ -85,6 +60,8 @@ class TriggersController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $trigger = Trigger::find($id);
+        $trigger->delete();
+        return 'Success';
     }
 }

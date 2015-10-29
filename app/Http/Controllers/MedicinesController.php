@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\MedicineRequest;
+use App\Medicine;
 
 class MedicinesController extends Controller
 {
@@ -11,36 +12,23 @@ class MedicinesController extends Controller
     {
         $this->middleware('Auth');
     }
-    
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\MedicineRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(MedicinesRequest $request)
+    public function store(MedicineRequest $request)
     {
-        //
+        $medicine = new Medicine();
+        $medicine->name = $request->get('name');
+        $medicine->dose = $request->get('dose');
+        $medicine->description = $request->get('description');
+        $journal = $request->get('journal');
+        $journal->medicines()->save($medicine);
+        Auth::user()->medicines()-save($medicine);
+        return 'Success';
     }
 
     /**
@@ -51,30 +39,25 @@ class MedicinesController extends Controller
      */
     public function show($id)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+        $trigger = Trigger::find($id);
+        return $trigger;
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\MedicineRequest  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function update(MedicineRequest $request, $id)
     {
-        //
+        $medicine = Medicine::find($id);
+        $medicine->name = $request->get('name');
+        $medicine->dose = $request->get('dose');
+        $medicine->description = $request->get('description');
+        $medicine->save();
+        return 'Success';
     }
 
     /**
@@ -85,6 +68,8 @@ class MedicinesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $medicine = Medicine::find($id);
+        $medicine->delete();
+        return 'Success';
     }
 }

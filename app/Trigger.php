@@ -16,4 +16,9 @@ class Trigger extends Model
     {
         return $this->belongsToMany('App\Journal');
     }
+
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
 }
