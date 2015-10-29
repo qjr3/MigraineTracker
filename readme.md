@@ -8,7 +8,14 @@ If you suffer from migraines then this is the app for you. In addition to tracki
 
 ## Official Documentation
 
-Documentation can be found......later.
+### How To Install
+```
+composer install
+cp .env.example .env
+php artisan key:generate
+touch storage/database.sqlite
+php artisan migrate
+```
 
 ## Security Vulnerabilities
 
