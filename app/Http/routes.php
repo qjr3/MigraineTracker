@@ -17,6 +17,9 @@ Route::get('/', function () {
 
 Route::model('user', 'App\User');
 
+Route::controller('medicine', 'MedicineController');
+Route::controller('trigger', 'TriggerController');
+
 $router->get('test', 'TestController@index');
 
 $router->get('journal', 'JournalController@index');

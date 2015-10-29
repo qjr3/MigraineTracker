@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\MedicineRequest;
 use App\Medicine;
 
-class MedicinesController extends Controller
+class MedicineController extends Controller
 {
     
     public function __construct() 
@@ -19,7 +19,7 @@ class MedicinesController extends Controller
      * @param  \App\Http\MedicineRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(MedicineRequest $request)
+    public function postStore(MedicineRequest $request)
     {
         $medicine = new Medicine();
         $medicine->name = $request->get('name');
@@ -37,7 +37,7 @@ class MedicinesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function getShow($id)
     {
         $trigger = Trigger::find($id);
         return $trigger;
@@ -50,7 +50,7 @@ class MedicinesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(MedicineRequest $request, $id)
+    public function patchUpdate(MedicineRequest $request, $id)
     {
         $medicine = Medicine::find($id);
         $medicine->name = $request->get('name');
@@ -66,7 +66,7 @@ class MedicinesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function deleteDestroy($id)
     {
         $medicine = Medicine::find($id);
         $medicine->delete();

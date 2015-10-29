@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\TriggerRequest;
 use App\Trigger;
 
-class TriggersController extends Controller
+class TriggerController extends Controller
 {
     /**
      * Store a newly created resource in storage.
@@ -13,7 +13,7 @@ class TriggersController extends Controller
      * @param  \App\Http\TriggerRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(TriggerRequest $request)
+    public function postStore(TriggerRequest $request)
     {
         $trigger = new Trigger();
         $trigger->name = $request->get('name');
@@ -30,7 +30,7 @@ class TriggersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function getShow($id)
     {
         $trigger = Trigger::find($id);
         return $trigger;
@@ -43,7 +43,7 @@ class TriggersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(TriggerRequest $request, $id)
+    public function patchUpdate(TriggerRequest $request, $id)
     {
         $trigger = Trigger::find($id);
         $trigger->name = $request->get('name');
@@ -58,7 +58,7 @@ class TriggersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function deleteDestroy($id)
     {
         $trigger = Trigger::find($id);
         $trigger->delete();
