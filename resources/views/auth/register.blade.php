@@ -1,17 +1,12 @@
 @extends('master')
 
 @section('title')
+
 Create New User 
-@stop
-
-
-@section('header')
 
 @stop
-
 
 @section('content')
-
 
 @include('errors.list')
 
@@ -19,29 +14,25 @@ Create New User
 	{!! Form::open(['action' => 'Auth\AuthController@postRegister']) !!}
 	<h1> Create New User </h1>
 	<div class='form-group'>
-	    {!! Form::label('User Name'); !!}
-	    {!! Form::text('name', null, ['class' => 'form-control'] ); !!}
+	    {!! Form::label('name', 'Username', ['class' => 'sr-only']); !!}
+	    {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Username'] ); !!}
 	</div>
 	<div class='form-group'>
-	    {!! Form::label('Email Address') !!}
-	    {!! Form::text('email', null, ['class' => 'form-control'] ) !!}
+	    {!! Form::label('email', 'Email Address', ['class' => 'sr-only']) !!}
+	    {!! Form::text('email', null, ['class' => 'form-control', 'placeholder' => 'Email Address'] ) !!}
 	</div>
 	<div class='form-group'>
-	    {!! Form::label('Password') !!}
-	    {!! Form::password('password', ['class' => 'form-control'] ) !!}
+	    {!! Form::label('password', 'Password', ['class' => 'sr-only']) !!}
+	    {!! Form::password('password', ['class' => 'form-control', 'placeholder' => 'Password'] ) !!}
 	</div>
 	<div class="form-group">
 	    {!! Form::label('password_confirmation', 'Password:', ['class' => 'sr-only']) !!}
 	    {!! Form::password('password_confirmation', ['class' => 'form-control', 'placeholder' => 'Confirm Password']) !!}
 	</div>
-	<div class='form-group'>
+	<div class='form-group text-center'>
 	    {!! Form::submit('Create Account', ['class' => 'btn btn-primary btn-default']) !!}
 	</div>
 	{!! Form::close() !!}
 </div>
-@stop
-
-
-@section('footer')
 
 @stop
