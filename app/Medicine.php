@@ -8,7 +8,17 @@ class Medicine extends Model
 {
     protected $table = 'medicines';
     
-    protected $fillable = ['user_id', 'name', 'dose', 'prescribed_by', 'prescribed_on'];
+    protected $fillable = ['name', 'dose', 'description'];
     
     protected $hidden = [];
+
+    public function users()
+    {
+        return $this->belongsToMany('App\User');
+    }
+
+    public function journals()
+    {
+        return $this->belongsToMany('App\Journal');
+    }
 }

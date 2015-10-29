@@ -4,11 +4,26 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class journal extends Model
+class Journal extends Model
 {
-    protected $table = 'journal';
+    protected $table = 'journals';
     
-    protected $fillable = ['user_id', 'location', 'severity', 'weatehr', 'noise_level', 'light_level'];
+    protected $fillable = ['location', 'severity', 'weather', 'noise_level', 'light_level'];
     
     protected $hidden = [];
+
+    public function users()
+    {
+        return $this->belongsTo('App\User');
+    }
+
+    public function medicines()
+    {
+        return $this->hasMany('App\Medicine');
+    }
+
+    public function triggers()
+    {
+        return $this->hasMany('App\Trigger');
+    }
 }

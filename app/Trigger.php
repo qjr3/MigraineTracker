@@ -8,7 +8,12 @@ class Trigger extends Model
 {
     protected $table = 'triggers';
     
-    protected $fillable = ['user_id', 'name', 'details', 'user_name', 'first_name', 'last_name', 'bio', 'date_of_birth', 'gender', 'email'];
+    protected $fillable = ['name', 'description'];
     
     protected $hidden = [];
+
+    public function journals()
+    {
+        return $this->belongsToMany('App\Journal');
+    }
 }

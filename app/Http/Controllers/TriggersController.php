@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
+use App\Http\Requests\TriggerRequest;
+use App\Trigger;
 
 class TriggersController extends Controller
 {
@@ -34,9 +33,14 @@ class TriggersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TriggerRequest $request)
     {
-        //
+        $trigger = new Trigger();
+        $trigger->name = $request->get('name');
+        $trigger->description = $request->get('description');
+        $journal = $request->get('journal');
+        $journal->triggers()->save($trigger);
+        return 'Success';
     }
 
     /**
@@ -68,7 +72,7 @@ class TriggersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(TriggerRequest $request, $id)
     {
         //
     }
