@@ -11,7 +11,7 @@ If you suffer from migraines then this is the app for you. In addition to tracki
 ### How To Install
 ```
 composer install
-mv .env.example .env
+cp .env.example .env
 php artisan key:generate
 touch storage/database.sqlite
 php artisan migrate
