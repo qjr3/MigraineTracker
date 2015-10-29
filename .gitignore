@@ -4,5 +4,7 @@ composer.lock
 Homestead.yaml
 Homestead.json
 .env
-/nbproject/private/
+/nbproject
+/.idea
 .DS_Store
+/storage/database.sqlite
