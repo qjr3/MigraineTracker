@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMedicinesTable extends Migration
+class CreateTriggersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,14 +12,10 @@ class CreateMedicinesTable extends Migration
      */
     public function up()
     {
-        Schema::create('medicines', function (Blueprint $table) {
+        Schema::create('triggers', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('users');
             $table->string('name');
-            $table->string('dose')->nullable();
-            $table->string('prescribed_by')->nullable();
-            $table->date('prescribed_on')->nullable();
+            $table->string('description');
             $table->timestamps();
         });
     }
@@ -31,6 +27,6 @@ class CreateMedicinesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('medicines');
+        Schema::drop('triggers');
     }
 }

@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTriggersTable extends Migration
+class CreateMedicinesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,12 +12,11 @@ class CreateTriggersTable extends Migration
      */
     public function up()
     {
-        Schema::create('triggers', function (Blueprint $table) {
+        Schema::create('medicines', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('users');
             $table->string('name');
-            $table->string('details')->nullable();
+            $table->integer('dose');
+            $table->string('description');
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ class CreateTriggersTable extends Migration
      */
     public function down()
     {
-        Schema::drop('triggers');
+        Schema::drop('medicines');
     }
 }
