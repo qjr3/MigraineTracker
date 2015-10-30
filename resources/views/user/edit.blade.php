@@ -56,7 +56,7 @@
     <div class="col-md-9">
         <h2>General Info</h2>
         <hr>
-        {!! link_to_action('UserController@edit', 'Edit', $user->id, ['class' => 'btn btn-default pull-right', 'role' => 'button']) !!}
+        {!! link_to_action('UserController@showProfile', 'Cancel Edit', $user->id, ['class' => 'btn btn-default pull-right', 'role' => 'button']) !!}
         <div class="page-header">
             <h4>Medical History
                 <small>Information</small>

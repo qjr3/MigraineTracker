@@ -27,6 +27,7 @@ $router->get('journal', 'JournalController@index');
 // Use RESTful methods so later they can be converted to $router->resources('user', 'UserController');
 // $router->get('user/{id}, UserController@show');
 $router->get('user/{id}', 'UserController@showProfile');
+$router->get('user/{id}/edit', 'UserController@edit');
 
 // Authentication Routes
 // $router->get('register', 'Auth\AuthController@create');

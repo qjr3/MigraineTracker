@@ -16,6 +16,12 @@ class UserController extends Controller
     	$this->middleware('owner');
     }
 
+    public function edit($id)
+    {
+        $user = User::findOrFail($id);
+        return view('user.edit', compact('user'));
+    }
+
     public function showProfile($id)
     {
     	$user = User::findOrFail($id);
