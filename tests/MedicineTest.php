@@ -35,10 +35,9 @@ class MedicineTester extends TestCase
     {
         $medicine = $this->createMedicine();
         $route = 'medicine/' . $medicine->id;
-        $this->get($route);
-        var_dump($this->currentUri);
-//            ->seeStatusCode(200)
-//            ->seeJsonContains(['name' => 'cocaine']);
+        $this->get($route)
+            ->seeStatusCode(200)
+            ->seeJsonContains(['name' => 'cocaine']);
     }
 
     public function testUpdateMedicine()

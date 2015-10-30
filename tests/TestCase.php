@@ -22,4 +22,13 @@ class TestCase extends Illuminate\Foundation\Testing\TestCase
 
         return $app;
     }
+
+    /**
+     * Test register link from homepage
+     */
+    public function testLinkFromHome()
+    {
+        $this->visit('/')
+            ->see('Migraine Tracker');
+    }
 }
