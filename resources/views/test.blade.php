@@ -44,9 +44,9 @@
                     <td>/view/user/login</td>
                 </tr>
                 <tr>
-                    <td>{!! link_to_action('UserController@showProfile', 'User Profile', (isset($user) ? $user->id : '?')) !!}</td>
+                    <td>{!! link_to_action('UserController@show', 'User Profile', (isset($user) ? $user->id : '?')) !!}</td>
                     <td>[get]/user/{id}</td>
-                    <td>UserController@showProfile</td>
+                    <td>UserController@show</td>
                     <td>/view/user/profile</td>
                 </tr>
                 <tr>

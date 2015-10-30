@@ -1,20 +1,6 @@
-@extends('master')
-
-@section('title')
-
-@stop
-
-
-@section('header')
-
-@stop
-
-
-@section('content')
-
-@stop
-
-
-@section('footer')
-
-@stop
+@foreach($user->medicines as $medicine)
+    <div>
+        <div class="item-header">{{$medicine->name}}: </div>
+        <div class="item">{{$medicine->description}}</div>
+    </div>
+@endforeach

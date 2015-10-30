@@ -19,3 +19,24 @@ body {
 .title {
     font-size: 96px;
 }
+.form-head{
+    padding: 8px;
+    margin: 10px 0;
+    background-color: transparent;
+    color: inherit;
+    font-weight: bold;
+    transition: all .5s;
+}
+.item, .item-header{
+    padding: 0 16px;
+    margin: 0 0 10px;
+    background-color: transparent;
+    color: inherit;
+    transition: all .5s;
+}
+.item-header{
+    font-weight: bold;
+}
+.form-padding-top{
+    padding-top: 16px;
+}

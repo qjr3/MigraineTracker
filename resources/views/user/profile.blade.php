@@ -98,8 +98,11 @@
                 <small>Information</small>
             </h4>
             <div class="panel panel-default">
+                <div class="panel-info form-padding-top">
+                    @include('trigger.view')
+                </div>
                 <div class="panel-body">
-
+                    @include('trigger.create')
                 </div>
             </div>
         </div>
@@ -108,8 +111,11 @@
                 <small>Information</small>
             </h4>
             <div class="panel panel-default">
+                <div class="panel-info form-padding-top">
+                    @include('medicine.view')
+                </div>
                 <div class="panel-body">
-
+                    @include('medicine.create')
                 </div>
             </div>
         </div>

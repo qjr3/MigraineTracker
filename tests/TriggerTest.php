@@ -12,33 +12,44 @@ class TriggerTest extends TestCase
 
     public function testCreateTriggerWithJournal(){
         $user = $this->createAndLoginWithUser();
-        $journal = new App\Journal(['location' => 'USA']);
-        $user->journals()->save($journal);
-        $this->data = ['name' => 'angry babies', 'dose' => 100, 'description' => 'Small creatures filled with a hatred for all logic. Suspected to feed on the suffering of others', 'journal' => $journal->id];
+        $journal = $this->createJournal($user);
+        $this->data = $this->setDataWithJournal($journal->id, 'angry babies');
         $this->post('trigger', $this->data)
             ->seeStatusCode(200);
     }
 
     public function testCreateTriggerWithoutJournal(){
         $this->createAndLoginWithUser();
-        $this->data = ['name' => 'angry babies', 'dose' => 100, 'description' => 'Small creatures filled with a hatred for all logic. Suspected to feed on the suffering of others'];
+        $this->data = $this->setData('angry babies');
         $this->post('trigger', $this->data)
             ->seeStatusCode(200);
     }
 
     public function testShowTrigger()
     {
-        $trigger = $this->createTrigger();
+        $trigger = $this->createTrigger('angry babies');
         $route = 'trigger/' . $trigger->id;
         $this->get($route)
             ->seeStatusCode(200)
             ->seeJsonContains(['name' => 'angry babies']);
     }
 
+//    public function testAddTriggerToMultipleJournals()
+//    {
+//        $user = $this->createAndLoginWithUser();
+//        $j1 = $this->createJournal($user);
+//        $j2 = $this->createJournal($user);
+//        $trigger = $this->attachAndReturnTrigger($j1, 'hot food');
+//        $this->attachAndReturnTrigger($j2, 'hot food');
+//        $trigger = App\Trigger::find($trigger->id);
+//        var_dump($trigger->journals()->all());
+//    }
+
+
     public function testUpdateTrigger()
     {
-        $trigger = $this->createTrigger();
-        $update = ['name' => 'mexican food', 'dose' => 1000, 'description' => 'not angry babies'];
+        $trigger = $this->createTrigger('angry babies');
+        $update = $this->setData('mexican food');
         $route = 'trigger/' . $trigger->id;
         $this->patch($route, $update)
             ->seeInDatabase('triggers', ['name' => 'mexican food']);
@@ -46,7 +57,7 @@ class TriggerTest extends TestCase
 
     public function testDestroyTrigger()
     {
-        $trigger = $this->createTrigger();
+        $trigger = $this->createTrigger('angry babies');
         $route = 'trigger/' . $trigger->id;
         $this->delete($route)
             ->missingFromDatabase('triggers', ['name', 'angry babies']);
@@ -55,14 +66,38 @@ class TriggerTest extends TestCase
     /**
      * @return App\Trigger
      */
-    public function createTrigger()
+    public function createTrigger($name)
     {
         $user = $this->createAndLoginWithUser();
-        $journal = new App\Journal(['location' => 'USA']);
-        $user->journals()->save($journal);
-        $this->data = ['name' => 'angry babies', 'description' => 'Small creatures filled with a hatred for all logic. Suspected to feed on the suffering of others', 'journal' => $journal->id];
-        $this->post('trigger', $this->data);
-        $trigger = App\Trigger::where('name', 'angry babies')->first();
+        $journal = $this->createJournal($user);
+        $trigger = $this->attachAndReturnTrigger($journal, $name);
         return $trigger;
+    }
+
+    public function attachAndReturnTrigger($journal, $name)
+    {
+        $this->data = $this->setDataWithJournal($journal, $name);
+        $this->post('trigger', $this->data);
+        $trigger = App\Trigger::where('name', $name)->first();
+        return $trigger;
+    }
+
+    public function createJournal($user)
+    {
+        $faker = Faker\Factory::create();
+        $journal = new App\Journal(['location' => $faker->city]);
+        $user->journals()->save($journal);
+        return $journal;
+    }
+
+    public function setDataWithJournal($journalID, $name){
+        $faker = Faker\Factory::create();
+        $data = ['name' => $name, 'dose' => $faker->numberBetween(0, 10000), 'description' => $faker->paragraph(3), 'journal' => $journalID];
+        return $data;
+    }
+    public function setData($name){
+        $faker = Faker\Factory::create();
+        $data = ['name' => $name, 'dose' => $faker->numberBetween(0, 10000), 'description' => $faker->paragraph(3)];
+        return $data;
     }
 }

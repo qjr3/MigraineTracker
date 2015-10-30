@@ -17,14 +17,20 @@ class TriggerController extends Controller
      */
     public function store(TriggerRequest $request)
     {
-        $trigger = new Trigger();
-        $trigger->name = $request->get('name');
-        $trigger->description = $request->get('description');
-        Auth::user()->triggers()->save($trigger);
+        $collection = Auth::user()->triggers()->where('name', $request->get('name'))->get();
+        if($collection->isEmpty()) {
+            $trigger = new Trigger();
+            $trigger->name = $request->get('name');
+            $trigger->description = $request->get('description');
+            Auth::user()->triggers()->save($trigger);
+        }else{
+            $trigger = $collection->first();
+        }
         if($request->has('journal')) {
             $jID = $request->get('journal');
             $journal = Journal::findOrFail($jID);
-            $journal->medicines()->attach($trigger);
+            echo $journal;
+            $journal->triggers()->attach($trigger);
         }
         return 'Success';
     }
