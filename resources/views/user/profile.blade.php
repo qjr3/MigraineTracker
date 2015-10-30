@@ -45,9 +45,9 @@
                     </strong>
                 </div>
                 <div class="clearfix">
-                    <strong><p class="text-primary pull-left">Age:</p>
+                    <strong><p class="text-primary pull-left">Birthdate:</p>
 
-                        <div class="pull-right">{{ $user->age }}</div>
+                        <div class="pull-right">{{ $user->date_of_birth }}</div>
                     </strong>
                 </div>
             </div>
@@ -56,23 +56,42 @@
     <div class="col-md-9">
         <h2>General Info</h2>
         <hr>
-        {!! link_to_action('UserController@edit', 'Edit', $user->id, ['class' => 'btn btn-default pull-right', 'role' => 'button']) !!}
+        {!! link_to_action('UserController@edit', 'Edit', $user->id, ['class' => 'btn btn-primary pull-right', 'role' => 'button']) !!}
         <div class="page-header">
             <h4>Medical History
                 <small>Information</small>
             </h4>
 
-            <div class="panel panel-default">
-                <div class="panel-body">
-                    <p>Have you been diagnosed with diabetes?</p>
+                    <table class="table table-hover">
+                        <tbody>
+                            <tr>
+                                <td>Have you been diagnosed with diabetes?</td>
+                                <td>
+                                    {{ $user->has_diabetes ? 'Yes' : 'No' }}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Have you been diagnosed with migraines?</td>
+                                <td>
+                                    {{ $user->has_migraines ? 'Yes' : 'No' }}
+                                </td>
+                            </tr>
 
-                    <p>Have you been diagnosed with migraines?</p>
+                            <tr>
+                                <td>Do you wear prescription glasses?</td>
+                                <td>
+                                    {{ $user->has_glasses ? 'Yes' : 'No' }}
+                                </td>
+                            </tr>
 
-                    <p>Do you wear prescription glasses?</p>
-
-                    <p>When was your last eye exam?</p>
-                </div>
-            </div>
+                            <tr>
+                                <td>When was your last eye exam?</td>
+                                <td>
+                                    {{ $user->last_eye_exam_date ?: 'Never' }}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
         </div>
         <div class="page-header clearfix">
             <h4>Triggers
