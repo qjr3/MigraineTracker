@@ -27,11 +27,12 @@ class MedicineController extends Controller
         $medicine->name = $request->get('name');
         $medicine->dose = $request->get('dose');
         $medicine->description = $request->get('description');
-        $medicine->save();
-        $jID = $request->get('journal');
-        $journal = Journal::findOrFail($jID);
-        $journal->medicines()->attach($medicine);
-        Auth::user()->medicines()->attach($medicine);
+        Auth::user()->medicines()->save($medicine);
+        if($request->has('journal')) {
+            $jID = $request->get('journal');
+            $journal = Journal::findOrFail($jID);
+            $journal->medicines()->attach($medicine);
+        }
         return 'Success';
     }
 

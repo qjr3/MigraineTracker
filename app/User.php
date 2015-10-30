@@ -44,12 +44,12 @@ class User extends Model implements AuthenticatableContract,
 
     public function medicines()
     {
-        return $this->belongsToMany('App\Medicine');
+        return $this->hasMany('App\Medicine');
     }
 
     public function triggers()
     {
-        return $this->belongsToMany('App\Trigger');
+        return $this->hasMany('App\Trigger');
     }
 
     public function hasAccessTo($id)

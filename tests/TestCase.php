@@ -24,11 +24,21 @@ class TestCase extends Illuminate\Foundation\Testing\TestCase
     }
 
     /**
-     * Test register link from homepage
+     * Test the homepage
      */
-    public function testLinkFromHome()
+    public function testHome()
     {
         $this->visit('/')
             ->see('Migraine Tracker');
+    }
+    /*----------------Not Tests-----------------*/
+    /**
+     * @return App\User
+     */
+    public function createAndLoginWithUser()
+    {
+        $user = factory(App\User::class, 1)->create();
+        Auth::loginUsingId($user->id);
+        return $user;
     }
 }
