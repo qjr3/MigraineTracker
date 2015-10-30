@@ -22,7 +22,7 @@ class UserController extends Controller
         return view('user.edit', compact('user'));
     }
 
-    public function showProfile($id)
+    public function show($id)
     {
     	$user = User::findOrFail($id);
         return view('user.profile', compact('user'));

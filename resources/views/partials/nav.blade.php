@@ -22,7 +22,7 @@
         @if(Auth::check())
           <?php $user = Auth::user() ?>
           <span class="navbar-text navbar-right">
-          Signed in as {!! link_to_action('UserController@showProfile', $user->name, $user->id ) !!}
+          Signed in as {!! link_to_action('UserController@show', $user->name, $user->id ) !!}
           |
           {!! link_to_action('Auth\AuthController@getLogout', 'Sign Out') !!}</span>
         @else

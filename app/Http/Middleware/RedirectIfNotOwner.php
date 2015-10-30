@@ -33,7 +33,9 @@ class RedirectIfNotOwner
     public function handle($request, Closure $next)
     {
 
-        $id = $request->route()->parameter('id');
+        $parameterName = $request->route()->parameterNames()[0];
+
+        $id = $request->route()->parameter($parameterName);
 
         if(!$this->auth->user()->hasAccessTo($id))
         {
