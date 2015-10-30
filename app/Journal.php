@@ -14,16 +14,16 @@ class Journal extends Model
 
     public function users()
     {
-        return $this->belongsTo('App\User');
+        return $this->belongsTo('App\User', 'user_id');
     }
 
     public function medicines()
     {
-        return $this->hasMany('App\Medicine');
+        return $this->belongsToMany('App\Medicine');
     }
 
     public function triggers()
     {
-        return $this->hasMany('App\Trigger');
+        return $this->belongsToMany('App\Trigger');
     }
 }

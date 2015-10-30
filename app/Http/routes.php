@@ -17,8 +17,8 @@ Route::get('/', function () {
 
 Route::model('user', 'App\User');
 
-Route::controller('medicine', 'MedicineController');
-Route::controller('trigger', 'TriggerController');
+Route::resource('medicine', 'MedicineController');
+Route::resource('trigger', 'TriggerController');
 
 $router->get('test', 'TestController@index');
 

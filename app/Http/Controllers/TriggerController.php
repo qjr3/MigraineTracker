@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\TriggerRequest;
 use App\Trigger;
+use Illuminate\Support\Facades\Auth;
 
 class TriggerController extends Controller
 {
@@ -13,15 +14,21 @@ class TriggerController extends Controller
      * @param  \App\Http\TriggerRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function postStore(TriggerRequest $request)
+    public function store(TriggerRequest $request)
     {
         $trigger = new Trigger();
         $trigger->name = $request->get('name');
         $trigger->description = $request->get('description');
+        $trigger->save();
         $journal = $request->get('journal');
-        $journal->triggers()->save($trigger);
-        Auth::user()->triggers()-save($trigger);
+        $journal->triggers()->attach($trigger);
+        Auth::user()->triggers()->attach($trigger);
         return 'Success';
+    }
+
+    public function index()
+    {
+        return Trigger::all();
     }
 
     /**
@@ -30,7 +37,7 @@ class TriggerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function getShow($id)
+    public function show($id)
     {
         $trigger = Trigger::find($id);
         return $trigger;
@@ -43,7 +50,7 @@ class TriggerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function patchUpdate(TriggerRequest $request, $id)
+    public function update(TriggerRequest $request, $id)
     {
         $trigger = Trigger::find($id);
         $trigger->name = $request->get('name');
@@ -58,7 +65,7 @@ class TriggerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function deleteDestroy($id)
+    public function destroy($id)
     {
         $trigger = Trigger::find($id);
         $trigger->delete();

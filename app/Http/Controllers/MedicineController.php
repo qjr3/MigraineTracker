@@ -4,13 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\MedicineRequest;
 use App\Medicine;
+use App\Journal;
+use Illuminate\Support\Facades\Auth;
 
 class MedicineController extends Controller
 {
     
     public function __construct() 
     {
-        $this->middleware('Auth');
+        //$this->middleware('Auth');
     }
 
     /**
@@ -19,28 +21,34 @@ class MedicineController extends Controller
      * @param  \App\Http\MedicineRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function postStore(MedicineRequest $request)
+    public function store(MedicineRequest $request)
     {
         $medicine = new Medicine();
         $medicine->name = $request->get('name');
         $medicine->dose = $request->get('dose');
         $medicine->description = $request->get('description');
-        $journal = $request->get('journal');
-        $journal->medicines()->save($medicine);
-        Auth::user()->medicines()-save($medicine);
+        $medicine->save();
+        $jID = $request->get('journal');
+        $journal = Journal::findOrFail($jID);
+        $journal->medicines()->attach($medicine);
+        Auth::user()->medicines()->attach($medicine);
         return 'Success';
     }
 
+    public function index()
+    {
+        return Medicine::all();
+    }
     /**
      * Display the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function getShow($id)
+    public function show($id)
     {
-        $trigger = Trigger::find($id);
-        return $trigger;
+        $medicine = Medicine::find($id);
+        return $medicine;
     }
 
     /**
@@ -50,7 +58,7 @@ class MedicineController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function patchUpdate(MedicineRequest $request, $id)
+    public function update(MedicineRequest $request, $id)
     {
         $medicine = Medicine::find($id);
         $medicine->name = $request->get('name');
@@ -66,7 +74,7 @@ class MedicineController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function deleteDestroy($id)
+    public function destroy($id)
     {
         $medicine = Medicine::find($id);
         $medicine->delete();

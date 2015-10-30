@@ -12,7 +12,7 @@ class Medicine extends Model
     
     protected $hidden = [];
 
-    public function user()
+    public function users()
     {
         return $this->belongsToMany('App\User');
     }
