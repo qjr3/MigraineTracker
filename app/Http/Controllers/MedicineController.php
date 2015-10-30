@@ -23,17 +23,23 @@ class MedicineController extends Controller
      */
     public function store(MedicineRequest $request)
     {
-        $medicine = new Medicine();
-        $medicine->name = $request->get('name');
-        $medicine->dose = $request->get('dose');
-        $medicine->description = $request->get('description');
-        Auth::user()->medicines()->save($medicine);
+
+        $collection = Auth::user()->medicines()->where('name', $request->get('name'))->get();
+        if($collection->isEmpty()) {
+            $medicine = new Medicine();
+            $medicine->name = $request->get('name');
+            $medicine->dose = $request->get('dose');
+            $medicine->description = $request->get('description');
+            Auth::user()->medicines()->save($medicine);
+        }else{
+            $medicine = $collection->first();
+        }
         if($request->has('journal')) {
             $jID = $request->get('journal');
             $journal = Journal::findOrFail($jID);
             $journal->medicines()->attach($medicine);
         }
-        return 'Success';
+        return redirect()->back();;
     }
 
     public function index()

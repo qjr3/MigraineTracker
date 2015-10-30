@@ -32,7 +32,7 @@ class TriggerController extends Controller
             echo $journal;
             $journal->triggers()->attach($trigger);
         }
-        return 'Success';
+        return redirect()->back();
     }
 
     public function index()
