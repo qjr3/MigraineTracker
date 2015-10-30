@@ -6,14 +6,19 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Auth;
+use App\Trigger;
+use App\Medicine;
 
 class JournalController extends Controller
 {
+    private $request;
+    private $journal;
+    
     public function __construct() 
     {
 //        $this->middleware('auth');
         $this->request = $request;
-        $this->journal = $journal->where('user_id', Auth::id());
+        $this->journal = $journal->where('user_id', Auth::user());
     }
     
     public function index()
@@ -25,10 +30,10 @@ class JournalController extends Controller
     
     public function store()
     {
-    $request = $this->request;
-    $journal = $journal->create($request->input());
-    
-    $journal->save();
+        $request = $this->request;
+        $journal = $journal->create($request->input());
+
+        $journal->save();
     }
     
     public function show($id)
