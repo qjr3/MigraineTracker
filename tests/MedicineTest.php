@@ -4,7 +4,7 @@ use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-class MedicineTester extends TestCase
+class MedicineTest extends TestCase
 {
     use DatabaseTransactions;
     //use WithoutMiddleware;
@@ -21,14 +21,20 @@ class MedicineTester extends TestCase
         $this->assertTrue(true);
     }
 
-    public function testCreateMedicine(){
-        $user = factory(App\User::class, 1)->create();
-        Auth::loginUsingId($user->id);
+    public function testCreateMedicineWithJournal(){
+        $user = $this->createAndLoginWithUser();
         $journal = new App\Journal(['location' => 'USA']);
         $user->journals()->save($journal);
         $this->data = ['name' => 'cocaine', 'dose' => 100, 'description' => 'A highly addictive white powdery substance. Known to increase aggression and increase focus.', 'journal' => $journal->id];
         $this->post('medicine', $this->data)
              ->seeStatusCode(200);
+    }
+
+    public function testCreateMedicineWithoutJournal(){
+        $this->createAndLoginWithUser();
+        $this->data = ['name' => 'cocaine', 'dose' => 100, 'description' => 'A highly addictive white powdery substance. Known to increase aggression and increase focus.'];
+        $this->post('medicine', $this->data)
+            ->seeStatusCode(200);
     }
 
     public function testShowMedicine()
@@ -56,14 +62,13 @@ class MedicineTester extends TestCase
         $this->delete($route)
             ->missingFromDatabase('medicines', ['name', 'cocaine']);
     }
-
+/*----------------------------------Not Tests---------------------------------------*/
     /**
-     * @return mixed
+     * @return App\Medicine
      */
     public function createMedicine()
     {
-        $user = factory(App\User::class, 1)->create();
-        Auth::loginUsingId($user->id);
+        $user = $this->createAndLoginWithUser();
         $journal = new App\Journal(['location' => 'USA']);
         $user->journals()->save($journal);
         $this->data = ['name' => 'cocaine', 'dose' => 100, 'description' => 'A highly addictive white powdery substance. Known to increase aggression and increase focus.', 'journal' => $journal->id];

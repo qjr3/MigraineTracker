@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\TriggerRequest;
 use App\Trigger;
+use App\Journal;
 use Illuminate\Support\Facades\Auth;
 
 class TriggerController extends Controller
@@ -19,10 +20,12 @@ class TriggerController extends Controller
         $trigger = new Trigger();
         $trigger->name = $request->get('name');
         $trigger->description = $request->get('description');
-        $trigger->save();
-        $journal = $request->get('journal');
-        $journal->triggers()->attach($trigger);
-        Auth::user()->triggers()->attach($trigger);
+        Auth::user()->triggers()->save($trigger);
+        if($request->has('journal')) {
+            $jID = $request->get('journal');
+            $journal = Journal::findOrFail($jID);
+            $journal->medicines()->attach($trigger);
+        }
         return 'Success';
     }
 
