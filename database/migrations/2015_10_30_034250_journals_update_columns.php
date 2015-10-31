@@ -27,7 +27,7 @@ class JournalsUpdateColumns extends Migration
             $table->boolean('has_light_sensativity')->nullable();
             $table->boolean('has_sound_sensativity')->nullable();
             $table->boolean('has_disrupted')->nullable();
-            $table->boolean('missed_workshool')->nullable();
+            $table->boolean('missed_workschool')->nullable();
             $table->string('missed_routines')->nullable(); // ?? '|' seperated data?
             $table->string('social_plans')->nullable(); // What about social plans? missed? migraine = party time?
             $table->string('activities')->nullable(); // What about activities? what we were doign? what we couldn't do? What we plan to do?
