@@ -3,7 +3,7 @@
 @section('content')
 <h1>Journal Records</h1>
 
-@foreach ($journals as $journal)
-<li><a href='/songs/1'>{{ $journal }}</li>
+@foreach ($journal as $journals)
+<li><a href='/journal/{{ $journals->id }}'>{{ $journals }}</li>
 @endforeach
 @stop
