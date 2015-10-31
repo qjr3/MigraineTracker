@@ -2,26 +2,25 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Auth;
+
 use App\Trigger;
 use App\Medicine;
 use App\Journal;
 
+use Illuminate\Support\Facades\Request;
+use Illuminate\Support\Facades\Auth;
+
 class JournalController extends Controller
 {
-    private $request;
     private $journal;
     
     public function __construct(Request $request, Journal $journal) 
     {
 //        $this->middleware('auth');
-        $this->request = $request;
         
-        $this->journal = $journal->where('user_id', 1);
-//        $this->journal = $journal->where('user_id', Auth::user()->id);
+        $this->journal = $journal->where('user_id', Auth::user());
     }
     
     public function index()
@@ -33,11 +32,11 @@ class JournalController extends Controller
     
     public function store()
     {
-        $request = $this->request;
         $journal = new Journal;
-        $journal->fill($request->input());
-        $journal->user_id = 1;
+        $journal->fill(Request::all());
+        $journal->user_id = Auth::id();
         $journal->touch();
+
         $journal->save();
     }
     
@@ -45,7 +44,9 @@ class JournalController extends Controller
     {
         $journal = $this->journal->get();
         $journal = $journal->where('id', $id)->first();
-        
+        $trigger = new Trigger();
+        $trigger->where('user_id', Auth::id());
+        dd($trigger);
         return view('journal.view', compact('journal'));
     }
     
