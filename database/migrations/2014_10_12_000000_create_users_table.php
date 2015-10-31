@@ -21,9 +21,10 @@ class CreateUsersTable extends Migration
             $table->string('last_name')->nullable();
             $table->string('gender')->nullable();
             $table->date('date_of_birth')->nullable();
-            $table->boolean('has_diabetes')->nullable();
-            $table->boolean('has_migraines')->nullable();
-            $table->boolean('has_glasses')->nullable();
+            $table->boolean('has_diabetes')->default(false);
+            $table->boolean('has_migraines')->default(false);
+            $table->boolean('has_glasses')->default(false);
+            $table->date('last_eye_exam_date')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
