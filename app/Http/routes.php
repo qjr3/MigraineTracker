@@ -35,3 +35,16 @@ Route::post('register', 'Auth\AuthController@postRegister');
 Route::get('login', 'Auth\AuthController@getLogin');
 Route::post('login', 'Auth\AuthController@postLogin');
 Route::get('logout', 'Auth\AuthController@getLogout');
+
+// Journal Routes
+//$router->resource('journal', 'JournalController'); // once all routes work, will use this
+$router->get('journal', 'JournalController@index');
+$router->post('journal/create', 'JournalController@store');
+$router->get('journal/create', 'JournalController@create');
+$router->get('journal/{id}', 'JournalController@show');
+$router->get('journal/{id}/edit', 'JournalController@edit');
+Route::patch('journal/{id}/', 'JournalController@update');
+
+$router->get('report/generate', 'ReportController@create');
+$router->get('report/{id}', 'ReportController@show');
+$router->get('report', 'ReportController@index');
