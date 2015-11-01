@@ -1,0 +1,8 @@
+Install Composer on you computer
+Make certain your path envirment varible include the bin path for composer (should be by default)
+
+composer install
+cp .env.example .env
+php artisan key:generate
+touch storage/database.sqlite
+php artisan migrate
