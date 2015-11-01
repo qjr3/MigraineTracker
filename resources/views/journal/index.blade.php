@@ -18,7 +18,7 @@
   	@foreach($journals as $i => $journal)
 		<tr>
 			<td>{{ $i }}</td>
-			<td>{{ $journal->name }}</td>
+			<td>{!! link_to_action('JournalController@show' , $journal->name, $journal->id) !!}</td>
 			<td>{{ $journal->severity }}</td>
 			<td>{{ $journal->location }}</td>
 		</tr>
