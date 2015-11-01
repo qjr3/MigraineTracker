@@ -8,15 +8,6 @@ If you suffer from migraines then this is the app for you. In addition to tracki
 
 ## Official Documentation
 
-### How To Install
-```
-composer install
-cp .env.example .env
-php artisan key:generate
-touch storage/database.sqlite
-php artisan migrate
-```
-
 ## Security Vulnerabilities
 
 If you discover a security vulnerability within Migraine Tracker, please send an e-mail to Quinn Roundy at qjr3@students.uwf.edu . All security vulnerabilities will be promptly addressed.
