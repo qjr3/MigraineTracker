@@ -1,7 +1,8 @@
 @extends('master')
 
-@section('title')
 
+@section('style')
+<link href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/css/select2.min.css" rel="stylesheet" />
 @stop
 
 @section('header')
@@ -84,11 +85,11 @@
 </div>
 <div class="form-group">
     {!! Form::label('triggers_id', 'Triggers:', ['class' => 'form-label']) !!}
-    {!! Form::text('name', null, ['class' => 'form-control', 'disabled' => 'true']) !!}
+    {!! Form::select('triggers_id[]', $triggers, $journal->triggers->lists('id')->toArray(), ['id' => 'trigger_list', 'class' => 'form-control', 'multiple']) !!}
 </div>
 <div class="form-group">
     {!! Form::label('medicines_id', 'Medicines:', ['class' => 'form-label']) !!}
-    {!! Form::text('medicines_id', null, ['class' => 'form-control', 'disabled' => 'true']) !!}
+    {!! Form::select('medicines_id[]', $medicines, $journal->medicines->lists('id')->toArray(), ['id' => 'medicine_list', 'class' => 'form-control', 'multiple']) !!}
 </div>
 <div class="form-group">
     {!! Form::label('still_suffering', 'still_suffering:', ['class' => 'form-label']) !!}
@@ -154,5 +155,15 @@
 
 
 @section('footer')
+<script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js"></script>
+
+    <script type="text/javascript">
+        $('#trigger_list').select2({
+            placeholder: "Select Triggers"
+        });
+        $('#medicine_list').select2({
+            placeholder: "Select Medicines"
+        });
+    </script>
 
 @stop

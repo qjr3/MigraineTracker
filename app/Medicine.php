@@ -12,9 +12,9 @@ class Medicine extends Model
     
     protected $hidden = [];
 
-    public function users()
+    public function user()
     {
-        return $this->belongsTo('App\User', 'user_id');
+        return $this->belongsTo('App\User');
     }
 
     public function journals()

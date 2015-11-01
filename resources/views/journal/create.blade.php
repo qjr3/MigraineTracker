@@ -1,7 +1,7 @@
 @extends('master')
 
-@section('title')
-
+@section('style')
+<link href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/css/select2.min.css" rel="stylesheet" />
 @stop
 
 
@@ -11,7 +11,11 @@
 
 
 @section('content')
-{!! Form::open(['action' =>'JournalController@store', 'method' => 'post'])  !!}
+<div class="row">
+    
+    <div class="col-md-6">
+    
+    {!! Form::open(['action' =>'JournalController@store', 'method' => 'post'])  !!}
 <div class="form-group">
   <!--  {!! Form::label('Name', 'Name',['class' => 'form-label'] ) !!} -->
     {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Journal Name']) !!}
@@ -83,14 +87,34 @@
         ],
          null, ['class' => 'form-control']) !!}
 </div>
+
+@if(!$triggers->isEmpty())
+
 <div class="form-group">
     <!-- {!! Form::label('triggers_id', 'Triggers:', ['class' => 'form-label']) !!} -->
-    {!! Form::text('name', null, ['class' => 'form-control', 'disabled' => 'true', 'placeholder' => 'Triggers List : WiP']) !!}
+    {!! Form::select('triggers_id[]', $triggers, 'name', ['id' => 'trigger_list', 'class' => 'form-control', 'multiple']) !!}
 </div>
+
+@else
+
+<p>Do Trigger add here.</p>
+
+@endif
+
+
+@if(!$medicines->isEmpty())
 <div class="form-group">
    <!-- {!! Form::label('medicines_id', 'Medicines:', ['class' => 'form-label']) !!} -->
-    {!! Form::text('medicines_id', null, ['class' => 'form-control', 'disabled' => 'true', 'placeholder' => 'Medicine List : WiP']) !!}
+    {!! Form::select('medicines_id[]', $medicines, 'name', ['id' => 'medicine_list', 'class' => 'form-control', 'multiple']) !!}
 </div>
+
+@else
+
+    <p>Do Medicine add here</p>
+
+@endif
+
+
 <div class="form-group">
     {!! Form::label('still_suffering', 'Are you currently suffering?', ['class' => 'form-label']) !!}
     {!! Form::select('still_suffering', [ '' => '', 'true' => 'Yes', 'false' => 'No'], null, ['class' => 'form-control']) !!}
@@ -152,9 +176,26 @@
 </div>
 
 {!! Form::close() !!}
+    
+    </div>
+
+</div>
+
+
+
 @stop
 
 
 @section('footer')
+<script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js"></script>
+
+    <script type="text/javascript">
+        $('#trigger_list').select2({
+            placeholder: "Select Triggers"
+        });
+        $('#medicine_list').select2({
+            placeholder: "Select Medicines"
+        });
+    </script>
 
 @stop

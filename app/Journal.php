@@ -14,8 +14,6 @@ class Journal extends Model
         'weather',
         'noise_level',
         'light_level',
-        'triggers_id',
-        'medicines_id',
         'name',
         'description',
         'still_suffering',

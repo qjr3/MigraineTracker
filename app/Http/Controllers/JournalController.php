@@ -29,7 +29,11 @@ class JournalController extends Controller
     
     public function store(Request $request)
     {
-        Auth::user()->journals()->create($request->all());
+
+        $journal = Auth::user()->journals()->create($request->all());
+
+        $journal->triggers()->attach($request->input('triggers_id'));
+        $journal->medicines()->attach($request->input('medicines_id'));
 
         return redirect('journal');
     }
@@ -42,19 +46,35 @@ class JournalController extends Controller
     
     public function create()
     {
-        return view('journal.create');
+        $triggers = Auth::user()->triggers()->lists('name', 'id');
+        $medicines = Auth::user()->medicines()->lists('name', 'id');
+        return view('journal.create', compact('triggers', 'medicines'));
     }
     
     public function edit($id, Request $request)
     {
         $journal = Auth::user()->journals()->findOrFail($id);
+
+        $journal = $journal->load('triggers');
         
-        return view('journal.update', compact('journal'));
+        $triggers = Auth::user()->triggers()->lists('name', 'id');
+        $medicines = Auth::user()->medicines()->lists('name', 'id');
+        return view('journal.update', compact('journal', 'triggers', 'medicines'));
     }
     
     public function update($id, Request $request)
     {
         $journal = Auth::user()->journals()->findOrFail($id);
+
+        if(!isset($request['triggers_id']))
+            $request['triggers_id'] = array();
+
+        if(!isset($request['medicines_id']))
+            $request['medicines_id'] = array();
+
+        $journal->triggers()->sync($request['triggers_id']);
+        $journal->medicines()->sync($request['medicines_id']);
+
         $journal->update($request->all());
         
         return redirect('journal');
