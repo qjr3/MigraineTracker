@@ -14,7 +14,13 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li {{ Request::is('/') ? 'class=active' : null }}><a href="/">Home <span class="sr-only">(current)</span></a></li>
+        <li {{ Request::is('/') ? 'class=active' : null }}><a href="
+        @if(Auth::check())
+        /home
+        @else
+        /
+        @endif
+        ">Home <span class="sr-only">(current)</span></a></li>
         <li><a href="#">About</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">

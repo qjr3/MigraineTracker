@@ -21,7 +21,7 @@ class AuthController extends Controller
     |
     */
 
-    private $redirectPath = '/';
+    protected $redirectPath = '/home';
     protected $loginPath = '/login';
 
     use AuthenticatesAndRegistersUsers, ThrottlesLogins;

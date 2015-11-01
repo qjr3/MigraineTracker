@@ -24,8 +24,8 @@ Route::resource('trigger', 'TriggerController');
 Route::get('test', 'TestController@index');
 
 // Journal Routes
-Route::get('journal', 'JournalController@index');
-
+//Route::get('journal', 'JournalController@index');
+Route::resource('journal', 'JournalController');
 // User Routes
 Route::resource('user', 'UserController');
 
@@ -48,3 +48,7 @@ Route::patch('journal/{id}/', 'JournalController@update');
 $router->get('report/generate', 'ReportController@create');
 $router->get('report/{id}', 'ReportController@show');
 $router->get('report', 'ReportController@index');
+
+
+//Page Routes
+Route::get('home', 'PagesController@dashboard');

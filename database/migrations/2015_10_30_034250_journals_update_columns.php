@@ -31,8 +31,8 @@ class JournalsUpdateColumns extends Migration
             $table->string('missed_routines')->nullable(); // ?? '|' seperated data?
             $table->string('social_plans')->nullable(); // What about social plans? missed? migraine = party time?
             $table->string('activities')->nullable(); // What about activities? what we were doign? what we couldn't do? What we plan to do?
-            $table->foreign('triggers_id')->references('id')->on('xtbl_journal_trigger');
-            $table->foreign('medicines_id')->references('id')->on('xtbl_journal_medicine');
+            $table->foreign('triggers_id')->references('id')->on('journal_trigger');
+            $table->foreign('medicines_id')->references('id')->on('journal_medicine');
         });
     }
 
