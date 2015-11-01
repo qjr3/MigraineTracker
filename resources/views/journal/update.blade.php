@@ -10,7 +10,7 @@
 
 
 @section('content')
-{!! Form::open(['action' => 'JournalController@update', 'method' => 'post']) !!}
+{!! Form::model($journal, ['action' => ['JournalController@update', $journal->id], 'method' => 'PATCH']) !!}
 <div class="form-group">
     {!! Form::label('Name', 'Name',['class' => 'form-label'] ) !!}
     {!! Form::text('name', null, ['class' => 'form-control']) !!}

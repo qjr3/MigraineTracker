@@ -8,45 +8,35 @@ use App\Http\Controllers\Controller;
 use App\Trigger;
 use App\Medicine;
 use App\Journal;
+Use Auth;
 
-use Illuminate\Support\Facades\Request;
-use Illuminate\Support\Facades\Auth;
+Use Illuminate\Http\Request;
 
 class JournalController extends Controller
 {
-    private $journal;
     
-    public function __construct(Request $request, Journal $journal) 
+    public function __construct() 
     {
-//        $this->middleware('auth');
-        
-        $this->journal = $journal->where('user_id', Auth::user());
+
     }
     
     public function index()
     {
-        $journal = $this->journal->get();
+        $journals = Auth::user()->journals;
         
-        return view('journal.index', compact('journal'));
+        return view('journal.index', compact('journals'));
     }
     
-    public function store()
+    public function store(Request $request)
     {
-        $journal = new Journal;
-        $journal->fill(Request::all());
-        $journal->user_id = Auth::id();
-        $journal->touch();
+        Auth::user()->journals()->create($request->all());
 
-        $journal->save();
+        return redirect('journal');
     }
     
     public function show($id)
     {
-        $journal = $this->journal->get();
-        $journal = $journal->where('id', $id)->first();
-        $trigger = new Trigger();
-        $trigger->where('user_id', Auth::id());
-        dd($trigger);
+        $journal = Auth::user()->journals()->findOrFail($id);
         return view('journal.view', compact('journal'));
     }
     
@@ -57,17 +47,15 @@ class JournalController extends Controller
     
     public function edit($id, Request $request)
     {
-        $journal = $this->journal->where('id', $id)->first();
+        $journal = Auth::user()->journals()->findOrFail($id);
         
         return view('journal.update', compact('journal'));
     }
     
-    public function update($id)
+    public function update($id, Request $request)
     {
-        $request = $this->request;
-        $journal = $this->journal->where('id', $id)->first();
-        $journal->touch();
-        $journal->fill($request->input())->save();
+        $journal = Auth::user()->journals()->findOrFail($id);
+        $journal->update($request->all());
         
         return redirect('journal');
     }    

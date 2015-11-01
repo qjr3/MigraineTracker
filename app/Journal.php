@@ -9,7 +9,6 @@ class Journal extends Model
     protected $table = 'journals';
    
     protected $fillable = [
-        'user_id',
         'location',
         'severity',
         'weather',
@@ -37,9 +36,9 @@ class Journal extends Model
 
     protected $hidden = [];
 
-    public function users()
+    public function user()
     {
-        return $this->belongsTo('App\User', 'user_id');
+        return $this->belongsTo('App\User');
     }
 
     public function medicines()
