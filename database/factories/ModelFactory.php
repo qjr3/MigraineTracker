@@ -15,7 +15,7 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
     return [
         'name' => $faker->name,
         'email' => $faker->email,
-        'password' => bcrypt(str_random(10)),
+        'password' => bcrypt('password'),
         'remember_token' => str_random(10),
     ];
 });
@@ -24,8 +24,9 @@ $factory->define(App\Journal::class, function (Faker\Generator $faker) {
         'name' => $faker->title,
         'description' => $faker->paragraph(4),
         'severity' => $faker->numberBetween(0,10),
-        'location' => $faker->city,
-        'weather' => $faker->sentence,
+        'loc_long' => $faker->longitude,
+        'loc_lat' => $faker->latitude,
+        //weather' => $faker->sentence,
         'sound_level' => $faker->numberBetween(0,10),
         'light_level' => $faker->numberBetween(0,10),
         'still_suffering' => $faker->boolean(),
@@ -44,6 +45,10 @@ $factory->define(App\Journal::class, function (Faker\Generator $faker) {
         $data['aura_description'] = $faker->paragraph(3);
     return $data;
 });
+
+
+
+
 $factory->define(App\Medicine::class, function (Faker\Generator $faker) {
     return [
         'name' => $faker->word,
