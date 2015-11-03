@@ -3,25 +3,11 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use Illuminate\Contracts\Auth\Guard;
+use DB;
 
 
 class RedirectIfNotOwner
 {
-
-    protected $auth;
-
-
-    /**
-     * Create a new filter instance.
-     *
-     * @param  Guard  $auth
-     * @return void
-     */
-    public function __construct(Guard $auth)
-    {
-        $this->auth = $auth;
-    }
 
     /**
      * Handle an incoming request.
@@ -30,16 +16,15 @@ class RedirectIfNotOwner
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle($request, Closure $next)
+    public function handle($request, Closure $next, $resourceName)
     {
+        $id = $request->route()->parameter($resourceName);
 
-        $parameterName = $request->route()->parameterNames()[0];
+        $user_id = DB::table($resourceName . 's')->find($id)->user_id;
 
-        $id = $request->route()->parameter($parameterName);
-
-        if(!$this->auth->user()->hasAccessTo($id))
+        if ($request->user()->id != $user_id)
         {
-            return response('Unauthorized.', 401);
+            abort(403, 'Unauthorized action.');
         }
 
         return $next($request);

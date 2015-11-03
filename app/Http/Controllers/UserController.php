@@ -14,7 +14,7 @@ class UserController extends Controller
     public function __construct(Request $request) 
     {
     	$this->middleware('auth');
-    	$this->middleware('owner:user');
+    	$this->middleware('profile');
     }
 
     public function edit($id)

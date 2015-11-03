@@ -39,6 +39,6 @@ $router->get('report', 'ReportController@index');
 
 //Page Routes
 Route::get('home', 'PagesController@dashboard');
-$router->get('privacy', 'PagesController@privacy');
-$router->get('terms', 'PagesController@terms');
-$router->get('about', 'PagesController@about');
+Route::get('privacy', 'PagesController@privacy');
+Route::get('terms', 'PagesController@terms');
+Route::get('about', 'PagesController@about');
