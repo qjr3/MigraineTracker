@@ -8,9 +8,15 @@ class Trigger extends Model
 {
     protected $table = 'triggers';
     
-    protected $fillable = ['name', 'description'];
+    protected $fillable = 
+    [
+        'name', 
+        'description'
+    ];
     
     protected $hidden = [];
+    
+    protected $guarded = [];
 
     public function journals()
     {

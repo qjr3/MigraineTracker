@@ -44,7 +44,7 @@ class MedicineController extends Controller
 
     public function index()
     {
-        return Medicine::all();
+        return Medicine::all(); // This should be return view('medicine.index');
     }
     /**
      * Display the specified resource.
@@ -55,7 +55,7 @@ class MedicineController extends Controller
     public function show($id)
     {
         $medicine = Medicine::find($id);
-        return $medicine;
+        return $medicine; // this should be return view('medicines.show')
     }
 
     /**
@@ -72,7 +72,8 @@ class MedicineController extends Controller
         $medicine->dose = $request->get('dose');
         $medicine->description = $request->get('description');
         $medicine->save();
-        return 'Success';
+        return 'Success'; // this should be: return redirect('something'); or return view('medicine.somethingepic');
+        // return redirect('medicine.index');
     }
 
     /**
@@ -85,6 +86,6 @@ class MedicineController extends Controller
     {
         $medicine = Medicine::find($id);
         $medicine->delete();
-        return 'Success';
+        return 'Success'; // this should be: return redirect('something');
     }
 }

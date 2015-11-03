@@ -14,10 +14,13 @@ class CreateJournalTriggerPivotTable extends Migration
     {
         Schema::create('journal_trigger', function (Blueprint $table) {
             $table->integer('journal_id')->unsigned()->index();
-            $table->foreign('journal_id')->references('id')->on('journals')->onDelete('cascade');
             $table->integer('trigger_id')->unsigned()->index();
-            $table->foreign('trigger_id')->references('id')->on('triggers')->onDelete('cascade');
+            
             $table->primary(['journal_id', 'trigger_id']);
+        
+            // Foreign Keys
+            $table->foreign('trigger_id')->references('id')->on('triggers')->onDelete('cascade');
+            $table->foreign('journal_id')->references('id')->on('journals')->onDelete('cascade');
         });
     }
 

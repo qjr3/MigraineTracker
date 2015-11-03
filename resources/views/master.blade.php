@@ -37,6 +37,8 @@
         <link rel="apple-touch-startup-image" href="/startup.png">
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        
+        <!-- Other links -->
         @yield('style')
 </head>
 
@@ -47,7 +49,7 @@
         @include('partials.nav')
         <!-- END Global Header -->
         
-        <div id='content' class='row'>
+        <div id='content' class='row jumbotron'>
             @yield('content')
         </div>
     

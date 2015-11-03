@@ -14,4 +14,19 @@ class PagesController extends Controller
         $user = Auth::user();
         return view('pages.dashboard', compact('user'));
     }
+    
+    public function privacy()
+    {
+        return view('pages.privacy');
+    }
+    
+    public function terms()
+    {
+        return view('pages.terms');
+    }
+    
+    public function about()
+    {
+        return view('pages.about');
+    }
 }

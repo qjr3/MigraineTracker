@@ -28,7 +28,21 @@ class User extends Model implements AuthenticatableContract,
      *
      * @var array
      */
-    protected $fillable = ['name', 'email', 'password', 'first_name', 'last_name', 'gender', 'date_of_birth', 'has_migraines', 'has_diabetes', 'has_glasses', 'last_eye_exam_date'];
+    protected $fillable = 
+    [
+        'name', 
+        'email',
+        'password', 
+        'first_name', 
+        'last_name', 
+        'locale',
+        'gender', 
+        'date_of_birth', 
+        'has_migraines', 
+        'has_diabetes', 
+        'has_glasses', 
+        'last_eye_exam'
+    ];
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -37,6 +51,13 @@ class User extends Model implements AuthenticatableContract,
      */
     protected $hidden = ['password', 'remember_token'];
 
+    /**
+     * The attributes that can not have values assigned to them directly
+     * 
+     * @var array
+     */
+    protected $guarded = [];
+    
     public function journals()
     {
         return $this->hasMany('App\Journal');

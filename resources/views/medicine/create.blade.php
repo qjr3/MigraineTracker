@@ -12,8 +12,8 @@
 </div>
 <!-- Dose (mg) Form Input -->
 <div class="form-group">
-    {!! Form::label('dose', 'Dose (mg):') !!}
-    {!! Form::number('dose', null, ['class' => 'form-control']) !!}
+    {!! Form::label('dose', 'Dosage:') !!}
+    {!! Form::text('dose', null, ['class' => 'form-control']) !!}
 </div>
 <div class="text-right">
     {!! Form::submit('Add Medicine', ['class' => 'btn btn-info']) !!}

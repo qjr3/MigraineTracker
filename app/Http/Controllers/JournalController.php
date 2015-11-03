@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests;
+//use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Trigger;
 use App\Medicine;
 use App\Journal;
 Use Auth;
-
-Use Illuminate\Http\Request;
+use App\Http\Requests\JournalRequest;
+//use Illuminate\Http\Request;
 
 class JournalController extends Controller
 {
@@ -28,7 +28,7 @@ class JournalController extends Controller
         return view('journal.index', compact('journals'));
     }
     
-    public function store(Request $request)
+    public function store(JournalRequest $request)
     {
 
         $journal = Auth::user()->journals()->create($request->all());
@@ -52,7 +52,7 @@ class JournalController extends Controller
         return view('journal.create', compact('triggers', 'medicines'));
     }
     
-    public function edit($id, Request $request)
+    public function edit($id)
     {
         $journal = Auth::user()->journals()->findOrFail($id);
 
@@ -63,15 +63,15 @@ class JournalController extends Controller
         return view('journal.update', compact('journal', 'triggers', 'medicines'));
     }
     
-    public function update($id, Request $request)
+    public function update($id, JournalRequest $request)
     {
         $journal = Auth::user()->journals()->findOrFail($id);
 
         if(!isset($request['triggers_id']))
-            $request['triggers_id'] = array();
+            $request['triggers_id'] = [];
 
         if(!isset($request['medicines_id']))
-            $request['medicines_id'] = array();
+            $request['medicines_id'] = [];
 
         $journal->triggers()->sync($request['triggers_id']);
         $journal->medicines()->sync($request['medicines_id']);
