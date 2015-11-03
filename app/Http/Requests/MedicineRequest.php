@@ -24,7 +24,8 @@ class MedicineRequest extends Request
     public function rules()
     {
         return [
-            'name' => 'required', // this is given a default in the migration/db....so isn't really required in laravel.
+            'name' => 'required',
+            'dose' => 'required',
         ];
     }
 }

@@ -117,15 +117,15 @@
         {!! Form::select('has_nausea',  [ '' => '', 'true' => 'Yes', 'false' => 'False'], null, ['class' => 'form-control']) !!}
     </div>
     <div class="form-group">
-        {!! Form::label('has_vomitted', 'Have you vomitted?', ['class' => 'form-label']) !!}
+        {!! Form::label('has_vomitted', 'Have you vomited?', ['class' => 'form-label']) !!}
         {!! Form::select('has_vomitted',  [ '' => '', 'true' => 'Yes', 'false' => 'False'], null, ['class' => 'form-control']) !!}
     </div>
     <div class="form-group">
-        {!! Form::label('has_light_sensativity', 'Are you experiencing sensativity to light?', ['class' => 'form-label']) !!}
+        {!! Form::label('has_light_sensativity', 'Are you experiencing sensitivity to light?', ['class' => 'form-label']) !!}
         {!! Form::select('has_light_sensativity',  [ '' => '', 'true' => 'Yes', 'false' => 'False'], null, ['class' => 'form-control']) !!}
     </div>
     <div class="form-group">
-        {!! Form::label('has_sound_sensativity', 'Are you experiencing sensativity to sounds?', ['class' => 'form-label']) !!}
+        {!! Form::label('has_sound_sensativity', 'Are you experiencing sensitivity to sounds?', ['class' => 'form-label']) !!}
         {!! Form::select('has_sound_sensativity',  [ '' => '', 'true' => 'Yes', 'false' => 'False'], null, ['class' => 'form-control']) !!}
     </div>
     <div class="form-group">
