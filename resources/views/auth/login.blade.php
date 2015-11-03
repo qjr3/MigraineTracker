@@ -17,7 +17,7 @@
 	<h1> Sign In</h1>
 	<div class='form-group'>
 	    {!! Form::label('email', 'Email Address', ['class' => 'sr-only']) !!}
-	    {!! Form::text('email', null, ['class' => 'form-control', 'placeholder' => 'Email Address']) !!}
+	    {!! Form::text('email', null, ['class' => 'form-control', 'type' => 'email', 'placeholder' => 'Email Address']) !!}
 	</div>
 
 	<div class='form-group'>

@@ -23,9 +23,9 @@ class TriggerRequest extends Request
      */
     public function rules()
     {
-        return [
-            'name' => 'required',
-            'description' => 'required'
+        return 
+        [
+            'name' => 'required', // given a default value in the migration/db so doesn't need to be required in laravel.
         ];
     }
 }

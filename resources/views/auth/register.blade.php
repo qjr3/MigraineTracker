@@ -18,7 +18,7 @@ Create New User
 	    {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Username'] ); !!}
 	</div>
 	<div class='form-group'>
-	    {!! Form::label('email', 'Email Address', ['class' => 'sr-only']) !!}
+	    {!! Form::label('email', 'Email Address', ['class' => 'sr-only', 'type' => 'email']) !!}
 	    {!! Form::text('email', null, ['class' => 'form-control', 'placeholder' => 'Email Address'] ) !!}
 	</div>
 	<div class='form-group'>

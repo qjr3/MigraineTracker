@@ -10,9 +10,7 @@
 |
 */
 // Homepage
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'PagesControler@dashboard');
 
 //Medicine Routes
 Route::resource('medicine', 'MedicineController');
@@ -46,3 +44,6 @@ $router->get('report', 'ReportController@index');
 
 //Page Routes
 Route::get('home', 'PagesController@dashboard');
+$router->get('privacy', 'PagesController@privacy');
+$router->get('terms', 'PagesController@terms');
+$router->get('about', 'PagesController@about');

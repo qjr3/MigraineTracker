@@ -37,7 +37,7 @@ class TriggerController extends Controller
 
     public function index()
     {
-        return Trigger::all();
+        return Trigger::all(); // this should be return view('trigger.index');
     }
 
     /**
@@ -49,7 +49,7 @@ class TriggerController extends Controller
     public function show($id)
     {
         $trigger = Trigger::find($id);
-        return $trigger;
+        return $trigger; // this should be return view('trigger.show');
     }
 
     /**
@@ -65,7 +65,7 @@ class TriggerController extends Controller
         $trigger->name = $request->get('name');
         $trigger->description = $request->get('description');
         $trigger->save();
-        return 'Success';
+        return 'Success'; // this should be: return redirect('something'); do not return text/string unless testing (prior to commit)
     }
 
     /**
@@ -78,6 +78,6 @@ class TriggerController extends Controller
     {
         $trigger = Trigger::find($id);
         $trigger->delete();
-        return 'Success';
+        return 'Success'; // this should be: return redirect('something');
     }
 }

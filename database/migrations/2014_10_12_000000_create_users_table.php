@@ -21,10 +21,11 @@ class CreateUsersTable extends Migration
             $table->string('last_name')->nullable();
             $table->string('gender')->nullable();
             $table->date('date_of_birth')->nullable();
+            $table->text('locale',5)->default('en-US');
             $table->boolean('has_diabetes')->default(false);
-            $table->boolean('has_migraines')->default(false);
+            $table->boolean('has_migraines')->default(true);
             $table->boolean('has_glasses')->default(false);
-            $table->date('last_eye_exam_date')->nullable();
+            $table->date('last_eye_exam')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

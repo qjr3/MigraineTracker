@@ -14,12 +14,14 @@ class CreateMedicinesTable extends Migration
     {
         Schema::create('medicines', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->integer('dose');
-            $table->string('description');
+            $table->string('name')->default('unnamed medicine');
+            $table->string('dose')->nullable();
+            $table->string('description')->nullable();
             $table->integer('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
+            
+            // Foreign Keys
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

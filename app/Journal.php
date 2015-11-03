@@ -8,11 +8,12 @@ class Journal extends Model
 {
     protected $table = 'journals';
    
-    protected $fillable = [
+    protected $fillable = 
+    [
         'location',
         'severity',
         'weather',
-        'noise_level',
+        'sound_level',
         'light_level',
         'name',
         'description',
@@ -30,8 +31,13 @@ class Journal extends Model
         'missed_routines',
         'social_plans',
         'activities',
-        ];
+    ];
 
+    protected $guarded = 
+    [
+        'id',
+    ];
+    
     protected $hidden = [];
 
     public function user()

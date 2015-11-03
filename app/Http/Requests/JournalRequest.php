@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
 
-class MedicineRequest extends Request
+class JournalRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,8 @@ class MedicineRequest extends Request
     public function rules()
     {
         return [
-            'name' => 'required', // this is given a default in the migration/db....so isn't really required in laravel.
+            'name' => 'required'
+            
         ];
     }
 }
