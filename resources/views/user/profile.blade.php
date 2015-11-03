@@ -104,27 +104,37 @@
             <h4>Triggers
                 <small>Information</small>
             </h4>
-            <div class="panel panel-default">
-                <div class="panel-info form-padding-top">
-                    @include('trigger.view')
+            @if($user->triggers->isEmpty())
+                <div class="panel panel-default">
+                    <p class="text-center">
+                        No Triggers
+                    </p>
                 </div>
-                <div class="panel-body">
-                    @include('trigger.create')
+            @else
+                <div class="panel panel-default">
+                    <div class="panel-info form-padding-top">
+                        @include('trigger.view')
+                    </div>
                 </div>
-            </div>
+            @endif
         </div>
         <div class="page-header clearfix">
             <h4>Medications
                 <small>Information</small>
             </h4>
-            <div class="panel panel-default">
-                <div class="panel-info form-padding-top">
-                    @include('medicine.view')
+            @if($user->medicines->isEmpty())
+                <div class="panel panel-default">
+                    <p class="text-center">
+                        No Medicines
+                    </p>
                 </div>
-                <div class="panel-body">
-                    @include('medicine.create')
+            @else
+                <div class="panel panel-default">
+                    <div class="panel-info form-padding-top">
+                        @include('medicine.view')
+                    </div>
                 </div>
-            </div>
+            @endif
         </div>
     </div>
 @stop

@@ -69,6 +69,7 @@
         <hr>
         {!! link_to_action('UserController@show', 'Cancel Edit', $user->id, ['class' => 'btn btn-danger pull-left', 'role' => 'button']) !!}
         {!! Form::submit('Save Changes', ['class' => 'btn btn-success pull-right']) !!}
+        {!! Form::close() !!}
         <br>
 
         <div class="page-header">
@@ -128,8 +129,11 @@
                 <small>Information</small>
             </h4>
             <div class="panel panel-default">
+                <div class="panel-info form-padding-top">
+                    @include('trigger.view')
+                </div>
                 <div class="panel-body">
-
+                    @include('trigger.create')
                 </div>
             </div>
         </div>
@@ -138,8 +142,11 @@
                 <small>Information</small>
             </h4>
             <div class="panel panel-default">
+                <div class="panel-info form-padding-top">
+                    @include('medicine.view')
+                </div>
                 <div class="panel-body">
-
+                    @include('medicine.create')
                 </div>
             </div>
         </div>
