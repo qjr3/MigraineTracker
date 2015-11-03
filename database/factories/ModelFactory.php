@@ -26,7 +26,7 @@ $factory->define(App\Journal::class, function (Faker\Generator $faker) {
         'severity' => $faker->numberBetween(0,10),
         'location' => $faker->city,
         'weather' => $faker->sentence,
-        'noise_level' => $faker->numberBetween(0,10),
+        'sound_level' => $faker->numberBetween(0,10),
         'light_level' => $faker->numberBetween(0,10),
         'still_suffering' => $faker->boolean(),
         'start_time' => $faker->time(),
