@@ -33,10 +33,7 @@ class Journal extends Model
         'activities',
     ];
 
-    protected $guarded = 
-    [
-        'id',
-    ];
+    protected $guarded = [];
     
     protected $hidden = [];
 

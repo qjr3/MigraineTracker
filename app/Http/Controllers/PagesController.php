@@ -17,16 +17,16 @@ class PagesController extends Controller
     
     public function privacy()
     {
-        return 'Privacy Policy';
+        return view('pages.privacy');
     }
     
     public function terms()
     {
-        return 'Terms of Service';
+        return view('pages.terms');
     }
     
     public function about()
     {
-        return 'About';
+        return view('pages.about');
     }
 }

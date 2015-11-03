@@ -39,6 +39,13 @@
                     </strong>
                 </div>
                 <div class="clearfix">
+                    <strong><p class="text-primary pull-left">Locale:</p>
+
+                        <div class="pull-right">{{ $user->locale }}</div>
+                    </strong>
+                </div>
+                
+                <div class="clearfix">
                     <strong><p class="text-primary pull-left">Gender:</p>
 
                         <div class="pull-right">{{ $user->gender }}</div>

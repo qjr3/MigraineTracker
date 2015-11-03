@@ -24,7 +24,8 @@ class UserProfileRequest extends Request
     public function rules()
     {
         return [
-            //
+            'password' => 'required|min:6',
+            'email' => 'required|email|unique:users',
         ];
     }
 }

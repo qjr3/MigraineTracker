@@ -23,10 +23,9 @@ class UserController extends Controller
         return view('user.edit', compact('user'));
     }
 
-    public function update($id, UserProfileRequest $request)
-    {
+    public function update($id, Request $request)
+    {   
         //dd($request);
-        
         $user = User::findOrFail($id);
         $user->update($request->all());
         return view('user.profile', compact('user'));

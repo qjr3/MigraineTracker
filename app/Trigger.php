@@ -16,7 +16,7 @@ class Trigger extends Model
     
     protected $hidden = [];
     
-    protected $guarded = ['id'];
+    protected $guarded = [];
 
     public function journals()
     {

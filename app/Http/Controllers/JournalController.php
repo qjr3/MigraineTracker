@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests;
+//use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Trigger;
 use App\Medicine;
 use App\Journal;
 Use Auth;
-
-Use Illuminate\Http\Request;
+use App\Http\Requests\JournalRequest;
+//use Illuminate\Http\Request;
 
 class JournalController extends Controller
 {

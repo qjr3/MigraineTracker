@@ -35,6 +35,7 @@ class User extends Model implements AuthenticatableContract,
         'password', 
         'first_name', 
         'last_name', 
+        'locale',
         'gender', 
         'date_of_birth', 
         'has_migraines', 
@@ -55,7 +56,7 @@ class User extends Model implements AuthenticatableContract,
      * 
      * @var array
      */
-    protected $guarded = [ 'id' ];
+    protected $guarded = [];
     
     public function journals()
     {

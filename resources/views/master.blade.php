@@ -49,7 +49,7 @@
         @include('partials.nav')
         <!-- END Global Header -->
         
-        <div id='content' class='row'>
+        <div id='content' class='row jumbotron'>
             @yield('content')
         </div>
     

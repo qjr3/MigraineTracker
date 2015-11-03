@@ -1,8 +1,8 @@
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-default col-lg-1">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -14,6 +14,13 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
+        <li {{ Request::is('/') ? 'class=active' : null }}><a href="
+        @if(Auth::check())
+        /home
+        @else
+        /
+        @endif
+        ">Home <span class="sr-only">(current)</span></a></li>
         <li>{!! link_to_action('PagesController@about', 'About') !!}</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -33,7 +40,7 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Quicklinks<span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li>{!! link_to_action('TestController@index', 'Testing Area') !!}</li>
+            <li>WiP</li>
           </ul>
         </li>
       </ul>

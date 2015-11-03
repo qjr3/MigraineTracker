@@ -12,11 +12,11 @@ class CreateAvailLocales extends Migration
      */
     public function up()
     {
-        Schema::table('locales', function (Blueprint $table) {
+        Schema::create('locales', function (Blueprint $table) {
             $table->text('name',5)->unique()->primary()->index();       
         });
         
-        $table->insert( ['name' => 'en-US'] );
+        DB::table('locales')->insert(['name' => 'en-US']);
     }
 
     /**
@@ -27,7 +27,7 @@ class CreateAvailLocales extends Migration
     public function down()
     {
         Schema::table('locales', function (Blueprint $table) {
-            //
+            $table->drop();
         });
     }
 }

@@ -24,8 +24,9 @@ class JournalRequest extends Request
     public function rules()
     {
         return [
-            'name' => 'required'
+            'name' => 'required',
             
+        
         ];
     }
 }

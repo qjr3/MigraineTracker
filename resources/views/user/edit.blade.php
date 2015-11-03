@@ -10,42 +10,53 @@
         <div class="row text-center">
             <span class="glyphicon glyphicon-user text-center" aria-hidden="true" style="font-size: 180px"></span>
         </div>
-        <br>
+        
+        <br />
 
         <div class="panel panel-default">
             <div class="panel-body">
                 <div class="clearfix">
-                    <strong><p class="text-primary pull-left">Username:</p>
-
+                    <strong>
+                        <p class="text-primary pull-left">Username:</p>
                         <div class="pull-right">{{ $user->name }}</div>
                     </strong>
                 </div>
-                <div class="clearfix">
+
+                <div class="clearfix  form-group">
                     {!! Form::label('first_name', 'First Name', ['class' => 'sr-only']) !!}
                     {!! Form::text('first_name', null,  ['class' => 'form-control', 'placeholder' => 'First Name']) !!}
                 </div>
 
-                <br>
-
-                <div class="clearfix">
+                <div class="clearfix form-group">
                     {!! Form::label('last_name', 'Last Name', ['class' => 'sr-only']) !!}
                     {!! Form::text('last_name', null,  ['class' => 'form-control', 'placeholder' => 'Last Name']) !!}
                 </div>
-
-                <br>
-
-                <div class="clearfix">
+                
+                <div class="clearfix form-group">
                     {!! Form::label('email', 'Email', ['class' => 'sr-only']) !!}
-                    {!! Form::text('email', null,  ['class' => 'form-control', 'placeholder' => 'Email']) !!}
+                    {!! Form::text('email', null,  ['class' => 'form-control', 'placeholder' => 'Email', 'type' => 'email']) !!}
+                </div>
+                
+                <div class="clearfix form-group">
+                    {!! Form::select('locale', 
+                    [
+                    'en-US' => 'en-US'
+                    // When we add more... like fr_FR or jp_JP or es_ES and es_MX
+                    ], 
+                    null, ['class' => 'form-control' , 'placeholder' => 'Locale']) !!}
                 </div>
 
-                <br>
-
-                <div class="clearfix">
-                    {!! Form::select('gender', array('M' => 'Male', 'F' => 'Female'), null, ['class' => 'form-control' , 'placeholder' => 'Gender']) !!}
+                <div class="clearfix form-group">
+                    {!! Form::select('gender', 
+                    [ // these are just some of the more common. however we know that gender is NOT binary so this is a good start.
+                    'male' => 'Male', 
+                    'female' => 'Female', 
+                    'transgender' => 'Transgender', 
+                    'androgynous' => 'Androgynous', 
+                    'agender' => 'Agender'
+                    ], 
+                    null, ['class' => 'form-control' , 'placeholder' => 'Gender']) !!}
                 </div>
-
-                <br>
 
                 <div class="clearfix">
                     {!! Form::date('date_of_birth', null, ['class' => 'form-control']) !!}
@@ -74,8 +85,8 @@
                             {!! Form::label('has_diabetes', 'Have you been diagnosed with diabetes?', ['class' => '']) !!}
                         </div>
                         <div class="col-md-6">
-                            Yes&emsp;{!! Form::radio('has_diabetes', 1) !!}&emsp;&emsp;&emsp;
-                            No&emsp;{!! Form::radio('has_diabetes', 0) !!}
+                            Yes &nbsp; {!! Form::radio('has_diabetes', 1) !!}&nbsp; &nbsp; &nbsp;
+                            No &nbsp; {!! Form::radio('has_diabetes', 0) !!}
 
                         </div>
                     </div>
@@ -85,8 +96,8 @@
                             {!! Form::label('has_migraines', 'Have you been diagnosed with migraines?', ['class' => '']) !!}
                         </div>
                         <div class="col-md-6">
-                            Yes&emsp;{!! Form::radio('has_migraines', 1) !!}&emsp;&emsp;&emsp;
-                            No&emsp;{!! Form::radio('has_migraines', 0) !!}
+                            Yes &nbsp; {!! Form::radio('has_migraines', 1) !!}&nbsp; &nbsp; &nbsp;
+                            No &nbsp; {!! Form::radio('has_migraines', 0) !!}
                         </div>
                     </div>
                     <div class="form-group row">
@@ -94,8 +105,8 @@
                             {!! Form::label('has_glasses', 'Do you wear prescription glasses?', ['class' => '']) !!}
                         </div>
                         <div class="col-md-6">
-                            Yes&emsp;{!! Form::radio('has_glasses', 1) !!}&emsp;&emsp;&emsp;
-                            No&emsp;{!! Form::radio('has_glasses', 0) !!}
+                            Yes &nbsp; {!! Form::radio('has_glasses', 1) !!}&nbsp; &nbsp; &nbsp;
+                            No &nbsp; {!! Form::radio('has_glasses', 0) !!}
                         </div>
                     </div>
 

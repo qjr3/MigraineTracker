@@ -29,9 +29,12 @@ Create New User
 	    {!! Form::label('password_confirmation', 'Password:', ['class' => 'sr-only']) !!}
 	    {!! Form::password('password_confirmation', ['class' => 'form-control', 'placeholder' => 'Confirm Password']) !!}
 	</div>
-	<div class='form-group text-center'>
-	    {!! Form::submit('Create Account', ['class' => 'btn btn-primary btn-default']) !!}
+	<div class='form-group pull-left'>
+	    {!! Form::submit('Create New Account', ['class' => 'btn btn-default btn-primary']) !!}
 	</div>
+        <div class='form-group pull-right'>
+            {!! link_to_action('Auth\AuthController@getLogin', 'Login to existing account.',  ['class' => 'btn btn-default btn-primary']) !!}
+        </div>
 	{!! Form::close() !!}
 </div>
 
