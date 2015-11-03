@@ -46,10 +46,13 @@
     <div class="container">
         
         <!-- BEGIN Global Header -->
-        @include('partials.nav')
+        <div id="header">
+            @include('partials.nav')
+        </div>
+
         <!-- END Global Header -->
         
-        <div id='content' class='row jumbotron'>
+        <div id='content'>
             @yield('content')
         </div>
     
