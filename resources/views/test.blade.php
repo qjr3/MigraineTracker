@@ -15,13 +15,14 @@
                     <td>/view/journal/create.blade.php</td>
                 </tr>
                 <tr>
-                    <td>{!! link_to_action('JournalController@show', 'Show Journal', $user->journals()->first()->id) !!}</td>
+                    <?php  $journal = $user->triggers()->first() ?>
+                    <td>{!! link_to_action('JournalController@show', 'Show Journal', ($journal != null) ? $journal->id : 'none_found') !!}</td>
                     <td>/journal/show/{journal}</td>
                     <td>JournalController@show</td>
                     <td>/view/journal/show.blade.php</td>
                 </tr>
                 <tr>
-                    <td>{!! link_to_action('JournalController@edit', 'Edit Journal', $user->journals()->first()->id) !!}</td>
+                    <td>{!! link_to_action('JournalController@edit', 'Edit Journal', ($journal != null) ? $journal->id : 'none_found') !!}</td>
                     <td>/journal/{journal}/edit</td>
                     <td>JournalController@edit</td>
                     <td>/view/journal/update.blade.php</td>
