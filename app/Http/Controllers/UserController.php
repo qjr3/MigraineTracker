@@ -17,23 +17,20 @@ class UserController extends Controller
     	$this->middleware('profile');
     }
 
-    public function edit($id)
+    public function edit(User $user)
     {
-        $user = User::findOrFail($id);
         return view('user.edit', compact('user'));
     }
 
-    public function update($id, Request $request)
+    public function update(User $user, Request $request)
     {   
         //dd($request);
-        $user = User::findOrFail($id);
         $user->update($request->all());
         return view('user.profile', compact('user'));
     }
 
-    public function show($id)
+    public function show(User $user)
     {
-    	$user = User::findOrFail($id);
         return view('user.profile', compact('user'));
     }
 }

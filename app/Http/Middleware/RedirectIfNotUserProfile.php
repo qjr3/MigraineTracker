@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use App\User;
 use Illuminate\Contracts\Auth\Guard;
 
 class RedirectIfNotUserProfile
@@ -33,9 +34,10 @@ class RedirectIfNotUserProfile
     {
         $parameterName = $request->route()->parameterNames()[0];
 
-        $id = $request->route()->parameter($parameterName);
+        $user = $request->route()->parameter($parameterName);
 
-        if(!$this->auth->user()->hasAccessTo($id))
+
+        if(!$this->auth->user()->hasAccessTo($user->id))
         {
             return response('Unauthorized.', 401);
         }
