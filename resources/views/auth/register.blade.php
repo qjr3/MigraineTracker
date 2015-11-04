@@ -2,7 +2,7 @@
 
 @section('title')
 
-Create New User 
+Sign Up Now with MigraineTracker!
 
 @stop
 
