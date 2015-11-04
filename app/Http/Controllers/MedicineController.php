@@ -75,9 +75,8 @@ class MedicineController extends Controller
      * @param  Medicine $medicine
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Medicine $medicine)
     {
-        $medicine = Medicine::find($id);
         $medicine->delete();
         $medicines = Medicine::all();
         if(!$medicines->isEmpty())
