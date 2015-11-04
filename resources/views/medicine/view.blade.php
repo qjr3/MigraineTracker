@@ -1,4 +1,4 @@
-@foreach($user->medicines as $medicine)
+@foreach($medicines as $medicine)
     <div>
         <div class="item-header">{{$medicine->name}}: </div>
         <div class="item">{{$medicine->description}}</div>

@@ -39,9 +39,8 @@ class JournalController extends Controller
         return redirect('journal');
     }
     
-    public function show($id)
+    public function show(Journal $journal)
     {
-        $journal = Auth::user()->journals()->findOrFail($id);
         return view('journal.view', compact('journal'));
     }
     
@@ -52,21 +51,16 @@ class JournalController extends Controller
         return view('journal.create', compact('triggers', 'medicines'));
     }
     
-    public function edit($id)
+    public function edit(Journal $journal)
     {
-        $journal = Auth::user()->journals()->findOrFail($id);
-
         $journal = $journal->load('triggers');
-        
         $triggers = Auth::user()->triggers()->lists('name', 'id');
         $medicines = Auth::user()->medicines()->lists('name', 'id');
         return view('journal.update', compact('journal', 'triggers', 'medicines'));
     }
     
-    public function update($id, JournalRequest $request)
+    public function update(Journal $journal, JournalRequest $request)
     {
-        $journal = Auth::user()->journals()->findOrFail($id);
-
         if(!isset($request['triggers_id']))
             $request['triggers_id'] = [];
 

@@ -49,11 +49,26 @@
                 <div class="clearfix form-group">
                     {!! Form::select('gender', 
                     [ // these are just some of the more common. however we know that gender is NOT binary so this is a good start.
-                    'male' => 'Male', 
-                    'female' => 'Female', 
-                    'transgender' => 'Transgender', 
-                    'androgynous' => 'Androgynous', 
-                    'agender' => 'Agender'
+                    'Bigender' => 'Bigender',
+                    'Cisgender Female' => 'Cisgender Female',
+                    'Cisgender Male' => 'Cisgender Male',
+                    'FTM' => 'FTM',
+                    'Gender Fluid' => 'Gender Fluid',
+                    'Gender Nonconforming' => 'Gender Nonconforming',
+                    'Gender Variant' => 'Gender Variant',
+                    'Genderqueer' => 'Genderqueer',
+                    'Intersex' => 'Intersex',
+                    'MTF' => 'MTF',
+                    'Neither' => 'Neither',
+                    'Neutrois' => 'Neutrois',
+                    'Non-Binary' => 'Non-Binary',
+                    'Other' => 'Other',
+                    'Pangender' => 'Pangender',
+                    'Transgender' => 'Transgender',
+                    'Transsexual Person' => 'Transsexual Person',
+                    'Transmasculine' => 'Transmasculine',
+                    'Transfeminine' => 'Transfeminine',
+                    'Two-Spirit' => 'Two-Spirit'
                     ], 
                     null, ['class' => 'form-control' , 'placeholder' => 'Gender']) !!}
                 </div>
@@ -113,10 +128,10 @@
 
                     <div class="form-group row">
                         <div class="col-md-6">
-                            {!! Form::label('last_eye_exam_date', 'When was your last eye exam?', ['class' => '']) !!}
+                            {!! Form::label('last_eye_exam', 'When was your last eye exam?', ['class' => '']) !!}
                         </div>
                         <div class="col-md-6">
-                            {!! Form::date('last_eye_exam_date', null, ['class' => 'form-control']) !!}
+                            {!! Form::date('last_eye_exam', null, ['class' => 'form-control']) !!}
                         </div>
                     </div>
 
@@ -130,6 +145,7 @@
             </h4>
             <div class="panel panel-default">
                 <div class="panel-info form-padding-top">
+                    <?php $triggers = $user->triggers; ?>
                     @include('trigger.view')
                 </div>
                 <div class="panel-body">
@@ -143,6 +159,7 @@
             </h4>
             <div class="panel panel-default">
                 <div class="panel-info form-padding-top">
+                    <?php $medicines = $user->medicines; ?>
                     @include('medicine.view')
                 </div>
                 <div class="panel-body">

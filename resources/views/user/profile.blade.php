@@ -94,7 +94,7 @@
                             <tr>
                                 <td>When was your last eye exam?</td>
                                 <td>
-                                    {{ $user->last_eye_exam_date ?: 'Never' }}
+                                    {{ $user->last_eye_exam ?: 'Never' }}
                                 </td>
                             </tr>
                         </tbody>
@@ -111,6 +111,7 @@
                     </p>
                 </div>
             @else
+                <?php $triggers = $user->triggers; ?>
                 <div class="panel panel-default">
                     <div class="panel-info form-padding-top">
                         @include('trigger.view')
@@ -129,6 +130,7 @@
                     </p>
                 </div>
             @else
+                <?php $medicines = $user->medicines; ?>
                 <div class="panel panel-default">
                     <div class="panel-info form-padding-top">
                         @include('medicine.view')

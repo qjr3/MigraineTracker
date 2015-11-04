@@ -18,7 +18,7 @@
 			<td>{{ $i }}</td>
 			<td>{!! link_to_action('JournalController@show' , $journal->name, $journal->id) !!}</td>
 			<td>{{ $journal->severity }}</td>
-			<td>{{ $journal->location }}</td>
+			<td>{{ $journal->loc_long }}, {{$journal->loc_lat}}</td>
 		</tr>
 	@endforeach
   </tbody>

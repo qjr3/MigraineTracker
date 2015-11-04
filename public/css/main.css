@@ -46,6 +46,9 @@ body {
 .flex-hcenter{
     justify-content: center;
 }
+.flex-basis-3rd{
+    flex-basis: 33%;
+}
 .flex-basis-1{
     flex-basis: 10em;
 }

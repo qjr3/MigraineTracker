@@ -23,13 +23,10 @@ class MedicineController extends Controller
      */
     public function store(MedicineRequest $request)
     {
-
         $collection = Auth::user()->medicines()->where('name', $request->get('name'))->get();
         if($collection->isEmpty()) {
             $medicine = new Medicine();
-            $medicine->name = $request->get('name');
-            $medicine->dose = $request->get('dose');
-            $medicine->description = $request->get('description');
+            $medicine->fill($request->all());
             Auth::user()->medicines()->save($medicine);
         }else{
             $medicine = $collection->first();
@@ -44,48 +41,48 @@ class MedicineController extends Controller
 
     public function index()
     {
-        return Medicine::all(); // This should be return view('medicine.index');
+        $medicines = Auth::user()->medicines;
+        return view('medicine.index', compact('medicines'));
     }
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  Medicine $medicine
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Medicine $medicine)
     {
-        $medicine = Medicine::find($id);
-        return $medicine; // this should be return view('medicines.show')
+        return view('medicines.show', compact('medicine'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \App\Http\MedicineRequest  $request
-     * @param  int  $id
+     * @param  Medicine $medicine
      * @return \Illuminate\Http\Response
      */
-    public function update(MedicineRequest $request, $id)
+    public function update(MedicineRequest $request, Medicine $medicine)
     {
-        $medicine = Medicine::find($id);
-        $medicine->name = $request->get('name');
-        $medicine->dose = $request->get('dose');
-        $medicine->description = $request->get('description');
+        $medicine->fill($request->all());
         $medicine->save();
-        return 'Success'; // this should be: return redirect('something'); or return view('medicine.somethingepic');
-        // return redirect('medicine.index');
+        return redirect()->back();
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  Medicine $medicine
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
         $medicine = Medicine::find($id);
         $medicine->delete();
-        return 'Success'; // this should be: return redirect('something');
+        $medicines = Medicine::all();
+        if(!$medicines->isEmpty())
+            return redirect('medicine.index');
+        else
+            return redirect('pages.dashboard');
     }
 }

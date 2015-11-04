@@ -18,9 +18,9 @@ class RedirectIfNotOwner
      */
     public function handle($request, Closure $next, $resourceName)
     {
-        $id = $request->route()->parameter($resourceName);
+        $object = $request->route()->parameter($resourceName);
 
-        $user_id = DB::table($resourceName . 's')->find($id)->user_id;
+        $user_id = DB::table($resourceName . 's')->find($object->id)->user_id;
 
         if ($request->user()->id != $user_id)
         {

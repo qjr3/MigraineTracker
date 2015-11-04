@@ -20,8 +20,7 @@ class TriggerController extends Controller
         $collection = Auth::user()->triggers()->where('name', $request->get('name'))->get();
         if($collection->isEmpty()) {
             $trigger = new Trigger();
-            $trigger->name = $request->get('name');
-            $trigger->description = $request->get('description');
+            $trigger->fill($request->all());
             Auth::user()->triggers()->save($trigger);
         }else{
             $trigger = $collection->first();
@@ -29,7 +28,6 @@ class TriggerController extends Controller
         if($request->has('journal')) {
             $jID = $request->get('journal');
             $journal = Journal::findOrFail($jID);
-            echo $journal;
             $journal->triggers()->attach($trigger);
         }
         return redirect()->back();
@@ -37,47 +35,48 @@ class TriggerController extends Controller
 
     public function index()
     {
-        return Trigger::all(); // this should be return view('trigger.index');
+        $triggers = Auth::user()->triggers;
+        return view('trigger.index', compact('triggers'));
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  Trigger $trigger
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Trigger $trigger)
     {
-        $trigger = Trigger::find($id);
-        return $trigger; // this should be return view('trigger.show');
+        return view('trigger.show', compact('trigger'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \App\Http\TriggerRequest  $request
-     * @param  int  $id
+     * @param  Trigger $trigger
      * @return \Illuminate\Http\Response
      */
-    public function update(TriggerRequest $request, $id)
+    public function update(TriggerRequest $request, Trigger $trigger)
     {
-        $trigger = Trigger::find($id);
-        $trigger->name = $request->get('name');
-        $trigger->description = $request->get('description');
+        $trigger->fill($request->all());
         $trigger->save();
-        return 'Success'; // this should be: return redirect('something'); do not return text/string unless testing (prior to commit)
+        return redirect()->back(); // this should be: return redirect('something'); do not return text/string unless testing (prior to commit)
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  Trigger $trigger
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Trigger $trigger)
     {
-        $trigger = Trigger::find($id);
         $trigger->delete();
-        return 'Success'; // this should be: return redirect('something');
+        $triggers = Trigger::all();
+        if(!$triggers->isEmpty())
+            return redirect('trigger.index');
+        else
+            return redirect('pages.dashboard');
     }
 }
