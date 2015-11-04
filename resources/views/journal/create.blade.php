@@ -22,10 +22,10 @@
                 {!! Form::textarea('description', null, ['class' => 'form-control', 'placeholder' => trans('journal.description') ]) !!}
             </div>
             <div class="form-group">
-              
-                <span id='geo_map'>{!! trans('journal.loading_map') !!}</span>
-                {!! Form::hidden('loc_long', '0.0', ['id' => 'geo_long']) !!}
-                {!! Form::hidden('loc_lat', '0.0', ['id' => 'geo_lat']) !!}
+                <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+                <article><span id="status"></span></article>
+                {!! Form::hidden('loc_long', null, ['id' => 'geo_long']) !!}
+                {!! Form::hidden('loc_lat', null, ['id' => 'geo_lat']) !!}
             </div>
             <div class="form-group">
                 {!! Form::label('severity', trans('journal.severity'), ['class' => 'form-label']) !!}
@@ -99,8 +99,7 @@
             <!-- on return remember state of form -->
             <!-- alternatively, use jquery/ajax to add the new trigger on client side, refresh this place holder. -->
             @endif
-
-
+            
             @if(!$medicines->isEmpty())
             <div class="form-group">
                 {!! Form::label('medicines_id', trans('journal.medicines'), ['class' => 'form-label']) !!}
@@ -156,14 +155,14 @@
                 {!! Form::label('missed_routines', 'Have you missed other routines?', ['class' => 'form-label']) !!}
                 {!! Form::select('missed_routines',  [ '' => '', 'true' => 'Yes', 'false' => 'No'], null, ['class' => 'form-control']) !!}
             </div>
-            <div class="form-group">
+            <!-- <div class="form-group">
                 {!! Form::label('social_plans', 'Social Plans:', ['class' => 'form-label']) !!}
                 {!! Form::text('social_plans', null, ['class' => 'form-control', 'disabled' => 'true', 'placeholder' => 'WiP']) !!}
             </div>
             <div class="form-group">
                 {!! Form::label('activities', 'Activities:', ['class' => 'form-label']) !!}
                 {!! Form::text('activities', null, ['class' => 'form-control', 'disabled' => 'true', 'placeholder' => 'WiP']) !!}
-            </div>
+            </div> -->
             <div class='form-group'>
                 {!! Form::submit('Submit') !!}
             </div>
@@ -182,4 +181,45 @@
             placeholder: "Select Medicines"
         });
     </script>
+    
+<script>
+ //   Courtesy of http://html5demos.com/geo
+ // Yeah, I could rewrite this with jQuery....but why bother....it's functional the way it is
+function success(position){
+    var s = document.querySelector('#status');
+    $('#geo_long').val(position.coords.longitude);
+    $('#geo_lat').val(position.coords.latitude);
+    if (s.className == 'success') { return;}
+    s.className = 'success';
+    var mapcanvas = document.createElement('div');
+    mapcanvas.id = 'mapcanvas';
+    mapcanvas.style.height = '400px';
+    mapcanvas.style.width = '560px';
+    document.querySelector('article').appendChild(mapcanvas);
+
+    var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+    var myOptions = {
+        zoom: 15,
+        center: latlng,
+        mapTypeControl: false,
+        navigationControlOptions: {style: google.maps.NavigationControlStyle.SMALL},
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+
+    var map = new google.maps.Map(document.getElementById("mapcanvas"), myOptions);
+    var marker = new google.maps.Marker({
+        position: latlng, 
+        map: map, 
+        title:"You are here! (at least within a "+position.coords.accuracy+" meter radius)"
+    });
+}
+
+function error(msg) {
+    var s = document.querySelector('#status');
+    s.innerHTML = typeof msg == 'string' ? msg : "failed";
+    s.className = 'fail';
+}
+if (navigator.geolocation) { navigator.geolocation.getCurrentPosition(success, error);} else { error('not supported'); }
+
+</script>
 @stop

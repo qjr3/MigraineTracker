@@ -46,20 +46,20 @@
     <div class="container">
         
         <!-- BEGIN Global Header -->
-        <div id="header">
+        <div id="header" class='row'>
             @include('partials.nav')
         </div>
 
         <!-- END Global Header -->
         
-        <div id='content'>
+        <div id='content' class='row'>
             @yield('content')
         </div>
     
         <!-- BEGIN Global Footer -->
-        <div id='footer'>
-            @include('partials.footer') 
+        <div id='footer' class='row'>
             @yield('footer')
+            @include('partials.footer') 
         </div>
         <!-- END Global Footer -->
 
