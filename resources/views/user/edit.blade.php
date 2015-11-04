@@ -84,7 +84,6 @@
         <hr>
         {!! link_to_action('UserController@show', 'Cancel Edit', $user->id, ['class' => 'btn btn-danger pull-left', 'role' => 'button']) !!}
         {!! Form::submit('Save Changes', ['class' => 'btn btn-success pull-right']) !!}
-        {!! Form::close() !!}
         <br>
 
         <div class="page-header">
@@ -139,6 +138,7 @@
                 </div>
             </div>
         </div>
+        {!! Form::close() !!}
         <div class="page-header clearfix">
             <h4>Triggers
                 <small>Information</small>
