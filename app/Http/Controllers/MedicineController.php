@@ -9,12 +9,6 @@ use Illuminate\Support\Facades\Auth;
 
 class MedicineController extends Controller
 {
-    
-    public function __construct() 
-    {
-        //$this->middleware('Auth');
-    }
-
     /**
      * Store a newly created resource in storage.
      *

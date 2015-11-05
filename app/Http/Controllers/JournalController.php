@@ -17,7 +17,6 @@ class JournalController extends Controller
     
     public function __construct() 
     {
-        $this->middleware('auth');
         $this->middleware('owner:journal', ['only' => ['show', 'edit', 'update']]);
     }
     

@@ -39,7 +39,7 @@ class RedirectIfNotUserProfile
 
         if(!$this->auth->user()->hasAccessTo($user->id))
         {
-            return response('Unauthorized.', 401);
+            abort(403, 'Unauthorized action.');;
         }
 
         return $next($request);
