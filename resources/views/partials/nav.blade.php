@@ -9,7 +9,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            {!! link_to_action('PagesController@dashboard', 'Migraine Tracker', array(), ['class' => 'active navbar-brand']) !!}
+            {!! link_to_action('PagesController@dashboard', 'Migraine Tracker', array(), ['class' => 'navbar-brand']) !!}
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
