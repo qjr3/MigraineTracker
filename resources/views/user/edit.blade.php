@@ -34,7 +34,7 @@
                 
                 <div class="clearfix form-group">
                     {!! Form::label('email', 'Email', ['class' => 'sr-only']) !!}
-                    {!! Form::text('email', null,  ['class' => 'form-control', 'placeholder' => 'Email', 'type' => 'email']) !!}
+                    {!! Form::email('email', null,  ['class' => 'form-control', 'type' => 'email', 'placeholder' => 'Email']) !!}
                 </div>
                 
                 <div class="clearfix form-group">

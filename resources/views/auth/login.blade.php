@@ -22,7 +22,7 @@ Log into
 
             <div class='form-group'>
                 {!! Form::label('email', 'Email Address', ['class' => 'sr-only']) !!}
-                {!! Form::text('email', null, ['class' => 'form-control', 'type' => 'email', 'placeholder' => 'Email Address']) !!}
+                {!! Form::email('email', null, ['class' => 'form-control', 'type' => 'email', 'placeholder' => 'Email Address']) !!}
             </div>
 
             <div class='form-group'>

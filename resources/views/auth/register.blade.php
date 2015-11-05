@@ -20,7 +20,7 @@ Sign Up Now with MigraineTracker!
 		</div>
 		<div class='form-group'>
 			{!! Form::label('email', 'Email Address', ['class' => 'sr-only', 'type' => 'email']) !!}
-			{!! Form::text('email', null, ['class' => 'form-control', 'placeholder' => 'Email Address'] ) !!}
+			{!! Form::email('email', null, ['class' => 'form-control', 'type' => 'email', 'placeholder' => 'Email Address'] ) !!}
 		</div>
 		<div class='form-group'>
 			{!! Form::label('password', 'Password', ['class' => 'sr-only']) !!}
