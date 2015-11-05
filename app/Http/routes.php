@@ -14,17 +14,23 @@ Route::get('/', function(){
  return view('welcome');   
 });
 
-//Medicine Routes
-Route::resource('medicine', 'MedicineController');
+Route::group(['middleware' => 'auth'], function(){
+    //Medicine Routes
+    Route::resource('medicine', 'MedicineController');
 
-// Trigger routes
-Route::resource('trigger', 'TriggerController');
+    // Trigger routes
+    Route::resource('trigger', 'TriggerController');
 
-// Journal Routes
-Route::resource('journal', 'JournalController');
+    // Journal Routes
+    Route::resource('journal', 'JournalController');
 
-// User Routes
-Route::resource('user', 'UserController');
+    // User Routes
+    Route::resource('user', 'UserController');
+
+    Route::get('report/generate', 'ReportController@create');
+    Route::get('report/{id}', 'ReportController@show');
+    Route::get('report', 'ReportController@index');
+});
 
 // Authentication Routes
 Route::get('register', 'Auth\AuthController@getRegister');
@@ -32,10 +38,6 @@ Route::post('register', 'Auth\AuthController@postRegister');
 Route::get('login', 'Auth\AuthController@getLogin');
 Route::post('login', 'Auth\AuthController@postLogin');
 Route::get('logout', 'Auth\AuthController@getLogout');
-
-$router->get('report/generate', 'ReportController@create');
-$router->get('report/{id}', 'ReportController@show');
-$router->get('report', 'ReportController@index');
 
 //Page Routes
 Route::get('home', 'PagesController@dashboard');

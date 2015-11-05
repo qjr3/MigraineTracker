@@ -8,7 +8,13 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/">Migraine Tracker</a>
+             <li {{ Request::is('/') ? 'class=active' : null }}><a href=" 
+        @if(Auth::check())
+        /home
+        @else
+        /
+        @endif
+        " class='navbar-brand'>Migraine Tracker</a></li>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -20,7 +26,7 @@
         @else
         /
         @endif
-        ">Home <span class="sr-only">(current)</span></a></li>
+        ">Home</a></li>
         <li>{!! link_to_action('PagesController@about', 'About') !!}</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">

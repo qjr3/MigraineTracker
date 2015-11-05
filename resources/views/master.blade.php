@@ -49,7 +49,6 @@
         <div id="header" class='row'>
             @include('partials.nav')
         </div>
-
         <!-- END Global Header -->
         
         <div id='content' class='row'>
@@ -62,8 +61,6 @@
             @include('partials.footer') 
         </div>
         <!-- END Global Footer -->
-
-
     </div>
 	   
 </body>
