@@ -11,8 +11,12 @@ class PagesController extends Controller
 {
     public function dashboard()
     {
-        $user = Auth::user();
-        return view('pages.dashboard', compact('user'));
+        if (Auth::check())
+        {
+            $user = Auth::user();
+            return view('pages.dashboard', compact('user'));
+        }
+        return redirect('/');
     }
     
     public function privacy()
