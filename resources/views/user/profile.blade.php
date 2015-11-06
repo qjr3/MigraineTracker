@@ -66,70 +66,62 @@
         <hr>
         <div class="page-header">
             <h4>Medical History</h4>
-
-                    <table class="table table-hover">
-                        <tbody>
-                            <tr>
-                                <td>Have you been diagnosed with diabetes?</td>
-                                <td>
-                                    {{ $user->has_diabetes ? 'Yes' : 'No' }}
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Have you been diagnosed with migraines?</td>
-                                <td>
-                                    {{ $user->has_migraines ? 'Yes' : 'No' }}
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Do you wear prescription glasses?</td>
-                                <td>
-                                    {{ $user->has_glasses ? 'Yes' : 'No' }}
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>When was your last eye exam?</td>
-                                <td>
-                                    {{ $user->last_eye_exam ?: 'Never' }}
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <table class="table table-hover">
+                    <tbody>
+                        <tr>
+                            <td>Have you been diagnosed with diabetes?</td>
+                            <td>
+                                {{ $user->has_diabetes ? 'Yes' : 'No' }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Have you been diagnosed with migraines?</td>
+                            <td>
+                                {{ $user->has_migraines ? 'Yes' : 'No' }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Do you wear prescription glasses?</td>
+                            <td>
+                                {{ $user->has_glasses ? 'Yes' : 'No' }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>When was your last eye exam?</td>
+                            <td>
+                                {{ $user->last_eye_exam ?: 'Never' }}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
         </div>
         <div class="page-header clearfix">
             <h4>Triggers</h4>
-            @if($user->triggers->isEmpty())
-                <div class="panel panel-default">
-                    <p class="text-center">
-                        No Triggers
-                    </p>
+            <div class="panel panel-default">
+                <div class="panel-info form-padding-top">
+                    <?php $triggers = $user->triggers; ?>
+                    @include('trigger.view')
                 </div>
-            @else
-                <?php $triggers = $user->triggers; ?>
-                <div class="panel panel-default">
-                    <div class="panel-info form-padding-top">
-                        @include('trigger.view')
-                    </div>
+                <div class="panel-body">
+                    @include('trigger.create')
                 </div>
-            @endif
+            </div>
         </div>
         <div class="page-header clearfix">
             <h4>Medications</h4>
-            @if($user->medicines->isEmpty())
-                <div class="panel panel-default">
-                    <p class="text-center">
-                        No Medicines
-                    </p>
+            <div class="panel panel-default">
+                <div class="panel-info form-padding-top">
+                    <?php $medicines = $user->medicines; ?>
+                    @include('medicine.view')
                 </div>
-            @else
-                <?php $medicines = $user->medicines; ?>
-                <div class="panel panel-default">
-                    <div class="panel-info form-padding-top">
-                        @include('medicine.view')
-                    </div>
+                <div class="panel-body">
+                    @include('medicine.create')
                 </div>
-            @endif
+            </div>
         </div>
+        {!! Form::submit('Save Changes', ['class' => 'btn btn-success pull-right']) !!}
+    </div>
+    {!! Form::close() !!}
     </div>
 @stop
 

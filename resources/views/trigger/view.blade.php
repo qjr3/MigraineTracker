@@ -1,6 +1,4 @@
 @foreach($user->triggers as $trigger)
-    <div>
-        <div class="item-header">{{$trigger->name}}: </div>
-        <div class="item">{{$trigger->description}}</div>
-    </div>
+    <div class=""><span class=''>{!! link_to_action('TriggerController@edit', $trigger->name ,$trigger->id) !!}:&nbsp;&nbsp;</span><span class='item'>{{$trigger->description}}</span></div>
 @endforeach
+<hr />

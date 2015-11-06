@@ -87,13 +87,10 @@
         <br>
 
         <div class="page-header">
-            <h4>Medical History
-                <small>Information</small>
-            </h4>
+            <h4>Medical History</h4>
 
             <div class="panel panel-default">
                 <div class="panel-body">
-
 
                     <div class="form-group row">
                         <div class="col-md-6">
@@ -133,16 +130,12 @@
                             {!! Form::date('last_eye_exam', null, ['class' => 'form-control']) !!}
                         </div>
                     </div>
-
-
                 </div>
             </div>
         </div>
         {!! Form::close() !!}
         <div class="page-header clearfix">
-            <h4>Triggers
-                <small>Information</small>
-            </h4>
+            <h4>Triggers</h4>
             <div class="panel panel-default">
                 <div class="panel-info form-padding-top">
                     <?php $triggers = $user->triggers; ?>
@@ -154,9 +147,7 @@
             </div>
         </div>
         <div class="page-header clearfix">
-            <h4>Medications
-                <small>Information</small>
-            </h4>
+            <h4>Medications</h4>
             <div class="panel panel-default">
                 <div class="panel-info form-padding-top">
                     <?php $medicines = $user->medicines; ?>

@@ -38,6 +38,16 @@ class MedicineController extends Controller
         $medicines = Auth::user()->medicines;
         return view('medicine.index', compact('medicines'));
     }
+    
+    /**
+     * Edit an existing medicine
+     * 
+     */
+    public function edit(Medicine $medicine)
+    {
+        return view('medicine.edit', compact('medicine'));
+    }
+    
     /**
      * Display the specified resource.
      *

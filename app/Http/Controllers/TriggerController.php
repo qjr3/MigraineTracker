@@ -51,6 +51,14 @@ class TriggerController extends Controller
     }
 
     /**
+     * Edit an existing Trigger
+     * 
+     */
+    public function edit(Trigger $trigger)
+    {
+        return view('trigger.edit', compact('trigger'));
+    }
+    /**
      * Update the specified resource in storage.
      *
      * @param  \App\Http\TriggerRequest  $request
