@@ -5,7 +5,8 @@
 @section('content')
 
     <div class="col-md-3">
-        <h2>Personal Info</h2>
+        
+        <h2>Personal Info &nbsp; {!! link_to_action('UserController@edit', 'Edit', $user->id, ['class' => 'btn btn-primary pull-right', 'role' => 'button']) !!}</h2>
         <hr>
         <div class="row text-center">
             <span class="glyphicon glyphicon-user text-center" aria-hidden="true" style="font-size: 180px"></span>
@@ -63,11 +64,8 @@
     <div class="col-md-9">
         <h2>General Info</h2>
         <hr>
-        {!! link_to_action('UserController@edit', 'Edit', $user->id, ['class' => 'btn btn-primary pull-right', 'role' => 'button']) !!}
         <div class="page-header">
-            <h4>Medical History
-                <small>Information</small>
-            </h4>
+            <h4>Medical History</h4>
 
                     <table class="table table-hover">
                         <tbody>
@@ -83,14 +81,12 @@
                                     {{ $user->has_migraines ? 'Yes' : 'No' }}
                                 </td>
                             </tr>
-
                             <tr>
                                 <td>Do you wear prescription glasses?</td>
                                 <td>
                                     {{ $user->has_glasses ? 'Yes' : 'No' }}
                                 </td>
                             </tr>
-
                             <tr>
                                 <td>When was your last eye exam?</td>
                                 <td>
@@ -101,9 +97,7 @@
                     </table>
         </div>
         <div class="page-header clearfix">
-            <h4>Triggers
-                <small>Information</small>
-            </h4>
+            <h4>Triggers</h4>
             @if($user->triggers->isEmpty())
                 <div class="panel panel-default">
                     <p class="text-center">
@@ -120,9 +114,7 @@
             @endif
         </div>
         <div class="page-header clearfix">
-            <h4>Medications
-                <small>Information</small>
-            </h4>
+            <h4>Medications</h4>
             @if($user->medicines->isEmpty())
                 <div class="panel panel-default">
                     <p class="text-center">
