@@ -8,10 +8,12 @@
         <div class="row">
             <div class="col-md-3">
 
-                <h2>Personal Info &nbsp; {!! link_to_action('UserController@edit', 'Edit', $user->id, ['class' => 'btn btn-primary pull-right', 'role' => 'button']) !!}</h2>
+                <h2>Personal Info
+                    &nbsp; {!! link_to_action('UserController@edit', 'Edit', $user->id, ['class' => 'btn btn-primary pull-right', 'role' => 'button']) !!}</h2>
                 <hr>
                 <div class="row text-center">
-                    <span class="glyphicon glyphicon-user text-center" aria-hidden="true" style="font-size: 180px"></span>
+                    <span class="glyphicon glyphicon-user text-center" aria-hidden="true"
+                          style="font-size: 180px"></span>
                 </div>
                 <br>
 
@@ -100,45 +102,33 @@
                 </div>
 
                 <div class="col-md-6">
-                        <div class="page-header clearfix">
-                            <h4>Triggers</h4>
-                            <div class="panel panel-default">
-                                <div class="panel-info form-padding-top">
-                                    <?php $triggers = $user->triggers; ?>
-                                    @include('trigger.view')
-                                </div>
+                    <div class="page-header clearfix">
+                        <h4>Triggers</h4>
+
+                        <div class="panel panel-default">
+                            <div class="panel-info form-padding-top">
+                                <?php $triggers = $user->triggers; ?>
+                                @include('trigger.view')
                             </div>
                         </div>
+                    </div>
                 </div>
                 <div class="col-md-6">
-                        <div class="page-header clearfix">
-                            <h4>Medications</h4>
-                            <div class="panel panel-default">
-                                <div class="panel-info form-padding-top">
-                                    <?php $medicines = $user->medicines; ?>
-                                    @include('medicine.view')
-                                </div>
+                    <div class="page-header clearfix">
+                        <h4>Medications</h4>
+
+                        <div class="panel panel-default">
+                            <div class="panel-info form-padding-top">
+                                <?php $medicines = $user->medicines; ?>
+                                @include('medicine.view')
                             </div>
                         </div>
+                    </div>
                 </div>
 
 
-
-                {!! Form::submit('Save Changes', ['class' => 'btn btn-success pull-right']) !!}
             </div>
         </div>
-    </div>
-
-
-
-
-
-
-
-
-
-
-    {!! Form::close() !!}
     </div>
 @stop
 
