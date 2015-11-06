@@ -47,17 +47,17 @@
     <div class="container">
         
         <!-- BEGIN Global Header -->
-        <div id="header" class='row'>
+        <div id="header" class=' row'>
             @include('partials.nav')
         </div>
         <!-- END Global Header -->
         
-        <div id='content' class='row'>
+        <div id='content' class=' row'>
             @yield('content')
         </div>
     
         <!-- BEGIN Global Footer -->
-        <div id='footer' class='row'>
+        <div id='footer' class=' row'>
             @yield('footer')
             @include('partials.footer') 
         </div>

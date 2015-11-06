@@ -12,8 +12,9 @@ return [
     | 
     |
     */
-
-    'description'   =>      'Journal Description',
+    
+    'description'   =>      'Entry description',
+    'name'          =>      'Name of Entry',
     'location'      =>      'Location',
     'severity'      =>      'Severity:',
     'weather'       =>      'Weather',

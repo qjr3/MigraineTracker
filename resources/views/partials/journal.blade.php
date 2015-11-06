@@ -1,25 +1,24 @@
 <?php $journals = $user->journals->sortByDesc('created_at')->take(3); ?>
 @foreach($journals as $journal)
-<table class="table">
-    <tbody>
-        <tr class='h1'><td colspan='2'>{!! link_to_action('JournalController@show', $journal->name, $journal->id, []) !!}</td></tr>
-        <tr>
-            <td class="" colspan='2'>{{ $journal->description }}</td>
-        </tr>
-        <tr>
-            <td class="">{{$journal->has_nausea ? 'Nauseous' : 'Not Nauseous'}}</td>
-            <td class="">{{$journal->has_vomitted ? 'Has Vomitted' : 'Has not vomitted'}}</td>
-        </tr>
-    </tbody>
-</table>
-<hr />
+<div class='table table-striped'>
+    <div class='container'>
+        <div class='row'>
+            <div class='col-sm-12 h4'>{!! link_to_action('JournalController@show', $journal->name, $journal->id, []) !!}</div>
+        </div>
+        <div class='row '>
+            <div class='col-sm-12 h5'>{{ $journal->description }}</div>
+        </div>
+        <div class='row '>
+            <div class='col-sm-6'>{{$journal->has_nausea ? 'Nauseous' : 'Not Nauseous'}}</div>
+            <div class='col-sm-6'>{{$journal->has_vomitted ? 'Vomitted' : 'Has not vomitted'}}</div>
+        </div>
+    </div>
+</div>
 @endforeach
-<table class="table table-hover">
-    <tbody>
-        <tr>
-            <td class="text-right">
-                {!! link_to_action('JournalController@index', 'View All') !!}
-            </td>
-        </tr>
-    </tbody>
-</table>
+<div class='container'>
+    <div class='row content'>
+        <div class='col-sm-12'>
+            <span class='pull-right btn btn-link'>{!! link_to_action('JournalController@index', 'View All') !!}</span>
+        </div>
+    </div>
+</div>
