@@ -19,7 +19,7 @@
         </div>
         <div class='row'>
             <div class='col-sm-10 h4'> {{ $journal->description }}</div>
-            <div class='col-sm-2'><span class="pull-right" style="margin-bottom: 15px">{!! link_to_action('JournalController@show', trans('general.go_back'), $journal->id) !!} </span></div>
+            <div class='col-sm-2'><span class="pull-right" style="margin-bottom: 15px">{!! link_to_action('JournalController@show', 'Go Back', $journal->id) !!} </span></div>
         </div>
 
         <div class="row">
@@ -39,19 +39,19 @@
                         </div> -->
                         <div class="col-md-6">
                             <div class="form-group">
-                                {!! Form::label('Name', trans('journal.name') ,['class' => 'form-label'] ) !!}
+                                {!! Form::label('Name', 'Entry Name' ,['class' => 'form-label'] ) !!}
                                 {!! Form::text('name', null, ['class' => 'form-control']) !!}
                             </div>
 
                             <div class="form-group">
-                                {!! Form::label('description', trans('journal.description') , ['class' => 'form-label']) !!}
+                                {!! Form::label('description', 'Entry Description' , ['class' => 'form-label']) !!}
                                 {!! Form::textarea('description', null, ['class' => 'form-control']) !!}
                             </div>
 
                             <div class="row">
                                 <div class="col-xs-3">
                                     <div class="form-group">
-                                        {!! Form::label('severity', trans('journal.severity'), ['class' => 'form-label']) !!}
+                                        {!! Form::label('severity', 'Severity', ['class' => 'form-label']) !!}
                                         {!! Form::select('severity',
                                             [
                                                 '' => '',
@@ -71,8 +71,8 @@
                                 </div>
                                 <div class="col-xs-3">
                                     <div class="form-group">
-                                        {!! Form::label('noise_level', trans('journal.sound_level'), ['class' => 'form-label']) !!}
-                                        {!! Form::select('noise_level',
+                                        {!! Form::label('sound_level', 'Sound Level', ['class' => 'form-label']) !!}
+                                        {!! Form::select('sound_level',
                                             [
                                                 '' => '',
                                                 '1' => '1',
@@ -91,7 +91,7 @@
                                 </div>
                                 <div class="col-xs-3">
                                     <div class="form-group">
-                                        {!! Form::label('light_level', trans('journal.light_level'), ['class' => 'form-label']) !!}
+                                        {!! Form::label('light_level', 'Light Level', ['class' => 'form-label']) !!}
                                         {!! Form::select('light_level',
                                             [
                                                 '' => '', // No response response
@@ -111,7 +111,7 @@
                                 </div>
                                 <div class="col-xs-3">
                                     <div class="form-group">
-                                        {!! Form::label('still_suffering', trans('journal.q_suffering'), ['class' => 'form-label']) !!}
+                                        {!! Form::label('still_suffering', 'Still Suffering?', ['class' => 'form-label']) !!}
                                         {!! Form::select('still_suffering', [ '' => '', 'True' => 'true', 'False' => 'false'], null, ['class' => 'form-control']) !!}
                                     </div>
                                 </div>
@@ -119,20 +119,20 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                {!! Form::label('weather', trans('journal.weather') . ':', ['class' => 'form-label']) !!}
+                                {!! Form::label('weather', 'Weather', ['class' => 'form-label']) !!}
                                 {!! Form::text('weather', null, ['class' => 'form-control']) !!}
                             </div>
 
                             <div class="row">
                                 <div class="col-xs-6">
                                     <div class="form-group">
-                                        {!! Form::label('triggers_id', trans('journal.trigger') . ':', ['class' => 'form-label']) !!}
+                                        {!! Form::label('triggers_id', 'Triggers', ['class' => 'form-label']) !!}
                                         {!! Form::select('triggers_id[]', $triggers, $journal->triggers->lists('id')->toArray(), ['id' => 'trigger_list', 'class' => 'form-control', 'multiple']) !!}
                                     </div>
                                 </div>
                                 <div class="col-xs-6">
                                     <div class="form-group">
-                                        {!! Form::label('medicines_id', trans('journal.medicine') . ':', ['class' => 'form-label']) !!}
+                                        {!! Form::label('medicines_id', 'Medications' . ':', ['class' => 'form-label']) !!}
                                         {!! Form::select('medicines_id[]', $medicines, $journal->medicines->lists('id')->toArray(), ['id' => 'medicine_list', 'class' => 'form-control', 'multiple']) !!}
                                     </div>
                                 </div>
@@ -141,13 +141,13 @@
                             <div class="row">
                                 <div class="col-xs-6">
                                     <div class="form-group">
-                                        {!! Form::label('start_time', trans('journal.start_time'), ['class' => 'form-label']) !!}
+                                        {!! Form::label('start_time', 'Start Time', ['class' => 'form-label']) !!}
                                         {!! Form::text('start_time', null, ['class' => 'form-control', 'disabled' => 'true']) !!}
                                     </div>
                                 </div>
                                 <div class="col-xs-6">
                                     <div class="form-group">
-                                        {!! Form::label('end_time', trans('journal.stop_time'), ['class' => 'form-label']) !!}
+                                        {!! Form::label('end_time', 'End Time', ['class' => 'form-label']) !!}
                                         {!! Form::text('end_time', null, ['class' => 'form-control', 'disabled' => 'true']) !!}
                                     </div>
                                 </div>
@@ -159,13 +159,13 @@
                             <div class="row">
                                 <div class="col-xs-6">
                                     <div class="form-group">
-                                        {!! Form::label('has_aura', trans('journal.q_aura'), ['class' => 'form-label']) !!}
-                                        {!! Form::select('has_aura', [ '' => '', 'true' => trans('general.yes'), 'false' => trans('general.no')], null, ['class' => 'form-control']) !!}
+                                        {!! Form::label('has_aura', 'Experiencing Aura?', ['class' => 'form-label']) !!}
+                                        {!! Form::select('has_aura', [ '' => '', 'true' => 'Yes', 'false' => 'No'], null, ['class' => 'form-control']) !!}
                                     </div>
                                 </div>
                                 <div class="col-xs-6">
                                     <div class="form-group">
-                                        {!! Form::label('aura_description', trans('journal.aura') . '&nbsp;' . trans('general.description'), ['class' => 'form-label']) !!}
+                                        {!! Form::label('aura_description', 'Aura Description', ['class' => 'form-label']) !!}
                                         {!! Form::text('aura_description', null, ['class' => 'form-control']) !!}
                                     </div>
                                 </div>
@@ -174,14 +174,14 @@
                             <div class="row">
                                 <div class="col-xs-6">
                                     <div class="form-group">
-                                        {!! Form::label('has_nausea', trans('journal.q_nausea'), ['class' => 'form-label']) !!}
-                                        {!! Form::select('has_nausea',  [ '' => '', 'true' => trans('general.yes'), 'false' => trans('general.no')], null, ['class' => 'form-control']) !!}
+                                        {!! Form::label('has_nausea', 'Nauseous?', ['class' => 'form-label']) !!}
+                                        {!! Form::select('has_nausea',  [ '' => '', 'true' => 'Yes', 'false' => 'No'], null, ['class' => 'form-control']) !!}
                                     </div>
                                 </div>
                                 <div class="col-xs-6">
                                     <div class="form-group">
-                                        {!! Form::label('has_vomitted', trans('journal.q_vomitted'), ['class' => 'form-label']) !!}
-                                        {!! Form::select('has_vomitted',  [ '' => '', 'true' => trans('general.yes'), 'false' => trans('general.no')], null, ['class' => 'form-control']) !!}
+                                        {!! Form::label('has_vomitted', 'Vomitted?', ['class' => 'form-label']) !!}
+                                        {!! Form::select('has_vomitted',  [ '' => '', 'true' => 'Yes', 'false' => 'No'], null, ['class' => 'form-control']) !!}
                                     </div>
                                 </div>
                             </div>
@@ -189,32 +189,32 @@
                             <div class="row">
                                 <div class="col-xs-6">
                                     <div class="form-group">
-                                        {!! Form::label('has_light_sensativity', trans('journal.q_light_sensativity'), ['class' => 'form-label']) !!}
-                                        {!! Form::select('has_light_sensativity',  [ '' => '', 'true' => trans('general.yes'), 'false' => trans('general.no')], null, ['class' => 'form-control']) !!}
+                                        {!! Form::label('has_light_sensativity', 'Light Sensativity', ['class' => 'form-label']) !!}
+                                        {!! Form::select('has_light_sensativity',  [ '' => '', 'true' => 'Yes', 'false' => 'No'], null, ['class' => 'form-control']) !!}
                                     </div>
                                 </div>
                                 <div class="col-xs-6">
                                     <div class="form-group">
-                                        {!! Form::label('has_sound_sensativity', trans('journal.sound_sensative'), ['class' => 'form-label']) !!}
-                                        {!! Form::select('has_sound_sensativity',  [ '' => '', 'true' => trans('general.yes'), 'false' => trans('general.no')], null, ['class' => 'form-control']) !!}
+                                        {!! Form::label('has_sound_sensativity', 'Sound Sensativity', ['class' => 'form-label']) !!}
+                                        {!! Form::select('has_sound_sensativity',  [ '' => '', 'true' => 'Yes', 'false' => 'No'], null, ['class' => 'form-control']) !!}
                                     </div>
                                 </div>
                                 <div class="col-xs-6">
                                     <div class="form-group">
-                                        {!! Form::label('has_disrupted', trans('journal.q_disrupted'), ['class' => 'form-label']) !!}
-                                        {!! Form::select('has_disrupted',  [ '' => '', 'true' => trans('general.yes'), 'false' => trans('general.no')], null, ['class' => 'form-control']) !!}
+                                        {!! Form::label('has_disrupted', 'Disruptions', ['class' => 'form-label']) !!}
+                                        {!! Form::select('has_disrupted',  [ '' => '', 'true' => 'Yes', 'false' => 'No'], null, ['class' => 'form-control']) !!}
                                     </div>
                                 </div>
                                 <div class="col-xs-6">
                                     <div class="form-group">
-                                        {!! Form::label('missed_workschool', trans('journal.q_missed_schoolwork'), ['class' => 'form-label']) !!}
-                                        {!! Form::select('missed_workschool',  [ '' => '', 'true' => trans('general.yes'), 'false' => trans('general.no')], null, ['class' => 'form-control']) !!}
+                                        {!! Form::label('missed_workschool', 'Missed Work or School', ['class' => 'form-label']) !!}
+                                        {!! Form::select('missed_workschool',  [ '' => '', 'true' => 'Yes', 'false' => 'No'], null, ['class' => 'form-control']) !!}
                                     </div>
                                 </div>
                                 <div class="col-xs-6">
                                     <div class="form-group">
-                                        {!! Form::label('missed_routines', trans('journal.q_missed_other'), ['class' => 'form-label']) !!}
-                                        {!! Form::select('missed_routines',  [ '' => '', 'true' => trans('general.yes'), 'false' => trans('general.no')], null, ['class' => 'form-control']) !!}
+                                        {!! Form::label('missed_routines', 'Missed Other Activities', ['class' => 'form-label']) !!}
+                                        {!! Form::select('missed_routines',  [ '' => '', 'true' => 'Yes', 'false' => 'No'], null, ['class' => 'form-control']) !!}
                                     </div>
                                 </div>
                             </div>
@@ -222,11 +222,11 @@
 
                         <div class="col-md-6">
                             <div class="form-group">
-                                {!! Form::label('social_plans', trans('journal.q_missed_social'), ['class' => 'form-label']) !!}
+                                {!! Form::label('social_plans', 'Missed Social Events', ['class' => 'form-label']) !!}
                                 {!! Form::text('social_plans', null, ['class' => 'form-control', 'disabled' => 'true']) !!}
                             </div>
                             <div class="form-group">
-                                {!! Form::label('activities', trans('journal.q_missed_other'), ['class' => 'form-label']) !!}
+                                {!! Form::label('activities', 'Missed Other Events', ['class' => 'form-label']) !!}
                                 {!! Form::text('activities', null, ['class' => 'form-control', 'disabled' => 'true']) !!}
                             </div>
                         </div>
@@ -235,7 +235,7 @@
                         <div class="col-md-6">
 
                             <div class='form-group'>
-                                {!! Form::submit(trans('general.submit'), ['class' => 'btn btn-block btn-lg']) !!}
+                                {!! Form::submit('Submit', ['class' => 'btn btn-block btn-lg']) !!}
                             </div>
                         </div>
                     </div>

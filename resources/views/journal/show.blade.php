@@ -17,66 +17,66 @@
         </div>
         <div class='row'>
             <div class='col-sm-10 h4'> {{ $journal->description }}</div>
-            <div class='col-sm-2'><span class="pull-right" style="margin-bottom: 15px">{!! link_to_action('JournalController@edit', trans('general.edit') , $journal->id) !!} </span></div>
+            <div class='col-sm-2'><span class="pull-right" style="margin-bottom: 15px">{!! link_to_action('JournalController@edit', 'Edit' , $journal->id) !!} </span></div>
         </div>
         <div class="row">
             <div class="col-md-8">
                 <table class="table table-striped">
                     <tbody>
                     <tr>
-                        <th>{{ trans('journal.start_time') }}</th>
+                        <th>Start Time</th>
                         <td>{{ $journal->start_time }}</td>
                     </tr>
                     <tr>
-                        <th>{{ trans('journal.stop_time')}}</th>
+                        <th>Stop Time</th>
                         <td>{{ $journal->end_time }}</td>
                     </tr>
                     <tr>
-                        <th>{{ trans('journal.severity')}}</th>
+                        <th>Severity</th>
                         <td>{{ $journal->severity }}</td>
                     </tr>
                     <tr>
-                        <th>{{ trans('journal.has_disruption')}}</th>
-                        <td>{{ $journal->has_disrupted          ? trans('general.yes') : trans('general.no') }}</td>
+                        <th>Disruptions</th>
+                        <td>{{ $journal->has_disrupted          ? 'Yes' : 'No' }}</td>
                     </tr>
                     <tr>
-                        <th>{{ trans('journal.light_sensative')}}</th>
-                        <td>{{ $journal->has_light_sensativity  ? trans('general.yes') : trans('general.no') }}</td>
+                        <th>Light Sensativity</th>
+                        <td>{{ $journal->has_light_sensativity  ? 'Yes' : 'No' }}</td>
                     </tr>
                     <tr>
-                        <th>{{ trans('journal.light_level')}}</th>
+                        <th>Light Level</th>
                         <td>{{ $journal->light_level }}</td>
                     </tr>
                     <tr>
-                        <th>{{ trans('journal.sound_sensative') }}</th>
-                        <td>{{ $journal->has_sound_sensativity  ? trans('general.yes') : trans('general.no') }}  </td>
+                        <th>Sound Sensativity</th>
+                        <td>{{ $journal->has_sound_sensativity  ? 'Yes' : 'No' }}  </td>
                     </tr>
                     <tr>
-                        <th>{{ trans('journal.sound_level') }}</th>
+                        <th>Sound Level</th>
                         <td>{{ $journal->sound_level }}</td>
                     </tr>
                     <tr>
-                        <th>{{ trans('journal.nauseous')}}</th>
-                        <td>{{ $journal->has_nausea             ? trans('general.yes') : trans('general.no') }}  </td>
+                        <th>Nauseous</th>
+                        <td>{{ $journal->has_nausea             ? 'Yes' : 'No' }}  </td>
                     </tr>
                     <tr>
-                        <th>{{ trans('journal.vomitted')}}</th>
-                        <td>{{ $journal->has_vomitted           ? trans('general.yes') : trans('general.no') }}  </td>
+                        <th>Vomitted</th>
+                        <td>{{ $journal->has_vomitted           ? 'Yes' : 'No' }}  </td>
                     </tr>
                     <tr>
-                        <th>{{ trans('journal.missed_workschool')}}</th>
-                        <td>{{ $journal->missed_workschool      ? trans('general.yes') : trans('general.no') }}  </td>
+                        <th>Missed Work or School</th>
+                        <td>{{ $journal->missed_workschool      ? 'Yes' : 'No' }}  </td>
                     </tr>
                     <tr>
-                        <th>{{ trans('journal.missed_other')}}</th>
-                        <td>{{ $journal->missed_routines        ? trans('general.yes') : trans('general.no') }}  </td>
+                        <th>Missed Other Activities</th>
+                        <td>{{ $journal->missed_routines        ? 'Yes' : 'No' }}  </td>
                     </tr>
                     </tbody>
                 </table>
             </div>
             <div class='row'>
                 <div class="col-md-4">
-                    <h4>{{ trans('journal.location') }}</h4>
+                    <h4>Location</h4>
                     <div class="text-center">
                         <iframe width="" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"
                                 style="width: 100%;"
