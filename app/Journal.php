@@ -51,4 +51,9 @@ class Journal extends Model
     {
         return $this->belongsToMany('App\Trigger');
     }
+    
+    public function common_triggers()
+    {
+        return $this->belongsToMany('App\CommonTriggers');
+    }
 }

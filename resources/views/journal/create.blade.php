@@ -84,30 +84,35 @@
                     ],
                      null, ['class' => 'form-control']) !!}
             </div>
-
-            @if(!$triggers->isEmpty())
+            @unless($common_triggers->isEmpty())
+            <div class="form-group">
+                {!! Form::label('common_triggers_id', 'Common Triggers', ['class' => 'form-label']) !!}
+                {!! Form::select('common_triggers_id[]', $common_triggers, 'name', ['id' => 'common_trigger_list', 'class' => 'form-control', 'multiple']) !!}
+            </div>
+            @endunless
+            
+            @unless($triggers->isEmpty())
             <div class="form-group">
                 {!! Form::label('triggers_id', 'Triggers', ['class' => 'form-label']) !!}
                 {!! Form::select('triggers_id[]', $triggers, 'name', ['id' => 'trigger_list', 'class' => 'form-control', 'multiple']) !!}
             </div>
 
-            @else
-
+            @endunless
+            
             <p>Do Trigger add here.</p>
             <!-- Link to action, add trigger....return here -->
             <!-- on return remember state of form -->
             <!-- alternatively, use jquery/ajax to add the new trigger on client side, refresh this place holder. -->
-            @endif
             
-            @if(!$medicines->isEmpty())
+            @unless($medicines->isEmpty())
             <div class="form-group">
                 {!! Form::label('medicines_id', 'Medications', ['class' => 'form-label']) !!}
                 {!! Form::select('medicines_id[]', $medicines, 'name', ['id' => 'medicine_list', 'class' => 'form-control', 'multiple']) !!}
             </div>
-            @else
-                <p>Do Medicine add here</p>
-                <!-- See triggers note -->
-            @endif
+            @endunless
+            
+            <p>Do Medicine add here</p>
+            <!-- See triggers note -->
 
             <div class="form-group">
                 {!! Form::label('still_suffering', 'Currently Suffering?', ['class' => 'form-label']) !!}
