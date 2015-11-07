@@ -40,7 +40,7 @@ class JournalController extends Controller
     
     public function show(Journal $journal)
     {
-        return view('journal.view', compact('journal'));
+        return view('journal.show', compact('journal'));
     }
     
     public function create()
