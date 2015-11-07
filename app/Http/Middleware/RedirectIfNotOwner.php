@@ -24,7 +24,7 @@ class RedirectIfNotOwner
 
         if ($request->user()->id != $user_id)
         {
-            abort(403, 'Unauthorized action.');
+            return redirect('/home')->with('You seem to have gotten lost...let me help you find your way home.');
         }
 
         return $next($request);

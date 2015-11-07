@@ -36,10 +36,13 @@ class RedirectIfNotUserProfile
 
         $user = $request->route()->parameter($parameterName);
 
-
         if(!$this->auth->user()->hasAccessTo($user->id))
         {
-            abort(403, 'Unauthorized action.');;
+            // if not logged in
+            return redirect('/home')->with('You seem to have gotten lost...let me help you find your way home.');
+            
+            // if logged in
+//            return redirect()->back();
         }
 
         return $next($request);
