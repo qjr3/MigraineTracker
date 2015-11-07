@@ -82,9 +82,6 @@ class TriggerController extends Controller
     {
         $trigger->delete();
         $triggers = Trigger::all();
-        if(!$triggers->isEmpty())
-            return redirect('trigger.index');
-        else
-            return redirect('pages.dashboard');
+        return redirect()->back();
     }
 }

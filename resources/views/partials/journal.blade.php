@@ -1,4 +1,4 @@
-<?php $journals = $user->journals->sortByDesc('created_at')->take(3); ?>
+<?php $journals = $user->journals->sortByDesc('created_at')->take(5); ?>
 @foreach($journals as $journal)
 <div class='table table-striped'>
     <div class='container'>

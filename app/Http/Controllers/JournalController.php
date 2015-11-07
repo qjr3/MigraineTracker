@@ -71,6 +71,12 @@ class JournalController extends Controller
 
         $journal->update($request->all());
         
-        return redirect('journal');
+        return redirect()->back();
     }    
+    
+    public function destroy(Journal $journal)
+    {
+        $journal->delete();
+        $journals = Journal::all();
+    }
 }

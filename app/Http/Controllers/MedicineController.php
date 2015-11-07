@@ -56,7 +56,7 @@ class MedicineController extends Controller
      */
     public function show(Medicine $medicine)
     {
-        return view('medicines.show', compact('medicine'));
+        return view('medicine.show', compact('medicine'));
     }
 
     /**
@@ -83,9 +83,6 @@ class MedicineController extends Controller
     {
         $medicine->delete();
         $medicines = Medicine::all();
-        if(!$medicines->isEmpty())
-            return redirect('medicine.index');
-        else
-            return redirect('pages.dashboard');
+        return redirect()->back();
     }
 }

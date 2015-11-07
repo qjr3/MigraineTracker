@@ -32,4 +32,10 @@ class UserController extends Controller
     {
         return view('user.profile', compact('user'));
     }
+    
+    public function destroy(User $user)
+    {
+        $user->delete();
+        return redirect()->back();        
+    }
 }

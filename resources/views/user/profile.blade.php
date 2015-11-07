@@ -108,7 +108,7 @@
                         <div class="panel panel-default">
                             <div class="panel-info form-padding-top">
                                 <?php $triggers = $user->triggers; ?>
-                                @include('trigger.view')
+                                @include('trigger.index')
                             </div>
                         </div>
                     </div>
@@ -120,7 +120,7 @@
                         <div class="panel panel-default">
                             <div class="panel-info form-padding-top">
                                 <?php $medicines = $user->medicines; ?>
-                                @include('medicine.view')
+                                @include('medicine.index')
                             </div>
                         </div>
                     </div>
