@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDefaultTriggersXJournalTable extends Migration
+class CreateCommonTriggersXJournalTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,14 +12,14 @@ class CreateDefaultTriggersXJournalTable extends Migration
      */
     public function up()
     {
-        Schema::create('common_journal_trigger', function (Blueprint $table) {
+        Schema::create('common_journal_triggers', function (Blueprint $table) {
             $table->integer('journal_id')->unsigned()->index();
-            $table->integer('trigger_id')->unsigned()->index();
+            $table->integer('common_triggers_id')->unsigned()->index();
             
-            $table->primary(['journal_id', 'trigger_id']);
+            $table->primary(['journal_id', 'common_triggers_id']);
         
             // Foreign Keys
-            $table->foreign('trigger_id')->references('id')->on('triggers');
+            $table->foreign('common_triggers_id')->references('id')->on('common_triggers');
             $table->foreign('journal_id')->references('id')->on('journals');
         });
     }
@@ -31,6 +31,6 @@ class CreateDefaultTriggersXJournalTable extends Migration
      */
     public function down()
     {
-        Scheme::drop('common_journal_trigger');
+        Scheme::drop('common_journal_triggers');
     }
 }

@@ -87,7 +87,7 @@
             @unless($common_triggers->isEmpty())
             <div class="form-group">
                 {!! Form::label('common_triggers_id', 'Common Triggers', ['class' => 'form-label']) !!}
-                {!! Form::select('common_triggers_id[]', $common_triggers, 'name', ['id' => 'common_trigger_list', 'class' => 'form-control', 'multiple']) !!}
+                {!! Form::select('common_triggers_id[]', $common_triggers, 'name', ['id' => 'common_triggers_list', 'class' => 'form-control', 'multiple']) !!}
             </div>
             @endunless
             
@@ -96,7 +96,6 @@
                 {!! Form::label('triggers_id', 'Triggers', ['class' => 'form-label']) !!}
                 {!! Form::select('triggers_id[]', $triggers, 'name', ['id' => 'trigger_list', 'class' => 'form-control', 'multiple']) !!}
             </div>
-
             @endunless
             
             <p>Do Trigger add here.</p>
@@ -183,6 +182,10 @@
         });
         $('#medicine_list').select2({
             placeholder: "Select Medicines"
+        });
+        
+        $('#common_triggers_list').select2({
+            placeholder: "Select CommonTriggers"
         });
     </script>
     

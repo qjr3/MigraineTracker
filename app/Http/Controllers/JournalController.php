@@ -60,7 +60,7 @@ class JournalController extends Controller
         $medicines = Auth::user()->medicines()->lists('name', 'id');
         $common_triggers = CommonTriggers::all();
         
-        return view('journal.update', compact('journal', 'triggers', 'medicines'));
+        return view('journal.update', compact('journal', 'common_triggers', 'triggers', 'medicines'));
     }
     
     public function update(Journal $journal, JournalRequest $request)

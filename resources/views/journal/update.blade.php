@@ -124,13 +124,19 @@
                             </div>
 
                             <div class="row">
-                                <div class="col-xs-6">
+                                <div class="col-xs-4">
+                                    <div class="form-group">
+                                        {!! Form::label('common_triggers_id', 'Common Triggers', ['class' => 'form-label']) !!}
+                                        {!! Form::select('common_triggers_id[]', $common_triggers, $journal->common_triggers->lists('id')->toArray(), ['id' => 'common_trigger_list', 'class' => 'form-control', 'multiple']) !!}
+                                    </div>
+                                </div>
+                                <div class="col-xs-4">
                                     <div class="form-group">
                                         {!! Form::label('triggers_id', 'Triggers', ['class' => 'form-label']) !!}
                                         {!! Form::select('triggers_id[]', $triggers, $journal->triggers->lists('id')->toArray(), ['id' => 'trigger_list', 'class' => 'form-control', 'multiple']) !!}
                                     </div>
                                 </div>
-                                <div class="col-xs-6">
+                                <div class="col-xs-4">
                                     <div class="form-group">
                                         {!! Form::label('medicines_id', 'Medications' . ':', ['class' => 'form-label']) !!}
                                         {!! Form::select('medicines_id[]', $medicines, $journal->medicines->lists('id')->toArray(), ['id' => 'medicine_list', 'class' => 'form-control', 'multiple']) !!}
@@ -254,6 +260,10 @@
         });
         $('#medicine_list').select2({
             placeholder: "Select Medicines"
+        });
+        
+        $('#common_triggers_list').select2({
+            placeholder: "Select CommonTriggers"
         });
     </script>
 
