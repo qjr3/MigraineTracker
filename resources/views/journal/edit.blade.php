@@ -127,7 +127,7 @@
                                 <div class="col-xs-4">
                                     <div class="form-group">
                                         {!! Form::label('common_triggers_id', 'Common Triggers', ['class' => 'form-label']) !!}
-                                        {!! Form::select('common_triggers_id[]', $common_triggers, $journal->common_triggers->lists('id')->toArray(), ['id' => 'common_trigger_list', 'class' => 'form-control', 'multiple']) !!}
+                                        {!! Form::select('common_triggers_id[]', $common_triggers, $journal->common_triggers->lists('id')->toArray(), ['id' => 'common_triggers_list', 'class' => 'form-control', 'multiple']) !!}
                                     </div>
                                 </div>
                                 <div class="col-xs-4">

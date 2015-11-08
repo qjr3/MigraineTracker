@@ -65,56 +65,59 @@
                         <h2>General Info</h2>
                     </div>
                     <div class='panel-body'>
-                        <div class='panel panel-info'>
-                            <div class='panel-heading'>
-                                <h4>Medical History</h4>
+                        <div class='panel-group'>
+                            <div class='panel panel-info'>
+                                <div class='panel-heading'>
+                                    <h4>Medical History</h4>
+                                </div>
+                                <div class='panel-body'>
+                                    <table class="table table-hover">
+                                        <tbody>
+                                            <tr>
+                                                <td>Have you been diagnosed with diabetes?</td>
+                                                <td>
+                                                    {{ $user->has_diabetes ? 'Yes' : 'No' }}
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Have you been diagnosed with migraines?</td>
+                                                <td>
+                                                    {{ $user->has_migraines ? 'Yes' : 'No' }}
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Do you wear prescription glasses?</td>
+                                                <td>
+                                                    {{ $user->has_glasses ? 'Yes' : 'No' }}
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>When was your last eye exam?</td>
+                                                <td>
+                                                    {{ $user->last_eye_exam ?: 'Never' }}
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
-                            <div class='panel-body'>
-                                <table class="table table-hover">
-                                    <tbody>
-                                        <tr>
-                                            <td>Have you been diagnosed with diabetes?</td>
-                                            <td>
-                                                {{ $user->has_diabetes ? 'Yes' : 'No' }}
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Have you been diagnosed with migraines?</td>
-                                            <td>
-                                                {{ $user->has_migraines ? 'Yes' : 'No' }}
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Do you wear prescription glasses?</td>
-                                            <td>
-                                                {{ $user->has_glasses ? 'Yes' : 'No' }}
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>When was your last eye exam?</td>
-                                            <td>
-                                                {{ $user->last_eye_exam ?: 'Never' }}
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                            <div class="panel panel-info">
+                                <div class="panel-heading ">
+                                    <h4>Triggers</h4>
+                                </div>
+                                <div class="panel-body ">
+                                    <?php $triggers = $user->triggers; ?>
+                                    @include('trigger.p_index')
+                                </div>
                             </div>
-                        </div>
-                        <div class="panel panel-info">
-                            <div class="panel-heading ">
-                                <h4>Triggers</h4>
-                            </div>
-                            <div class="panel-body ">
-                                <?php $triggers = $user->triggers; ?>@include('trigger.index')
-                            </div>
-                        </div>
-                        <div class="panel panel-info">
-                            <div class="panel-heading">
-                                <h4>Medications</h4>
-                            </div>
-                            <div class="panel-body">
-                                <?php $medicines = $user->medicines; ?>
-                                @include('medicine.index')
+                            <div class="panel panel-info">
+                                <div class="panel-heading">
+                                    <h4>Medications</h4>
+                                </div>
+                                <div class="panel-body">
+                                    <?php $medicines = $user->medicines; ?>
+                                    @include('medicine.p_index')
+                                </div>
                             </div>
                         </div>
                     </div>

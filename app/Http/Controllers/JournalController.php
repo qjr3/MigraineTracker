@@ -48,7 +48,7 @@ class JournalController extends Controller
     {
         $triggers = Auth::user()->triggers()->lists('name', 'id');
         $medicines = Auth::user()->medicines()->lists('name', 'id');
-        $common_triggers = CommonTriggers::all();
+        $common_triggers = CommonTriggers::all()-lists('name', 'id');
         
         return view('journal.create', compact('triggers', 'common_triggers', 'medicines'));
     }
@@ -58,9 +58,9 @@ class JournalController extends Controller
         $journal = $journal->load('triggers');
         $triggers = Auth::user()->triggers()->lists('name', 'id');
         $medicines = Auth::user()->medicines()->lists('name', 'id');
-        $common_triggers = CommonTriggers::all();
+        $common_triggers = CommonTriggers::all()->lists('name', 'id');
         
-        return view('journal.update', compact('journal', 'common_triggers', 'triggers', 'medicines'));
+        return view('journal.edit', compact('journal', 'common_triggers', 'triggers', 'medicines'));
     }
     
     public function update(Journal $journal, JournalRequest $request)

@@ -3,7 +3,8 @@
 Home
 @stop
 @section('content')
-    <div class="jumbotron text-center alert-info">
+<div class='panel panel-info'>
+    <div class='panel-heading text-center'>
         <h2>Welcome
             @if($user->first_name != null)
                 {{$user->first_name}}!
@@ -11,11 +12,8 @@ Home
                 {{$user->name}}!
             @endif
         </h2>
-        <div class="">
-            <h3 class="">Migraine XX% likely</h3>
-        </div>
+        <h3 class='alert-danger'>Migraine XX% likely</h3>
     </div>
-
     @include('partials.journal')
-
+</div>
 @stop
