@@ -56,7 +56,7 @@ class MedicineController extends Controller
      */
     public function show(Medicine $medicine)
     {
-        return view('medicines.show', compact('medicine'));
+        return view('medicine.show', compact('medicine'));
     }
 
     /**
@@ -83,9 +83,27 @@ class MedicineController extends Controller
     {
         $medicine->delete();
         $medicines = Medicine::all();
-        if(!$medicines->isEmpty())
-            return redirect('medicine.index');
-        else
-            return redirect('pages.dashboard');
+        return redirect()->back();
+    }
+    
+    // Accept AJAX route, receive ajax data from form
+    public function addMedication()
+    {
+        if(Request::ajax())
+        {
+            $medicine = new Medicine();
+            $medicine->name = Request::input('name');
+            $medicine->description = Request::input('description');
+            $medicine->dose = Request::input('dose');
+            $medicine->save();
+            
+            $response = 
+            [
+                'status' => 'success',
+                'msg' => 'Medication addeed',
+            ];
+            
+            return Response::json($response);
+        }       
     }
 }

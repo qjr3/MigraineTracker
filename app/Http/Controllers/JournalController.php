@@ -6,11 +6,11 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 
 use App\Trigger;
+use App\CommonTriggers;
 use App\Medicine;
 use App\Journal;
-Use Auth;
+use Auth;
 use App\Http\Requests\JournalRequest;
-//use Illuminate\Http\Request;
 
 class JournalController extends Controller
 {
@@ -34,20 +34,23 @@ class JournalController extends Controller
 
         $journal->triggers()->attach($request->input('triggers_id'));
         $journal->medicines()->attach($request->input('medicines_id'));
+        $journal->common_triggers()->attach($request->input('common_triggers_id'));
 
         return redirect('journal');
     }
     
     public function show(Journal $journal)
     {
-        return view('journal.view', compact('journal'));
+        return view('journal.show', compact('journal'));
     }
     
     public function create()
     {
         $triggers = Auth::user()->triggers()->lists('name', 'id');
         $medicines = Auth::user()->medicines()->lists('name', 'id');
-        return view('journal.create', compact('triggers', 'medicines'));
+        $common_triggers = CommonTriggers::all()->lists('name', 'id');
+        
+        return view('journal.create', compact('triggers', 'common_triggers', 'medicines'));
     }
     
     public function edit(Journal $journal)
@@ -55,7 +58,9 @@ class JournalController extends Controller
         $journal = $journal->load('triggers');
         $triggers = Auth::user()->triggers()->lists('name', 'id');
         $medicines = Auth::user()->medicines()->lists('name', 'id');
-        return view('journal.update', compact('journal', 'triggers', 'medicines'));
+        $common_triggers = CommonTriggers::all()->lists('name', 'id');
+        
+        return view('journal.edit', compact('journal', 'common_triggers', 'triggers', 'medicines'));
     }
     
     public function update(Journal $journal, JournalRequest $request)
@@ -65,12 +70,21 @@ class JournalController extends Controller
 
         if(!isset($request['medicines_id']))
             $request['medicines_id'] = [];
+        
+        if(!isset($request['common_triggers_id']))
+            $request['common_triggers_id'];
 
         $journal->triggers()->sync($request['triggers_id']);
         $journal->medicines()->sync($request['medicines_id']);
-
+        $journal->common_triggers()->sync($request['common_trigger_id']);
         $journal->update($request->all());
         
-        return redirect('journal');
+        return redirect()->back();
     }    
+    
+    public function destroy(Journal $journal)
+    {
+        $journal->delete();
+        $journals = Journal::all();
+    }
 }

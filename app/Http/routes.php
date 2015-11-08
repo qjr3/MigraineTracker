@@ -44,3 +44,8 @@ Route::get('home', 'PagesController@dashboard');
 Route::get('privacy', 'PagesController@privacy');
 Route::get('terms', 'PagesController@terms');
 Route::get('about', 'PagesController@about');
+
+// AJAX Routes
+
+Route::post('trigger/a', 'TriggerController@addTrigger');
+Route::post('medicines/a', 'MedicineController@addMedication');

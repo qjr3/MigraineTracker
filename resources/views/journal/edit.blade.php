@@ -6,25 +6,20 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js"></script>
 @stop
 
+
 @section('header')
 
 @stop
 
 
 @section('content')
-
-    <div class="col-md-12">
-
-
+<div class='container'>
         <div class="row">
-            <div class="col-md-12">
-                <h1> {{ $journal->name }}
-                    <span class="pull-right"
-                          style="margin-bottom: 50px; margin-left: 50px">{!! link_to_action('JournalController@show', 'Back', $journal->id) !!} </span>
-                    <small>{{ $journal->description }}</small>
-
-                </h1>
-            </div>
+            <div class="col-sm-12 h3">{{ $journal->name }}</div>
+        </div>
+        <div class='row'>
+            <div class='col-sm-10 h4'> {{ $journal->description }}</div>
+            <div class='col-sm-2'><span class="pull-right" style="margin-bottom: 15px">{!! link_to_action('JournalController@show', 'Go Back', $journal->id) !!} </span></div>
         </div>
 
         <div class="row">
@@ -32,32 +27,31 @@
                 {!! Form::model($journal, ['action' => ['JournalController@update', $journal->id], 'method' => 'PATCH']) !!}
                 <div class="col-ms-12">
                     <div class="row">
-                        <div class="col-md-4 pull-right">
+                        <!-- <div class="col-md-4 pull-right">
                             <div class="form-group">
                                 <script type="text/javascript"
                                         src="http://maps.google.com/maps/api/js?sensor=false"></script>
                                 <article><span id="status"></span></article>
                                 {!! Form::text('loc_long', null, ['id' => 'geo_long', 'disabled' => 'true']) !!}
                                 {!! Form::text('loc_lat', null, ['id' => 'geo_lat', 'disabled' => 'true'] ) !!}
-                                <input id="update_geo" type="button" value="Update Map Data"
-                                       onClick="update_success();"/>
+                                <input id="update_geo" type="button" value="Update Map Data" onClick="update_success();"/>
                             </div>
-                        </div>
+                        </div> -->
                         <div class="col-md-6">
                             <div class="form-group">
-                                {!! Form::label('Name', 'Name',['class' => 'form-label'] ) !!}
+                                {!! Form::label('Name', 'Entry Name' ,['class' => 'form-label'] ) !!}
                                 {!! Form::text('name', null, ['class' => 'form-control']) !!}
                             </div>
 
                             <div class="form-group">
-                                {!! Form::label('description', 'Description:', ['class' => 'form-label']) !!}
+                                {!! Form::label('description', 'Entry Description' , ['class' => 'form-label']) !!}
                                 {!! Form::textarea('description', null, ['class' => 'form-control']) !!}
                             </div>
 
                             <div class="row">
                                 <div class="col-xs-3">
                                     <div class="form-group">
-                                        {!! Form::label('severity', 'Severity:', ['class' => 'form-label']) !!}
+                                        {!! Form::label('severity', 'Severity', ['class' => 'form-label']) !!}
                                         {!! Form::select('severity',
                                             [
                                                 '' => '',
@@ -77,8 +71,8 @@
                                 </div>
                                 <div class="col-xs-3">
                                     <div class="form-group">
-                                        {!! Form::label('noise_level', 'Noise Level:', ['class' => 'form-label']) !!}
-                                        {!! Form::select('noise_level',
+                                        {!! Form::label('sound_level', 'Sound Level', ['class' => 'form-label']) !!}
+                                        {!! Form::select('sound_level',
                                             [
                                                 '' => '',
                                                 '1' => '1',
@@ -97,7 +91,7 @@
                                 </div>
                                 <div class="col-xs-3">
                                     <div class="form-group">
-                                        {!! Form::label('light_level', 'Light Level:', ['class' => 'form-label']) !!}
+                                        {!! Form::label('light_level', 'Light Level', ['class' => 'form-label']) !!}
                                         {!! Form::select('light_level',
                                             [
                                                 '' => '', // No response response
@@ -117,7 +111,7 @@
                                 </div>
                                 <div class="col-xs-3">
                                     <div class="form-group">
-                                        {!! Form::label('still_suffering', 'still_suffering:', ['class' => 'form-label']) !!}
+                                        {!! Form::label('still_suffering', 'Still Suffering?', ['class' => 'form-label']) !!}
                                         {!! Form::select('still_suffering', [ '' => '', 'True' => 'true', 'False' => 'false'], null, ['class' => 'form-control']) !!}
                                     </div>
                                 </div>
@@ -125,20 +119,26 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                {!! Form::label('weather', 'Weather:', ['class' => 'form-label']) !!}
+                                {!! Form::label('weather', 'Weather', ['class' => 'form-label']) !!}
                                 {!! Form::text('weather', null, ['class' => 'form-control']) !!}
                             </div>
 
                             <div class="row">
-                                <div class="col-xs-6">
+                                <div class="col-xs-4">
                                     <div class="form-group">
-                                        {!! Form::label('triggers_id', 'Triggers:', ['class' => 'form-label']) !!}
+                                        {!! Form::label('common_triggers_id', 'Common Triggers', ['class' => 'form-label']) !!}
+                                        {!! Form::select('common_triggers_id[]', $common_triggers, $journal->common_triggers->lists('id')->toArray(), ['id' => 'common_triggers_list', 'class' => 'form-control', 'multiple']) !!}
+                                    </div>
+                                </div>
+                                <div class="col-xs-4">
+                                    <div class="form-group">
+                                        {!! Form::label('triggers_id', 'Triggers', ['class' => 'form-label']) !!}
                                         {!! Form::select('triggers_id[]', $triggers, $journal->triggers->lists('id')->toArray(), ['id' => 'trigger_list', 'class' => 'form-control', 'multiple']) !!}
                                     </div>
                                 </div>
-                                <div class="col-xs-6">
+                                <div class="col-xs-4">
                                     <div class="form-group">
-                                        {!! Form::label('medicines_id', 'Medicines:', ['class' => 'form-label']) !!}
+                                        {!! Form::label('medicines_id', 'Medications' . ':', ['class' => 'form-label']) !!}
                                         {!! Form::select('medicines_id[]', $medicines, $journal->medicines->lists('id')->toArray(), ['id' => 'medicine_list', 'class' => 'form-control', 'multiple']) !!}
                                     </div>
                                 </div>
@@ -147,13 +147,13 @@
                             <div class="row">
                                 <div class="col-xs-6">
                                     <div class="form-group">
-                                        {!! Form::label('start_time', 'Start Time:', ['class' => 'form-label']) !!}
+                                        {!! Form::label('start_time', 'Start Time', ['class' => 'form-label']) !!}
                                         {!! Form::text('start_time', null, ['class' => 'form-control', 'disabled' => 'true']) !!}
                                     </div>
                                 </div>
                                 <div class="col-xs-6">
                                     <div class="form-group">
-                                        {!! Form::label('end_time', 'End Time:', ['class' => 'form-label']) !!}
+                                        {!! Form::label('end_time', 'End Time', ['class' => 'form-label']) !!}
                                         {!! Form::text('end_time', null, ['class' => 'form-control', 'disabled' => 'true']) !!}
                                     </div>
                                 </div>
@@ -165,13 +165,13 @@
                             <div class="row">
                                 <div class="col-xs-6">
                                     <div class="form-group">
-                                        {!! Form::label('has_aura', 'Are you experiencing any auras?', ['class' => 'form-label']) !!}
-                                        {!! Form::select('has_aura', [ '' => '', 'true' => 'Yes', 'false' => 'False'], null, ['class' => 'form-control']) !!}
+                                        {!! Form::label('has_aura', 'Experiencing Aura?', ['class' => 'form-label']) !!}
+                                        {!! Form::select('has_aura', [ '' => '', 'true' => 'Yes', 'false' => 'No'], null, ['class' => 'form-control']) !!}
                                     </div>
                                 </div>
                                 <div class="col-xs-6">
                                     <div class="form-group">
-                                        {!! Form::label('aura_description', 'aura_description:', ['class' => 'form-label']) !!}
+                                        {!! Form::label('aura_description', 'Aura Description', ['class' => 'form-label']) !!}
                                         {!! Form::text('aura_description', null, ['class' => 'form-control']) !!}
                                     </div>
                                 </div>
@@ -180,14 +180,14 @@
                             <div class="row">
                                 <div class="col-xs-6">
                                     <div class="form-group">
-                                        {!! Form::label('has_nausea', 'Are you nauseous?', ['class' => 'form-label']) !!}
-                                        {!! Form::select('has_nausea',  [ '' => '', 'true' => 'Yes', 'false' => 'False'], null, ['class' => 'form-control']) !!}
+                                        {!! Form::label('has_nausea', 'Nauseous?', ['class' => 'form-label']) !!}
+                                        {!! Form::select('has_nausea',  [ '' => '', 'true' => 'Yes', 'false' => 'No'], null, ['class' => 'form-control']) !!}
                                     </div>
                                 </div>
                                 <div class="col-xs-6">
                                     <div class="form-group">
-                                        {!! Form::label('has_vomitted', 'Have you vomited?', ['class' => 'form-label']) !!}
-                                        {!! Form::select('has_vomitted',  [ '' => '', 'true' => 'Yes', 'false' => 'False'], null, ['class' => 'form-control']) !!}
+                                        {!! Form::label('has_vomitted', 'Vomitted?', ['class' => 'form-label']) !!}
+                                        {!! Form::select('has_vomitted',  [ '' => '', 'true' => 'Yes', 'false' => 'No'], null, ['class' => 'form-control']) !!}
                                     </div>
                                 </div>
                             </div>
@@ -195,32 +195,32 @@
                             <div class="row">
                                 <div class="col-xs-6">
                                     <div class="form-group">
-                                        {!! Form::label('has_light_sensativity', 'Are you experiencing sensitivity to light?', ['class' => 'form-label']) !!}
-                                        {!! Form::select('has_light_sensativity',  [ '' => '', 'true' => 'Yes', 'false' => 'False'], null, ['class' => 'form-control']) !!}
+                                        {!! Form::label('has_light_sensativity', 'Light Sensativity', ['class' => 'form-label']) !!}
+                                        {!! Form::select('has_light_sensativity',  [ '' => '', 'true' => 'Yes', 'false' => 'No'], null, ['class' => 'form-control']) !!}
                                     </div>
                                 </div>
                                 <div class="col-xs-6">
                                     <div class="form-group">
-                                        {!! Form::label('has_sound_sensativity', 'Are you experiencing sensitivity to sounds?', ['class' => 'form-label']) !!}
-                                        {!! Form::select('has_sound_sensativity',  [ '' => '', 'true' => 'Yes', 'false' => 'False'], null, ['class' => 'form-control']) !!}
+                                        {!! Form::label('has_sound_sensativity', 'Sound Sensativity', ['class' => 'form-label']) !!}
+                                        {!! Form::select('has_sound_sensativity',  [ '' => '', 'true' => 'Yes', 'false' => 'No'], null, ['class' => 'form-control']) !!}
                                     </div>
                                 </div>
                                 <div class="col-xs-6">
                                     <div class="form-group">
-                                        {!! Form::label('has_disrupted', 'Are you being disrupted?', ['class' => 'form-label']) !!}
-                                        {!! Form::select('has_disrupted',  [ '' => '', 'true' => 'Yes', 'false' => 'False'], null, ['class' => 'form-control']) !!}
+                                        {!! Form::label('has_disrupted', 'Disruptions', ['class' => 'form-label']) !!}
+                                        {!! Form::select('has_disrupted',  [ '' => '', 'true' => 'Yes', 'false' => 'No'], null, ['class' => 'form-control']) !!}
                                     </div>
                                 </div>
                                 <div class="col-xs-6">
                                     <div class="form-group">
-                                        {!! Form::label('missed_workschool', 'Did you miss work or school?', ['class' => 'form-label']) !!}
-                                        {!! Form::select('missed_workschool',  [ '' => '', 'true' => 'Yes', 'false' => 'False'], null, ['class' => 'form-control']) !!}
+                                        {!! Form::label('missed_workschool', 'Missed Work or School', ['class' => 'form-label']) !!}
+                                        {!! Form::select('missed_workschool',  [ '' => '', 'true' => 'Yes', 'false' => 'No'], null, ['class' => 'form-control']) !!}
                                     </div>
                                 </div>
                                 <div class="col-xs-6">
                                     <div class="form-group">
-                                        {!! Form::label('missed_routines', 'Have you missed other routines?', ['class' => 'form-label']) !!}
-                                        {!! Form::select('missed_routines',  [ '' => '', 'true' => 'Yes', 'false' => 'False'], null, ['class' => 'form-control']) !!}
+                                        {!! Form::label('missed_routines', 'Missed Other Activities', ['class' => 'form-label']) !!}
+                                        {!! Form::select('missed_routines',  [ '' => '', 'true' => 'Yes', 'false' => 'No'], null, ['class' => 'form-control']) !!}
                                     </div>
                                 </div>
                             </div>
@@ -228,16 +228,14 @@
 
                         <div class="col-md-6">
                             <div class="form-group">
-                                {!! Form::label('social_plans', 'Social Plans:', ['class' => 'form-label']) !!}
+                                {!! Form::label('social_plans', 'Missed Social Events', ['class' => 'form-label']) !!}
                                 {!! Form::text('social_plans', null, ['class' => 'form-control', 'disabled' => 'true']) !!}
                             </div>
                             <div class="form-group">
-                                {!! Form::label('activities', 'Activities:', ['class' => 'form-label']) !!}
+                                {!! Form::label('activities', 'Missed Other Events', ['class' => 'form-label']) !!}
                                 {!! Form::text('activities', null, ['class' => 'form-control', 'disabled' => 'true']) !!}
                             </div>
                         </div>
-
-
                     </div>
                     <div class="row">
                         <div class="col-md-6">
@@ -251,12 +249,7 @@
                 {!! Form::close() !!}
             </div>
         </div>
-
     </div>
-    </div>
-
-
-
 @stop
 
 
@@ -267,6 +260,10 @@
         });
         $('#medicine_list').select2({
             placeholder: "Select Medicines"
+        });
+        
+        $('#common_triggers_list').select2({
+            placeholder: "Select CommonTriggers"
         });
     </script>
 

@@ -16,10 +16,10 @@
         <div class="col-md-6">
         {!! Form::open(['action' =>'JournalController@store', 'method' => 'post'])  !!}
             <div class="form-group">
-                {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => trans('journal.name') ]) !!}
+                {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Entry Name' ]) !!}
             </div>
             <div class="form-group">
-                {!! Form::textarea('description', null, ['class' => 'form-control', 'placeholder' => trans('journal.description') ]) !!}
+                {!! Form::textarea('description', null, ['class' => 'form-control', 'placeholder' => 'Entry Description' ]) !!}
             </div>
             <div class="form-group">
                 <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
@@ -28,7 +28,7 @@
                 {!! Form::hidden('loc_lat', null, ['id' => 'geo_lat']) !!}
             </div>
             <div class="form-group">
-                {!! Form::label('severity', trans('journal.severity'), ['class' => 'form-label']) !!}
+                {!! Form::label('severity', 'Severity', ['class' => 'form-label']) !!}
                 {!! Form::select('severity',
                     [
                         '' => '', // No response response
@@ -46,11 +46,10 @@
                     null, ['class' => 'form-control']) !!}
             </div>
             <div class="form-group">
-                <!-- {!! Form::label('weather', 'Weather:', ['class' => 'form-label']) !!} -->
-                {!! Form::text('weather', null, ['class' => 'form-control', 'placeholder' => trans('journal.weather') ]) !!}
+                {!! Form::text('weather', null, ['class' => 'form-control', 'placeholder' => 'Weather' ]) !!}
             </div>
             <div class="form-group">
-                {!! Form::label('sound_level', trans('journal.sound_level'), ['class' => 'form-label']) !!}
+                {!! Form::label('sound_level', 'Sound Level', ['class' => 'form-label']) !!}
                 {!! Form::select('sound_level',
                     [
                         '' => '',
@@ -68,7 +67,7 @@
                     null, ['class' => 'form-control']) !!}
             </div>
             <div class="form-group">
-                {!! Form::label('light_level', trans('journal.light_level'), ['class' => 'form-label']) !!}
+                {!! Form::label('light_level', 'Light Level', ['class' => 'form-label']) !!}
                 {!! Form::select('light_level',
                     [
                         '' => '',
@@ -85,40 +84,44 @@
                     ],
                      null, ['class' => 'form-control']) !!}
             </div>
-
-            @if(!$triggers->isEmpty())
+            @unless($common_triggers->isEmpty())
             <div class="form-group">
-                {!! Form::label('triggers_id', trans('journal.triggers'), ['class' => 'form-label']) !!}
+                {!! Form::label('common_triggers_id', 'Common Triggers', ['class' => 'form-label']) !!}
+                {!! Form::select('common_triggers_id[]', $common_triggers, 'name', ['id' => 'common_triggers_list', 'class' => 'form-control', 'multiple']) !!}
+            </div>
+            @endunless
+            
+            @unless($triggers->isEmpty())
+            <div class="form-group">
+                {!! Form::label('triggers_id', 'Triggers', ['class' => 'form-label']) !!}
                 {!! Form::select('triggers_id[]', $triggers, 'name', ['id' => 'trigger_list', 'class' => 'form-control', 'multiple']) !!}
             </div>
-
-            @else
-
+            @endunless
+            
             <p>Do Trigger add here.</p>
             <!-- Link to action, add trigger....return here -->
             <!-- on return remember state of form -->
             <!-- alternatively, use jquery/ajax to add the new trigger on client side, refresh this place holder. -->
-            @endif
             
-            @if(!$medicines->isEmpty())
+            @unless($medicines->isEmpty())
             <div class="form-group">
-                {!! Form::label('medicines_id', trans('journal.medicines'), ['class' => 'form-label']) !!}
+                {!! Form::label('medicines_id', 'Medications', ['class' => 'form-label']) !!}
                 {!! Form::select('medicines_id[]', $medicines, 'name', ['id' => 'medicine_list', 'class' => 'form-control', 'multiple']) !!}
             </div>
-            @else
-                <p>Do Medicine add here</p>
-                <!-- See triggers note -->
-            @endif
+            @endunless
+            
+            <p>Do Medicine add here</p>
+            <!-- See triggers note -->
 
             <div class="form-group">
-                {!! Form::label('still_suffering', trans('journal.still_suffering'), ['class' => 'form-label']) !!}
+                {!! Form::label('still_suffering', 'Currently Suffering?', ['class' => 'form-label']) !!}
                 {!! Form::select('still_suffering', [ '' => '', 'true' => 'Yes', 'false' => 'No'], null, ['class' => 'form-control']) !!}
             </div>
             <div class="form-group">
-                {!! Form::text('start_time', null, ['class' => 'form-control', 'disabled' => 'true', 'placeholder' => trans('journal.start_time')]) !!}
+                {!! Form::text('start_time', null, ['class' => 'form-control', 'disabled' => 'true', 'placeholder' => 'Start Time']) !!}
             </div>
             <div class="form-group">
-                {!! Form::text('end_time', null , ['class' => 'form-control', 'disabled' => 'true', 'placeholder' => trans('journal.end_time')]) !!}
+                {!! Form::text('end_time', null , ['class' => 'form-control', 'disabled' => 'true', 'placeholder' => 'End Time']) !!}
             </div>
             <div class="form-group">
                 {!! Form::label('has_aura', 'Are you experiencing any auras?', ['class' => 'form-label']) !!}
@@ -179,6 +182,10 @@
         });
         $('#medicine_list').select2({
             placeholder: "Select Medicines"
+        });
+        
+        $('#common_triggers_list').select2({
+            placeholder: "Select CommonTriggers"
         });
     </script>
     
