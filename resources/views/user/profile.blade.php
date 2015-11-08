@@ -12,8 +12,7 @@
                         <h2>Personal Info &nbsp; {!! link_to_action('UserController@edit', 'Edit', $user->id, ['class' => 'btn btn-primary', 'role' => 'button']) !!}</h2>
                     </div>
                     <div class='panel-body'>
-                        <span class="glyphicon glyphicon-user text-center" aria-hidden="true" style="font-size: 180px"></span>
-                    </div>
+                        <span class="glyphicon glyphicon-user center-block text-center" aria-hidden="true" style="font-size: 180px"></span>
                         <div class="clearfix">
                             <strong>
                                 <p class="text-primary pull-left">Username:</p>
@@ -58,6 +57,7 @@
                             </strong>
                         </div>
                 </div>
+                </div>
             </div>
             <div class="col-md-9">
                 <div class='panel panel-info'>
@@ -71,7 +71,7 @@
                                     <h4>Medical History</h4>
                                 </div>
                                 <div class='panel-body'>
-                                    <table class="table table-hover">
+                                    <table class="table table-striped">
                                         <tbody>
                                             <tr>
                                                 <td>Have you been diagnosed with diabetes?</td>

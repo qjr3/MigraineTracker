@@ -1,40 +1,37 @@
-<div class='container'>
+<table class='table table-striped'>
     @unless($triggers->isEmpty())
-        <div class='row'>
-            <div class='col-sm-2'>Name</div>
-            <div class='col-sm-6'>Description</div>
-            <div class='col-sm-1'>Remove</div>
-        </div>
+        <tr class=''>
+            <th class=''>Name</th>
+            <th class=''>Description</th>
+            <th class=''>Remove</th>
+        </tr>
         @foreach($triggers as $i => $trigger)
-            <div class='row'>
-                <div class='col-sm-2'>{!! link_to_action('TriggerController@edit', $trigger->name ,$trigger) !!}</div>
-                <div class='col-sm-6'>{{$trigger->description}}</div>
-                <div class='col-sm-1'>   
+            <tr class=''>
+                <td class=''>{!! link_to_action('TriggerController@edit', $trigger->name ,$trigger) !!}</td>
+                <td class=''>{{$trigger->description}}</td>
+                <td class=''>   
                     {!! Form::open( ['route' => ['trigger.destroy', $trigger], 'method' => 'delete']) !!}
                         <button type="submit" class="btn btn-danger btn-mini">X</button>
                     {!! Form::close() !!}
-                </div>
-            </div>
+                </td>
+            </tr>
         @endforeach
     @endunless
-        <div class='row'>
-            <div class='col-sm-12 h6'>Add New Trigger</div>
-        </div>
+        <tr class=''>
+            <th class=''>Add New Trigger</th>
+        </tr>
 
-        <div class='row'>
+        <tr class=''>
             {!! Form::open() !!}
-            <div class='col-sm-3'>
+            <td class=''>
                 {!! Form::text('name', null, ['placeholder' => 'Trigger Name']) !!} 
-            </div>
-            <div class='col-sm-3'>
+            </td>
+            <td class=''>
                 {!! Form::text('name', null, ['placeholder' => 'Trigger Description']) !!} 
-            </div>
-            <div class='col-sm-3'>
+            </td>
+            <td class=''>
                 {!! Form::submit('ADD') !!} 
-            </div>
-            <div class='col-sm-3'>
-                
-            </div>
+            </td>
             {!! Form::close() !!}
-        </div> 
-</div>
+        </tr> 
+</table>

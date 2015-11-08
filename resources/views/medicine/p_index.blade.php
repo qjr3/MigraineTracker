@@ -1,41 +1,38 @@
-<div class='container'>
+<table class='table table-striped'>
     @unless($medicines->isEmpty())
-        <div class='row'>
-            <div class='col-sm-2'>Name</div>
-            <div class='col-sm-6'>Description</div>
-            <div class='col-sm-1'>Remove</div>
-        </div>
+        <tr class=''>
+            <th class=''>Name</th>
+            <th class=''>Description</th>
+            <th class=''>Remove</th>
+        </tr>
         @foreach($medicines as $i => $medicine)
-            <div class='row'>
-                <div class='col-sm-2'>{!! link_to_action('MedicineController@edit', $medicine->name ,$medicine) !!}</div>
-                <div class='col-sm-6'>{{$medicine->description}}</div>
-                <div class='col-sm-1'>   
+            <tr class=''>
+                <td class=''>{!! link_to_action('MedicineController@edit', $medicine->name ,$medicine) !!}</td>
+                <td class=''>{{$medicine->description}}</td>
+                <td class=''>   
                     {!! Form::open( ['route' => ['medicine.destroy', $medicine], 'method' => 'delete']) !!}
                         <button type="submit" class="btn btn-danger btn-mini">X</button>
                     {!! Form::close() !!}
-                </div>
-            </div>
+                </td>
+            </tr>
         @endforeach
     @endunless
-        <div class='row'>
-            <div class='col-sm-12 h6'>Add New Trigger</div>
-        </div>
+        <tr class=''>
+            <th class=''>Add New Trigger</th>
+        </tr>
 
-        <div class='row'>
+        <tr class=''>
             {!! Form::open() !!}
-            <div class='col-sm-3'>
+            <td class=''>
                 {!! Form::text('name', null, ['placeholder' => 'Medication Name']) !!} 
-            </div>
-            <div class='col-sm-3'>
+            </td>
+            <td class=''>
                 {!! Form::text('description', null, ['placeholder' => 'Medication Description']) !!} 
-            </div>
-            <div class='col-sm-3'>
-                {!! Form::text('dose', null, ['placeholder' => 'Dosage']) !!}
-            </div>
-            <div class='col-sm-3'>
+            </td>
+            <td class=''>
                 {!! Form::submit('ADD') !!} 
-            </div>
+            </td>
             {!! Form::close() !!}
-        </div>
-</div>
+        </tr>
+</table>
 
