@@ -48,7 +48,7 @@ class JournalController extends Controller
     {
         $triggers = Auth::user()->triggers()->lists('name', 'id');
         $medicines = Auth::user()->medicines()->lists('name', 'id');
-        $common_triggers = CommonTriggers::all()-lists('name', 'id');
+        $common_triggers = CommonTriggers::all()->lists('name', 'id');
         
         return view('journal.create', compact('triggers', 'common_triggers', 'medicines'));
     }
