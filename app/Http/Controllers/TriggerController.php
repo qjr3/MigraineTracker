@@ -84,4 +84,24 @@ class TriggerController extends Controller
         $triggers = Trigger::all();
         return redirect()->back();
     }
+    
+    // Accept AJAX route, receive ajax data from form
+    public function addTrigger()
+    {
+        if(Request::ajax())
+        {
+            $trigger = new Trigger();
+            $trigger->name = Request::input('name');
+            $trigger->description = Request::input('description');
+            $trigger->save();
+            
+            $response = 
+            [
+                'status' => 'success',
+                'msg' => 'Trigger addeed',
+            ];
+            
+            return Response::json($response);
+        }       
+    }
 }

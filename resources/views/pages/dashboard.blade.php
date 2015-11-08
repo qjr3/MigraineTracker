@@ -17,8 +17,5 @@ Home
     </div>
 
     @include('partials.journal')
-    
-    <div class="flex-container flex-hcenter">
-        {!! link_to_action('JournalController@create', 'Add Journal', array(), ['class' => 'btn-info btn-flex flex-basis-1 flex-hcenter flex-basis-1']) !!}
-    </div>
+
 @stop

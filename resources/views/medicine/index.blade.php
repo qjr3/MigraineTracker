@@ -1,5 +1,5 @@
 <div class='container'>
-    @if(!$medicines->isEmpty())
+    @unless($medicines->isEmpty())
         <div class='row'>
             <div class='col-sm-1'>#</div>
             <div class='col-sm-2'>Name</div>
@@ -8,7 +8,7 @@
         </div>
         @foreach($medicines as $i => $medicine)
             <div class='row'>
-                <div class='col-sm-1'>{{ $i }}</div> <!-- Adding 1 is missleading and wrong, the index starts at 0 so let it -->
+                <div class='col-sm-1'>{{ $i }}</div>
                 <div class='col-sm-2'>{!! link_to_action('MedicineController@edit', $medicine->name ,$medicine) !!}</div>
                 <div class='col-sm-6'>{{$medicine->description}}</div>
                 <div class='col-sm-1'>   
@@ -18,10 +18,26 @@
                 </div>
             </div>
         @endforeach
-    @else
+    @endunless
         <div class='row'>
-            <div class='col-sm-12'>Please Add Medication</div>
+            <div class='col-sm-12 h6'>Add New Trigger</div>
         </div>
-    @endif
+
+        <div class='row'>
+            {!! Form::open() !!}
+            <div class='col-sm-3'>
+                {!! Form::text('name', null, ['placeholder' => 'Medication Name']) !!} 
+            </div>
+            <div class='col-sm-3'>
+                {!! Form::text('description', null, ['placeholder' => 'Medication Description']) !!} 
+            </div>
+            <div class='col-sm-3'>
+                {!! Form::text('dose', null, ['placeholder' => 'Dosage']) !!}
+            </div>
+            <div class='col-sm-3'>
+                {!! Form::submit('ADD') !!} 
+            </div>
+            {!! Form::close() !!}
+        </div>
 </div>
 
