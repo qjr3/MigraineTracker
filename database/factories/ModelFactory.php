@@ -12,13 +12,81 @@
 */
 
 $factory->define(App\User::class, function (Faker\Generator $faker) {
-    $gender = $faker->randomElement([
+        $gender = $faker->randomElement([
         'Androgynous', 'Agender', 'Bigender', 'Cisgender Female', 'Cisgender Male',
         'FTM', 'Gender Fluid', 'Gender Nonconforming', 'Gender Variant', 'Genderqueer', 
         'Intersex', 'MTF', 'Neither', 'Neutrois', 'Non-binary', 'Other', 'Pangender', 
         'Transgender', 'Transexual person', 'Transmasculine', 'Transfeminine', 'Two-Spirit'
     ]);
-
+//    $number =$faker->numberBetween(1,22);
+//    switch($number){
+//        case 1:
+//            $gender = 'Androgynous';
+//            break;
+//        case 2:
+//            $gender = 'Agender';
+//            break;
+//        case 3:
+//            $gender = 'Bigender';
+//            break;
+//        case 4:
+//            $gender = 'Cisgender Female';
+//            break;
+//        case 5:
+//            $gender = 'Cisgender Male';
+//            break;
+//        case 6:
+//            $gender = 'FTM';
+//            break;
+//        case 7:
+//            $gender = 'Gender Fluid';
+//            break;
+//        case 8:
+//            $gender = 'Gender Nonconforming';
+//            break;
+//        case 9:
+//            $gender = 'Gender Variant';
+//            break;
+//        case 10:
+//            $gender = 'Genderqueer';
+//            break;
+//        case 11:
+//            $gender = 'Intersex';
+//            break;
+//        case 12:
+//            $gender = 'MTF';
+//            break;
+//        case 13:
+//            $gender = 'Neither';
+//            break;
+//        case 14:
+//            $gender = 'Neutrois';
+//            break;
+//        case 15:
+//            $gender = 'Non-Binary';
+//            break;
+//        case 16:
+//            $gender = 'Other';
+//            break;
+//        case 17:
+//            $gender = 'Pangender';
+//            break;
+//        case 18:
+//            $gender = 'Transgender';
+//            break;
+//        case 19:
+//            $gender = 'Transsexual Person';
+//            break;
+//        case 20:
+//            $gender = 'Transmasculine';
+//            break;
+//        case 21:
+//            $gender = 'Transfeminine';
+//            break;
+//        case 22:
+//            $gender = 'Two-Spirit';
+//            break;
+//    }
     return [
         'name' => $faker->userName,
         'email' => $faker->email,
@@ -41,7 +109,7 @@ $factory->define(App\Journal::class, function (Faker\Generator $faker) {
         'severity' => $faker->numberBetween(0,10),
         'loc_long' => $faker->longitude,
         'loc_lat' => $faker->latitude,
-        'weather_temp' => $faker->numberBetween(-15,110),
+        'weather_temperature' => $faker->numberBetween(-15,110),
         'weather_pressure' => $faker->numberBetween(800,1100),
         'sound_level' => $faker->numberBetween(0,10),
         'light_level' => $faker->numberBetween(0,10),
@@ -57,7 +125,7 @@ $factory->define(App\Journal::class, function (Faker\Generator $faker) {
         'missed_workschool' => $faker->boolean(),
         'missed_routines' => $faker->boolean(),
         'missed_social' => $faker->boolean(),
-        'missed_personal_activities' => $faker->boolean()
+        'missed_personal_activity' => $faker->boolean()
     ];
     
     if($data['has_aura'])
@@ -68,6 +136,7 @@ $factory->define(App\Journal::class, function (Faker\Generator $faker) {
 $factory->define(App\Medicine::class, function (Faker\Generator $faker) {
     return [
         'name' => $faker->word,
+//        'dose' => $faker->numberBetween(0,10).'mg',
         // This is why dose can't just be a number ;) You need unit-qty, unit-type, volume-qty, volume-type
         'dose' => $faker->numberBetween(1,4) . ' ' . $faker->randomElement(['teaspoons', 'tablespoons', 'pills', 'sprays', 'patches', 'pads', 'mL', 'mcL', 'L', 'CC']) . ' : ' . $faker->randomFloat(2,1,100) . $faker->randomElement(['mcg', 'mg', 'g']) . ' per ' . $faker->numberBetween(1,5) . $faker->randomElement(['mcL', 'mL', 'L', 'CC']),
         'description' => $faker->paragraph(3),
@@ -80,7 +149,7 @@ $factory->define(App\Trigger::class, function (Faker\Generator $faker) {
     ];
 });
 
-$factory->define(App\Notes::class, function (Faker\Generator $faker){
+$factory->define(App\Note::class, function (Faker\Generator $faker){
    return [
         'name' => $faker->word,
         'body' => $faker->paragraph(10),

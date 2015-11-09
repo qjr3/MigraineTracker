@@ -12,14 +12,14 @@ class CreateNotesJournalPivotTable extends Migration
      */
     public function up()
     {
-        Schema::create('journal_notes', function (Blueprint $table) {
+        Schema::create('journal_note', function (Blueprint $table) {
             $table->integer('journal_id')->unsigned()->index();
-            $table->integer('notes_id')->unsigned()->index();
+            $table->integer('note_id')->unsigned()->index();
             
-            $table->primary(['journal_id', 'notes_id']);
+            $table->primary(['journal_id', 'note_id']);
         
             // Foreign Keys
-            $table->foreign('notes_id')->references('id')->on('notes');
+            $table->foreign('note_id')->references('id')->on('notes');
             $table->foreign('journal_id')->references('id')->on('journals');
         });
     }
@@ -31,6 +31,6 @@ class CreateNotesJournalPivotTable extends Migration
      */
     public function down()
     {
-        Scheme::drop('journal_notes');
+        Scheme::drop('journal_note');
     }
 }
