@@ -75,7 +75,7 @@ class User extends Model implements AuthenticatableContract,
 
     public function notes()
     {
-        return $this->hasMany('App\Notes');
+        return $this->hasMany('App\Note');
     }
 
     public function hasAccessTo($id)

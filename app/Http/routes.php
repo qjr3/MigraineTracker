@@ -26,10 +26,17 @@ Route::group(['middleware' => 'auth'], function(){
 
     // User Routes
     Route::resource('user', 'UserController');
+    
+    // Note Routes
+    Route::resource('note', 'NoteController');
 
     Route::get('report/generate', 'ReportController@create');
     Route::get('report/{id}', 'ReportController@show');
     Route::get('report', 'ReportController@index');
+
+    // AJAX Routes
+    Route::post('trigger/a', 'TriggerController@addTrigger');
+    Route::post('medicines/a', 'MedicineController@addMedication');
 });
 
 // Authentication Routes
@@ -44,8 +51,3 @@ Route::get('home', 'PagesController@dashboard');
 Route::get('privacy', 'PagesController@privacy');
 Route::get('terms', 'PagesController@terms');
 Route::get('about', 'PagesController@about');
-
-// AJAX Routes
-
-Route::post('trigger/a', 'TriggerController@addTrigger');
-Route::post('medicines/a', 'MedicineController@addMedication');

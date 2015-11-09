@@ -50,6 +50,11 @@ class TriggerController extends Controller
         return view('trigger.show', compact('trigger'));
     }
 
+    public function create()
+    {
+        return view('trigger.create');
+    }
+    
     /**
      * Edit an existing Trigger
      * 

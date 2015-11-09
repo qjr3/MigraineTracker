@@ -59,6 +59,11 @@ class MedicineController extends Controller
         return view('medicine.show', compact('medicine'));
     }
 
+    public function create()
+    {
+        return view('medicine.create');
+    }
+    
     /**
      * Update the specified resource in storage.
      *

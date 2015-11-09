@@ -1,5 +1,5 @@
 <div class="navbar navbar-default col-sm-12">
-    <div class="container-fluid">
+    <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
@@ -11,7 +11,6 @@
             </button>
             {!! link_to_action('PagesController@dashboard', 'Migraine Tracker', array(), ['class' => 'navbar-brand']) !!}
         </div>
-
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
@@ -20,6 +19,7 @@
                 <li {{ Request::is('journal') ? 'class=active' : null }}>{!! link_to_action('JournalController@index', 'Journal') !!}</li>
                 <li {{ Request::is('trigger') ? 'class=active' : null }}>{!! link_to_action('TriggerController@index', 'Triggers') !!}</li>
                 <li {{ Request::is('medicine') ? 'class=active' : null }}>{!! link_to_action('MedicineController@index', 'Medication') !!}</li>
+                <li {{ Request::is('notes') ? 'class=active' : null }}>{!! link_to_action('NoteController@index', 'Notes') !!}</li>
             </ul>
             
             <ul class="nav navbar-nav navbar-right">

@@ -60,7 +60,7 @@ class Journal extends Model
     
     public function notes()
     {
-        return $this->belongsToMany('App\Notes');
+        return $this->belongsToMany('App\Note');
     }
 
     public function pain_locations()
