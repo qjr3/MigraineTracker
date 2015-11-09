@@ -12,7 +12,7 @@ class CreateCommonTriggersXJournalTable extends Migration
      */
     public function up()
     {
-        Schema::create('common_journal_triggers', function (Blueprint $table) {
+        Schema::create('common_triggers_journal', function (Blueprint $table) {
             $table->integer('journal_id')->unsigned()->index();
             $table->integer('common_triggers_id')->unsigned()->index();
             
