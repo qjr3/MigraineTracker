@@ -7,7 +7,7 @@
             <span>Medication</span>
         </div>
     </div>
-    <div class='body'>
+    <div class='panel-body'>
         @include('medicine.p_index')
     </div>
 </div>

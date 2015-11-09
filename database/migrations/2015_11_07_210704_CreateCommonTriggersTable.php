@@ -18,9 +18,7 @@ class CreateCommonTriggersTable extends Migration
             $table->string('description');
         });
         
-        $table = DB::table('common_triggers');
-    
-        $table->insert([
+        $table = DB::table('common_triggers')->insert([
             ['name' => 'Sleep Problems', 'description' => 'Not enough sleep, incomplete sleep or frequent wakings.'],
             ['name' => 'Eating Schedule', 'description' => 'Not eating on a regular and/or normal schedulte.'],
             ['name' => 'Flashing Lights', 'description' => 'Seen bright flashing lights.'],

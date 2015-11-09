@@ -13,7 +13,8 @@ class CreateAvailLocales extends Migration
     public function up()
     {
         Schema::create('locales', function (Blueprint $table) {
-            $table->text('name',5)->unique()->primary()->index();       
+            $table->increments('id');
+            $table->text('name',5)->unique()->index();       
         });
         
         DB::table('locales')->insert(['name' => 'en-US']);
