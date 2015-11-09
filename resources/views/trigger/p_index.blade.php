@@ -1,4 +1,21 @@
 <table class='table table-striped'>
+        <tr class=''>
+            <th class='' colspan='3'>Add New Trigger</th>
+        </tr>
+
+        <tr class=''>
+            {!! Form::open() !!}
+            <td class=''>
+                {!! Form::text('name', null, ['placeholder' => 'Trigger Name']) !!} 
+            </td>
+            <td class=''>
+                {!! Form::text('name', null, ['placeholder' => 'Trigger Description']) !!} 
+            </td>
+            <td class=''>
+                {!! Form::submit('ADD') !!} 
+            </td>
+            {!! Form::close() !!}
+        </tr> 
     @unless($triggers->isEmpty())
         <tr class=''>
             <th class=''>Name</th>
@@ -17,21 +34,4 @@
             </tr>
         @endforeach
     @endunless
-        <tr class=''>
-            <th class=''>Add New Trigger</th>
-        </tr>
-
-        <tr class=''>
-            {!! Form::open() !!}
-            <td class=''>
-                {!! Form::text('name', null, ['placeholder' => 'Trigger Name']) !!} 
-            </td>
-            <td class=''>
-                {!! Form::text('name', null, ['placeholder' => 'Trigger Description']) !!} 
-            </td>
-            <td class=''>
-                {!! Form::submit('ADD') !!} 
-            </td>
-            {!! Form::close() !!}
-        </tr> 
 </table>
