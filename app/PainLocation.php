@@ -4,16 +4,15 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class CommonTriggers extends Model
+class PainLocations extends Model
 {
-    protected $table = 'common_triggers';
+    protected $table = 'pain_locations';
 
     protected $fillable = [];
     
     protected $guarded = [];
     
     protected $hidden = [];
-    
     
     public function journals()
     {

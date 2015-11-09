@@ -12,7 +12,6 @@ class Journal extends Model
     [
         'location',
         'severity',
-        'weather',
         'sound_level',
         'light_level',
         'name',
@@ -20,6 +19,8 @@ class Journal extends Model
         'still_suffering',
         'start_time',
         'end_time',
+        'weather_pressure',
+        'weather_temperature',
         'has_aura',
         'aura_description',
         'has_nausea',
@@ -29,14 +30,14 @@ class Journal extends Model
         'has_disrupted',
         'missed_workschool',
         'missed_routines',
-        'social_plans',
-        'activities',
+        'missed_social',
+        'missed_personal_activity',
     ];
 
     protected $guarded = [];
     
     protected $hidden = [];
-
+    
     public function user()
     {
         return $this->belongsTo('App\User');
@@ -55,5 +56,15 @@ class Journal extends Model
     public function common_triggers()
     {
         return $this->belongsToMany('App\CommonTriggers');
+    }
+    
+    public function notes()
+    {
+        return $this->belongsToMany('App\Notes');
+    }
+
+    public function pain_locations()
+    {
+        return $this->belongsToMany('App\PainLocations');
     }
 }

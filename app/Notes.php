@@ -4,20 +4,16 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Trigger extends Model
+class Notes extends Model
 {
-    protected $table = 'triggers';
+    protected $table = 'notes';
     
-    protected $fillable = 
-    [
-        'name', 
-        'description'
-    ];
+    protected $fillable = [];
     
     protected $hidden = [];
     
     protected $guarded = [];
-    
+
     public function journals()
     {
         return $this->belongsToMany('App\Journal');
