@@ -38,7 +38,7 @@ class JournalController extends Controller
         $journal->medicines()->attach($request->input('medicines_id'));
         $journal->common_triggers()->attach($request->input('common_triggers_id'));
         $journal->pain_locations()->attach($request->input('pain_locations_id'));
-        $journal->notes()->attach($request->input('note_id'));
+//        $journal->notes()->attach($request->input('note_id'));
 
         // If a note was created on journal, store and link it.....
         // ?? how to do this when I am tired? is not to do it....
@@ -58,7 +58,7 @@ class JournalController extends Controller
         $common_triggers = CommonTriggers::all()->lists('name', 'id');
         $pain_locations = PainLocations::all()->lists('name', 'id');
         
-        return view('journal.create', compact('triggers', 'common_triggers', 'medicines', 'pain_locations'));
+        return view('journal.create', compact('triggers', 'common_triggers', 'medicines'));
     }
     
     public function edit(Journal $journal)
@@ -70,7 +70,7 @@ class JournalController extends Controller
         $common_triggers = CommonTriggers::all()->lists('name', 'id');
         $pain_locations = PainLocations::all()->lists('name', 'id');
         
-        return view('journal.edit', compact('journal', 'common_triggers', 'triggers', 'medicines', 'pain_locations'));
+        return view('journal.edit', compact('journal', 'common_triggers', 'triggers', 'medicines'));
     }
     
     public function update(Journal $journal, JournalRequest $request)
@@ -87,15 +87,15 @@ class JournalController extends Controller
         if(!isset($request['pain_locations_id']))
             $request['pain_locations_id'] = []; 
 
-        if(!isset($request[notes_id]))
-            $request['notes_id'] = [];
+//        if(!isset($request[notes_id]))
+//            $request['notes_id'] = [];
         
         
         $journal->triggers()->sync($request['triggers_id']);
         $journal->medicines()->sync($request['medicines_id']);
-        $journal->common_triggers()->sync($request['common_trigger_id']);
+        $journal->common_triggers()->sync($request['common_triggers_id']);
         $journal->pain_locations()->sync($request['pain_locations_id']);
-        $journal->notes()->sync($request['notes_id']);
+//        $journal->notes()->sync($request['notes_id']);
         
         $journal->update($request->all());
         

@@ -12,6 +12,12 @@
 
 
 @section('content')
+<div class='panel panel-info'>
+    <div class='panel-heading'>
+        <div class='panel-title'>Add New Journal</div>
+        
+    </div>
+    <div class='panel-body'>
     <div class="row">
         <div class="col-md-6">
         {!! Form::open(['action' =>'JournalController@store', 'method' => 'post'])  !!}
@@ -22,10 +28,8 @@
                 {!! Form::textarea('description', null, ['class' => 'form-control', 'placeholder' => 'Entry Description' ]) !!}
             </div>
             <div class="form-group">
-                <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
-                <article><span id="status"></span></article>
-                {!! Form::hidden('loc_long', null, ['id' => 'geo_long']) !!}
-                {!! Form::hidden('loc_lat', null, ['id' => 'geo_lat']) !!}
+                {!! Form::hidden('loc_long', '', ['id' => 'geo_long']) !!}
+                {!! Form::hidden('loc_lat', '', ['id' => 'geo_lat']) !!}
             </div>
             <div class="form-group">
                 {!! Form::label('severity', 'Severity', ['class' => 'form-label']) !!}
@@ -167,11 +171,13 @@
                 {!! Form::text('activities', null, ['class' => 'form-control', 'disabled' => 'true', 'placeholder' => 'WiP']) !!}
             </div> -->
             <div class='form-group'>
-                {!! Form::submit('Submit') !!}
+                {!! Form::submit('Submit', ['class' => 'btn btn-primary']) !!}
             </div>
             {!! Form::close() !!}
         </div>
     </div>
+    </div>
+</div>
 @stop
 
 
@@ -189,44 +195,4 @@
         });
     </script>
     
-<script>
- //   Courtesy of http://html5demos.com/geo
- // Yeah, I could rewrite this with jQuery....but why bother....it's functional the way it is
-function success(position){
-    var s = document.querySelector('#status');
-    $('#geo_long').val(position.coords.longitude);
-    $('#geo_lat').val(position.coords.latitude);
-    if (s.className == 'success') { return;}
-    s.className = 'success';
-    var mapcanvas = document.createElement('div');
-    mapcanvas.id = 'mapcanvas';
-    mapcanvas.style.height = '400px';
-    mapcanvas.style.width = '560px';
-    document.querySelector('article').appendChild(mapcanvas);
-
-    var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-    var myOptions = {
-        zoom: 15,
-        center: latlng,
-        mapTypeControl: false,
-        navigationControlOptions: {style: google.maps.NavigationControlStyle.SMALL},
-        mapTypeId: google.maps.MapTypeId.ROADMAP
-    };
-
-    var map = new google.maps.Map(document.getElementById("mapcanvas"), myOptions);
-    var marker = new google.maps.Marker({
-        position: latlng, 
-        map: map, 
-        title:"You are here! (at least within a "+position.coords.accuracy+" meter radius)"
-    });
-}
-
-function error(msg) {
-    var s = document.querySelector('#status');
-    s.innerHTML = typeof msg == 'string' ? msg : "failed";
-    s.className = 'fail';
-}
-if (navigator.geolocation) { navigator.geolocation.getCurrentPosition(success, error);} else { error('not supported'); }
-
-</script>
 @stop

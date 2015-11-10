@@ -74,14 +74,7 @@
             </tbody>
         </table>
     </div>
-    <div class='panel-footer'>
-        <h4>Location</h4>
-        <div class="text-center">
-            <iframe width="" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"
-                    style="width: 100%;"
-                    src="https://maps.google.com/maps?q=<?php echo $journal->loc_lat . ', ' . $journal->loc_long; ?>&hl=es;z=16&amp;output=embed"></iframe>
-        </div>
-    </div>
+
 </div
 @stop
 

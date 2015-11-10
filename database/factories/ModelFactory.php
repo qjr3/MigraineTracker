@@ -12,81 +12,13 @@
 */
 
 $factory->define(App\User::class, function (Faker\Generator $faker) {
-        $gender = $faker->randomElement([
+    $gender = $faker->randomElement([
         'Androgynous', 'Agender', 'Bigender', 'Cisgender Female', 'Cisgender Male',
         'FTM', 'Gender Fluid', 'Gender Nonconforming', 'Gender Variant', 'Genderqueer', 
         'Intersex', 'MTF', 'Neither', 'Neutrois', 'Non-binary', 'Other', 'Pangender', 
         'Transgender', 'Transexual person', 'Transmasculine', 'Transfeminine', 'Two-Spirit'
     ]);
-//    $number =$faker->numberBetween(1,22);
-//    switch($number){
-//        case 1:
-//            $gender = 'Androgynous';
-//            break;
-//        case 2:
-//            $gender = 'Agender';
-//            break;
-//        case 3:
-//            $gender = 'Bigender';
-//            break;
-//        case 4:
-//            $gender = 'Cisgender Female';
-//            break;
-//        case 5:
-//            $gender = 'Cisgender Male';
-//            break;
-//        case 6:
-//            $gender = 'FTM';
-//            break;
-//        case 7:
-//            $gender = 'Gender Fluid';
-//            break;
-//        case 8:
-//            $gender = 'Gender Nonconforming';
-//            break;
-//        case 9:
-//            $gender = 'Gender Variant';
-//            break;
-//        case 10:
-//            $gender = 'Genderqueer';
-//            break;
-//        case 11:
-//            $gender = 'Intersex';
-//            break;
-//        case 12:
-//            $gender = 'MTF';
-//            break;
-//        case 13:
-//            $gender = 'Neither';
-//            break;
-//        case 14:
-//            $gender = 'Neutrois';
-//            break;
-//        case 15:
-//            $gender = 'Non-Binary';
-//            break;
-//        case 16:
-//            $gender = 'Other';
-//            break;
-//        case 17:
-//            $gender = 'Pangender';
-//            break;
-//        case 18:
-//            $gender = 'Transgender';
-//            break;
-//        case 19:
-//            $gender = 'Transsexual Person';
-//            break;
-//        case 20:
-//            $gender = 'Transmasculine';
-//            break;
-//        case 21:
-//            $gender = 'Transfeminine';
-//            break;
-//        case 22:
-//            $gender = 'Two-Spirit';
-//            break;
-//    }
+
     return [
         'name' => $faker->userName,
         'email' => $faker->email,

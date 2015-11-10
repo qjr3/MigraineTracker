@@ -12,14 +12,14 @@ class CreatePivotPainLocationJournalTable extends Migration
      */
     public function up()
     {
-        Schema::create('pain_location_journal', function (Blueprint $table) {
+        Schema::create('journal_pain_locations', function (Blueprint $table) {
             $table->integer('journal_id')->unsigned()->index();
-            $table->integer('pain_location_id')->unsigned()->index();
+            $table->integer('pain_locations_id')->unsigned()->index();
             
-            $table->primary(['journal_id', 'pain_location_id']);
+            $table->primary(['journal_id', 'pain_locations_id']);
         
             // Foreign Keys
-            $table->foreign('pain_location_id')->references('id')->on('pain_locations');
+            $table->foreign('pain_locations_id')->references('id')->on('pain_locations');
             $table->foreign('journal_id')->references('id')->on('journals');
         });
     }

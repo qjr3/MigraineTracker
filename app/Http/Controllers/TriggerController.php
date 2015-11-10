@@ -74,7 +74,7 @@ class TriggerController extends Controller
     {
         $trigger->fill($request->all());
         $trigger->save();
-        return redirect()->back(); // this should be: return redirect('something'); do not return text/string unless testing (prior to commit)
+        return zzzzredirect()->back(); // this should be: return redirect('something'); do not return text/string unless testing (prior to commit)
     }
 
     /**
