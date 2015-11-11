@@ -8,6 +8,7 @@
     @unless($triggers->isEmpty())
         @foreach($triggers as $trigger)
             <tr class=''>
+                
                 <td class=''>{!! link_to_action('TriggerController@edit', $trigger->name ,$trigger->id) !!}</td>
                 <td class=''>{{$trigger->description}}</td>
                 <td class=''>

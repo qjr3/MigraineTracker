@@ -6,6 +6,8 @@ use App\Http\Requests\TriggerRequest;
 use App\Trigger;
 use App\Journal;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Request;
 
 class TriggerController extends Controller
 {
@@ -30,12 +32,16 @@ class TriggerController extends Controller
             $journal = Journal::findOrFail($jID);
             $journal->triggers()->attach($trigger);
         }
-        return redirect('/trigger');
+        
+        if(Session::has('backTo')) Session::keep('backTo'); // pass it forward
+        
+        return ($returnPath = Session::get('backTo')) ? redirect($returnPath) : redirect('/trigger');
     }
 
     public function index()
     {
         $triggers = Auth::user()->triggers;
+        Session::flash('backTo', Request::fullUrl());
         return view('trigger.index', compact('triggers'));
     }
 
@@ -52,6 +58,8 @@ class TriggerController extends Controller
 
     public function create()
     {
+        if(Session::has('backTo')) Session::keep('backTo'); // pass it forward
+        
         return view('trigger.create');
     }
     
@@ -88,25 +96,5 @@ class TriggerController extends Controller
         $trigger->delete();
         $triggers = Trigger::all();
         return redirect('/trigger');
-    }
-    
-    // Accept AJAX route, receive ajax data from form
-    public function addTrigger()
-    {
-        if(Request::ajax())
-        {
-            $trigger = new Trigger();
-            $trigger->name = Request::input('name');
-            $trigger->description = Request::input('description');
-            $trigger->save();
-            
-            $response = 
-            [
-                'status' => 'success',
-                'msg' => 'Trigger addeed',
-            ];
-            
-            return Response::json($response);
-        }       
     }
 }

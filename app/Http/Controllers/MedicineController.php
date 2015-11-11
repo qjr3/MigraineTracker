@@ -6,6 +6,8 @@ use App\Http\Requests\MedicineRequest;
 use App\Medicine;
 use App\Journal;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Request;
+use Illuminate\Support\Facades\Session;
 
 class MedicineController extends Controller
 {
@@ -30,12 +32,16 @@ class MedicineController extends Controller
             $journal = Journal::findOrFail($jID);
             $journal->medicines()->attach($medicine);
         }
-        return redirect('/medicine');;
+        
+        if(Session::has('backTo')) Session::keep('backTo'); // pass it forward
+        
+        return ($returnPath = Session::get('backTo')) ? redirect($returnPath) : redirect('/medicine');
     }
 
     public function index()
     {
         $medicines = Auth::user()->medicines;
+        Session::flash('backTo', Request::fullUrl()); // Help find our way back
         return view('medicine.index', compact('medicines'));
     }
     
@@ -61,6 +67,7 @@ class MedicineController extends Controller
 
     public function create()
     {
+        if(Session::has('backTo')) Session::keep('backTo'); // pass it forward
         return view('medicine.create');
     }
     

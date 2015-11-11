@@ -34,9 +34,9 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('report/{id}', 'ReportController@show');
     Route::get('report', 'ReportController@index');
 
-    // AJAX Routes
-    Route::post('trigger/a', 'TriggerController@addTrigger');
-    Route::post('medicines/a', 'MedicineController@addMedication');
+//    // AJAX Routes
+//    Route::post('trigger/a', 'TriggerController@addTrigger');
+//    Route::post('medicines/a', 'MedicineController@addMedication');
 });
 
 // API Routes
