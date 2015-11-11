@@ -9,12 +9,13 @@
             <div class="col-md-3">
                 <div class='panel panel-info'>
                     <div class='panel-heading'>
-                        <h2>Personal Info
-                            &nbsp; {!! link_to_action('UserController@edit', 'Edit', $user->id, ['class' => 'btn btn-primary', 'role' => 'button']) !!}</h2>
+                        <h2>Personal Info</h2>
+                            <span>{!! link_to_action('UserController@edit', 'Edit', $user->id, ['class' => 'btn btn-primary', 'role' => 'button']) !!}</span>
                     </div>
                     <div class='panel-body'>
                         <span class="glyphicon glyphicon-user center-block text-center" aria-hidden="true"
                               style="font-size: 180px"></span>
+                        <br>
 
                         <div class="clearfix">
                             <strong>
@@ -111,6 +112,17 @@
                                     </table>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h2>Advanced Info</h2>
+                    </div>
+                    <div class="panel-body">
+                        <div class="panel-group">
                             <div class="panel panel-info">
                                 <div class="panel-heading ">
                                     <h4>Triggers</h4>
@@ -134,7 +146,6 @@
                                         @endforeach
                                         </tbody>
                                     </table>
-
 
 
                                 </div>
@@ -164,8 +175,6 @@
                                         @endforeach
                                         </tbody>
                                     </table>
-
-
 
 
                                 </div>

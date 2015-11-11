@@ -25,7 +25,7 @@ class UserController extends Controller
     public function update(User $user, Request $request)
     {
         $user->update($request->all());
-        return view('user.profile', compact('user'));
+        return redirect()->action('UserController@show', $user->id);
     }
 
     public function show(User $user)
