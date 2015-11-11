@@ -282,6 +282,11 @@
                                     </div>
                                 </div>
                             </div>
+                            <br>
+                            {!! Form::open(array('action' => array('UserController@destroy', $user->id), 'method' => 'DELETE')) !!}
+
+                            {!! Form::submit('Delete Account', array('class' => 'btn btn-danger btn-lg btn-block')) !!}
+                            {!! Form::close() !!}
                         </div>
                     </div>
                 </div>
