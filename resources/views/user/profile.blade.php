@@ -106,7 +106,6 @@
                                     <h4>Triggers</h4>
                                 </div>
                                 <div class="panel-body ">
-                                    <?php $triggers = $user->triggers; ?>
                                     @include('trigger.p_index')
                                 </div>
                             </div>
@@ -115,9 +114,7 @@
                                     <h4>Medications</h4>
                                 </div>
                                 <div class="panel-body">
-                                    <?php $medicines = $user->medicines; ?>
                                     @include('medicine.p_index')
-                                </div>
                             </div>
                         </div>
                     </div>

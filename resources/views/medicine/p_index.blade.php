@@ -1,38 +1,20 @@
-<table class='table table-striped'>
-        <tr class='th'>
-            <th class='' colspan='3'>Add New Medication</th>
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>Trigger Name</th>
+        <th>Description</th>
+        <th>Dosage</th>
+        <th># of Occurrences</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach($user->medicines as $medicine)
+        <tr>
+            <td>Medication Name</td>
+            <td>Description</td>
+            <td>Dosage</td>
+            <td># of Occurrences</td>
         </tr>
-
-        <tr class=''>
-            {!! Form::open() !!}
-            <td class=''>
-                {!! Form::text('name', null, ['placeholder' => 'Medication Name']) !!} 
-            </td>
-            <td class=''>
-                {!! Form::text('description', null, ['placeholder' => 'Medication Description']) !!} 
-            </td>
-            <td class=''>
-                {!! Form::submit('ADD') !!} 
-            </td>
-            {!! Form::close() !!}
-        </tr>
-    @unless($medicines->isEmpty())
-        <tr class='th'>
-            <th class=''>Name</th>
-            <th class=''>Description</th>
-            <th class=''>Remove</th>
-        </tr>
-        @foreach($medicines as $i => $medicine)
-        <tr class=''>
-            <td class=''>{!! link_to_action('MedicineController@edit', $medicine->name ,$medicine) !!}</td>
-            <td class=''>{{$medicine->description}}</td>
-            <td class=''>   
-                {!! Form::open( ['route' => ['medicine.destroy', $medicine], 'method' => 'delete']) !!}
-                    <button type="submit" class="btn btn-danger btn-mini">X</button>
-                {!! Form::close() !!}
-            </td>
-        </tr>
-        @endforeach
-    @endunless
+    @endforeach
+    </tbody>
 </table>
-

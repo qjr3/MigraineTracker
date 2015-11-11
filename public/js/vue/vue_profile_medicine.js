@@ -26,7 +26,7 @@ new Vue({
 
             var medicine = this.newMedicine;
 
-            this.medicine.push(medicine)
+            this.medicines.push(medicine)
 
             this.newMedicine = {name: '', description: '', dose: ''};
 
