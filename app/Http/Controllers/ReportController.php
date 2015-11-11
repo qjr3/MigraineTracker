@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-class DoctorReportController extends Controller
+class ReportController extends Controller
 {
     // Generate PDF report, save it and return the PDF (NOT A VIEW)
     public function create()
@@ -15,7 +15,7 @@ class DoctorReportController extends Controller
     }
     
     // Store the report
-    private function store($pdf)
+    private function store()
     {
         
     }

@@ -30,7 +30,7 @@ class MedicineController extends Controller
             $journal = Journal::findOrFail($jID);
             $journal->medicines()->attach($medicine);
         }
-        return redirect()->back();;
+        return redirect('/medicine');;
     }
 
     public function index()

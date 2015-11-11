@@ -15,8 +15,7 @@ class CreateJournal extends Migration
         Schema::create('journals', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned();
-            $table->double('loc_long')->nullable();
-            $table->double('loc_lat')->nullable();
+            $table->string('location')->nullable();
             $table->smallInteger('severity')->nullable();
             $table->smallInteger('sound_level')->nullable();
             $table->smallInteger('light_level')->nullable();

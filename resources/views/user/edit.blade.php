@@ -1,9 +1,9 @@
 @extends('master')
-
-@section('title')User Profile @stop
+@section('title')
+User Profile 
+@stop
 
 @section('content')
-
     <div class="col-md-12">
         <div class="row">
             {!!  Form::model($user, ['route' => ['user.update', $user->id], 'method' => 'PATCH']) !!}
@@ -137,7 +137,7 @@
                     </div>
                 </div>
                 {!! Form::close() !!}
-                <div class="page-header clearfix">
+                <div class="page-header">
                     <h4>Triggers</h4>
                     <div class="panel panel-default">
                         <div class="panel-info form-padding-top">
@@ -145,11 +145,11 @@
                             @include('trigger.p_index')
                         </div>
                         <div class="panel-body">
-                            @include('trigger.create')
+                            @include('trigger.p_create')
                         </div>
                     </div>
                 </div>
-                <div class="page-header clearfix">
+                <div class="page-header">
                     <h4>Medications</h4>
                     <div class="panel panel-default">
                         <div class="panel-info form-padding-top">
@@ -157,7 +157,7 @@
                             @include('medicine.p_index')
                         </div>
                         <div class="panel-body">
-                            @include('medicine.create')
+                            @include('medicine.p_create')
                         </div>
                     </div>
                 </div>
@@ -166,11 +166,6 @@
             {!! Form::close() !!}
         </div>
     </div>
-
-
-
-
-
-
 @stop
+
 

@@ -30,7 +30,7 @@ class TriggerController extends Controller
             $journal = Journal::findOrFail($jID);
             $journal->triggers()->attach($trigger);
         }
-        return redirect()->back();
+        return redirect('/trigger');
     }
 
     public function index()
@@ -74,7 +74,7 @@ class TriggerController extends Controller
     {
         $trigger->fill($request->all());
         $trigger->save();
-        return zzzzredirect()->back(); // this should be: return redirect('something'); do not return text/string unless testing (prior to commit)
+        return redirect()->back();
     }
 
     /**
@@ -87,7 +87,7 @@ class TriggerController extends Controller
     {
         $trigger->delete();
         $triggers = Trigger::all();
-        return redirect()->back();
+        return redirect('/trigger');
     }
     
     // Accept AJAX route, receive ajax data from form

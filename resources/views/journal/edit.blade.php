@@ -29,10 +29,8 @@
                 {!! Form::model($journal, ['action' => ['JournalController@update', $journal->id], 'method' => 'PATCH']) !!}
                 <div class="col-ms-12">
                     <div class="row">
-  
-  
-                                {!! Form::hidden('loc_long', null, ['id' => 'geo_long', 'disabled' => 'true']) !!}
-                                {!! Form::hidden('loc_lat', null, ['id' => 'geo_lat', 'disabled' => 'true'] ) !!}
+                                {!! Form::label('location', 'Location', ['class' => 'form-label']) !!}
+                                {!! Form::text('location', null, ['placeholder' => 'City, ST'] ) !!}
                         <div class="col-md-6">
                             <div class="form-group">
                                 {!! Form::label('Name', 'Entry Name' ,['class' => 'form-label'] ) !!}
@@ -44,6 +42,16 @@
                                 {!! Form::textarea('description', null, ['class' => 'form-control']) !!}
                             </div>
 
+                            <div class='row'>
+                                <div class='col-xs-6'>
+                                    {!! Form::label('weather_pressure', 'Barometric Pressure', ['class' => 'form-label']) !!}
+                                    {!! Form::text('weather_pressure', null, ['class' => 'form-control']) !!}
+                                </div>
+                                <div class='col-xs-6'>
+                                    {!! Form::label('weather_temperature', 'Temperature', ['class' => 'form-label']) !!}
+                                    {!! Form::text('weather_temperature', null, ['class' => 'form-control']) !!}
+                                </div>
+                            </div>
                             <div class="row">
                                 <div class="col-xs-3">
                                     <div class="form-group">

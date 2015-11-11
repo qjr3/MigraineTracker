@@ -1,21 +1,12 @@
+@extends('master')
+
+@section('content')
 {!! Form::open(['action' =>'MedicineController@store', 'method' => 'post']) !!}
-<h4>Add Medicine</h4>
-<!-- Name Form Input -->
-<div class="form-group">
-    {!! Form::label('name', 'Name:', ['class' => 'form-label']) !!}
-    {!! Form::text('name', null, ['class' => 'form-control']) !!}
-</div>
-<!-- Description Form Input -->
-<div class="form-group">
-    {!! Form::label('description', 'Description:', ['class' => 'form-label']) !!}
-    {!! Form::textarea('description', null, ['class' => 'form-control']) !!}
-</div>
-<!-- Dose (mg) Form Input -->
-<div class="form-group">
-    {!! Form::label('dose', 'Dosage:') !!}
-    {!! Form::text('dose', null, ['class' => 'form-control']) !!}
-</div>
-<div class="text-right">
-    {!! Form::submit('Add Medicine', ['class' => 'btn btn-info']) !!}
-</div>
-{!! Form::close() !!}
+<div class='panel panel-info'>
+    <div class='panel-heading'>
+        <h4>Add Medicine</h4>
+    </div>
+    <div class='panel-body'>
+@include('medicine.p_create')
+    </div>
+@stop

@@ -3,6 +3,7 @@
 @section('style')
 <link href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/css/select2.min.css" rel="stylesheet" />
 <script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js"></script>
+<script src="/js/jquery.ajax-cross-origin-min.js"></script>
 @stop
 
 
@@ -28,8 +29,7 @@
                 {!! Form::textarea('description', null, ['class' => 'form-control', 'placeholder' => 'Entry Description' ]) !!}
             </div>
             <div class="form-group">
-                {!! Form::hidden('loc_long', '', ['id' => 'geo_long']) !!}
-                {!! Form::hidden('loc_lat', '', ['id' => 'geo_lat']) !!}
+                {!! Form::text('location', null, ['class' => 'form-control', 'placeholder' => 'City', 'id' => 'location']) !!}
             </div>
             <div class="form-group">
                 {!! Form::label('severity', 'Severity', ['class' => 'form-label']) !!}
@@ -50,7 +50,7 @@
                     null, ['class' => 'form-control']) !!}
             </div>
             <div class="form-group">
-                {!! Form::text('weather', null, ['class' => 'form-control', 'placeholder' => 'Weather' ]) !!}
+                {!! Form::text('weather', null, ['class' => 'form-control', 'placeholder' => 'Weather', 'id'=>'weather' ]) !!}
             </div>
             <div class="form-group">
                 {!! Form::label('sound_level', 'Sound Level', ['class' => 'form-label']) !!}

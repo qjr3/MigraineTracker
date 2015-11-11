@@ -43,7 +43,7 @@
         @yield('style')
 </head>
 
-<body>
+<body style='background-color: lightblue'>
     <div class="container">
         
         <!-- BEGIN Global Header -->
