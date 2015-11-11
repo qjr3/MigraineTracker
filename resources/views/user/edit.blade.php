@@ -255,13 +255,6 @@ User Profile
 
                             </table>
                         </div>
-
-
-
-
-
-
-
                     </div>
             </div>
 
@@ -273,9 +266,6 @@ User Profile
     </div>
 @stop
 
-
-<<<<<<< HEAD
-=======
 @section('footer')
 
     {!! Html::script('js/vue.js') !!}
@@ -284,4 +274,4 @@ User Profile
     {!! Html::script('js/vue/vue_profile_medicine.js') !!}
 
 @stop
->>>>>>> dev_profile_edit
+

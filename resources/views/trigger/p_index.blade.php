@@ -5,8 +5,8 @@
             <th class=''>Description</th>
             <th class=''>Remove</th>
         </tr>
-    @unless($user->triggers->isEmpty())
-        @foreach($user->triggers as $trigger)
+    @unless($triggers->isEmpty())
+        @foreach($triggers as $trigger)
             <tr class=''>
                 <td class=''>{!! link_to_action('TriggerController@edit', $trigger->name ,$trigger->id) !!}</td>
                 <td class=''>{{$trigger->description}}</td>
