@@ -151,8 +151,6 @@ User Profile
                         <div id="triggers">
                             {!! Form::open(array('id' => 'trigger-form', 'method' => 'POST', '@submit.prevent' => 'onSubmit')) !!}
 
-                            {!! Form::hidden('user_id', $user->id) !!}
-
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="form-group">
@@ -182,6 +180,7 @@ User Profile
                                     <th>Trigger Name</th>
                                     <th>Description</th>
                                     <th># of Occurrences</th>
+                                    <th></th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -189,10 +188,14 @@ User Profile
                                     <td>@{{ trigger.name }}</td>
                                     <td>@{{ trigger.description }}</td>
                                     <td>0</td>
+                                    <td>
+                                        <button type="submit" class="btn btn-danger btn-xs" v-on:click.stop.prevent="delete($index)">X</button>
+                                    </td>
                                 </tr>
                                 </tbody>
 
                             </table>
+
                         </div>
                     </div>
                 </div>
@@ -250,6 +253,9 @@ User Profile
                                     <td>@{{ medicine.description }}</td>
                                     <td>@{{ medicine.dose }}</td>
                                     <td>0</td>
+                                    <td>
+                                        <button type="submit" class="btn btn-danger btn-xs" v-on:click.stop.prevent="delete($index)">X</button>
+                                    </td>
                                 </tr>
                                 </tbody>
 

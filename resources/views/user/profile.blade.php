@@ -116,7 +116,27 @@
                                     <h4>Triggers</h4>
                                 </div>
                                 <div class="panel-body ">
-                                    @include('trigger.p_index')
+                                    <table class="table table-striped">
+                                        <thead>
+                                        <tr>
+                                            <th>Trigger Name</th>
+                                            <th>Description</th>
+                                            <th># of Occurrences</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        @foreach($triggers as $trigger)
+                                            <tr>
+                                                <td>{{ $trigger->name }}</td>
+                                                <td>{{ $trigger->description }}</td>
+                                                <td>0</td>
+                                            </tr>
+                                        @endforeach
+                                        </tbody>
+                                    </table>
+
+
+
                                 </div>
                             </div>
                             <div class="panel panel-info">
@@ -124,7 +144,30 @@
                                     <h4>Medications</h4>
                                 </div>
                                 <div class="panel-body">
-                                    @include('medicine.p_index')
+                                    <table class="table table-striped">
+                                        <thead>
+                                        <tr>
+                                            <th>Medicine Name</th>
+                                            <th>Description</th>
+                                            <th>Dosage</th>
+                                            <th># of Occurrences</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        @foreach($medicines as $medicine)
+                                            <tr>
+                                                <td>{{ $medicine->name }}</td>
+                                                <td>{{ $medicine->description }}</td>
+                                                <td>{{ $medicine->dose }}</td>
+                                                <td>0</td>
+                                            </tr>
+                                        @endforeach
+                                        </tbody>
+                                    </table>
+
+
+
+
                                 </div>
 
                             </div>
