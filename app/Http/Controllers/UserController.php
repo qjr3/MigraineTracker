@@ -18,7 +18,8 @@ class UserController extends Controller
     public function edit(User $user)
     {
         $triggers = Auth::user()->triggers;
-        return view('user.edit', compact('user', 'triggers'));
+        $medicines = Auth::user()->medicines;
+        return view('user.edit', compact('user', 'triggers', 'medicines'));
     }
 
     public function update(User $user, Request $request)
@@ -30,7 +31,8 @@ class UserController extends Controller
     public function show(User $user)
     {
         $triggers = Auth::user()->triggers;
-        return view('user.profile', compact('user', 'triggers'));
+        $medicines = Auth::user()->medicines;
+        return view('user.profile', compact('user', 'triggers', 'medicines'));
     }
     
     public function destroy(User $user)

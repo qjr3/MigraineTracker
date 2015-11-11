@@ -6,8 +6,8 @@
             <th class=''>Description</th>
             <th class=''>Remove</th>
         </tr>
-    @unless($user->medicines->isEmpty())
-        @foreach($user->medicines as $medicine)
+    @unless($medicines->isEmpty())
+        @foreach($medicines as $medicine)
         <tr class=''>
             <td class=''>{!! link_to_action('MedicineController@edit', $medicine->name ,$medicine->id) !!}</td>
             <td class=''>{{$medicine->description}}</td>
