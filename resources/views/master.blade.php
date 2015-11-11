@@ -16,8 +16,7 @@
         {!! Html::style('css/bootstrap.min.css') !!}
         {!! Html::script('js/bootstrap.min.js') !!}
         
-        {!! Html::script('js/angular.min.js') !!}
-        {!! Html::script('js/no-break.js') !!}
+
                 
         <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
 
@@ -58,8 +57,11 @@
     
         <!-- BEGIN Global Footer -->
         <div id='footer' class=' row'>
+
             @yield('footer')
-            @include('partials.footer') 
+
+            @include('partials.footer')
+
         </div>
         <!-- END Global Footer -->
     </div>

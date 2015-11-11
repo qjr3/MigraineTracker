@@ -1,18 +1,18 @@
-<table class='table table-striped'>
 
+<table class='table table-striped'>
 
         <tr class='th'>
             <th class=''>Name</th>
             <th class=''>Description</th>
             <th class=''>Remove</th>
         </tr>
-    @unless($medicines->isEmpty())
-        @foreach($medicines as $medicine)
+    @unless($user->medicines->isEmpty())
+        @foreach($user->medicines as $medicine)
         <tr class=''>
-            <td class=''>{!! link_to_action('MedicineController@edit', $medicine->name ,$medicine) !!}</td>
+            <td class=''>{!! link_to_action('MedicineController@edit', $medicine->name ,$medicine->id) !!}</td>
             <td class=''>{{$medicine->description}}</td>
-            <td class=''>   
-                {!! Form::open( ['route' => ['medicine.destroy', $medicine], 'method' => 'delete']) !!}
+            <td class=''>
+                {!! Form::open( ['route' => ['medicine.destroy', $medicine->id], 'method' => 'delete']) !!}
                     <button type="submit" class="btn btn-danger btn-mini">X</button>
                 {!! Form::close() !!}
             </td>
@@ -20,4 +20,3 @@
         @endforeach
     @endunless
 </table>
-

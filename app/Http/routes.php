@@ -39,6 +39,14 @@ Route::group(['middleware' => 'auth'], function(){
     Route::post('medicines/a', 'MedicineController@addMedication');
 });
 
+// API Routes
+Route::group(['prefix' => 'api'], function () {
+    Route::get('triggers','ApiController@showTriggers');
+    Route::post('triggers','ApiController@createTrigger');
+    Route::get('medicines','ApiController@showMedicines');
+    Route::post('medicines','ApiController@createMedicine');
+});
+
 // Authentication Routes
 Route::get('register', 'Auth\AuthController@getRegister');
 Route::post('register', 'Auth\AuthController@postRegister');

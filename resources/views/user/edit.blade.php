@@ -1,6 +1,6 @@
 @extends('master')
 @section('title')
-User Profile 
+User Profile
 @stop
 
 @section('content')
@@ -11,16 +11,18 @@ User Profile
                 <h2>Personal Info</h2>
                 <hr>
                 <div class="row text-center">
-                    <span class="glyphicon glyphicon-user text-center" aria-hidden="true" style="font-size: 180px"></span>
+                    <span class="glyphicon glyphicon-user text-center" aria-hidden="true"
+                          style="font-size: 180px"></span>
                 </div>
 
-                <br />
+                <br/>
 
                 <div class="panel panel-default">
                     <div class="panel-body">
                         <div class="clearfix">
                             <strong>
                                 <p class="text-primary pull-left">Username:</p>
+
                                 <div class="pull-right">{{ $user->name }}</div>
                             </strong>
                         </div>
@@ -90,9 +92,10 @@ User Profile
                 <br>
 
                 <div class="page-header">
-                    <h4>Medical History</h4>
-
-                    <div class="panel panel-default">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <h4>Medical History</h4>
+                        </div>
                         <div class="panel-body">
 
                             <div class="form-group row">
@@ -136,36 +139,149 @@ User Profile
                         </div>
                     </div>
                 </div>
+
                 {!! Form::close() !!}
-                <div class="page-header">
-                    <h4>Triggers</h4>
-                    <div class="panel panel-default">
-                        <div class="panel-info form-padding-top">
-                            <?php $triggers = $user->triggers; ?>
-                            @include('trigger.p_index')
-                        </div>
-                        <div class="panel-body">
-                            @include('trigger.p_create')
+
+
+                <div class="panel panel-info">
+                    <div class="panel-heading ">
+                        <h4>Triggers</h4>
+                    </div>
+                    <div class="panel-body ">
+                        <div id="triggers">
+                            {!! Form::open(array('id' => 'trigger-form', 'method' => 'POST', '@submit.prevent' => 'onSubmit')) !!}
+
+                            {!! Form::hidden('user_id', $user->id) !!}
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        {!! Form::label('name' , 'Name', array('class' => 'sr-only')) !!}
+                                        {!! Form::text('name' , null, array('class' => 'form-control', 'placeholder' => 'Enter Name', 'id' => 'name', 'v-model' => 'newTrigger.name')) !!}
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        {!! Form::label('description' , 'Description', array('class' => 'sr-only')) !!}
+                                        {!! Form::text('description' , null, array('class' => 'form-control', 'placeholder' => 'Enter Description', 'id' => 'description', 'v-model' => 'newTrigger.description')) !!}
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <button type="submit" class="btn btn-default" v-bind="{disabled: false}">Add Trigger</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {!! Form::close() !!}
+
+
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th>Trigger Name</th>
+                                    <th>Description</th>
+                                    <th># of Occurrences</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr v-for="trigger in triggers">
+                                    <td>@{{ trigger.name }}</td>
+                                    <td>@{{ trigger.description }}</td>
+                                    <td>0</td>
+                                </tr>
+                                </tbody>
+
+                            </table>
                         </div>
                     </div>
                 </div>
-                <div class="page-header">
-                    <h4>Medications</h4>
-                    <div class="panel panel-default">
-                        <div class="panel-info form-padding-top">
-                            <?php $medicines = $user->medicines; ?>
-                            @include('medicine.p_index')
-                        </div>
-                        <div class="panel-body">
-                            @include('medicine.p_create')
-                        </div>
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h4>Medications</h4>
                     </div>
-                </div>
+                    <div class="panel-body">
+                        <div id="medicines">
+                            {!! Form::open(array('id' => 'medicine-form', 'method' => 'POST', '@submit.prevent' => 'onSubmit')) !!}
+
+                            {!! Form::hidden('user_id', $user->id) !!}
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        {!! Form::label('name' , 'Name', array('class' => 'sr-only')) !!}
+                                        {!! Form::text('name' , null, array('class' => 'form-control', 'placeholder' => 'Enter Name', 'id' => 'name', 'v-model' => 'newMedicine.name')) !!}
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        {!! Form::label('description' , 'Description', array('class' => 'sr-only')) !!}
+                                        {!! Form::text('description' , null, array('class' => 'form-control', 'placeholder' => 'Enter Description', 'id' => 'description', 'v-model' => 'newMedicine.description')) !!}
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        {!! Form::label('dose' , 'Dosage', array('class' => 'sr-only')) !!}
+                                        {!! Form::text('dose' , null, array('class' => 'form-control', 'placeholder' => 'Dosage', 'id' => 'description', 'v-model' => 'newMedicine.dose')) !!}
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <button type="submit" class="btn btn-default" v-bind="{disabled: false}">Add Medicine</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {!! Form::close() !!}
+
+
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th>Trigger Name</th>
+                                    <th>Description</th>
+                                    <th>Dosage</th>
+                                    <th># of Occurrences</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr v-for="medicine in medicines">
+                                    <td>@{{ medicine.name }}</td>
+                                    <td>@{{ medicine.description }}</td>
+                                    <td>@{{ medicine.dose }}</td>
+                                    <td>0</td>
+                                </tr>
+                                </tbody>
+
+                            </table>
+                        </div>
+
+
+
+
+
+
+
+                    </div>
+            </div>
+
+            <div class="clearfix">
                 {!! Form::submit('Save Changes', ['class' => 'btn btn-success pull-right']) !!}
             </div>
-            {!! Form::close() !!}
+
         </div>
     </div>
 @stop
 
 
+<<<<<<< HEAD
+=======
+@section('footer')
+
+    {!! Html::script('js/vue.js') !!}
+    {!! Html::script('js/vue-resource.js') !!}
+    {!! Html::script('js/vue/vue_profile_trigger.js') !!}
+    {!! Html::script('js/vue/vue_profile_medicine.js') !!}
+
+@stop
+>>>>>>> dev_profile_edit
