@@ -15,22 +15,22 @@ class JournalTest extends TestCase
     {
         $this->assertTrue(true);
     }
-    
+
     public function createEmptyJournal()
     {
         $journal = new Journal;
         $this->assertFalse($journal->save());
     }
-    
+
     public function viewNonJournal()
     {
         $this->get('/journal/0')->see('Whoops, looks like something went wrong.');
     }
-    
+
     public function viewValidJournal()
     {
         $this->get('/journal/1')->see('Migraine Tracker');
     }
-    
-    
+
+
 }

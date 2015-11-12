@@ -41,10 +41,15 @@ Route::group(['middleware' => 'auth'], function(){
 
 // API Routes
 Route::group(['prefix' => 'api'], function () {
+    // Triggers
     Route::get('triggers','ApiController@showTriggers');
     Route::post('triggers','ApiController@createTrigger');
+    Route::post('triggers/{trigger}/destroy','ApiController@destroyTrigger');
+
+    // Medicines
     Route::get('medicines','ApiController@showMedicines');
     Route::post('medicines','ApiController@createMedicine');
+    Route::post('medicines/{medicine}/destroy','ApiController@destroyMedicine');
 });
 
 // Authentication Routes

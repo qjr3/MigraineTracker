@@ -9,12 +9,13 @@
             <div class="col-md-3">
                 <div class='panel panel-info'>
                     <div class='panel-heading'>
-                        <h2>Personal Info
-                            &nbsp; {!! link_to_action('UserController@edit', 'Edit', $user->id, ['class' => 'btn btn-primary', 'role' => 'button']) !!}</h2>
+                        <h2>Personal Info</h2>
+                            <span>{!! link_to_action('UserController@edit', 'Edit', $user->id, ['class' => 'btn btn-primary', 'role' => 'button']) !!}</span>
                     </div>
                     <div class='panel-body'>
                         <span class="glyphicon glyphicon-user center-block text-center" aria-hidden="true"
                               style="font-size: 180px"></span>
+                        <br>
 
                         <div class="clearfix">
                             <strong>
@@ -111,12 +112,42 @@
                                     </table>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h2>Advanced Info</h2>
+                    </div>
+                    <div class="panel-body">
+                        <div class="panel-group">
                             <div class="panel panel-info">
                                 <div class="panel-heading ">
                                     <h4>Triggers</h4>
                                 </div>
                                 <div class="panel-body ">
-                                    @include('trigger.p_index')
+                                    <table class="table table-striped">
+                                        <thead>
+                                        <tr>
+                                            <th>Trigger Name</th>
+                                            <th>Description</th>
+                                            <th># of Occurrences</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        @foreach($triggers as $trigger)
+                                            <tr>
+                                                <td>{{ $trigger->name }}</td>
+                                                <td>{{ $trigger->description }}</td>
+                                                <td>0</td>
+                                            </tr>
+                                        @endforeach
+                                        </tbody>
+                                    </table>
+
+
                                 </div>
                             </div>
                             <div class="panel panel-info">
@@ -124,7 +155,28 @@
                                     <h4>Medications</h4>
                                 </div>
                                 <div class="panel-body">
-                                    @include('medicine.p_index')
+                                    <table class="table table-striped">
+                                        <thead>
+                                        <tr>
+                                            <th>Medicine Name</th>
+                                            <th>Description</th>
+                                            <th>Dosage</th>
+                                            <th># of Occurrences</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        @foreach($medicines as $medicine)
+                                            <tr>
+                                                <td>{{ $medicine->name }}</td>
+                                                <td>{{ $medicine->description }}</td>
+                                                <td>{{ $medicine->dose }}</td>
+                                                <td>0</td>
+                                            </tr>
+                                        @endforeach
+                                        </tbody>
+                                    </table>
+
+
                                 </div>
 
                             </div>
