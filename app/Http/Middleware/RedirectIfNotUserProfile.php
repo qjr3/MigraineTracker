@@ -47,4 +47,4 @@ class RedirectIfNotUserProfile
 
         return $next($request);
     }
-}
+}   

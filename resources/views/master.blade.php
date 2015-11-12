@@ -36,6 +36,7 @@
 </head>
 
 <body style='background-color: lightblue'>
+
     <div class='container-fluid'>
         <div class='row'>
             <div class='col-xs-1'></div>
@@ -51,8 +52,9 @@
                                 <div class="alert alert-success">
                                     {{ session('status') }}
                                 </div>
-                            @endif`
-                            @yield('content')</div>
+                            @endif
+                             @yield('content')
+                        </div>
                     </div>
                 </div>
             <div class='col-xs-1'></div>
@@ -68,19 +70,6 @@
                 </div>
             <div class='col-xs-1'></div>
         </div>
-    </div>
-    
-    
-    
-        
-           
-        
-            
-            
-   
-
-
-
-    	   
+    </div> 	   
 </body>
 </html>
