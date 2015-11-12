@@ -36,6 +36,25 @@
 </head>
 
 <body style='background-color: lightblue'>
+    <div class="container">
+        
+        <!-- BEGIN Global Header -->
+        <div id="header" class=' row'>
+            @include('partials.nav')
+        </div>
+        <!-- END Global Header -->
+        
+        <div id='content' class=' row'>
+            @if (session('status'))
+                <div class="alert alert-success">
+                    {{ session('status') }}
+                </div>
+            @endif
+            @yield('content')
+        </div>
+    
+        <!-- BEGIN Global Footer -->
+        <div id='footer' class=' row'>
 
     <div class='container-fluid'>
         <div class='row'>

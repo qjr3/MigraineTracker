@@ -4,6 +4,7 @@ new Vue({
     el: '#triggers',
 
     data: {
+        triggers: [],
         newTrigger: {
             name: '',
             description: ''
@@ -22,15 +23,20 @@ new Vue({
             });
         },
         onSubmit: function(e) {
-
             var trigger = this.newTrigger;
 
             this.triggers.push(trigger)
 
             this.newTrigger = {name: '', trigger: ''};
-            this.submitted = true;
 
             this.$http.post('/api/triggers', trigger);
+        },
+        delete: function(index) {
+            var trigger = this.triggers[index];
+
+            this.triggers.splice(index, 1);
+
+            this.$http.post('/api/triggers/' + trigger.id + '/destroy');
         }
     }
 });

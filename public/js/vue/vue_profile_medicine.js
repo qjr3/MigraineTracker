@@ -4,6 +4,7 @@ new Vue({
     el: '#medicines',
 
     data: {
+        medicines: [],
         newMedicine: {
             name: '',
             description: '',
@@ -23,7 +24,6 @@ new Vue({
             });
         },
         onSubmit: function() {
-
             var medicine = this.newMedicine;
 
             this.medicines.push(medicine)
@@ -31,6 +31,13 @@ new Vue({
             this.newMedicine = {name: '', description: '', dose: ''};
 
             this.$http.post('/api/medicines', medicine);
+        },
+        delete: function(index) {
+            var medicine = this.medicines[index];
+
+            this.medicines.splice(index, 1);
+
+            this.$http.post('/api/medicines/' + medicine.id + '/destroy');
         }
     }
 });

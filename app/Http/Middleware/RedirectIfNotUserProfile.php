@@ -39,8 +39,8 @@ class RedirectIfNotUserProfile
         if(!$this->auth->user()->hasAccessTo($user->id))
         {
             // if not logged in
-            return redirect('/home')->with('You seem to have gotten lost...let me help you find your way home.');
-            
+            return redirect('/home')->with('status', 'You seem to have gotten lost...let me help you find your way home.');
+
             // if logged in
 //            return redirect()->back();
         }

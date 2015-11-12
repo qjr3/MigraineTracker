@@ -11,7 +11,7 @@ class UserTest extends TestCase
 	use DatabaseTransactions;
 
     /**
-    * Test register link from homepage
+    * Test register link from homepage and check valid page
     */
     public function testLinkFromHome()
     {
@@ -21,32 +21,73 @@ class UserTest extends TestCase
     }
 
     /**
-    * Create a test user with correct information
+    * Create a test user with correct information and check valid page
     */
-    public function testNewUserRegistrationSuccess()
+    public function testNewUserRegistrationPageSuccess()
     {
     	$this->visit('/register')
 			 ->type('Test', 'name')
 			 ->type('email@test.com', 'email')
 			 ->type('password', 'password')
 			 ->type('password', 'password_confirmation')
-			 ->press('Create Account')
-			 ->seePageIs('/'); // redirected to homepage
+			 ->press('Create New Account')
+			 ->seePageIs('/home'); // redirected to homepage
     }
 
     /**
-    * Create a test user with incorrect information
+    * Create a test user with incorrect passwords
     */
-    public function testNewUserRegistrationFailure()
+    public function testNewUserRegistrationIncorrectMatchingPasswords()
     {
     	$this->visit('/register')
 			 ->type('Test', 'name')
 			 ->type('email@test.com', 'email')
 			 ->type('password', 'password')
 			 ->type('password2', 'password_confirmation')
-			 ->press('Create Account')
-			 ->seePageIs('/register'); //redirected to register page
+			 ->press('Create New Account')
+			 ->see('The password confirmation does not match.');
     }
+
+	/**
+	 * Create a test user with incorrect password length
+	 */
+	public function testNewUserRegistrationPasswordLengthFail()
+	{
+		$this->visit('/register')
+			->type('Test', 'name')
+			->type('email@test.com', 'email')
+			->type('pas', 'password')
+			->type('pas', 'password_confirmation')
+			->press('Create New Account')
+			->see('The password must be at least 6 characters.');
+	}
+
+	/**
+	 * Create a test user with incorrect password length
+	 */
+	public function testNewUserRegistrationEmailFail()
+	{
+		$this->visit('/register')
+			->type('Test', 'name')
+			->type('email@test', 'email')
+			->type('password', 'password')
+			->type('password', 'password_confirmation')
+			->press('Create New Account')
+			->see('The email must be a valid email address.');
+	}
+
+	/**
+	 * Create a test user with incorrect password length
+	 */
+	public function testDestroyUser()
+	{
+		$user = $this->createAndLoginWithUser();
+
+		$route = 'user/' . $user->id;
+        $this->delete($route)
+            ->missingFromDatabase('users', ['id', $user->id]);
+
+	}
 
     /**
     * Create a test user with correct information and test the database
@@ -58,7 +99,7 @@ class UserTest extends TestCase
 			 ->type('DBemail@test.com', 'email')
 			 ->type('password', 'password')
 			 ->type('password', 'password_confirmation')
-			 ->press('Create Account')
+			 ->press('Create New Account')
 			 ->seeInDatabase('users', ['email' => 'DBemail@test.com']); // redirected to homepage
     }
 
@@ -67,7 +108,7 @@ class UserTest extends TestCase
     */
     public function testAuthorizedUser()
     {
-    	$user = factory(User::class)->create();
+		$user = factory(User::class, 1)->create();
     	$this->visit('/user/' . $user->id)
 			 ->see($user->id);
     }
@@ -75,9 +116,12 @@ class UserTest extends TestCase
     /**
     * Create a user and access another user's profile
     */
-//    public function testUnauthorizedUser()
-//    {
-//    	$this->visit('/user/1')
-//			 ->see('Unauthorized');
-//    }
+    public function testUnauthorizedUser()
+    {
+		$user1 = $this->createAndLoginWithUser();
+		$user2 = factory(User::class, 1)->create();
+
+    	$this->visit('/user/' . $user2->id)
+			 ->see('You seem to have gotten lost...let me help you find your way home.');
+    }
 }
