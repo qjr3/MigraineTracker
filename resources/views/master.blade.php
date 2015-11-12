@@ -36,26 +36,6 @@
 </head>
 
 <body style='background-color: lightblue'>
-    <div class="container">
-        
-        <!-- BEGIN Global Header -->
-        <div id="header" class=' row'>
-            @include('partials.nav')
-        </div>
-        <!-- END Global Header -->
-        
-        <div id='content' class=' row'>
-            @if (session('status'))
-                <div class="alert alert-success">
-                    {{ session('status') }}
-                </div>
-            @endif
-            @yield('content')
-        </div>
-    
-        <!-- BEGIN Global Footer -->
-        <div id='footer' class=' row'>
-
     <div class='container-fluid'>
         <div class='row'>
             <div class='col-xs-1'></div>
@@ -66,7 +46,13 @@
             <div class='col-xs-1'></div>
                 <div class='col-xs-10'>      
                     <div class='panel panel-info' style='background-color : rgba(255,255,255,.80);'>
-                        <div class='panel-body' >@yield('content')</div>
+                        <div class='panel-body' >
+                            @if (session('status'))
+                                <div class="alert alert-success">
+                                    {{ session('status') }}
+                                </div>
+                            @endif`
+                            @yield('content')</div>
                     </div>
                 </div>
             <div class='col-xs-1'></div>
