@@ -3,6 +3,11 @@
 User Profile
 @stop
 
+@section('footer')
+    {!! Html::script('js/vue/vue_profile_trigger.js') !!}
+    {!! Html::script('js/vue/vue_profile_medicine.js') !!}
+@stop
+
 @section('content')
     <div class="col-md-12">
         <div class="row">
@@ -87,8 +92,8 @@ User Profile
             <div class="col-md-9">
                 <h2>General Info</h2>
                 <hr>
-                {!! link_to_action('UserController@show', 'Cancel Edit', $user->id, ['class' => 'btn btn-danger pull-left', 'role' => 'button']) !!}
-                {!! Form::submit('Save Changes', ['class' => 'btn btn-success pull-right']) !!}
+                {!! Form::submit('Save Changes', ['class' => 'btn btn-success pull-left']) !!}
+                {!! link_to_action('UserController@show', 'Cancel Edit', $user->id, ['class' => 'btn btn-danger pull-right', 'role' => 'button']) !!}
                 <br>
 
                 <div class="page-header">
@@ -168,7 +173,7 @@ User Profile
                                 </div>
                                 <div class="col-md-2">
                                     <div class="form-group">
-                                        <button type="submit" class="btn btn-default" v-bind="{disabled: false}">Add Trigger</button>
+                                        <button type="submit" class="btn btn-default btn-primary" v-bind="{disabled: false}">Add Trigger</button>
                                     </div>
                                 </div>
                             </div>
@@ -202,7 +207,7 @@ User Profile
                     </div>
                     <div class="panel-body">
                         <div id="medicines">
-                            {!! Form::open(array('id' => 'medicine-form', 'method' => 'POST', '@submit.prevent' => 'onSubmit')) !!}
+                            {!! Form::open(['id' => 'medicine-form', 'method' => 'POST', '@submit.prevent' => 'onSubmit']) !!}
 
                             {!! Form::hidden('user_id', $user->id) !!}
 
@@ -227,51 +232,41 @@ User Profile
                                 </div>
                                 <div class="col-md-2">
                                     <div class="form-group">
-                                        <button type="submit" class="btn btn-default" v-bind="{disabled: false}">Add Medicine</button>
+                                        <button type="submit" class="btn btn-default btn-primary" v-bind="{disabled: false}">Add Medicine</button>
                                     </div>
                                 </div>
                             </div>
 
                             {!! Form::close() !!}
 
-
                             <table class="table table-striped">
                                 <thead>
-                                <tr>
-                                    <th>Trigger Name</th>
-                                    <th>Description</th>
-                                    <th>Dosage</th>
-                                    <th># of Occurrences</th>
-                                </tr>
+                                    <tr>
+                                        <th>Trigger Name</th>
+                                        <th>Description</th>
+                                        <th>Dosage</th>
+                                        <!-- <th># of Occurrences</th> This makes no sense. -->
+                                    </tr>
                                 </thead>
                                 <tbody>
-                                <tr v-for="medicine in medicines">
-                                    <td>@{{ medicine.name }}</td>
-                                    <td>@{{ medicine.description }}</td>
-                                    <td>@{{ medicine.dose }}</td>
-                                    <td>0</td>
-                                </tr>
+                                    <tr v-for="medicine in medicines">
+                                        <td>@{{ medicine.name }}</td>
+                                        <td>@{{ medicine.description }}</td>
+                                        <td>@{{ medicine.dose }}</td>
+                                        <!-- <td>0</td> This makes no sense. -->
+                                    </tr>
                                 </tbody>
-
                             </table>
                         </div>
                     </div>
             </div>
 
-            <div class="clearfix">
-                {!! Form::submit('Save Changes', ['class' => 'btn btn-success pull-right']) !!}
+                <div class="clearfix">
+                    {!! Form::submit('Save Changes', ['class' => 'btn btn-success pull-left']) !!}
+                    {!! link_to_action('UserController@show', 'Cancel Edit', $user->id, ['class' => 'btn btn-danger pull-right', 'role' => 'button']) !!}
+                </div>
             </div>
-
         </div>
     </div>
-@stop
-
-@section('footer')
-
-    {!! Html::script('js/vue.js') !!}
-    {!! Html::script('js/vue-resource.js') !!}
-    {!! Html::script('js/vue/vue_profile_trigger.js') !!}
-    {!! Html::script('js/vue/vue_profile_medicine.js') !!}
-
 @stop
 

@@ -126,7 +126,7 @@
                                 <div class="panel-body">
                                     @include('medicine.p_index')
                                 </div>
-
+                            </div>
                             </div>
                         </div>
                     </div>
