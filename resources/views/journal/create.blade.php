@@ -118,14 +118,14 @@
             <!-- See triggers note -->
 
             <div class="form-group">
-                {!! Form::label('still_suffering', 'Currently Suffering?', ['class' => 'form-label']) !!}
-                {!! Form::select('still_suffering', [ '' => '', 'true' => 'Yes', 'false' => 'No'], null, ['class' => 'form-control']) !!}
-            </div>
-            <div class="form-group">
                 {!! Form::text('start_time', null, ['class' => 'form-control', 'disabled' => 'true', 'placeholder' => 'Start Time']) !!}
             </div>
             <div class="form-group">
                 {!! Form::text('end_time', null , ['class' => 'form-control', 'disabled' => 'true', 'placeholder' => 'End Time']) !!}
+            </div>
+            <div class="form-group">
+                {!! Form::label('still_suffering', 'Currently Suffering?', ['class' => 'form-label']) !!}
+                {!! Form::checkbox('still_suffering', null, ['class' => 'form-control']) !!}
             </div>
             <div class="form-group">
                 {!! Form::label('has_aura', 'Are you experiencing any auras?', ['class' => 'form-label']) !!}
@@ -136,40 +136,40 @@
             </div>
             <div class="form-group">
                 {!! Form::label('has_nausea', 'Are you nauseous?', ['class' => 'form-label']) !!}
-                {!! Form::select('has_nausea',  [ '' => '', 'true' => 'Yes', 'false' => 'No'], null, ['class' => 'form-control']) !!}
+                {!! Form::checkbox('has_nausea', null, ['class' => 'form-control']) !!}
             </div>
             <div class="form-group">
                 {!! Form::label('has_vomitted', 'Have you vomited?', ['class' => 'form-label']) !!}
-                {!! Form::select('has_vomitted',  [ '' => '', 'true' => 'Yes', 'false' => 'No'], null, ['class' => 'form-control']) !!}
+                {!! Form::checkbox('has_vomitted', null, ['class' => 'form-control']) !!}
             </div>
             <div class="form-group">
                 {!! Form::label('has_light_sensativity', 'Are you experiencing sensitivity to light?', ['class' => 'form-label']) !!}
-                {!! Form::select('has_light_sensativity',  [ '' => '', 'true' => 'Yes', 'false' => 'No'], null, ['class' => 'form-control']) !!}
+                {!! Form::checkbox('has_light_sensativity', null, ['class' => 'form-control']) !!}
             </div>
             <div class="form-group">
                 {!! Form::label('has_sound_sensativity', 'Are you experiencing sensitivity to sounds?', ['class' => 'form-label']) !!}
-                {!! Form::select('has_sound_sensativity',  [ '' => '', 'true' => 'Yes', 'false' => 'No'], null, ['class' => 'form-control']) !!}
+                {!! Form::checkbox('has_sound_sensativity', null, ['class' => 'form-control']) !!}
             </div>
             <div class="form-group">
                 {!! Form::label('has_disrupted', 'Are you being disrupted?', ['class' => 'form-label']) !!}
-                {!! Form::select('has_disrupted',  [ '' => '', 'true' => 'Yes', 'false' => 'No'], null, ['class' => 'form-control']) !!}
+                {!! Form::checkbox('has_disrupted', null, ['class' => 'form-control']) !!}
             </div>
             <div class="form-group">
                 {!! Form::label('missed_workschool', 'Did you miss work or school?', ['class' => 'form-label']) !!}
-                {!! Form::select('missed_workschool',  [ '' => '', 'true' => 'Yes', 'false' => 'No'], null, ['class' => 'form-control']) !!}
+                {!! Form::checkbox('missed_workschool', null, ['class' => 'form-control']) !!}
             </div>
             <div class="form-group">
                 {!! Form::label('missed_routines', 'Have you missed other routines?', ['class' => 'form-label']) !!}
-                {!! Form::select('missed_routines',  [ '' => '', 'true' => 'Yes', 'false' => 'No'], null, ['class' => 'form-control']) !!}
+                {!! Form::checkbox('missed_routines',null, ['class' => 'form-control']) !!}
             </div>
-            <!-- <div class="form-group">
+            <div class="form-group">
                 {!! Form::label('social_plans', 'Social Plans:', ['class' => 'form-label']) !!}
-                {!! Form::text('social_plans', null, ['class' => 'form-control', 'disabled' => 'true', 'placeholder' => 'WiP']) !!}
+                {!! Form::checkbox('social_plans',null, ['class' => 'form-control', 'disabled' => 'true', 'placeholder' => 'WiP']) !!}
             </div>
             <div class="form-group">
                 {!! Form::label('activities', 'Activities:', ['class' => 'form-label']) !!}
-                {!! Form::text('activities', null, ['class' => 'form-control', 'disabled' => 'true', 'placeholder' => 'WiP']) !!}
-            </div> -->
+                {!! Form::checkbox('activities', null,['class' => 'form-control', 'disabled' => 'true', 'placeholder' => 'WiP']) !!}
+            </div>
             <div class='form-group'>
                 {!! Form::submit('Submit', ['class' => 'btn btn-primary']) !!}
             </div>
