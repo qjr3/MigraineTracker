@@ -26,7 +26,7 @@
                 <tr>
                 @if(!empty($journal->start_time) && !empty($journal->end_time))
                     <th>Duration</th>
-                    <td class="text-center ">{{  date_diff( date_create($journal->start_time), date_create($journal->end_time)) }}
+                    <td class="text-center ">WiP{--  date_diff( date_create($journal->start_time), date_create($journal->end_time)) --}
                 @else
                     @if(!empty($journal->start_time) && empty($journal->end_time))
                         <th>Time Started</th>
