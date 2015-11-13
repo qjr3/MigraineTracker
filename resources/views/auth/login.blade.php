@@ -15,12 +15,10 @@ Log into
 @section('content')
 
     @include('errors.list')
-    <div class='panel panel-info'>
-        <div class='panel-heading'>    
+  
             {!! Form::open(['action' => 'Auth\AuthController@postLogin']) !!}
-            <h1>Sign In</h1>
-        </div>
-        <div class='panel-body'>
+            <h2>Sign In</h2>
+
             <div class='form-group'>
                 {!! Form::label('email', 'Email Address', ['class' => 'sr-only']) !!}
                 {!! Form::email('email', null, ['class' => 'form-control', 'type' => 'email', 'placeholder' => 'Email Address']) !!}
@@ -30,23 +28,17 @@ Log into
                 {!! Form::label('password', 'Password', ['class' => 'sr-only']) !!}
                 {!! Form::password('password', ['class' => 'form-control', 'placeholder' => 'Password']) !!}
             </div>
-        </div>
-        <div class='panel-footer'>
+
             <div class='row'>
-                <div class='col-sm-6'>
-                   <div class='form-group'>
-                        {!! Form::submit('Login', ['class' => 'btn btn-default btn-primary']) !!}
-                    </div>
+                <div class='form-group col-xs-6'>
+                    {!! Form::submit('Login', ['class' => 'btn  btn-block btn-default btn-primary']) !!}
                 </div>
-                <div class='col-sm-6'>
-                    <div class='form-group text-right'>
-                        {!! link_to_action('Auth\AuthController@getRegister', 'Create New Account', array(), ['class' => 'btn btn-default btn-primary']) !!}
-                        {!! Form::close() !!}
-                    </div>
+                <div class='form-group col-xs-6 text-right'>
+                        {!! link_to_action('Auth\AuthController@getRegister', 'Register', array(), ['class' => 'btn btn-default btn-info']) !!}
                 </div>
             </div>
-        </div>
-    </div>
+            {!! Form::close() !!}
+
 @stop
 
 

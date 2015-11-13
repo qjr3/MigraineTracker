@@ -20,7 +20,7 @@
     </div>
     <div class='panel-body'>
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-xs-6">
         {!! Form::open(['action' =>'JournalController@store', 'method' => 'post'])  !!}
             <div class="form-group">
                 {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Entry Name' ]) !!}

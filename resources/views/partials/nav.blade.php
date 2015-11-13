@@ -45,7 +45,8 @@
             |
             {!! link_to_action('Auth\AuthController@getLogout', 'Sign Out') !!}</span>
             @else
-                <li {{ Request::is('login') ? 'class=active' : null }}>{!! link_to_action('Auth\AuthController@getLogin', 'Sign In') !!}</li>
+                <li {{ Request::is('login') ? 'class=active' : null }}>{!! link_to_action('Auth\AuthController@getLogin', 'Login') !!}</li>
+                <li {{ Request::is('register') ? 'class=active' : null }}>{!! link_to_action('Auth\AuthController@getRegister', 'Register') !!}</li>
             @endif
         </ul>
     </div>

@@ -9,12 +9,11 @@ Sign Up Now with MigraineTracker!
 @section('content')
 
 @include('errors.list')
-<div class='panel panel-info'>
+
     {!! Form::open(['action' => 'Auth\AuthController@postRegister']) !!}
-    <div class='panel-heading'>
-        <span class='h3 panel-title'> Create New User </span>
-    </div>
-    <div class='panel-body'>
+
+    <h2 class='text-center'>Create New User </h2>
+
 
         <div class='form-group'>
                 {!! Form::label('name', 'Username', ['class' => 'sr-only']); !!}
@@ -32,19 +31,16 @@ Sign Up Now with MigraineTracker!
                 {!! Form::label('password_confirmation', 'Password:', ['class' => 'sr-only']) !!}
                 {!! Form::password('password_confirmation', ['class' => 'form-control', 'placeholder' => 'Confirm Password']) !!}
         </div>
-    </div>
-    <div class='panel-footer'>
+
         <div class='row'>
-        <div class='form-group col-sm-6'>
-                {!! Form::submit('Create New Account', ['class' => 'btn btn-default btn-primary']) !!}
+            <div class='form-group col-xs-6'>
+                    {!! Form::submit('Register', ['class' => 'btn  btn-block btn-default btn-primary']) !!}
+            </div>
+            <div class='form-group col-xs-6 text-right'>
+                {!! link_to_action('Auth\AuthController@getLogin', 'Login', array(), ['class' => 'btn   btn-default btn-info']) !!}
+            </div>
         </div>
 
-        <div class='form-group col-sm-6 text-right'>
-            {!! link_to_action('Auth\AuthController@getLogin', 'Login to existing account.', array(), ['class' => '']) !!}
-
-        </div>
-        </div>
-    </div>
     {!! Form::close() !!}
-</div>
+
 @stop

@@ -14,10 +14,10 @@
 <div class='panel panel-info'>
     <div class='panel-heading'>
         <div class="row">
-            <div class="col-sm-12 h1"><span>{{ $journal->name }}</span> &nbsp; &nbsp; <span class="pull-right" style="margin-bottom: 15px">{!! link_to_action('JournalController@edit', 'Edit' , $journal->id, ['class'=>'btn btn-block btn-primary']) !!} </span></div>
+            <div class="col-xs-12 h1"><span>{{ $journal->name }}</span> &nbsp; &nbsp; <span class="pull-right" style="margin-bottom: 15px">{!! link_to_action('JournalController@edit', 'Edit' , $journal->id, ['class'=>'btn btn-block btn-primary']) !!} </span></div>
         </div>
         <div class='row'>
-            <div class='col-sm-10 h4'><em>{!! nl2br($journal->description) !!}</div>
+            <div class='col-xs-10 h4'><em>{!! nl2br($journal->description) !!}</div>
         </div>
     </div>
     <div class='panel-body'>

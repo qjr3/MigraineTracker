@@ -3,9 +3,9 @@
 @section('title')User Profile @stop
 
 @section('content')
-    <div class="col-md-12">
+    <div class="col-xs-12">
         <div class="row">
-            <div class="col-md-3">
+            <div class="col-xs-3">
                 <div class='panel panel-info'>
                     <div class='panel-heading container-fluid'>
                         <div class='row'>
@@ -71,7 +71,7 @@
 </div></div>
                 </div>
             </div>
-            <div class="col-md-9">
+            <div class="col-xs-9">
                 <div class='panel panel-info'>
                     <div class='panel-heading'>
                         <h4>Medical History</h4>

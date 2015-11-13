@@ -16,21 +16,21 @@
 <div class='panel panel-info'>
     <div class='panel-heading'>
         <div class="row">
-            <div class="h3 col-sm-3 ">{{ $journal->name }}</div>
+            <div class="h3 col-xs-3 ">{{ $journal->name }}</div>
         @unless(empty($journal->description))
-            <div class='h3 col-sm-offset-1 col-sm-8 '>{!! nl2br($journal->description) !!}</div>
+            <div class='h3 col-xs-offset-1 col-xs-8 '>{!! nl2br($journal->description) !!}</div>
         @endunless
         </div>
     </div>
     <div class='panel-body'>
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-xs-12">
                 {!! Form::model($journal, ['action' => ['JournalController@update', $journal->id], 'method' => 'PATCH']) !!}
                 <div class="col-ms-12">
                     <div class="row">
                                 {!! Form::label('location', 'Location', ['class' => 'form-label']) !!}
                                 {!! Form::text('location', null, ['placeholder' => 'City, ST'] ) !!}
-                        <div class="col-md-6">
+                        <div class="col-xs-6">
                             <div class="form-group">
                                 {!! Form::label('Name', 'Entry Name' ,['class' => 'form-label'] ) !!}
                                 {!! Form::text('name', null, ['class' => 'form-control']) !!}
@@ -120,7 +120,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-xs-6">
                             <div class="form-group">
                                 {!! Form::label('weather', 'Weather', ['class' => 'form-label']) !!}
                                 {!! Form::text('weather', null, ['class' => 'form-control']) !!}
@@ -164,7 +164,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-xs-6">
                             <div class="row">
                                 <div class="col-xs-6">
                                     <div class="form-group">
@@ -229,7 +229,7 @@
                             </div>
                         </div>
 
-                        <div class="col-md-6">
+                        <div class="col-xs-6">
                             <div class="form-group">
                                 {!! Form::label('social_plans', 'Missed Social Events', ['class' => 'form-label']) !!}
                                 {!! Form::text('social_plans', null, ['class' => 'form-control', 'disabled' => 'true']) !!}
@@ -242,11 +242,11 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-xs-6">
 
                             <div class='form-group'>
                                 {!! Form::submit('Submit', ['class' => 'btn btn-block btn-lg btn-primary btn-default']) !!}
-                                <div class='col-sm-2'><span class="pull-right" style="margin-bottom: 15px">{!! link_to_action('JournalController@show', 'Cancel Edit', $journal->id) !!} </span></div>
+                                <div class='col-xs-2'><span class="pull-right" style="margin-bottom: 15px">{!! link_to_action('JournalController@show', 'Cancel Edit', $journal->id) !!} </span></div>
                             </div>
                         </div>
                     </div>

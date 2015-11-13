@@ -11,10 +11,10 @@
 
 
 @section('content')
-    <div class="col-md-12">
+    <div class="col-xs-12">
         <div class="row">
             {!!  Form::model($user, ['route' => ['user.update', $user->id], 'method' => 'PATCH']) !!}
-            <div class="col-md-3">
+            <div class="col-xs-3">
                 <div class='panel panel-info'>
                     <div class='panel-heading'>
                         <div class='panel-title text-center'><h2>Personal Info</h2></div>
@@ -94,17 +94,17 @@
                 </div>
 
             </div>
-            <div class="col-md-9">
+            <div class="col-xs-9">
                             <div class="panel panel-info">
                                 <div class="panel-heading">
                                     <h4>Medical History</h4>
                                 </div>
                                 <div class="panel-body">
                                     <div class="form-group row">
-                                        <div class="col-md-6">
+                                        <div class="col-xs-6">
                                             {!! Form::label('has_diabetes', 'Have you been diagnosed with diabetes?', ['class' => '']) !!}
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-xs-6">
                                             Yes &nbsp; {!! Form::radio('has_diabetes', 1) !!}&nbsp; &nbsp; &nbsp;
                                             No &nbsp; {!! Form::radio('has_diabetes', 0) !!}
 
@@ -112,29 +112,29 @@
                                     </div>
 
                                     <div class="form-group row">
-                                        <div class="col-md-6">
+                                        <div class="col-xs-6">
                                             {!! Form::label('has_migraines', 'Have you been diagnosed with migraines?', ['class' => '']) !!}
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-xs-6">
                                             Yes &nbsp; {!! Form::radio('has_migraines', 1) !!}&nbsp; &nbsp; &nbsp;
                                             No &nbsp; {!! Form::radio('has_migraines', 0) !!}
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <div class="col-md-6">
+                                        <div class="col-xs-6">
                                             {!! Form::label('has_glasses', 'Do you wear prescription glasses?', ['class' => '']) !!}
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-xs-6">
                                             Yes &nbsp; {!! Form::radio('has_glasses', 1) !!}&nbsp; &nbsp; &nbsp;
                                             No &nbsp; {!! Form::radio('has_glasses', 0) !!}
                                         </div>
                                     </div>
 
                                     <div class="form-group row">
-                                        <div class="col-md-6">
+                                        <div class="col-xs-6">
                                             {!! Form::label('last_eye_exam', 'When was your last eye exam?', ['class' => '']) !!}
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-xs-6">
                                             {!! Form::date('last_eye_exam', null, ['class' => 'form-control']) !!}
                                         </div>
                                     </div> 
@@ -156,19 +156,19 @@
                                         {!! Form::open(array('id' => 'trigger-form', 'method' => 'POST', '@submit.prevent' => 'onSubmit')) !!}
 
                                         <div class="row">
-                                            <div class="col-md-4">
+                                            <div class="col-xs-4">
                                                 <div class="form-group">
                                                     {!! Form::label('name' , 'Name', array('class' => 'sr-only')) !!}
                                                     {!! Form::text('name' , null, array('class' => 'form-control', 'placeholder' => 'Enter Name', 'id' => 'name', 'v-model' => 'newTrigger.name')) !!}
                                                 </div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-xs-6">
                                                 <div class="form-group">
                                                     {!! Form::label('description' , 'Description', array('class' => 'sr-only')) !!}
                                                     {!! Form::text('description' , null, array('class' => 'form-control', 'placeholder' => 'Enter Description', 'id' => 'description', 'v-model' => 'newTrigger.description')) !!}
                                                 </div>
                                             </div>
-                                            <div class="col-md-2">
+                                            <div class="col-xs-2">
                                                 <div class="form-group">
                                                     <button type="submit" class="btn btn-default"
                                                             v-bind="{disabled: false}">Add
@@ -219,25 +219,25 @@
                                         {!! Form::hidden('user_id', $user->id) !!}
 
                                         <div class="row">
-                                            <div class="col-md-4">
+                                            <div class="col-xs-4">
                                                 <div class="form-group">
                                                     {!! Form::label('name' , 'Name', array('class' => 'sr-only')) !!}
                                                     {!! Form::text('name' , null, array('class' => 'form-control', 'placeholder' => 'Enter Name', 'id' => 'name', 'v-model' => 'newMedicine.name')) !!}
                                                 </div>
                                             </div>
-                                            <div class="col-md-4">
+                                            <div class="col-xs-4">
                                                 <div class="form-group">
                                                     {!! Form::label('description' , 'Description', array('class' => 'sr-only')) !!}
                                                     {!! Form::text('description' , null, array('class' => 'form-control', 'placeholder' => 'Enter Description', 'id' => 'description', 'v-model' => 'newMedicine.description')) !!}
                                                 </div>
                                             </div>
-                                            <div class="col-md-2">
+                                            <div class="col-xs-2">
                                                 <div class="form-group">
                                                     {!! Form::label('dose' , 'Dosage', array('class' => 'sr-only')) !!}
                                                     {!! Form::text('dose' , null, array('class' => 'form-control', 'placeholder' => 'Dosage', 'id' => 'description', 'v-model' => 'newMedicine.dose')) !!}
                                                 </div>
                                             </div>
-                                            <div class="col-md-2">
+                                            <div class="col-xs-2">
                                                 <div class="form-group">
                                                     <button type="submit" class="btn btn-default"
                                                             v-bind="{disabled: false}">Add
