@@ -31,6 +31,6 @@ class CreateCommonTriggersXJournalTable extends Migration
      */
     public function down()
     {
-        Scheme::drop('common_triggers_journal');
+        Schema::drop('common_triggers_journal');
     }
 }

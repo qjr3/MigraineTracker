@@ -31,6 +31,6 @@ class CreatePivotPainLocationJournalTable extends Migration
      */
     public function down()
     {
-        Scheme::drop('pain_location_journal');
+        Schema::drop('journal_pain_locations');
     }
 }

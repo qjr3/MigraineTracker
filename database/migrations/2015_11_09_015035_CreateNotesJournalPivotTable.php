@@ -31,6 +31,6 @@ class CreateNotesJournalPivotTable extends Migration
      */
     public function down()
     {
-        Scheme::drop('journal_note');
+        Schema::drop('journal_note');
     }
 }
