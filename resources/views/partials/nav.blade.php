@@ -1,4 +1,4 @@
-<div class="navbar navbar-default col-sm-12">
+<nav class="navbar navbar-default col-sm-12">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -15,7 +15,6 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li {{ Request::is('home') ? 'class=active' : null }} >{!! link_to_action('PagesController@dashboard', 'Home') !!}</li>
-                <li {{ Request::is('about') ? 'class=active' : null }} >{!! link_to_action('PagesController@about', 'About') !!}</li>
                 <li {{ Request::is('journal') ? 'class=active' : null }}>{!! link_to_action('JournalController@index', 'Journal') !!}</li>
                 <li {{ Request::is('trigger') ? 'class=active' : null }}>{!! link_to_action('TriggerController@index', 'Triggers') !!}</li>
                 <li {{ Request::is('medicine') ? 'class=active' : null }}>{!! link_to_action('MedicineController@index', 'Medication') !!}</li>
@@ -37,4 +36,4 @@
         <!-- /.navbar-collapse -->
     </div>
     <!-- /.container-fluid -->
-</div>
+</nav>
