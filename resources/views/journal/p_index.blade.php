@@ -15,7 +15,7 @@
         <td>{{ $journal->weather_temperature }}</td>
         <td>{{ $journal->weather_pressure }}</td>
         <td>{!! Form::open( ['route' => ['journal.destroy', $journal], 'method' => 'delete']) !!}
-                <button type="submit" class="btn btn-danger btn-mini">X</button>
+            <button type="submit" class="btn btn-danger btn-xs center-block"><span class='glyphicon glyphicon-remove-sign'></span></button>
         {!! Form::close() !!}</td>					
     </tr>
     @endforeach

@@ -19,6 +19,10 @@ class MedicineController extends Controller
      */
     public function store(MedicineRequest $request)
     {
+        // keep backtrack token in the session one more step of the way.
+        if(Session::has('backTo')) Session::keep('backTo');
+        else Session::flash('backTo', Request::fullUrl());
+
         $collection = Auth::user()->medicines()->where('name', $request->get('name'))->get();
         if($collection->isEmpty()) {
             $medicine = new Medicine();
@@ -33,7 +37,6 @@ class MedicineController extends Controller
             $journal->medicines()->attach($medicine);
         }
         
-        if(Session::has('backTo')) Session::keep('backTo'); // pass it forward
         
         return ($returnPath = Session::get('backTo')) ? redirect($returnPath) : redirect('/medicine');
     }
@@ -51,6 +54,10 @@ class MedicineController extends Controller
      */
     public function edit(Medicine $medicine)
     {
+        // keep backtrack token in the session one more step of the way.
+        if(Session::has('backTo')) Session::keep('backTo');
+        else Session::flash('backTo', Request::fullUrl());
+        
         return view('medicine.edit', compact('medicine'));
     }
     
@@ -62,12 +69,17 @@ class MedicineController extends Controller
      */
     public function show(Medicine $medicine)
     {
+        Session::flash('backTo', Request::fullUrl()); // Help find our way back
+
         return view('medicine.show', compact('medicine'));
     }
 
     public function create()
     {
-        if(Session::has('backTo')) Session::keep('backTo'); // pass it forward
+        // keep backtrack token in the session one more step of the way.
+        if(Session::has('backTo')) Session::keep('backTo');
+        else Session::flash('backTo', Request::fullUrl());
+        
         return view('medicine.create');
     }
     
@@ -82,7 +94,7 @@ class MedicineController extends Controller
     {
         $medicine->fill($request->all());
         $medicine->save();
-        return redirect()->back();
+        return ($returnPath = Session::get('backTo')) ? redirect($returnPath) : redirect('/medicine');
     }
 
     /**
@@ -95,27 +107,6 @@ class MedicineController extends Controller
     {
         $medicine->delete();
         $medicines = Medicine::all();
-        return redirect()->back();
-    }
-    
-    // Accept AJAX route, receive ajax data from form
-    public function addMedication()
-    {
-        if(Request::ajax())
-        {
-            $medicine = new Medicine();
-            $medicine->name = Request::input('name');
-            $medicine->description = Request::input('description');
-            $medicine->dose = Request::input('dose');
-            $medicine->save();
-            
-            $response = 
-            [
-                'status' => 'success',
-                'msg' => 'Medication addeed',
-            ];
-            
-            return Response::json($response);
-        }       
+        return ($returnPath = Session::get('backTo')) ? redirect($returnPath) : redirect('/medicine');
     }
 }

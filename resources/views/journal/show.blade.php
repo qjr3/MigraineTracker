@@ -24,58 +24,72 @@
         <table class="table table-striped">
             <tbody>
                 <tr>
-                    <th>Start Time</th>
-                    <td>{{ $journal->start_time }}</td>
-                </tr>
-                <tr>
-                    <th>Stop Time</th>
-                    <td>{{ $journal->end_time }}</td>
+                @if(!empty($journal->start_time) && !empty($journal->end_time))
+                    <th>Duration</th>
+                    <td class="text-center ">{{  date_diff( date_create($journal->start_time), date_create($journal->end_time)) }}
+                @else
+                    @if(!empty($journal->start_time) && empty($journal->end_time))
+                        <th>Time Started</th>
+                        <td class="text-center ">{{ $journal->start_time }}</td>
+                    @elseif(!empty($journal->start_time) && empty($journal->end_time))
+                        <th>Time Ended</th>
+                        <td class="text-center ">{{ $journal->end_time }}</td>
+                    @endif
+                @endif
                 </tr>
                 <tr>
                     <th>Severity</th>
-                    <td>{{ $journal->severity }}</td>
+                    <td class="text-center ">{{ $journal->severity }}</td>
                 </tr>
                 <tr>
                     <th>Disruptions</th>
-                    <td>{{ $journal->has_disrupted          ? 'Yes' : 'No' }}</td>
+                    <td class='text-center {{ !empty($journal->has_disrupted) ? ($journal->has_disrupted=='true' ? ' danger' : ' success') : ' warning' }}'>{{ !empty($journal->has_disrupted) ? ($journal->has_disrupted=='true' ? 'Yes' : 'No') : '' }}</td>
                 </tr>
                 <tr>
-                    <th>Light Sensativity</th>
-                    <td>{{ $journal->has_light_sensativity  ? 'Yes' : 'No' }}</td>
-                </tr>
                 <tr>
                     <th>Light Level</th>
                     <td>{{ $journal->light_level }}</td>
                 </tr>
-                <tr>
-                    <th>Sound Sensativity</th>
-                    <td>{{ $journal->has_sound_sensativity  ? 'Yes' : 'No' }}  </td>
+                    <th>Light Sensativity</th>
+                    <td class='text-center {{ !empty($journal->has_light_sensativity) ? ($journal->has_light_sensativity=='true' ? ' danger' : ' success') : ' warning' }}'>{{ !empty($journal->has_light_sensativity) ? ($journal->has_light_sensativity=='true' ? 'Yes' : 'No') : '' }}</td>
                 </tr>
+                <tr>
                 <tr>
                     <th>Sound Level</th>
                     <td>{{ $journal->sound_level }}</td>
                 </tr>
+                    <th>Sound Sensativity</th>
+                    <td class='text-center {{ !empty($journal->has_sound_sensativity) ? ($journal->has_sound_sensativity=='true' ? ' danger' : ' success') : ' warning' }}'>{!! !empty($journal->has_sound_sensativity) ? ($journal->has_sound_sensativity=='true' ? 'Yes' : 'No') : '' !!}  </td>
+                </tr>
                 <tr>
                     <th>Nauseous</th>
-                    <td>{{ $journal->has_nausea             ? 'Yes' : 'No' }}  </td>
+                    <td class='text-center {{ !empty($journal->has_nausea) ? ($journal->has_nausea=='true' ? ' danger' : ' success') : ' warning' }}'>
+                        {!! !empty($journal->has_nausea) ? ($journal->has_nausea=='true' ? 'Yes' : 'No') : '' !!}  
+                    </td>
                 </tr>
                 <tr>
                     <th>Vomitted</th>
-                    <td>{{ $journal->has_vomitted           ? 'Yes' : 'No' }}  </td>
+                    <td class='text-center {{ !empty($journal->has_vomitted) ? ($journal->has_vomitted=='true' ? ' danger' : ' success') : ' warning' }}'>
+                        {!! !empty($journal->has_vomitted) ? ($journal->has_vomitted=='true' ? 'Yes' : 'No') : '' !!}  
+                    </td>
                 </tr>
                 <tr>
                     <th>Missed Work or School</th>
-                    <td>{{ $journal->missed_workschool      ? 'Yes' : 'No' }}  </td>
+                    <td class='text-center {{ !empty($journal->missed_workschool) ? ($journal->missed_workschool=='true' ? ' danger' : ' success') : ' warning' }}'>
+                        {!! !empty($journal->missed_workschool) ? ($journal->missed_workschool=='true' ? 'Yes' : 'No') : '' !!}  
+                    </td>
                 </tr>
                 <tr>
                     <th>Missed Other Activities</th>
-                    <td>{{ $journal->missed_routines        ? 'Yes' : 'No' }}  </td>
+                    <td class='text-center {{ !empty($journal->missed_routines) ? ($journal->missed_routines=='true' ? ' danger' : ' success') : ' warning' }}'>
+                        {!! !empty($journal->missed_routines) ? ($journal->missed_routines=='true' ? 'Yes' : 'No') : '' !!}  
+                    </td>
                 </tr>
             </tbody>
         </table>
     </div>
 
-</div
+</div>
 @stop
 
 @section('footer')

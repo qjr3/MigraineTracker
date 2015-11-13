@@ -16,11 +16,10 @@
 <div class='panel panel-info'>
     <div class='panel-heading'>
         <div class="row">
-            <div class="col-sm-12 h3">{{ $journal->name }}</div>
-        </div>
-        <div class='row'>
-            <div class='col-sm-10 h4'> {{ $journal->description }}</div>
-            <div class='col-sm-2'><span class="pull-right" style="margin-bottom: 15px">{!! link_to_action('JournalController@show', 'Go Back', $journal->id) !!} </span></div>
+            <div class="h3 col-sm-3 ">{{ $journal->name }}</div>
+        @unless(empty($journal->description))
+            <div class='h3 col-sm-offset-1 col-sm-8 '>{!! nl2br($journal->description) !!}</div>
+        @endunless
         </div>
     </div>
     <div class='panel-body'>
@@ -152,13 +151,13 @@
                                 <div class="col-xs-6">
                                     <div class="form-group">
                                         {!! Form::label('start_time', 'Start Time', ['class' => 'form-label']) !!}
-                                        {!! Form::text('start_time', null, ['class' => 'form-control', 'disabled' => 'true']) !!}
+                                        {!! Form::input('datetime-local', 'start_time', '', ['class' => 'form-control']) !!}
                                     </div>
                                 </div>
                                 <div class="col-xs-6">
                                     <div class="form-group">
                                         {!! Form::label('end_time', 'End Time', ['class' => 'form-label']) !!}
-                                        {!! Form::text('end_time', null, ['class' => 'form-control', 'disabled' => 'true']) !!}
+                                        {!! Form::input('datetime-local', 'end_time', '', ['class' => 'form-control']) !!}
                                     </div>
                                 </div>
                             </div>
@@ -246,7 +245,8 @@
                         <div class="col-md-6">
 
                             <div class='form-group'>
-                                {!! Form::submit('Submit', ['class' => 'btn btn-block btn-lg']) !!}
+                                {!! Form::submit('Submit', ['class' => 'btn btn-block btn-lg btn-primary btn-default']) !!}
+                                <div class='col-sm-2'><span class="pull-right" style="margin-bottom: 15px">{!! link_to_action('JournalController@show', 'Cancel Edit', $journal->id) !!} </span></div>
                             </div>
                         </div>
                     </div>

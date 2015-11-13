@@ -13,6 +13,8 @@ use App\Journal;
 use App\Note;
 use Auth;
 use App\Http\Requests\JournalRequest;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Request;
 
 class JournalController extends Controller
 {
@@ -26,34 +28,24 @@ class JournalController extends Controller
     {
         $journals = Auth::user()->journals;
         
+        // keep backtrack token in the session one more step of the way.
+        if(Session::has('backTo')) Session::keep('backTo');
+        else Session::flash('backTo', Request::fullUrl());
+        
         return view('journal.index', compact('journals'));
     }
     
     public function store(JournalRequest $request)
     {
+        // keep backtrack token in the session one more step of the way.
+        if(Session::has('backTo')) Session::keep('backTo');
+        else Session::flash('backTo', Request::fullUrl());
+        
+        // Some reason, DB default value isn't autofilling....so we'll do it here instead.
+        if(empty($request['name'])) $request['name'] = 'unnamed';
+        
         $journal = Auth::user()->journals()->create($request->all());
-        
-        // Make sure we got a location filled in
-        if(isset($request['location']))
-        {
-            // Get location from inputs and strip whitspaces and htmlencode
-            $location = htmlentities(preg_replace('/\s+/', '', $request['location']));
-            // Construct URI for API call
-            $url = "http://api.openweathermap.org/data/2.5/weather?q=" . $location . "&lang=en&appid=0fb5360e492d477486818bdc1d8f752b";
-            // request as a file read (remove file read is ok, but GET/POST is not???
-            $json = file_get_contents($url);
-            // decode the data into a nice associative array
-            $data = json_decode($json,true);
-            // Make sure we actually received data
-            if($data['cod'] == 200)
-            {           
-                // Assign data to appropriate fields
-                $journal->weather_temperature =     $data['main']['temp'];
-                $journal->weather_pressure    =     $data['main']['pressure'];
-            }
-        }
-        
-        
+
         $journal->triggers()->attach($request->input('triggers_id'));
         $journal->medicines()->attach($request->input('medicines_id'));
         $journal->common_triggers()->attach($request->input('common_triggers_id'));
@@ -62,16 +54,24 @@ class JournalController extends Controller
 
         // If a note was created on journal, store and link it.....
         // ?? how to do this when I am tired? is not to do it....
-        return redirect('/journal');
+        return ($returnPath = Session::get('backTo')) ? redirect($returnPath) : redirect('/journal');
     }
     
     public function show(Journal $journal)
     {
+        // Setup backtracking
+        Session::flash('backTo', Request::fullUrl());
+        
         return view('journal.show', compact('journal'));
     }
     
     public function create()
     {
+        // keep backtrack token in the session one more step of the way.
+        if(Session::has('backTo')) Session::keep('backTo');
+        else Session::flash('backTo', Request::fullUrl());
+        
+        // Create list with name=>id to use in select2 field.
         $triggers = Auth::user()->triggers()->lists('name', 'id');
         $medicines = Auth::user()->medicines()->lists('name', 'id');
         
@@ -83,9 +83,13 @@ class JournalController extends Controller
     
     public function edit(Journal $journal)
     {
-
+        // keep backtrack token in the session one more step of the way.
+        if(Session::has('backTo')) Session::keep('backTo');
+        else Session::flash('backTo', Request::fullUrl());
         
         $journal = $journal->load('triggers');
+        
+        // Create list with name=>id to use in select2 field.
         $triggers = Auth::user()->triggers()->lists('name', 'id');
         $medicines = Auth::user()->medicines()->lists('name', 'id');
         
@@ -96,7 +100,11 @@ class JournalController extends Controller
     }
     
     public function update(Journal $journal, JournalRequest $request)
-    {
+    {   
+        // Some reason, DB default value isn't autofilling....so we'll do it here instead.
+        if(empty($request['name'])) $request['name'] = 'unnamed';
+        
+        // Make sure the id arrays are not null
         if(!isset($request['triggers_id']))
             $request['triggers_id'] = [];
 
@@ -108,7 +116,6 @@ class JournalController extends Controller
         
         if(!isset($request['pain_locations_id']))
             $request['pain_locations_id'] = []; 
-
 //        if(!isset($request[notes_id]))
 //            $request['notes_id'] = [];
 
@@ -120,13 +127,13 @@ class JournalController extends Controller
         
         $journal->update($request->all());
         
-        return redirect('/journal');
+        return ($returnPath = Session::get('backTo')) ? redirect($returnPath) : redirect('/journal');
     }    
     
     public function destroy(Journal $journal)
     {
         $journal->delete();
         $journals = Journal::all();
-        return redirect('/journal');
+        return ($returnPath = Session::get('backTo')) ? redirect($returnPath) : redirect('/journal');
     }
 }

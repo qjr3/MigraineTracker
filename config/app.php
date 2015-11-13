@@ -137,6 +137,8 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
+//        Braunson\LaravelHTML5Forms\LaravelHTML5FormsServiceProvider::class,
+        
         /*
          * Application Service Providers...
          */

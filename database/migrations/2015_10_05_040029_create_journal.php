@@ -15,12 +15,12 @@ class CreateJournal extends Migration
         Schema::create('journals', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned();
+            $table->string('name')->default('unnamed journal'); 
+            $table->string('description')->nullable();
             $table->string('location')->nullable();
             $table->smallInteger('severity')->nullable();
             $table->smallInteger('sound_level')->nullable();
             $table->smallInteger('light_level')->nullable();
-            $table->string('name')->default('unnamed journal'); 
-            $table->string('description')->nullable();
             $table->boolean('still_suffering')->nullable();
             $table->dateTime('start_time')->nullable();
             $table->dateTime('end_time')->nullable();
