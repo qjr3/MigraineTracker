@@ -44,38 +44,32 @@
 
 <body style='background-color: rgb(115, 204, 129)'>
 
-    <div class='container-fluid'>
+    <div class='container'>
         <div class='row'>
-            <div class='col-xs-1'></div>
-            <div class='col-xs-10'>@include('partials.nav')</div>
-            <div class='col-xs-1'></div>
+            <div class='col-xs-12'>@include('partials.nav')</div>
         </div>
         <div class='row'>
-            <div class='col-xs-1'></div>
-                <div class='col-xs-10'>      
-                    <div class='panel panel-info' style='background-color : rgba(255,255,255,.80);'>
-                        <div class='panel-body' >
-                            @if (session('status'))
-                                <div class="alert alert-success">
-                                    {{ session('status') }}
-                                </div>
-                            @endif
-                             @yield('content')
+        <div class='col-xs-12'>      
+            <div class='panel panel-info' style='background-color : rgba(255,255,255,.80);'>
+                <div class='panel-body' >
+                    @if (session('status'))
+                        <div class="alert alert-success">
+                            {{ session('status') }}
                         </div>
-                    </div>
+                    @endif
+                     @yield('content')
                 </div>
-            <div class='col-xs-1'></div>
+            </div>
+        </div>
         </div>
         <div class='row'>
-            <div class='col-xs-1'></div>
-                <div class='col-xs-10'>
+                <div class='col-xs-12'>
                     <div class='panel panel-info' style='background-color : rgba(245,245,245,.80);'>
                         <div class='panel-body'>
                             @yield('footer') @include('partials.footer')
                         </div>
                     </div>  
                 </div>
-            <div class='col-xs-1'></div>
         </div>
     </div> 	   
 </body>
