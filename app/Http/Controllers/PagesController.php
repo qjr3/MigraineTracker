@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
+use Carbon\Carbon;
 
 class PagesController extends Controller
 {
@@ -14,7 +15,9 @@ class PagesController extends Controller
         if (Auth::check())
         {
             $user = Auth::user();
-            return view('pages.dashboard', compact('user'));
+            $notes = $user->notes()->where('journal_id', '==', 'null')->where('created_at', '>=', Carbon::now()->subMonth())->get();
+            $journals = $user->journals()->where('created_at', '>=', Carbon::now()->subMonth())->get();
+            return view('pages.dashboard', compact('user', 'journals', 'notes'));
         }
         return redirect('/');
     }

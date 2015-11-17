@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCommonTriggersXJournalTable extends Migration
+class CreatePainLocationJournalPivotTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,14 +12,14 @@ class CreateCommonTriggersXJournalTable extends Migration
      */
     public function up()
     {
-        Schema::create('common_triggers_journal', function (Blueprint $table) {
+        Schema::create('journal_pain_locations', function (Blueprint $table) {
             $table->integer('journal_id')->unsigned()->index();
-            $table->integer('common_triggers_id')->unsigned()->index();
+            $table->integer('pain_locations_id')->unsigned()->index();
             
-            $table->primary(['journal_id', 'common_triggers_id']);
+            $table->primary(['journal_id', 'pain_locations_id']);
         
             // Foreign Keys
-            $table->foreign('common_triggers_id')->references('id')->on('common_triggers');
+            $table->foreign('pain_locations_id')->references('id')->on('pain_locations');
             $table->foreign('journal_id')->references('id')->on('journals');
         });
     }
@@ -31,6 +31,6 @@ class CreateCommonTriggersXJournalTable extends Migration
      */
     public function down()
     {
-        Schema::drop('common_triggers_journal');
+        Schema::drop('journal_pain_locations');
     }
 }
