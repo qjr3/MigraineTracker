@@ -1,32 +1,5 @@
 
         @foreach($journals as $journal)
-<<<<<<< HEAD
-            <div class='panel panel-info'>
-                <div class='panel-heading'>
-
-                        <div class='row'>
-                            <div class='col-xs-12'>
-                                <strong>{!! link_to_action('JournalController@show', $journal->name, $journal->id, []) !!}</strong>
-                            </div>
-                        </div>
-                        <div class='row'>
-                            <div class='col-xs-12'>
-                                <em>{!! nl2br($journal->description) !!}</em>
-                            </div>
-                        </div>
-
-                </div>
-                <div class='panel-body'>
-
-                        <div class='row'>
-                            <div class='col-xs-6'>
-                                {{$journal->has_nausea ? 'Nauseous' : 'Not Nauseous'}}
-                            </div>
-                            <div class='col-xs-6'>
-                                {{$journal->has_vomited ? 'Vomited' : 'Has not vomited'}}
-                            </div>
-                        </div>
-=======
         <div class='row'>
             <div class='col-xs-12'>
                 <table class='table table-condensed table-striped table-bordered'>
@@ -51,12 +24,11 @@
                         </tr>
                         <tr>
                             <td colspan="2">{{$journal->has_nausea ? 'Nauseous' : 'Not Nauseous'}}</td>
-                            <td colspan="2">{{$journal->has_vomitted ? 'Vomitted' : 'Has not vomitted'}}</td>
+                            <td colspan="2">{{$journal->has_vomited ? 'Vomited' : 'Has not vomited'}}</td>
                             <td colspan="2">&nbsp;</td>
                             <td colspan="2">&nbsp;</td>
                             <td colspan="2">&nbsp;</td>
                             <td colspan="2">&nbsp;</td>
->>>>>>> c4c0c65902eb633afcf1c22e068151ae79af7153
 
                         </tr>
                         <tr>
