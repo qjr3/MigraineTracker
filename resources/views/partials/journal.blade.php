@@ -2,7 +2,7 @@
         @foreach($journals as $journal)
         <div class='row'>
             <div class='col-xs-12'>
-                <table class='table table-condensed table-hover table-bordered'>
+                <table class='table table-condensed table-striped table-bordered'>
                     <thead>
                         <tr>
                             <th colspan="12">{!! link_to_action('JournalController@show', $journal->name, $journal->id, []) !!}</th>
@@ -30,6 +30,14 @@
                             <td colspan="2">&nbsp;</td>
                             <td colspan="2">&nbsp;</td>
 
+                        </tr>
+                        <tr>
+                            <th colspan='6'>Created On</th>
+                            <th colspan='6'>Updated On</th>
+                        </tr>
+                        <tr>
+                            <td colspan='6'>{{ $journal->create_at }}</td>
+                            <td colspan='6'>{{ $journal->updated_at }}</td>
                         </tr>
                     </tbody>
                 </table>

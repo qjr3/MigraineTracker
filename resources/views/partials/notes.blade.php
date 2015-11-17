@@ -6,8 +6,16 @@
         </div>
         <div class='row'>
             <div class='col-xs-12'>
-                <em>{!! nl2br($note->description) !!}</em>
+                <em>{!! nl2br($note->body) !!}</em>
             </div>
+        </div>
+        <div class='row'>
+            <div class='col-xs-6'>Created</div>
+            <div class='col-xs-6'>Updated</div>
+        </div>
+        <div class='row'>
+            <div class='col-xs-6'>{{ $note->created_at }}</div>
+            <div class='col-xs-6'>{{ $note->updated_at }}</div>            
         </div>
         @endforeach
         <div class='row'>

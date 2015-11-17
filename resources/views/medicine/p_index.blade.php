@@ -13,7 +13,7 @@
             <td class=''>{{$medicine->description}}</td>
             <td class=''>
                 {!! Form::open( ['route' => ['medicine.destroy', $medicine->id], 'method' => 'delete']) !!}
-                    <button type="submit" class="btn btn-danger btn-mini">X</button>
+                    <button type="submit" class="btn btn-danger btn-xs center-block"><span class='glyphicon glyphicon-remove-sign'></span></button>
                 {!! Form::close() !!}
             </td>
         </tr>
