@@ -1,7 +1,6 @@
 @extends('master')
 
 @section('content')
-<h1> TRIGGER CREATE </h1>
 {!! Form::open(['action' =>'TriggerController@store', 'method' => 'post']) !!}
 <div class='panel panel-info'>
     <div class='panel-heading'>

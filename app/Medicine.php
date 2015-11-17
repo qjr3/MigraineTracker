@@ -19,6 +19,12 @@ class Medicine extends Model
     
     protected $guarded = [];
 
+    public function scopeLikeName($query, $user_id, $name)
+    {
+        $name = '%'.$name.'%';
+        return $query->where('user_id', $user_id)->where('name', 'like', $name);
+    }
+
     public function user()
     {
         return $this->belongsTo('App\User');

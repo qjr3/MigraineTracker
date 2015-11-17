@@ -1,11 +1,10 @@
 <?php
 namespace App\Http\Controllers;
-use Illuminate\Http\Request;
+
 use Auth;
 use App\Trigger;
 use App\Medicine;
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 
 class ApiController extends Controller
 {
@@ -13,9 +12,18 @@ class ApiController extends Controller
     /*
      * Triggers
      */
-    public function showTriggers()
+    public function showTriggers(Request $request)
     {
-        return  Auth::user()->triggers;
+
+        if(isset($request['name'])){
+            $triggers = Trigger::likeName(Auth::user()->id, $request['name'])->get();
+            if($triggers->isEmpty()){
+                $triggers = Auth::user()->triggers;
+            }
+        }else{
+            $triggers = Auth::user()->triggers;
+        }
+        return $triggers;
     }
     
     public function createTrigger(Request $request)
@@ -31,9 +39,17 @@ class ApiController extends Controller
     /*
      * Medicines
      */
-    public function showMedicines()
+    public function showMedicines(Request $request)
     {
-        return  Auth::user()->medicines;
+        if(isset($request['name'])){
+            $medicines = Medicine::likeName(Auth::user()->id, $request['name'])->get();
+            if($medicines->isEmpty()){
+                $medicines = Auth::user()->medicines;
+            }
+        }else{
+            $medicines = Auth::user()->medicines;
+        }
+        return $medicines;
     }
     
     public function createMedicine(Request $request)

@@ -82,7 +82,7 @@ class TriggerController extends Controller
     {
         $trigger->fill($request->all());
         $trigger->save();
-        return redirect()->back();
+        return redirect('/trigger');
     }
 
     /**

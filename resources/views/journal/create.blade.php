@@ -123,6 +123,7 @@
             @endunless
             
             <p>Do Trigger add here.</p>
+            @include('trigger.p_add_button')
             <!-- Link to action, add trigger....return here -->
             <!-- on return remember state of form -->
             <!-- alternatively, use jquery/ajax to add the new trigger on client side, refresh this place holder. -->
@@ -135,6 +136,7 @@
             @endunless
             
             <p>Do Medicine add here</p>
+            @include('medicine.p_add_button')
             <!-- See triggers note -->
 
             <div class="form-group">
@@ -159,16 +161,16 @@
                 {!! Form::checkbox('has_nausea', null, ['class' => 'form-control']) !!}
             </div>
             <div class="form-group">
-                {!! Form::label('has_vomitted', 'Have you vomited?', ['class' => 'form-label']) !!}
-                {!! Form::checkbox('has_vomitted', null, ['class' => 'form-control']) !!}
+                {!! Form::label('has_vomited', 'Have you vomited?', ['class' => 'form-label']) !!}
+                {!! Form::checkbox('has_vomited', null, ['class' => 'form-control']) !!}
             </div>
             <div class="form-group">
-                {!! Form::label('has_light_sensativity', 'Are you experiencing sensitivity to light?', ['class' => 'form-label']) !!}
-                {!! Form::checkbox('has_light_sensativity', null, ['class' => 'form-control']) !!}
+                {!! Form::label('has_light_sensitivity', 'Are you experiencing sensitivity to light?', ['class' => 'form-label']) !!}
+                {!! Form::checkbox('has_light_sensitivity', null, ['class' => 'form-control']) !!}
             </div>
             <div class="form-group">
-                {!! Form::label('has_sound_sensativity', 'Are you experiencing sensitivity to sounds?', ['class' => 'form-label']) !!}
-                {!! Form::checkbox('has_sound_sensativity', null, ['class' => 'form-control']) !!}
+                {!! Form::label('has_sound_sensitivity', 'Are you experiencing sensitivity to sounds?', ['class' => 'form-label']) !!}
+                {!! Form::checkbox('has_sound_sensitivity', null, ['class' => 'form-control']) !!}
             </div>
             <div class="form-group">
                 {!! Form::label('has_disrupted', 'Are you being disrupted?', ['class' => 'form-label']) !!}
@@ -263,21 +265,90 @@
 
 <a id='get_weather'>Get Weather</a>
 {!! Form::close() !!}
+{!! Form::open( array('action' => 'TriggerController@store', 'class' => 'add-obj', 'id' => 'add-trigger')) !!}
+@include('trigger.p_add_modal')
+{!! Form::close() !!}
+{!! Form::open( array('action' => 'MedicineController@store', 'class' => 'add-obj', 'id' => 'add-medicine')) !!}
+@include('medicine.p_add_modal')
+{!! Form::close() !!}
 @stop
 
 
 @section('footer')
 <script type="text/javascript">
     $('#trigger_list').select2({
-        placeholder: "Select Triggers"
+        placeholder: "Select Triggers",
+        ajax: {
+            url: "/api/triggers",
+            dataType: 'json',
+            type: "GET",
+            data: function (params) {
+                return {
+                    name: params.term
+                };
+            }, processResults: function (data) {
+                return {
+                    results: $.map(data, function (item) {
+                        return {
+                            text: item.name,
+                            id: item.id
+                        }
+                    })
+                };
+            }
+        }
     });
     $('#medicine_list').select2({
-        placeholder: "Select Medicines"
+        placeholder: "Select Medicines",
+        ajax: {
+            url: "/api/medicines",
+            dataType: 'json',
+            type: "GET",
+            data: function (params) {
+                return {
+                    name: params.term
+                };
+            }, processResults: function (data) {
+                return {
+                    results: $.map(data, function (item) {
+                        return {
+                            text: item.name,
+                            id: item.id
+                        }
+                    })
+                };
+            }
+        }
     });
 
     $('#common_triggers_list').select2({
         placeholder: "Select CommonTriggers"
     });
+
+    $(".add-obj").on("submit", function(e)  {
+        e.preventDefault();
+        var form = $(this);
+        console.log(form.attr('id'));
+        var action = form.attr("action");
+        $.ajax({
+            type: "POST",
+            url: action,
+            data: $(this).closest('form').serialize(),
+            cache: false,
+            success: function (data) {
+                $('#' + form.attr('id'))[0].reset();
+                $(".modal").modal('hide');
+                return data;
+            },
+            error: function (data) {
+                // Error...
+                var errors = data.responseJSON;
+
+                console.log(errors);
+            }
+        });
+    });
+
 </script>
 
 <script>

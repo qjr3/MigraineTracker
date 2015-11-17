@@ -26,7 +26,7 @@
                 <tr>
                 @if(!empty($journal->start_time) && !empty($journal->end_time))
                     <th>Duration</th>
-                    <td class="text-center ">WiP{--  date_diff( date_create($journal->start_time), date_create($journal->end_time)) --}
+                    <td class="text-center ">{{$journal->duration()}}
                 @else
                     @if(!empty($journal->start_time) && empty($journal->end_time))
                         <th>Time Started</th>
@@ -50,16 +50,16 @@
                     <th>Light Level</th>
                     <td>{{ $journal->light_level }}</td>
                 </tr>
-                    <th>Light Sensativity</th>
-                    <td class='text-center {{ !empty($journal->has_light_sensativity) ? ($journal->has_light_sensativity=='true' ? ' danger' : ' success') : ' warning' }}'>{{ !empty($journal->has_light_sensativity) ? ($journal->has_light_sensativity=='true' ? 'Yes' : 'No') : '' }}</td>
+                    <th>Light Sensitivity</th>
+                    <td class='text-center {{ !empty($journal->has_light_sensitivity) ? ($journal->has_light_sensitivity=='true' ? ' danger' : ' success') : ' warning' }}'>{{ !empty($journal->has_light_sensitivity) ? ($journal->has_light_sensitivity=='true' ? 'Yes' : 'No') : '' }}</td>
                 </tr>
                 <tr>
                 <tr>
                     <th>Sound Level</th>
                     <td>{{ $journal->sound_level }}</td>
                 </tr>
-                    <th>Sound Sensativity</th>
-                    <td class='text-center {{ !empty($journal->has_sound_sensativity) ? ($journal->has_sound_sensativity=='true' ? ' danger' : ' success') : ' warning' }}'>{!! !empty($journal->has_sound_sensativity) ? ($journal->has_sound_sensativity=='true' ? 'Yes' : 'No') : '' !!}  </td>
+                    <th>Sound Sensitivity</th>
+                    <td class='text-center {{ !empty($journal->has_sound_sensitivity) ? ($journal->has_sound_sensitivity=='true' ? ' danger' : ' success') : ' warning' }}'>{!! !empty($journal->has_sound_sensitivity) ? ($journal->has_sound_sensitivity=='true' ? 'Yes' : 'No') : '' !!}  </td>
                 </tr>
                 <tr>
                     <th>Nauseous</th>
@@ -68,9 +68,9 @@
                     </td>
                 </tr>
                 <tr>
-                    <th>Vomitted</th>
-                    <td class='text-center {{ !empty($journal->has_vomitted) ? ($journal->has_vomitted=='true' ? ' danger' : ' success') : ' warning' }}'>
-                        {!! !empty($journal->has_vomitted) ? ($journal->has_vomitted=='true' ? 'Yes' : 'No') : '' !!}  
+                    <th>Vomited</th>
+                    <td class='text-center {{ !empty($journal->has_vomited) ? ($journal->has_vomited=='true' ? ' danger' : ' success') : ' warning' }}'>
+                        {!! !empty($journal->has_vomited) ? ($journal->has_vomited=='true' ? 'Yes' : 'No') : '' !!}
                     </td>
                 </tr>
                 <tr>

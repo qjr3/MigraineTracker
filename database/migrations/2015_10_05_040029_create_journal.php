@@ -29,9 +29,9 @@ class CreateJournal extends Migration
             $table->boolean('has_aura')->nullable();
             $table->string('aura_description')->nullable();
             $table->boolean('has_nausea')->nullable();
-            $table->boolean('has_vomitted')->nullable();
-            $table->boolean('has_light_sensativity')->nullable();
-            $table->boolean('has_sound_sensativity')->nullable();
+            $table->boolean('has_vomited')->nullable();
+            $table->boolean('has_light_sensitivity')->nullable();
+            $table->boolean('has_sound_sensitivity')->nullable();
             $table->boolean('has_disrupted')->nullable();
             $table->boolean('missed_workschool')->nullable();
             $table->boolean('missed_routines')->nullable(); 

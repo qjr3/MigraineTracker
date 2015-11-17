@@ -24,7 +24,7 @@
                                 {{$journal->has_nausea ? 'Nauseous' : 'Not Nauseous'}}
                             </div>
                             <div class='col-xs-6'>
-                                {{$journal->has_vomitted ? 'Vomitted' : 'Has not vomitted'}}
+                                {{$journal->has_vomited ? 'Vomited' : 'Has not vomited'}}
                             </div>
                         </div>
 
