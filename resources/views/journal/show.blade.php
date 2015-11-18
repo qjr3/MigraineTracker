@@ -9,7 +9,6 @@
 
 @stop
 
-
 @section('content')
 <div class='panel panel-info'>
     <div class='panel-heading'>
@@ -17,7 +16,7 @@
             <div class="col-xs-12 h1"><span>{{ $journal->name }}</span> &nbsp; &nbsp; <span class="pull-right" style="margin-bottom: 15px">{!! link_to_action('JournalController@edit', 'Edit' , $journal->id, ['class'=>'btn btn-block btn-primary']) !!} </span></div>
         </div>
         <div class='row'>
-            <div class='col-xs-10 h4'><em>{!! nl2br($journal->description) !!}</div>
+            <div class='col-xs-10 h4'><em>{!! nl2br($journal->description) !!}</em></div>
         </div>
     </div>
     <div class='panel-body'>
@@ -26,7 +25,7 @@
                 <tr>
                 @if(!empty($journal->start_time) && !empty($journal->end_time))
                     <th>Duration</th>
-                    <td class="text-center ">{{$journal->duration()}}
+                    <td class="text-center ">WiP{--  date_diff( date_create($journal->start_time), date_create($journal->end_time)) --}
                 @else
                     @if(!empty($journal->start_time) && empty($journal->end_time))
                         <th>Time Started</th>

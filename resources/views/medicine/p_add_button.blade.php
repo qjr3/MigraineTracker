@@ -1,2 +1,2 @@
 @inject('modal', 'App\lib\MedicineModal')
-<span class="btn btn-success" data-toggle="modal" data-target="#{{$modal->getID()}}">Add Medicine</span>
+<div class="btn btn-success form-control" data-toggle="modal" data-target="#{{$modal->getID()}}">Add Medicine</div>

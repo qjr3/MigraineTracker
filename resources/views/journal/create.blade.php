@@ -65,24 +65,31 @@
             {!! Form::select('light_level', [ '', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10' ], null, ['class' => 'form-control']) !!}
         </div>
     </div>
-    <div class='row'>
-        <div class="form-group col-xs-4">
+<div class='row'>
+        <div class="form-group col-xs-12">
             {!! Form::label('common_triggers_id', 'Common Triggers', ['class' => 'form-label']) !!}
             {!! Form::select('common_triggers_id[]', $common_triggers, 'name', ['id' => 'common_triggers_list', 'class' => 'form-control', 'multiple']) !!}
         </div>
+</div>
+    <div class='row'>
 
         <div class="form-group col-xs-4">
             {!! Form::label('triggers_id', 'Triggers', ['class' => 'form-label']) !!}
             {!! Form::select('triggers_id[]', $triggers, 'name', ['id' => 'trigger_list', 'class' => 'form-control', 'multiple']) !!}
+        </div>
+        <div class='form-group col-xs-2'>
+            <div class=''>&nbsp;</div>
             @include('trigger.p_add_button')
         </div>
 
         <div class="form-group col-xs-4">
             {!! Form::label('medicines_id', 'Medications', ['class' => 'form-label']) !!}
             {!! Form::select('medicines_id[]', $medicines, 'name', ['id' => 'medicine_list', 'class' => 'form-control', 'multiple']) !!}
+        </div>
+        <div class='form-group col-xs-2'>
+            <div class=''>&nbsp;</div>
             @include('medicine.p_add_button')
         </div>
-
     </div>
 
     <div class='row'>
@@ -95,59 +102,54 @@
             {!! Form::input('datetime-local', 'end_time', '', ['class' => 'form-control', 'autocomplete' => 'true']) !!}
         </div>
     </div>
-    <div class='row'>
-
-
-        <div class="form-group">
-            {!! Form::label('has_aura', 'Are you experiencing any auras?', ['class' => 'form-label']) !!}
-            {!! Form::select('has_aura', [ '' => '', 'true' => 'Yes', 'false' => 'No'], null, ['class' => 'form-control']) !!}
-        </div>
-        <div class="form-group">
-            {!! Form::textarea('aura_description', null, ['class' => 'form-control', 'placeholder' => 'Description of Aura']) !!}
-        </div>
-        <div class="form-group">
-            {!! Form::label('still_suffering', 'Currently Suffering?', ['class' => 'form-label']) !!}
-            {!! Form::select('still_suffering', [ '' => '', 'true' => 'Yes', 'false' => 'No'], ['class' => 'form-control']) !!}
-        </div>
-        <div class="form-group">
-            {!! Form::label('has_nausea', 'Are you nauseous?', ['class' => 'form-label']) !!}
-            {!! Form::select('has_nausea', ['' => '', 'true' => 'Yes', 'false' => 'No'], ['class' => 'form-control']) !!}
-        </div>
-        <div class="form-group">
-            {!! Form::label('has_vomited', 'Have you vomited?', ['class' => 'form-label']) !!}
-            {!! Form::select('has_vomited', ['' => '', 'true' => 'Yes', 'false' => 'No'], ['class' => 'form-control']) !!}
-        </div>
-
-
-        <div class="form-group">
-            {!! Form::label('has_light_sensitivity', 'Are you experiencing sensitivity to light?', ['class' => 'form-label']) !!}
-            {!! Form::select('has_light_sensitivity', ['' => '', 'true' => 'Yes', 'false' => 'No'], ['class' => 'form-control']) !!}
-        </div>
-        <div class="form-group">
-            {!! Form::label('has_sound_sensitivity', 'Are you experiencing sensitivity to sounds?', ['class' => 'form-label']) !!}
-            {!! Form::select('has_sound_sensitivity', ['' => '', 'true' => 'Yes', 'false' => 'No'], ['class' => 'form-control']) !!}
-        </div>
-        <div class="form-group">
-            {!! Form::label('has_disrupted', 'Are you being disrupted?', ['class' => 'form-label']) !!}
-            {!! Form::select('has_disrupted', ['' => '', 'true' => 'Yes', 'false' => 'No'], ['class' => 'form-control']) !!}
-        </div>
-        <div class="form-group">
-            {!! Form::label('missed_workschool', 'Did you miss work or school?', ['class' => 'form-label']) !!}
-            {!! Form::select('missed_workschool', ['' => '', 'true' => 'Yes', 'false' => 'No'], ['class' => 'form-control']) !!}
-        </div>
-        <div class="form-group">
-            {!! Form::label('missed_routines', 'Have you missed other routines?', ['class' => 'form-label']) !!}
-            {!! Form::select('missed_routines', ['' => '', 'true' => 'Yes', 'false' => 'No'], ['class' => 'form-control']) !!}
-        </div>
-        <div class="form-group">
-            {!! Form::label('social_plans', 'Social Plans:', ['class' => 'form-label']) !!}
-            {!! Form::select('social_plans', ['' => '', 'true' => 'Yes', 'false' => 'No'], ['class' => 'form-control']) !!}
-        </div>
-        <div class="form-group">
-            {!! Form::label('activities', 'Activities:', ['class' => 'form-label']) !!}
-            {!! Form::select('activities', ['' => '', 'true' => 'Yes', 'false' => 'No'], ['class' => 'form-control']) !!}
-        </div>
-    </div>
+                  <div class="row">
+                        <div class="col-xs-6">
+                            <div class="form-group row">
+                                <div class='col-xs-6'>{!! Form::label('has_nausea', 'Nauseous?', ['class' => 'form-label']) !!}</div>
+                                <div class='col-xs-6'>{!! Form::select('has_nausea',  [ '' => '', 'true' => 'Yes', 'false' => 'No'], null, ['class' => 'form-control']) !!}</div>
+                            </div>
+                        </div>
+                        <div class="col-xs-6">
+                            <div class="form-group row">
+                                <div class='col-xs-6'>{!! Form::label('has_vomited', 'Vomited?', ['class' => 'form-label']) !!}</div>
+                                <div class='col-xs-6'>{!! Form::select('has_vomited',  [ '' => '', 'true' => 'Yes', 'false' => 'No'], null, ['class' => 'form-control']) !!}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class='col-xs-6'>
+                            <div class="form-group row">
+                                <div class='col-xs-6'>{!! Form::label('has_light_sensitivity', 'Light Sensitivity', ['class' => 'form-label']) !!}</div>
+                                <div class='col-xs-6'>{!! Form::select('has_light_sensitivity',  [ '' => '', 'true' => 'Yes', 'false' => 'No'], null, ['class' => 'form-control']) !!}</div>
+                            </div>
+                            <div class="form-group row">
+                                <div class='col-xs-6'>{!! Form::label('has_sound_sensitivity', 'Sound Sensitivity', ['class' => 'form-label']) !!}</div>
+                                <div class='col-xs-6'>{!! Form::select('has_sound_sensitivity',  [ '' => '', 'true' => 'Yes', 'false' => 'No'], null, ['class' => 'form-control']) !!}</div>
+                            </div>
+                            <div class="form-group row">
+                                <div class='col-xs-6'>{!! Form::label('has_disrupted', 'Disruptions', ['class' => 'form-label']) !!}</div>
+                                <div class='col-xs-6'>{!! Form::select('has_disrupted',  [ '' => '', 'true' => 'Yes', 'false' => 'No'], null, ['class' => 'form-control']) !!}</div>
+                            </div>
+                            <div class="form-group row">
+                                <div class='col-xs-6'>{!! Form::label('missed_workschool', 'Missed Work or School', ['class' => 'form-label']) !!}</div>
+                                <div class='col-xs-6'>{!! Form::select('missed_workschool',  [ '' => '', 'true' => 'Yes', 'false' => 'No'], null, ['class' => 'form-control']) !!}</div>
+                            </div>
+                        </div>
+                        <div class='col-xs-6'>
+                            <div class="form-group row">
+                                <div class='col-xs-6'>{!! Form::label('missed_routines', 'Missed Other Activities', ['class' => 'form-label']) !!}</div>
+                                <div class='col-xs-6'>{!! Form::select('missed_routines',  [ '' => '', 'true' => 'Yes', 'false' => 'No'], null, ['class' => 'form-control']) !!}</div>
+                            </div>
+                            <div class="form-group row">
+                                <div class='col-xs-6'>{!! Form::label('social_plans', 'Missed Social Events', ['class' => 'form-label']) !!}</div>
+                                <div class='col-xs-6'>{!! Form::select('social_plans', [ '' => '', 'true' => 'Yes', 'false' => 'No'], null, ['class' => 'form-control'])  !!}</div>
+                            </div>
+                            <div class="form-group row">
+                                <div class='col-xs-6'>{!! Form::label('activities', 'Missed Other Events', ['class' => 'form-label']) !!}</div>
+                                <div class='col-xs-6'>{!! Form::select('activities', [ '' => '', 'true' => 'Yes', 'false' => 'No'], null, ['class' => 'form-control'])  !!}</div>
+                            </div>
+                        </div>
+                    </div>
     <div class='form-group'>
         {!! Form::submit('Submit', ['class' => 'btn btn-primary']) !!}
     </div>
@@ -158,6 +160,7 @@
     {!! Form::hidden('weather_temperature') !!}
     --}}
     {!! Form::close() !!}
+    
     {!! Form::open( array('action' => 'TriggerController@store', 'class' => 'add-obj', 'id' => 'add-trigger')) !!}
     @include('trigger.p_add_modal')
     {!! Form::close() !!}
@@ -457,7 +460,7 @@
         };
     </script>
 
-@stop@extends('master')
+@stop
 
 @section('style')
     <link href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/css/select2.min.css" rel="stylesheet" />

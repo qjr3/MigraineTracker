@@ -1,2 +1,2 @@
 @inject('modal', 'App\lib\TriggerModal')
-<span class="btn btn-success" data-toggle="modal" data-target="#{{$modal->getID()}}">Add Trigger</span>
+<div class="btn btn-success form-control" data-toggle="modal" data-target="#{{$modal->getID()}}">Add Trigger</div>

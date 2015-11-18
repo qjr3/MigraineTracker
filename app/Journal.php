@@ -33,7 +33,7 @@ class Journal extends Model
         'missed_social',
         'missed_personal_activity',
     ];
-    protected $dates = ['start_time', 'end_time'];
+    //protected $dates = ['start_time', 'end_time'];
     protected $guarded = [];
     
     protected $hidden = [];

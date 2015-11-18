@@ -25,7 +25,7 @@
                     </div>
                     <div class="form-group">
                         {!! Form::label('has_aura', 'Experiencing Aura?', ['class' => 'form-label']) !!}
-                        {!! Form::select('has_aura', [ '' => '', 1 => 'Yes', 0 => 'No'], null, ['class' => 'form-control']) !!}
+                        {!! Form::select('has_aura', [ '' => '', 'true' => 'Yes', 'false' => 'No'], null, ['class' => 'form-control']) !!}
                     </div>
                     <div class="form-group">
                         {!! Form::label('aura_description', 'Aura Description', ['class' => 'form-label']) !!}
@@ -66,7 +66,7 @@
                         <div class="col-xs-4">
                             <div class="form-group">
                                 {!! Form::label('still_suffering', 'Still Suffering?', ['class' => 'form-label']) !!}
-                                {!! Form::select('still_suffering', [ '' => '', 1 => 1, 0 => 0], null, ['class' => 'form-control']) !!}
+                                {!! Form::select('still_suffering', [ '' => '', 'true' => 'Yes', 'false' => 'No'], null, ['class' => 'form-control']) !!}
                             </div>
                             <div class="form-group">
                                 {!! Form::label('severity', 'Severity', ['class' => 'form-label']) !!}
@@ -86,13 +86,11 @@
                         <div class="col-xs-4">
                             <div class="form-group">
                                 {!! Form::label('start_time', 'Start Time', ['class' => 'form-label']) !!}
-                                <?php $journal->start_time != null ? $start = $journal->start_time->format('Y-m-d\TH:i:s') : $start = null; ?>
-                                {!! Form::input('datetime-local', 'start_time', $start, ['class' => 'form-control']) !!}
+                                {!! Form::input('datetime-local', 'start_time', $journal->start_time, ['class' => 'form-control']) !!}
                             </div>
                             <div class="form-group">
                                 {!! Form::label('end_time', 'End Time', ['class' => 'form-label']) !!}
-                                <?php $journal->end_time != null ? $end = $journal->end_time->format('Y-m-d\TH:i:s') : $end = null; ?>
-                                {!! Form::input('datetime-local', 'end_time', $end, ['class' => 'form-control']) !!}
+                                {!! Form::input('datetime-local', 'end_time', $journal->end_time , ['class' => 'form-control']) !!}
                             </div>
                         </div>
                     </div>
@@ -100,13 +98,13 @@
                         <div class="col-xs-6">
                             <div class="form-group row">
                                 <div class='col-xs-6'>{!! Form::label('has_nausea', 'Nauseous?', ['class' => 'form-label']) !!}</div>
-                                <div class='col-xs-6'>{!! Form::select('has_nausea',  [ '' => '', 1 => 'Yes', 0 => 'No'], null, ['class' => 'form-control']) !!}</div>
+                                <div class='col-xs-6'>{!! Form::select('has_nausea',  [ '' => '', 'true' => 'Yes', 'false' => 'No'], null, ['class' => 'form-control']) !!}</div>
                             </div>
                         </div>
                         <div class="col-xs-6">
                             <div class="form-group row">
                                 <div class='col-xs-6'>{!! Form::label('has_vomited', 'Vomited?', ['class' => 'form-label']) !!}</div>
-                                <div class='col-xs-6'>{!! Form::select('has_vomited',  [ '' => '', 1 => 'Yes', 0 => 'No'], null, ['class' => 'form-control']) !!}</div>
+                                <div class='col-xs-6'>{!! Form::select('has_vomited',  [ '' => '', 'true' => 'Yes', 'false' => 'No'], null, ['class' => 'form-control']) !!}</div>
                             </div>
                         </div>
                     </div>
@@ -114,33 +112,33 @@
                         <div class='col-xs-6'>
                             <div class="form-group row">
                                 <div class='col-xs-6'>{!! Form::label('has_light_sensitivity', 'Light Sensitivity', ['class' => 'form-label']) !!}</div>
-                                <div class='col-xs-6'>{!! Form::select('has_light_sensitivity',  [ '' => '', 1 => 'Yes', 0 => 'No'], null, ['class' => 'form-control']) !!}</div>
+                                <div class='col-xs-6'>{!! Form::select('has_light_sensitivity',  [ '' => '', 'true' => 'Yes', 'false' => 'No'], null, ['class' => 'form-control']) !!}</div>
                             </div>
                             <div class="form-group row">
                                 <div class='col-xs-6'>{!! Form::label('has_sound_sensitivity', 'Sound Sensitivity', ['class' => 'form-label']) !!}</div>
-                                <div class='col-xs-6'>{!! Form::select('has_sound_sensitivity',  [ '' => '', 1 => 'Yes', 0 => 'No'], null, ['class' => 'form-control']) !!}</div>
+                                <div class='col-xs-6'>{!! Form::select('has_sound_sensitivity',  [ '' => '', 'true' => 'Yes', 'false' => 'No'], null, ['class' => 'form-control']) !!}</div>
                             </div>
                             <div class="form-group row">
                                 <div class='col-xs-6'>{!! Form::label('has_disrupted', 'Disruptions', ['class' => 'form-label']) !!}</div>
-                                <div class='col-xs-6'>{!! Form::select('has_disrupted',  [ '' => '', 1 => 'Yes', 0 => 'No'], null, ['class' => 'form-control']) !!}</div>
+                                <div class='col-xs-6'>{!! Form::select('has_disrupted',  [ '' => '', 'true' => 'Yes', 'false' => 'No'], null, ['class' => 'form-control']) !!}</div>
                             </div>
                             <div class="form-group row">
                                 <div class='col-xs-6'>{!! Form::label('missed_workschool', 'Missed Work or School', ['class' => 'form-label']) !!}</div>
-                                <div class='col-xs-6'>{!! Form::select('missed_workschool',  [ '' => '', 1 => 'Yes', 0 => 'No'], null, ['class' => 'form-control']) !!}</div>
+                                <div class='col-xs-6'>{!! Form::select('missed_workschool',  [ '' => '', 'true' => 'Yes', 'false' => 'No'], null, ['class' => 'form-control']) !!}</div>
                             </div>
                         </div>
                         <div class='col-xs-6'>
                             <div class="form-group row">
                                 <div class='col-xs-6'>{!! Form::label('missed_routines', 'Missed Other Activities', ['class' => 'form-label']) !!}</div>
-                                <div class='col-xs-6'>{!! Form::select('missed_routines',  [ '' => '', 1 => 'Yes', 0 => 'No'], null, ['class' => 'form-control']) !!}</div>
+                                <div class='col-xs-6'>{!! Form::select('missed_routines',  [ '' => '', 'true' => 'Yes', 'false' => 'No'], null, ['class' => 'form-control']) !!}</div>
                             </div>
                             <div class="form-group row">
                                 <div class='col-xs-6'>{!! Form::label('social_plans', 'Missed Social Events', ['class' => 'form-label']) !!}</div>
-                                <div class='col-xs-6'>{!! Form::select('social_plans', [ '' => '', 1 => 'Yes', 0 => 'No'], null, ['class' => 'form-control'])  !!}</div>
+                                <div class='col-xs-6'>{!! Form::select('social_plans', [ '' => '', 'true' => 'Yes', 'false' => 'No'], null, ['class' => 'form-control'])  !!}</div>
                             </div>
                             <div class="form-group row">
                                 <div class='col-xs-6'>{!! Form::label('activities', 'Missed Other Events', ['class' => 'form-label']) !!}</div>
-                                <div class='col-xs-6'>{!! Form::select('activities', [ '' => '', 1 => 'Yes', 0 => 'No'], null, ['class' => 'form-control'])  !!}</div>
+                                <div class='col-xs-6'>{!! Form::select('activities', [ '' => '', 'true' => 'Yes', 'false' => 'No'], null, ['class' => 'form-control'])  !!}</div>
                             </div>
                         </div>
                     </div>

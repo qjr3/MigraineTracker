@@ -94,7 +94,7 @@ class JournalController extends Controller
         $medicines = Auth::user()->medicines()->lists('name', 'id');
         
         $common_triggers = CommonTriggers::all()->lists('name', 'id');
-        $pain_locations = PainLocations::all()->lists('name', 'id');
+//        $pain_locations = PainLocations::all()->lists('name', 'id');
         
         return view('journal.edit', compact('journal', 'common_triggers', 'triggers', 'medicines'));
     }
