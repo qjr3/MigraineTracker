@@ -67,35 +67,4 @@ class Journal extends Model
     {
         return $this->belongsToMany('App\PainLocations');
     }
-
-    public function duration(){
-        $minutes = $this->end_time->diffInMinutes($this->start_time);
-        $string = '';
-        if($minutes > 1440){
-            $days = intval($minutes/1440);
-            $minutes = $minutes%1440;
-            $string = $string.$days.' Day';
-            if($days > 1){
-                $string = $string.'s ';
-            }else{
-                $string = $string.' ';
-            }
-        }
-        if($minutes > 59){
-            $hours = intval($minutes/60);
-            $minutes = $minutes%60;
-            $string = $string.$hours.' Hour';
-            if($hours > 1){
-                $string = $string.'s ';
-            }else{
-                $string = $string.' ';
-            }
-        }
-        if($minutes != 1){
-            $string = $string.$minutes.' Minutes';
-        }else{
-            $string = $string.$minutes.' Minute';
-        }
-        return $string;
-    }
 }

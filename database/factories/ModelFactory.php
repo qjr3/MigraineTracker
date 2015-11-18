@@ -44,21 +44,22 @@ $factory->define(App\Journal::class, function (Faker\Generator $faker) {
         'weather_pressure' => $faker->numberBetween(800,1100),
         'sound_level' => $faker->numberBetween(0,10),
         'light_level' => $faker->numberBetween(0,10),
-        'still_suffering' => $faker->boolean(),
-        'start_time' => $faker->dateTimeBetween('-15 hours', '-5 hours'),
-        'end_time' => $faker->dateTimeBetween('-5 hours', '+5 hours'),
-        'has_aura' => $faker->boolean(),
-        'has_nausea' => $faker->boolean(),
-        'has_vomited' => $faker->boolean(),
-        'has_light_sensitivity' => $faker->boolean(),
-        'has_sound_sensitivity' => $faker->boolean(),
-        'has_disrupted' => $faker->boolean(),
-        'missed_workschool' => $faker->boolean(),
-        'missed_routines' => $faker->boolean(),
-        'missed_social' => $faker->boolean(),
-        'missed_personal_activity' => $faker->boolean()
+        'still_suffering' => $faker->randomElement(['true', 'false', null]),
+        'start_time' => $faker->dateTimeBetween('-48 hours', '-5 hours'),
+        'end_time' => $faker->dateTimeBetween('-5 hours', '+48 hours'),
+        'has_aura' => $faker->randomElement(['true', 'false', null]),
+        'has_nausea' => $faker->randomElement(['true', 'false', null]),
+        'has_vomited' => $faker->randomElement(['true', 'false', null]),
+        'has_light_sensitivity' => $faker->randomElement(['true', 'false', null]),
+        'has_sound_sensitivity' => $faker->randomElement(['true', 'false', null]),
+        'has_disrupted' => $faker->randomElement(['true', 'false', null]),
+        'missed_workschool' => $faker->randomElement(['true', 'false', null]),
+        'missed_routines' => $faker->randomElement(['true', 'false', null]),
+        'missed_social' => $faker->randomElement(['true', 'false', null]),
+        'missed_personal_activity' => $faker->randomElement(['true', 'false', null])
     ];
-    
+    $data['start_time'] = $data['start_time']->format('Y-m-d\TH:i:s');
+    $data['end_time'] = $data['end_time']->format('Y-m-d\TH:i:s');
     if($data['has_aura'])
         $data['aura_description'] = $faker->paragraph(5);
     return $data;
