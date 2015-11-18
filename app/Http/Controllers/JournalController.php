@@ -12,6 +12,7 @@ use App\Medicine;
 use App\Journal;
 use App\Note;
 use Auth;
+use Carbon\Carbon;
 use App\Http\Requests\JournalRequest;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Request;
@@ -61,8 +62,8 @@ class JournalController extends Controller
     {
         // Setup backtracking
         Session::flash('backTo', Request::fullUrl());
-        
-        return view('journal.show', compact('journal'));
+        $duration = $this->duration($journal);
+        return view('journal.show', compact('journal', 'duration'));
     }
     
     public function create()
@@ -135,5 +136,40 @@ class JournalController extends Controller
         $journal->delete();
         $journals = Journal::all();
         return ($returnPath = Session::get('backTo')) ? redirect($returnPath) : redirect('/journal');
+    }
+
+    public function duration(Journal $journal){
+        if($journal->start_time == null || $journal->end_time == null)
+            return null;
+        $start_time = Carbon::createFromFormat('Y-m-d\TH:i:s', $journal->start_time);
+        $end_time = Carbon::createFromFormat('Y-m-d\TH:i:s', $journal->end_time);
+        $minutes = $end_time->diffInMinutes($start_time);
+        $string = '';
+        if($minutes > 1440){
+            $days = intval($minutes/1440);
+            $minutes = $minutes%1440;
+            $string = $string.$days.' Day';
+            if($days > 1){
+                $string = $string.'s ';
+            }else{
+                $string = $string.' ';
+            }
+        }
+        if($minutes > 59){
+            $hours = intval($minutes/60);
+            $minutes = $minutes%60;
+            $string = $string.$hours.' Hour';
+            if($hours > 1){
+                $string = $string.'s ';
+            }else{
+                $string = $string.' ';
+            }
+        }
+        if($minutes != 1){
+            $string = $string.$minutes.' Minutes';
+        }else{
+            $string = $string.$minutes.' Minute';
+        }
+        return $string;
     }
 }
