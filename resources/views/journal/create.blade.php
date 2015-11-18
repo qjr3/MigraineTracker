@@ -141,12 +141,12 @@
                                 <div class='col-xs-6'>{!! Form::select('missed_routines',  [ '' => '', 'true' => 'Yes', 'false' => 'No'], null, ['class' => 'form-control']) !!}</div>
                             </div>
                             <div class="form-group row">
-                                <div class='col-xs-6'>{!! Form::label('social_plans', 'Missed Social Events', ['class' => 'form-label']) !!}</div>
-                                <div class='col-xs-6'>{!! Form::select('social_plans', [ '' => '', 'true' => 'Yes', 'false' => 'No'], null, ['class' => 'form-control'])  !!}</div>
+                                <div class='col-xs-6'>{!! Form::label('missed_social', 'Missed Social Events', ['class' => 'form-label']) !!}</div>
+                                <div class='col-xs-6'>{!! Form::select('missed_social', [ '' => '', 'true' => 'Yes', 'false' => 'No'], null, ['class' => 'form-control'])  !!}</div>
                             </div>
                             <div class="form-group row">
-                                <div class='col-xs-6'>{!! Form::label('activities', 'Missed Other Events', ['class' => 'form-label']) !!}</div>
-                                <div class='col-xs-6'>{!! Form::select('activities', [ '' => '', 'true' => 'Yes', 'false' => 'No'], null, ['class' => 'form-control'])  !!}</div>
+                                <div class='col-xs-6'>{!! Form::label('missed_personal_activity', 'Missed Other Events', ['class' => 'form-label']) !!}</div>
+                                <div class='col-xs-6'>{!! Form::select('missed_personal_activity', [ '' => '', 'true' => 'Yes', 'false' => 'No'], null, ['class' => 'form-control'])  !!}</div>
                             </div>
                         </div>
                     </div>
