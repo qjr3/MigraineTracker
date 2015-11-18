@@ -60,6 +60,7 @@
         {!! Form::submit('Login', ['class' => 'btn  btn-block btn-default btn-primary']) !!}
     </div>
     {!! Form::close() !!}  
+{!! link_to_action('Auth\AuthController@getRegister','Register',['class'=>'btn btn-info']) !!}
             @endif
   </div>
 </nav>
