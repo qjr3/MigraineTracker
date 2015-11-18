@@ -4,6 +4,8 @@
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
       {!! link_to_action('PagesController@dashboard', 'Migraine Tracker', array(), ['class' => 'navbar-brand']) !!}
     </div>
+            @if(Auth::check())
+            <?php $user = Auth::user() ?>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-left">
             <li {{ Request::is('home') ? 'class=active' : null }} >{!! link_to_action('PagesController@dashboard', 'Home') !!}</li>
@@ -38,17 +40,26 @@
           </li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-            @if(Auth::check())
-            <?php $user = Auth::user() ?>
                 <span class="navbar-text navbar-right" style='margin-right: 5px'>
             {!! link_to_action('UserController@show', $user->name, $user->id ) !!}
             |
             {!! link_to_action('Auth\AuthController@getLogout', 'Sign Out') !!}</span>
-            @else
-                <li {{ Request::is('login') ? 'class=active' : null }}>{!! link_to_action('Auth\AuthController@getLogin', 'Login') !!}</li>
-                <li {{ Request::is('register') ? 'class=active' : null }}>{!! link_to_action('Auth\AuthController@getRegister', 'Register') !!}</li>
-            @endif
         </ul>
     </div>
+            @else
+            {!! Form::open(['action' => 'Auth\AuthController@postLogin', 'class' => 'navbar-form navbar-right']) !!}
+    <div class='form-group'>
+        {!! Form::label('email', 'Email Address', ['class' => 'sr-only']) !!}
+        {!! Form::email('email', null, ['class' => 'form-control', 'type' => 'email', 'placeholder' => 'Email Address']) !!}
+    </div>
+    <div class='form-group'>
+        {!! Form::label('password', 'Password', ['class' => 'sr-only']) !!}
+        {!! Form::password('password', ['class' => 'form-control', 'placeholder' => 'Password']) !!}
+    </div>
+    <div class='form-group'>
+        {!! Form::submit('Login', ['class' => 'btn  btn-block btn-default btn-primary']) !!}
+    </div>
+    {!! Form::close() !!}  
+            @endif
   </div>
 </nav>
