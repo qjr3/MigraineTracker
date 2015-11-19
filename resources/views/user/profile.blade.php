@@ -5,7 +5,7 @@
 @section('content')
     <div class="col-xs-12">
         <div class="row">
-            <div class="col-xs-3">
+
                 <div class='panel panel-info'>
                     <div class='panel-heading container-fluid'>
                         <div class='row'>
@@ -19,59 +19,42 @@
                         <br>
 <div class='col-xs-offset-1 col-xs-10 col-xs-offset-1'>
                         <div class="row">
-                            <strong>
-                                <p class="text-primary pull-left">Username:</p>
+                            
+                                <p class="text-primary pull-left"><strong>Username:</strong></p>
 
-                                <div class="pull-right">{{ $user->name }}</div>
-                            </strong>
+                                <div class="pull-right"><strong>{{ $user->name }}</strong></div>
+                            
                         </div>
                         <div class="row">
-                            <strong>
-                                <p class="text-primary pull-left">First Name:</p>
+                           
+                                <p class="text-primary pull-left"> <strong>First Name:</strong></p>
 
-                                <div class="pull-right">{{ $user->first_name }}</div>
-                            </strong>
+                                <div class="pull-right"><strong>{{ $user->first_name }} </strong></div>
+                           
                         </div>
                         <div class="row">
-                            <strong>
-                                <p class="text-primary pull-left">Last Name:</p>
-
-                                <div class="pull-right">{{ $user->last_name }}</div>
-                            </strong>
+                                <p class="text-primary pull-left"><strong>Last Name:</strong></p>
+                                <div class="pull-right"><strong>{{ $user->last_name }}</strong></div>
                         </div>
                         <div class="row">
-                            <strong>
-                                <p class="text-primary pull-left">Email:</p>
-
-                                <div class="pull-right">{{ $user->email }}</div>
-                            </strong>
+                                <p class="text-primary pull-left"> <strong>Email:</strong></p>
+                                <div class="pull-right"><strong>{{ $user->email }}</strong></div>
                         </div>
                         <div class="row">
-                            <strong>
-                                <p class="text-primary pull-left">Locale:</p>
-
-                                <div class="pull-right">{{ $user->locale }}</div>
-                            </strong>
+                                <p class="text-primary pull-left"><strong>Locale: </strong></p>
+                                <div class="pull-right"><strong>{{ $user->locale }}</strong></div>
                         </div>
 
                         <div class="row">
-                            <strong>
-                                <p class="text-primary pull-left">Gender:</p>
-
-                                <div class="pull-right">{{ $user->gender }}</div>
-                            </strong>
+                                <p class="text-primary pull-left"><strong>Gender:</strong></p> 
+                                <div class="pull-right"><strong>{{ $user->gender }}</strong></div>
                         </div>
                         <div class="row">
-                            <strong>
-                                <p class="text-primary pull-left">Birthdate:</p>
-
-                                <div class="pull-right">{{ $user->date_of_birth }}</div>
-                            </strong>
+                            <p class="text-primary pull-left"><strong>Birthday:</strong></p>
+                             <div class="pull-right"><strong>{{ $user->date_of_birth }}</strong></div>
                         </div>
 </div></div>
                 </div>
-            </div>
-            <div class="col-xs-9">
                 <div class='panel panel-info'>
                     <div class='panel-heading'>
                         <h4>Medical History</h4>
@@ -161,6 +144,4 @@
                 </div>
             </div>
         </div>
-    </div>
-</div>
 @stop

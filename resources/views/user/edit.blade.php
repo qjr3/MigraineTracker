@@ -14,7 +14,7 @@
     <div class="col-xs-12">
         <div class="row">
             {!!  Form::model($user, ['route' => ['user.update', $user->id], 'method' => 'PATCH']) !!}
-            <div class="col-xs-3">
+
                 <div class='panel panel-info'>
                     <div class='panel-heading'>
                         <div class='panel-title text-center'><h2>Personal Info</h2></div>
@@ -63,26 +63,26 @@
                         <div class="row form-group">
                             {!! Form::select('gender',
                             [ // these are just some of the more common. however we know that gender is NOT binary so this is a good start.
-                            'Bigender' => 'Bigender',
-                            'Cisgender Female' => 'Cisgender Female',
-                            'Cisgender Male' => 'Cisgender Male',
-                            'FTM' => 'FTM',
-                            'Gender Fluid' => 'Gender Fluid',
-                            'Gender Nonconforming' => 'Gender Nonconforming',
-                            'Gender Variant' => 'Gender Variant',
-                            'Genderqueer' => 'Genderqueer',
-                            'Intersex' => 'Intersex',
-                            'MTF' => 'MTF',
-                            'Neither' => 'Neither',
-                            'Neutrois' => 'Neutrois',
-                            'Non-Binary' => 'Non-Binary',
-                            'Other' => 'Other',
-                            'Pangender' => 'Pangender',
-                            'Transgender' => 'Transgender',
-                            'Transsexual Person' => 'Transsexual Person',
-                            'Transmasculine' => 'Transmasculine',
-                            'Transfeminine' => 'Transfeminine',
-                            'Two-Spirit' => 'Two-Spirit'
+                            'Bigender',
+                            'Cisgender Female',
+                            'Cisgender Male',
+                            'FTM',
+                            'Gender Fluid',
+                            'Gender Nonconforming',
+                            'Gender Variant',
+                            'Genderqueer',
+                            'Intersex',
+                            'MTF',
+                            'Neither',
+                            'Neutrois',
+                            'Non-Binary',
+                            'Other',
+                            'Pangender',
+                            'Transgender',
+                            'Transsexual Person',
+                            'Transmasculine',
+                            'Transfeminine',
+                            'Two-Spirit'
                             ],
                             null, ['class' => 'form-control' , 'placeholder' => 'Gender']) !!}
                         </div>
@@ -93,8 +93,6 @@
 </div></div>
                 </div>
 
-            </div>
-            <div class="col-xs-9">
                             <div class="panel panel-info">
                                 <div class="panel-heading">
                                     <h4>Medical History</h4>
@@ -102,7 +100,7 @@
                                 <div class="panel-body">
                                     <div class="form-group row">
                                         <div class="col-xs-6">
-                                            {!! Form::label('has_diabetes', 'Have you been diagnosed with diabetes?', ['class' => '']) !!}
+                                            {!! Form::label('has_diabetes', 'Have you been diagnosed with diabetes?', ['class' => 'form-label']) !!}
                                         </div>
                                         <div class="col-xs-6">
                                             Yes &nbsp; {!! Form::radio('has_diabetes', 1) !!}&nbsp; &nbsp; &nbsp;
@@ -113,7 +111,7 @@
 
                                     <div class="form-group row">
                                         <div class="col-xs-6">
-                                            {!! Form::label('has_migraines', 'Have you been diagnosed with migraines?', ['class' => '']) !!}
+                                            {!! Form::label('has_migraines', 'Have you been diagnosed with migraines?', ['class' => 'form-label']) !!}
                                         </div>
                                         <div class="col-xs-6">
                                             Yes &nbsp; {!! Form::radio('has_migraines', 1) !!}&nbsp; &nbsp; &nbsp;
@@ -122,7 +120,7 @@
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-xs-6">
-                                            {!! Form::label('has_glasses', 'Do you wear prescription glasses?', ['class' => '']) !!}
+                                            {!! Form::label('has_glasses', 'Do you wear prescription glasses?', ['class' => 'form-label']) !!}
                                         </div>
                                         <div class="col-xs-6">
                                             Yes &nbsp; {!! Form::radio('has_glasses', 1) !!}&nbsp; &nbsp; &nbsp;
@@ -132,7 +130,7 @@
 
                                     <div class="form-group row">
                                         <div class="col-xs-6">
-                                            {!! Form::label('last_eye_exam', 'When was your last eye exam?', ['class' => '']) !!}
+                                            {!! Form::label('last_eye_exam', 'When was your last eye exam?', ['class' => 'form-label']) !!}
                                         </div>
                                         <div class="col-xs-6">
                                             {!! Form::date('last_eye_exam', null, ['class' => 'form-control']) !!}
@@ -285,6 +283,5 @@
 
                     </div>
                 </div>
-            </div>
 @stop
 
