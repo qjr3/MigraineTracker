@@ -10,12 +10,15 @@ class Journal extends Model
    
     protected $fillable = 
     [
-        'location',
-        'severity',
-        'sound_level',
-        'light_level',
         'name',
         'description',
+        'severity',
+        'location_city',
+        'location_state',
+        'location_zip',
+        'location_country',
+        'sound_level',
+        'light_level',
         'still_suffering',
         'start_time',
         'end_time',

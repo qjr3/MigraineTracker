@@ -3,7 +3,6 @@
 @section('style')
     <link href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/css/select2.min.css" rel="stylesheet" />
     <script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js"></script>
-    <script src="/js/jquery.ajax-cross-origin-min.js"></script>
 @stop
 
 
@@ -21,7 +20,7 @@
         {!! Form::open(['action' =>'JournalController@store', 'method' => 'post'])  !!}
         <div class="form-group col-xs-8">
             {!! Form::label('name', 'Journal Name', ['class' => 'form-label']) !!}
-            {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Entry Name' ]) !!}
+            {!! Form::text('name', '', ['class' => 'form-control', 'placeholder' => 'Entry Name' ]) !!}
         </div>
         <div class="form-group col-xs-4">
             {!! Form::label('severity', 'Severity', ['class' => 'form-label']) !!}
@@ -30,29 +29,35 @@
     </div>
     <div class='row'>
         <div class="form-group col-xs-12">
-            {!! Form::textarea('description', null, ['class' => 'form-control', 'placeholder' => 'Entry Description' ]) !!}
+            {!! Form::textarea('description', '', ['class' => 'form-control', 'placeholder' => 'Entry Description' ]) !!}
+        </div>
+    </div>
+    <div class='row'>
+        <div class='col-xs-3 form-group'>
+            {!! Form::text('location_city', '', ['class'=>'form-control', 'id' => 'location_city', 'placeholder'=>'City']) !!}
+        </div>
+        <div class='col-xs-2 form-group'>
+            {!! Form::text('location_state', '', ['class'=>'form-control', 'id' => 'location_state', 'placeholder'=>'State']) !!}
+        </div>
+        <div class='col-xs-3 form-group'>
+            {!! Form::text('location_zip', '', ['class'=>'form-control', 'id' => 'location_zip', 'placeholder'=>'Zip Code']) !!}
+        </div>
+        <div class='col-xs-3 form-group'>
+            {!! Form::text('location_country', 'US', ['class' => 'form-control', 'id' => 'location_country', 'placeholder' => 'country']) !!}
+        </div>
+        <div class='col-xs-1 form-group' id='use_location'>
+            <span class='glyphicon glyphicon-screenshot btn btn-sm'></span>
         </div>
     </div>
     <div class='row'>
         <div class='col-xs-5 form-group'>
-            {!! Form::text('location_city', null, ['class'=>'form-control', 'placeholder'=>'City']) !!}
-        </div>
-        <div class='col-xs-3 form-group'>
-            {!! Form::text('location_state', null, ['class'=>'form-control', 'placeholder'=>'State']) !!}
-        </div>
-        <div class='col-xs-3 form-group'>
-            {!! Form::text('location_zip', null, ['class'=>'form-control', 'placeholder'=>'Zip Code']) !!}
-        </div>
-        <div class='col-xs-1 form-group'>
-            <span class='glyphicon glyphicon-screenshot btn btn-sm' id='use_location'></span>
-        </div>
-    </div>
-    <div class='row'>
-        <div class='col-xs-6 form-group'>
             {!! Form::text('weather_temperature', '', ['class' => 'form-control', 'placeholder' => 'Temperature', 'id'=>'weather_temperature' ]) !!}
         </div>
-        <div class='col-xs-6 form-group'>
+        <div class='col-xs-5 form-group'>
             {!! Form::text('weather_pressure', '', ['class' => 'form-control', 'placeholder' => 'Barometric Pressure', 'id'=>'weather_pressure' ]) !!}
+        </div>
+        <div class='col-xs-2 form-group' id='get_weather'>
+            <span class='glyphicon glyphicon-screenshot btn btn-sm'></span>
         </div>
     </div>
     <div class='row'>
@@ -153,12 +158,6 @@
     <div class='form-group'>
         {!! Form::submit('Submit', ['class' => 'btn btn-primary']) !!}
     </div>
-
-    {{--
-    Make sure these exist in $request so we can set them manually in controller before model filling
-    {!! Form::hidden('weather_pressure') !!}
-    {!! Form::hidden('weather_temperature') !!}
-    --}}
     {!! Form::close() !!}
     
     {!! Form::open( array('action' => 'TriggerController@store', 'class' => 'add-obj', 'id' => 'add-trigger')) !!}
@@ -172,6 +171,17 @@
 
 @section('footer')
     <script type="text/javascript">
+        $().ready(function(){
+            navigator.geolocation.getCurrentPosition(success,error,options);
+            
+            $('#use_location').click(function(){
+                navigator.geolocation.getCurrentPosition(success,error,options);
+            });
+
+            $('#get_weather').click(getWeather);
+            $('#location_zip').blur(getWeather);
+        });
+        
         $('#trigger_list').select2({
             placeholder: "Select Triggers",
             ajax: {
@@ -248,6 +258,7 @@
 
     <script>
         // GEO DATA JSON SAMPLE
+        // DO NOT REMOVE THIS SECTION!!! IT'S FOR REFERENCE
         //{
         //   "results" : [
         //      {
@@ -318,28 +329,21 @@
             timeout: 1000,
             maximumAge: 0
         };
-
-        $().ready(function(){
-            setLocation();
-            getWeather();
-            $('#use_location').click(setLocation);
-            $('#get_weather').click(getWeather);
-
-            navigator.geolocation.getCurrentPosition(success,error,options);
-        });
-
+        
+        var longitude;
+        var latitude;
+        var housenumber;
+        var streename;
+        var town;
+        var city;
+        var county;
+        var state;
+        var zipcode;
+        var country;
+        
         function setLocation()
         {
-//        $('#longitude').val(longitude);
-//        $('#latitude').val(latitude);
-//        $('#house_number').val(housenumber);
-//        $('#street_name').val(streetname);
-//        $('#town').val(town);
-            $('#city').val(city);
-//        $('#county').val(county);
-            $('#state').val(state);
-            $('#zipcode').val(zipcode);
-//        $('#country').val(country);
+            
         }
 
         function parseLocation(latitude,longitude){
@@ -353,6 +357,7 @@
             request.onreadystatechange = function(){
                 if(request.readyState == 4 && request.status == 200){
                     var data = JSON.parse(request.responseText);
+//                    console.log(data);
                     housenumber = data.results[0].address_components[0].long_name;
                     streetname = data.results[0].address_components[1].long_name;
                     town = data.results[0].address_components[2].long_name;
@@ -361,9 +366,16 @@
                     state = data.results[0].address_components[5].short_name;
                     country = data.results[0].address_components[6].short_name;
                     zipcode = data.results[0].address_components[7].long_name;
+                    
+                    $('#location_city').val(city);
+                    $('#location_state').val(state);
+                    $('#location_zip').val(zipcode);
+                    $('#location_country').val(country);
                 }
             };
+ 
             request.send();
+            getWeather();
         }
 
         var success = function(position){
@@ -385,12 +397,14 @@
                     errorMessage = 'Timeout';
                     break;
             }
-            alert(errorMessage);
+            Console.log(errorMessage);
+            Console.log(error);
         };
 
 
 
         // Weather JSON Packet Sample
+        // DO NOT REMOVE THIS SECTION!!! IT'S FOR REFERENCE
         //{
         //   "coord":{
         //      "lon":-122.09,
@@ -433,7 +447,7 @@
         //   "cod":200
         //}
 
-        var getWeather = function()
+        function getWeather()
         {
             var request = new XMLHttpRequest();
 
@@ -445,17 +459,22 @@
 
             // if using current location
 
-            var url = 'http://api.openweathermap.org/data/2.5/weather?zip=' + zipcode + ','+ country + '&appid=0fb5360e492d477486818bdc1d8f752b'
+            var url = 'http://api.openweathermap.org/data/2.5/weather?zip=' + $('#location_zip').val() + ','+ $('#location_country').val() + '&appid=0fb5360e492d477486818bdc1d8f752b'
             var async = true;
             request.open(method, url, async);
             request.onreadystatechange = function(){
                 if(request.readyState == 4 && request.status == 200){
                     var data = JSON.parse(request.responseText);
-
-                    $('#weather_pressure').val(data.main.pressure);
-                    $('#weather_temperature').val(data.main.temp);
+                    if(data.cod != 404){
+                        $('#weather_pressure').val(data.main.pressure);
+                        $('#weather_temperature').val(data.main.temp);
+                    }
+                    else
+                    {
+//                        alert(data.cod + data.message);
+                    }
                 }
-            };
+            }
             request.send();
         };
     </script>

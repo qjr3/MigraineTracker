@@ -44,14 +44,14 @@ class JournalController extends Controller
         
         // Some reason, DB default value isn't autofilling....so we'll do it here instead.
         if(empty($request['name'])) $request['name'] = 'unnamed';
-        
-        $journal = Auth::user()->journals()->create($request->all());
 
+        $journal = Auth::user()->journals()->create($request->all());
         $journal->triggers()->attach($request->input('triggers_id'));
         $journal->medicines()->attach($request->input('medicines_id'));
         $journal->common_triggers()->attach($request->input('common_triggers_id'));
         $journal->pain_locations()->attach($request->input('pain_locations_id'));
 //        $journal->notes()->attach($request->input('note_id'));
+
 
         // If a note was created on journal, store and link it.....
         // ?? how to do this when I am tired? is not to do it....
@@ -70,7 +70,7 @@ class JournalController extends Controller
     {
         // keep backtrack token in the session one more step of the way.
         if(Session::has('backTo')) Session::keep('backTo');
-        else Session::flash('backTo', Request::fullUrl());
+//        else Session::flash('backTo', Request::fullUrl());
         
         // Create list with name=>id to use in select2 field.
         $triggers = Auth::user()->triggers()->lists('name', 'id');

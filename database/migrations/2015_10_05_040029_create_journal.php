@@ -17,7 +17,10 @@ class CreateJournal extends Migration
             $table->integer('user_id')->unsigned();
             $table->string('name')->default('unnamed journal'); 
             $table->string('description')->nullable();
-            $table->string('location')->nullable();
+            $table->string('location_city')->nullable();
+            $table->string('location_state')->nullable();
+            $table->string('location_zip')->nullable();
+            $table->string('location_country')->nullable();
             $table->smallInteger('severity')->nullable();
             $table->smallInteger('sound_level')->nullable();
             $table->smallInteger('light_level')->nullable();

@@ -45,23 +45,32 @@
                             {!! Form::select('medicines_id[]', $medicines, $journal->medicines->lists('id')->toArray(), ['id' => 'medicine_list', 'class' => 'form-control', 'multiple']) !!}
                         </div>
                     </div>
-                    <div class='row'>
-                        <div class='form-group col-xs-4'>
-                            <div class='row'>
-                                <div class='col-xs-6'>{!! Form::label('location', 'Location', ['class' => 'form-label']) !!}</div>
-                                <div class='col-xs-6'><span id='get_location' class='glyphicon glyphicon-screenshot'></span></div>
-                            </div>
-                            {!! Form::text('location', null, ['class' => 'form-control', 'placeholder' => 'City, ST'] ) !!}
-                        </div>
-                        <div class='form-group col-xs-4'>
-                            {!! Form::label('weather_pressure', 'Barometric Pressure', ['class' => 'form-label']) !!}
-                            {!! Form::text('weather_pressure', null, ['class' => 'form-control']) !!}
-                        </div>
-                        <div class='form-group col-xs-4'>
-                            {!! Form::label('weather_temperature', 'Temperature', ['class' => 'form-label']) !!}
-                            {!! Form::text('weather_temperature', null, ['class' => 'form-control']) !!}
-                        </div>
-                    </div>
+    <div class='row'>
+        <div class='col-xs-5 form-group'>
+            {!! Form::text('location_city', null, ['class'=>'form-control', 'id' => 'location_city', 'placeholder'=>'City']) !!}
+        </div>
+        <div class='col-xs-3 form-group'>
+            {!! Form::text('location_state', null, ['class'=>'form-control', 'id' => 'location_state', 'placeholder'=>'State']) !!}
+        </div>
+        <div class='col-xs-3 form-group'>
+            {!! Form::text('location_zip', null, ['class'=>'form-control', 'id' => 'location_zip', 'placeholder'=>'Zip Code']) !!}
+            {!! Form::hidden('location_country', null, ['id' => 'location_country']) !!}
+        </div>
+        <div class='col-xs-1 form-group' id='use_location'>
+            <span class='glyphicon glyphicon-screenshot btn btn-sm'></span>
+        </div>
+    </div>
+    <div class='row'>
+        <div class='col-xs-5 form-group'>
+            {!! Form::text('weather_temperature', '', ['class' => 'form-control', 'placeholder' => 'Temperature', 'id'=>'weather_temperature' ]) !!}
+        </div>
+        <div class='col-xs-5 form-group'>
+            {!! Form::text('weather_pressure', '', ['class' => 'form-control', 'placeholder' => 'Barometric Pressure', 'id'=>'weather_pressure' ]) !!}
+        </div>
+        <div class='col-xs-2 form-group' id='get_weather'>
+            <span class='glyphicon glyphicon-screenshot btn btn-sm'></span>
+        </div>
+    </div>
                     <div class="row">
                         <div class="col-xs-4">
                             <div class="form-group">
