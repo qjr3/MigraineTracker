@@ -47,20 +47,20 @@
         </ul>
     </div>
             @else
+    <div class='navbar-nav navbar-right'>
             {!! Form::open(['action' => 'Auth\AuthController@postLogin', 'class' => 'navbar-form navbar-right']) !!}
-    <div class='form-group'>
-        {!! Form::label('email', 'Email Address', ['class' => 'sr-only']) !!}
-        {!! Form::email('email', null, ['class' => 'form-control', 'type' => 'email', 'placeholder' => 'Email Address']) !!}
-    </div>
-    <div class='form-group'>
-        {!! Form::label('password', 'Password', ['class' => 'sr-only']) !!}
-        {!! Form::password('password', ['class' => 'form-control', 'placeholder' => 'Password']) !!}
-    </div>
-    <div class='form-group'>
-        {!! Form::submit('Login', ['class' => 'btn  btn-block btn-default btn-primary']) !!}
-    </div>
-    {!! Form::close() !!}  
-{!! link_to_action('Auth\AuthController@getRegister','Register',['class'=>'btn btn-info']) !!}
+        <div class='form-group'>
+            {!! Form::label('email', 'Email Address', ['class' => 'sr-only']) !!}
+            {!! Form::email('email', null, ['class' => 'form-control', 'type' => 'email', 'placeholder' => 'Email Address']) !!}
+        </div>
+        <div class='form-group'>
+            {!! Form::label('password', 'Password', ['class' => 'sr-only']) !!}
+            {!! Form::password('password', ['class' => 'form-control', 'placeholder' => 'Password']) !!}
+        </div>
+        <div class='form-group'>
+            {!! Form::submit('Login', ['class' => 'btn  btn-block btn-default btn-primary']) !!}
+        </div>
+        {!! Form::close() !!}  
             @endif
   </div>
 </nav>
