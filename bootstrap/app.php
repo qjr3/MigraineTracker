@@ -1,5 +1,6 @@
 <?php
 
+
 /*
 |--------------------------------------------------------------------------
 | Create The Application
@@ -15,6 +16,10 @@ $app = new Illuminate\Foundation\Application(
     realpath(__DIR__.'/../')
 );
 
+$app->singleton(
+        \Barryvdh\DomPDF\ServiceProvider::class
+);
+//$app->configure('dompdf');
 /*
 |--------------------------------------------------------------------------
 | Bind Important Interfaces
