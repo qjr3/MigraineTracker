@@ -154,7 +154,7 @@
                     <div class="row">
                         <div class='col-xs-12'>
                             <div class='form-group row'>
-                                <div class='col-xs-8'>{!! Form::submit('Submit', ['class' => 'btn btn-block btn-primary btn-default']) !!}</div>
+                                <div class='col-xs-8'>{!! Form::submit('Submit', ['class' => 'btn btn-block btn-success center-block']) !!}</div>
                                 <div class='col-xs-4'><span class="pull-right btn btn-warning" style="margin-bottom: 15px">{!! link_to_action('JournalController@show', 'Cancel', $journal->id) !!}</span></div>
                             </div>
                     </div>

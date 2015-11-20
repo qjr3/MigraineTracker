@@ -25,10 +25,8 @@
                         <tr>
                             <td colspan="2">{{$journal->has_nausea ? 'Nauseous' : 'Not Nauseous'}}</td>
                             <td colspan="2">{{$journal->has_vomited ? 'Vomited' : 'Has not vomited'}}</td>
-                            <td colspan="2">&nbsp;</td>
-                            <td colspan="2">&nbsp;</td>
-                            <td colspan="2">&nbsp;</td>
-                            <td colspan="2">&nbsp;</td>
+                            <td colspan="8">&nbsp;</td>
+
 
                         </tr>
                         <tr>
@@ -40,16 +38,31 @@
                             <td colspan='6'>{{ $journal->updated_at }}</td>
                         </tr>
                     </tbody>
+                    <tfoot>
+                        <td colspan="2">
+                            {!! link_to_action('JournalController@show', 'Details', $journal->id, ['class' => 'btn btn-xs btn-block btn-info']) !!}
+                        </td>
+                        <td colspan="2">
+                            {!! link_to_action('JournalController@edit', 'Edit', $journal->id, ['class' => 'btn btn-xs btn-block btn-warning']) !!}
+                        </td>
+                        <td colspan="2">
+                            {!! Form::open( ['route' => ['journal.destroy', $journal], 'method' => 'delete']) !!}
+                            <button type="submit" class="btn btn-xs btn-danger btn-block">DELETE</button>
+                            {!! Form::close() !!}
+                        </td>
+                        <td colspan="6"></td>
+
+                    </tfoot>
                 </table>
             </div>
         </div>
         @endforeach
-                     
         <div class='row'>
-            <div class='col-xs-10'>
-                {!! link_to_action('JournalController@create', 'Add Journal', array(), ['class' => 'btn btn-info btn-primary']) !!}
+            <div class='col-xs-10 '>
+                {!! link_to_action('JournalController@create', 'Add Journal', array(), ['class' => 'btn btn-block btn-success']) !!}
             </div>
             <div class='col-xs-2 pull-right btn btn-link'>
                 {!! link_to_action('JournalController@index', 'View All') !!}
             </div>
         </div>
+                     

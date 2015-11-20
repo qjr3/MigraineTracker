@@ -30,8 +30,7 @@ class JournalController extends Controller
         $journals = Auth::user()->journals;
         
         // keep backtrack token in the session one more step of the way.
-        if(Session::has('backTo')) Session::keep('backTo');
-        else Session::flash('backTo', Request::fullUrl());
+        Session::flash('backTo', Request::fullUrl());
         
         return view('journal.index', compact('journals'));
     }

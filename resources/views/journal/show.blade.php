@@ -13,10 +13,16 @@
 <div class='panel panel-info'>
     <div class='panel-heading'>
         <div class="row">
-            <div class="col-xs-12 h1"><span>{{ $journal->name }}</span> &nbsp; &nbsp; <span class="pull-right" style="margin-bottom: 15px">{!! link_to_action('JournalController@edit', 'Edit' , $journal->id, ['class'=>'btn btn-block btn-primary']) !!} </span></div>
+            <div class="col-xs-8 h3">{{ $journal->name }}</div>
+            <div class='col-xs-2 h3'>{!! link_to_action('JournalController@edit', 'Edit' , $journal->id, ['class'=>'btn btn-warning btn-block']) !!}</div>
+            <div class='col-xs-2 h3'>
+                {!! Form::open( ['route' => ['journal.destroy', $journal], 'method' => 'delete']) !!}
+                <button type="submit" class="btn btn-danger btn-block">Delete</button>
+                {!! Form::close() !!}
+            </div>
         </div>
         <div class='row'>
-            <div class='col-xs-10 h4'><em>{!! nl2br($journal->description) !!}</em></div>
+            <div class='col-xs-12 h4'><em>{!! nl2br($journal->description) !!}</em></div>
         </div>
     </div>
     <div class='panel-body'>
@@ -47,7 +53,7 @@
                 <tr>
                 <tr>
                     <th>Light Level</th>
-                    <td>{{ $journal->light_level }}</td>
+                    <td class='text-center'>{{ $journal->light_level }}</td>
                 </tr>
                     <th>Light Sensitivity</th>
                     <td class='text-center {{ !empty($journal->has_light_sensitivity) ? ($journal->has_light_sensitivity=='true' ? ' danger' : ' success') : ' warning' }}'>{{ !empty($journal->has_light_sensitivity) ? ($journal->has_light_sensitivity=='true' ? 'Yes' : 'No') : '' }}</td>
@@ -55,7 +61,7 @@
                 <tr>
                 <tr>
                     <th>Sound Level</th>
-                    <td>{{ $journal->sound_level }}</td>
+                    <td class='text-center'>{{ $journal->sound_level }}</td>
                 </tr>
                     <th>Sound Sensitivity</th>
                     <td class='text-center {{ !empty($journal->has_sound_sensitivity) ? ($journal->has_sound_sensitivity=='true' ? ' danger' : ' success') : ' warning' }}'>{!! !empty($journal->has_sound_sensitivity) ? ($journal->has_sound_sensitivity=='true' ? 'Yes' : 'No') : '' !!}  </td>
