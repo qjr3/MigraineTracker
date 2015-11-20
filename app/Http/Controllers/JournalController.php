@@ -46,12 +46,12 @@ class JournalController extends Controller
         if(empty($request['name'])) $request['name'] = 'unnamed';
 
         $journal = Auth::user()->journals()->create($request->all());
+
         $journal->triggers()->attach($request->input('triggers_id'));
         $journal->medicines()->attach($request->input('medicines_id'));
         $journal->common_triggers()->attach($request->input('common_triggers_id'));
         $journal->pain_locations()->attach($request->input('pain_locations_id'));
 //        $journal->notes()->attach($request->input('note_id'));
-
 
         // If a note was created on journal, store and link it.....
         // ?? how to do this when I am tired? is not to do it....
@@ -138,11 +138,13 @@ class JournalController extends Controller
         return ($returnPath = Session::get('backTo')) ? redirect($returnPath) : redirect('/journal');
     }
 
-    public function duration(Journal $journal){
+    private function duration(Journal $journal){
+        
         if($journal->start_time == null || $journal->end_time == null)
-            return null;
-        $start_time = Carbon::createFromFormat('Y-m-d\TH:i:s', $journal->start_time);
-        $end_time = Carbon::createFromFormat('Y-m-d\TH:i:s', $journal->end_time);
+            return '';
+        $start_time = Carbon::createFromFormat('Y-m-d\TH:i', $journal->start_time);
+        $end_time = Carbon::createFromFormat('Y-m-d\TH:i', $journal->end_time);
+        
         $minutes = $end_time->diffInMinutes($start_time);
         $string = '';
         if($minutes > 1440){
