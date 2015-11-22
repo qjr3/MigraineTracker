@@ -3,10 +3,20 @@
 @section('title')User Profile - Edit @stop
 
 @section('footer')
-    {!! Html::script('js/vue.js') !!}
-    {!! Html::script('js/vue-resource.js') !!}
+    {!! Html::script('js/vue.min.js') !!}
+    {!! Html::script('js/vue-resource.min.js') !!}
     {!! Html::script('js/vue/vue_profile_trigger.js') !!}
     {!! Html::script('js/vue/vue_profile_medicine.js') !!}
+    <script>
+        $.fn.bootstrapSwitch.defaults.onText = 'Yes';
+        $.fn.bootstrapSwitch.defaults.onColor = 'success';
+        $.fn.bootstrapSwitch.defaults.offText = 'No';
+        $.fn.bootstrapSwitch.defaults.offColor = 'danger';
+        $("[name='has_diabetes']").bootstrapSwitch();
+        $("[name='has_migraines']").bootstrapSwitch();
+        $("[name='has_glasses']").bootstrapSwitch();
+
+    </script>
 @stop
 
 
@@ -98,14 +108,14 @@
                                     <h4>Medical History</h4>
                                 </div>
                                 <div class="panel-body">
+
+
                                     <div class="form-group row">
                                         <div class="col-xs-6">
                                             {!! Form::label('has_diabetes', 'Have you been diagnosed with diabetes?', ['class' => 'form-label']) !!}
                                         </div>
                                         <div class="col-xs-6">
-                                            Yes &nbsp; {!! Form::radio('has_diabetes', 1) !!}&nbsp; &nbsp; &nbsp;
-                                            No &nbsp; {!! Form::radio('has_diabetes', 0) !!}
-
+                                            {!! Form::checkbox('has_diabetes') !!}
                                         </div>
                                     </div>
 
@@ -114,8 +124,7 @@
                                             {!! Form::label('has_migraines', 'Have you been diagnosed with migraines?', ['class' => 'form-label']) !!}
                                         </div>
                                         <div class="col-xs-6">
-                                            Yes &nbsp; {!! Form::radio('has_migraines', 1) !!}&nbsp; &nbsp; &nbsp;
-                                            No &nbsp; {!! Form::radio('has_migraines', 0) !!}
+                                            {!! Form::checkbox('has_migraines') !!}
                                         </div>
                                     </div>
                                     <div class="form-group row">
@@ -123,8 +132,7 @@
                                             {!! Form::label('has_glasses', 'Do you wear prescription glasses?', ['class' => 'form-label']) !!}
                                         </div>
                                         <div class="col-xs-6">
-                                            Yes &nbsp; {!! Form::radio('has_glasses', 1) !!}&nbsp; &nbsp; &nbsp;
-                                            No &nbsp; {!! Form::radio('has_glasses', 0) !!}
+                                            {!! Form::checkbox('has_glasses') !!}
                                         </div>
                                     </div>
 
@@ -284,4 +292,3 @@
                     </div>
                 </div>
 @stop
-

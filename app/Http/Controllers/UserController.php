@@ -24,6 +24,13 @@ class UserController extends Controller
 
     public function update(User $user, Request $request)
     {
+        if ($request['has_diabetes'] == '')
+            $request['has_diabetes'] = '0';
+        if ($request['has_migraines'] == '')
+            $request['has_migraines'] = '0';
+        if ($request['has_glasses'] == '')
+            $request['has_glasses'] = '0';
+
         $user->update($request->all());
         return redirect()->action('UserController@show', $user->id);
     }

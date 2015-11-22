@@ -11,13 +11,12 @@
         <title>@yield('title')</title>
         
         {!! Html::style('css/main.css') !!}
+        {!! Html::style('css/bootstrap-switch.min.css') !!}
         {!! Html::script('js/jquery-1.11.3.min.js') !!}
-        
+        {!! Html::script('js/bootstrap-switch.min.js') !!}
+
         {!! Html::style('css/bootstrap.min.css') !!}
-        {!! Html::script('js/bootstrap.min.js') !!}
-        
-        {!! Html::script('js/vue.min.js') !!}
-        {!! Html::script('js/vue-resource.min.js') !!}
+
 
         <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
 
@@ -66,11 +65,14 @@
                 <div class='col-xs-12'>
                     <div class='panel panel-info' style='background-color : rgba(245,245,245,.80);'>
                         <div class='panel-body'>
-                            @yield('footer') @include('partials.footer')
+                            @include('partials.footer')
+
+                            {!! Html::script('js/bootstrap.min.js') !!}
+                            @yield('footer')
                         </div>
                     </div>  
                 </div>
         </div>
-    </div> 	   
+    </div>
 </body>
 </html>
