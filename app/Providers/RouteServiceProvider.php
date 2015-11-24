@@ -31,6 +31,7 @@ class RouteServiceProvider extends ServiceProvider
         $router->model('journal', 'App\Journal');
         $router->model('medicine', 'App\Medicine');
         $router->model('trigger', 'App\Trigger');
+        $router->model('note', 'App\Note');
     }
 
     /**

@@ -10,7 +10,7 @@
     @unless($notes->isEmpty())
         @foreach($notes as $note)
         <tr class=''>
-            <td class=''>{!! link_to_action('NoteController@edit', $note->name, $medicine->id) !!}</td>
+            <td class=''>{!! link_to_action('NoteController@edit', $note->name, $note->id) !!}</td>
             <td class=''>{{ $note->body }}</td>
             <td class=''>{{ $note->created_at }}</td>
             <td class=''>{{ $note->updated_at }}</td>

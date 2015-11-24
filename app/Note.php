@@ -8,7 +8,7 @@ class Note extends Model
 {
     protected $table = 'notes';
     
-    protected $fillable = [];
+    protected $fillable = ['name', 'body'];
     
     protected $hidden = [];
     

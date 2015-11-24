@@ -1,3 +1,7 @@
+@extends('master')
+
+@section('content')
+
 {!! Form::open(['action' =>'NoteController@store', 'method' => 'post']) !!}
 <h4>Add Note</h4>
 <!-- Name Form Input -->
@@ -14,3 +18,5 @@
     {!! Form::submit('Add Note', ['class' => 'btn btn-info']) !!}
 </div>
 {!! Form::close() !!}
+
+@stop
