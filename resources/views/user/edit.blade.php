@@ -31,7 +31,6 @@
                     <div class='panel-heading'>
                         <div class='panel-title text-center'>
                             <h2>Personal Info</h2>
-
                         </div>
                     </div>
 
@@ -104,8 +103,6 @@
                         <div class="form-group">
                             {!! Form::date('date_of_birth', null, ['class' => 'form-control']) !!}
                         </div>
-
-
                     </div>
 
                     <div class="clearfix">
@@ -119,7 +116,7 @@
                 <div class="panel panel-info">
                     <div class="panel-heading">Advanced Settings</div>
                     <div class="panel-body">
-                        <p>Manage your settings.</p>
+                        <p>{!! link_to_action('UserController@settings', 'Manage your settings', $user->id) !!}</p>
                     </div>
                 </div>
             </div>

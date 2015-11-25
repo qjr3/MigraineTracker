@@ -26,7 +26,8 @@ Route::group(['middleware' => 'auth'], function(){
 
     // User Routes
     Route::resource('user', 'UserController');
-    
+    Route::get('user/settings/{user}', 'UserController@settings');
+
     // Note Routes
     Route::resource('note', 'NoteController');
 

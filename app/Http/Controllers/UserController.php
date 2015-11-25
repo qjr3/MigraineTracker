@@ -47,4 +47,9 @@ class UserController extends Controller
         $user->delete();
         return redirect('/');
     }
+
+    public function settings(User $user)
+    {
+        return view('user.settings', compact('user'));
+    }
 }
