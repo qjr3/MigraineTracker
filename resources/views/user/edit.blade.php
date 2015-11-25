@@ -30,8 +30,8 @@
                 <div class='panel panel-info'>
                     <div class='panel-heading'>
                         <div class='panel-title text-center'>
-                            <h2 class="hidden-md">Personal Info</h2>
-                            <h3 class="visible-md-">Personal Info</h3>
+                            <h2>Personal Info</h2>
+
                         </div>
                     </div>
 
