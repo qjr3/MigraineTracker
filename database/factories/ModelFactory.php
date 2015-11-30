@@ -39,7 +39,10 @@ $factory->define(App\Journal::class, function (Faker\Generator $faker) {
         'name' => $faker->sentence(5),
         'description' => $faker->paragraph(10),
         'severity' => $faker->numberBetween(0,10),
-        'location' => $faker->city,
+        'location_city' => 'Pensacola',
+        'location_state' => 'FL',
+        'location_zip' => strval(32514),
+        'location_country' => 'US',
         'weather_temperature' => $faker->numberBetween(-15,110),
         'weather_pressure' => $faker->numberBetween(800,1100),
         'sound_level' => $faker->numberBetween(0,10),
@@ -58,8 +61,8 @@ $factory->define(App\Journal::class, function (Faker\Generator $faker) {
         'missed_social' => $faker->randomElement(['true', 'false', null]),
         'missed_personal_activity' => $faker->randomElement(['true', 'false', null])
     ];
-    $data['start_time'] = $data['start_time']->format('Y-m-d\TH:i:s');
-    $data['end_time'] = $data['end_time']->format('Y-m-d\TH:i:s');
+    $data['start_time'] = $data['start_time']->format('Y-m-d\TH:i');
+    $data['end_time'] = $data['end_time']->format('Y-m-d\TH:i');
     if($data['has_aura'])
         $data['aura_description'] = $faker->paragraph(5);
     return $data;
