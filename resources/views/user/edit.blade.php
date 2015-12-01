@@ -215,7 +215,6 @@
                                 <tr>
                                     <th>Trigger Name</th>
                                     <th>Description</th>
-                                    <th># of Occurrences</th>
                                     <th></th>
                                 </tr>
                                 </thead>
@@ -223,7 +222,6 @@
                                 <tr v-for="trigger in triggers | limitBy 5">
                                     <td>@{{ trigger.name }}</td>
                                     <td>@{{ trigger.description }}</td>
-                                    <td>0</td>
                                     <td>
                                         <button type="submit" class="btn btn-danger btn-xs"
                                                 v-on:click.stop.prevent="delete($index)">X
@@ -287,7 +285,6 @@
                                     <th>Trigger Name</th>
                                     <th>Description</th>
                                     <th>Dosage</th>
-                                    <th># of Occurrences</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -295,7 +292,6 @@
                                     <td>@{{ medicine.name }}</td>
                                     <td>@{{ medicine.description }}</td>
                                     <td>@{{ medicine.dose }}</td>
-                                    <td>0</td>
                                     <td>
                                         <button type="submit" class="btn btn-danger btn-xs"
                                                 v-on:click.stop.prevent="delete($index)">X

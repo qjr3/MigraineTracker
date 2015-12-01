@@ -121,11 +121,11 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($triggers as $trigger)
+                            @foreach($triggers->slice(0,5) as $trigger)
                                 <tr>
                                     <td>{{ $trigger->name }}</td>
                                     <td>{{ $trigger->description }}</td>
-                                    <td>0</td>
+                                    <td>{{ $trigger->occurences() }}</td>
                                 </tr>
                             @endforeach
                             </tbody>
@@ -150,12 +150,12 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($medicines as $medicine)
+                            @foreach($medicines->slice(0,5) as $medicine)
                                 <tr>
                                     <td>{{ $medicine->name }}</td>
                                     <td>{{ $medicine->description }}</td>
                                     <td>{{ $medicine->dose }}</td>
-                                    <td>0</td>
+                                    <td>{{ $medicine->occurences() }}</td>
                                 </tr>
                             @endforeach
                             </tbody>

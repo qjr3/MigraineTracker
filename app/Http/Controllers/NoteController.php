@@ -30,7 +30,7 @@ class NoteController extends Controller
             $journal = Journal::findOrFail($jID);
             $journal->notes()->attach($notes);
         }
-        return redirect()->back();
+        return redirect('/note');
     }
 
     public function index()

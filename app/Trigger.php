@@ -3,6 +3,8 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use DB;
+
 
 class Trigger extends Model
 {
@@ -30,5 +32,10 @@ class Trigger extends Model
     public function user()
     {
         return $this->belongsTo('App\User');
+    }
+
+    public function occurrences()
+    {
+        return DB::table('journal_trigger')->where('trigger_id', '=', $this->id)->count();
     }
 }

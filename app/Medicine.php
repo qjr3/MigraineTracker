@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use DB;
 
 class Medicine extends Model
 {
@@ -33,5 +34,10 @@ class Medicine extends Model
     public function journals()
     {
         return $this->belongsToMany('App\Journal');
+    }
+
+    public function occurrences()
+    {
+        return DB::table('journal_medicine')->where('medicine_id', '=', $this->id)->count();
     }
 }
