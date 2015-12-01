@@ -125,7 +125,7 @@
                                 <tr>
                                     <td>{{ $trigger->name }}</td>
                                     <td>{{ $trigger->description }}</td>
-                                    <td>{{ $trigger->occurences() }}</td>
+                                    <td>{{ $trigger->occurrences() }}</td>
                                 </tr>
                             @endforeach
                             </tbody>
@@ -155,7 +155,7 @@
                                     <td>{{ $medicine->name }}</td>
                                     <td>{{ $medicine->description }}</td>
                                     <td>{{ $medicine->dose }}</td>
-                                    <td>{{ $medicine->occurences() }}</td>
+                                    <td>{{ $medicine->occurrences() }}</td>
                                 </tr>
                             @endforeach
                             </tbody>
