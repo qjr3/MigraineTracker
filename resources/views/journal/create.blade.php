@@ -173,7 +173,6 @@
     <script type="text/javascript">
         $().ready(function(){
             navigator.geolocation.getCurrentPosition(success,error,options);
-            
             $('#use_location').click(function(){
                 navigator.geolocation.getCurrentPosition(success,error,options);
             });
@@ -181,7 +180,6 @@
             $('#get_weather').click(getWeather);
             $('#location_zip').blur(getWeather);
         });
-        
         $('#trigger_list').select2({
             placeholder: "Select Triggers",
             ajax: {
@@ -357,16 +355,36 @@
             request.onreadystatechange = function(){
                 if(request.readyState == 4 && request.status == 200){
                     var data = JSON.parse(request.responseText);
+                    var cistart;
+                    switch(data.results[0].address_components.length)
+                    {
+                        case 7:
+                            cistart = 2;
+                            break;
+                        case 8:
+                        case 9:
+                            cistart = 3;
+                            break;
+                        default:
+                            cistart = 2;
+                    }
+                    var sstart = cistart + 2;
+                    var costart = sstart + 1;
+                    var zstart = costart + 1;
+                    var i;
 //                    console.log(data);
-                    housenumber = data.results[0].address_components[0].long_name;
-                    streetname = data.results[0].address_components[1].long_name;
-                    town = data.results[0].address_components[2].long_name;
-                    city = data.results[0].address_components[3].long_name;
-                    county = data.results[0].address_components[4].long_name;
-                    state = data.results[0].address_components[5].short_name;
-                    country = data.results[0].address_components[6].short_name;
-                    zipcode = data.results[0].address_components[7].long_name;
-                    
+//                    housenumber = data.results[0].address_components[0].long_name;
+//                    streetname = data.results[0].address_components[1].long_name;
+//                    town = data.results[0].address_components[2].long_name;
+//                    city = data.results[0].address_components[3].long_name;
+//                    county = data.results[0].address_components[4].long_name;
+//                    state = data.results[0].address_components[5].short_name;
+//                    country = data.results[0].address_components[6].short_name;
+//                    zipcode = data.results[0].address_components[7].long_name;
+                    city = data.results[0].address_components[cistart].long_name;
+                    state = data.results[0].address_components[sstart].short_name;
+                    zipcode = data.results[0].address_components[zstart].long_name;
+                    country = data.results[0].address_components[costart].short_name;
                     $('#location_city').val(city);
                     $('#location_state').val(state);
                     $('#location_zip').val(zipcode);
