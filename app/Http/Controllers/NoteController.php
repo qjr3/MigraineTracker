@@ -21,14 +21,14 @@ class NoteController extends Controller
         if($collection->isEmpty()) {
             $notes = new Note();
             $notes->fill($request->all());
-            Auth::user()->note()->save($notes);
+            Auth::user()->notes()->save($notes);
         }else{
             $notes = $collection->first();
         }
         if($request->has('journal')) {
             $jID = $request->get('journal');
             $journal = Journal::findOrFail($jID);
-            $journal->note()->attach($notes);
+            $journal->notes()->attach($notes);
         }
         return redirect()->back();
     }
@@ -48,6 +48,11 @@ class NoteController extends Controller
     public function show(Note $note)
     {
         return view('notes.show', compact('notes'));
+    }
+
+    public function create()
+    {
+        return view('notes.create');
     }
 
     /**
