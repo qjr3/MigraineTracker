@@ -1,7 +1,7 @@
 @extends('master')
 
 @section('content')
-<div class='panel panel-info'>
+<div class='panel panel-default'>
     <div class='panel-heading'>
         <div class='row'>
             <div class='col-xs-6 h4'>Notes</div>

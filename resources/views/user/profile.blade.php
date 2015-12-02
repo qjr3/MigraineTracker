@@ -7,7 +7,7 @@
         <div class="row">
 
             <div class="col-md-3">
-                <div class='panel panel-info'>
+                <div class='panel panel-default'>
                     <div class='panel-heading container-fluid'>
                         <div class='row'>
                             <div class='col-xs-6 text-left'><h3>Personal Info</h3></div>
@@ -69,7 +69,7 @@
             </div>
 
             <div class="col-md-9">
-                <div class='panel panel-info'>
+                <div class='panel panel-default'>
                     <div class='panel-heading'>
                         <h4>Medical History</h4>
                     </div>
@@ -107,7 +107,7 @@
             </div>
 
             <div class="col-md-9">
-                <div class="panel panel-info">
+                <div class="panel panel-default">
                     <div class="panel-heading ">
                         <h4>Triggers</h4>
                     </div>
@@ -135,7 +135,7 @@
             </div>
 
             <div class="col-md-9">
-                <div class="panel panel-info">
+                <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4>Medications</h4>
                     </div>

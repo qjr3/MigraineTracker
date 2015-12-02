@@ -2,7 +2,7 @@
 
 @section('content')
 {!! Form::open(['action' =>'TriggerController@store', 'method' => 'post']) !!}
-<div class='panel panel-info'>
+<div class='panel panel-default'>
     <div class='panel-heading'>
         <h4>New Trigger</h4>
     </div>

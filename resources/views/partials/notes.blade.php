@@ -1,28 +1,22 @@
-        @foreach($notes as $note)
-        <div class='row'>
-            <div class='col-xs-12'>
-                <strong>{!! link_to_action('NoteController@show', $note->name, $note->id, []) !!}</strong>
-            </div>
-        </div>
-        <div class='row'>
-            <div class='col-xs-12'>
-                <em>{!! nl2br($note->body) !!}</em>
-            </div>
-        </div>
-        <div class='row'>
-            <div class='col-xs-6'>Created</div>
-            <div class='col-xs-6'>Updated</div>
-        </div>
-        <div class='row'>
-            <div class='col-xs-6'>{{ $note->created_at }}</div>
-            <div class='col-xs-6'>{{ $note->updated_at }}</div>            
-        </div>
-        @endforeach
-        <div class='row'>
-            <div class='col-xs-10'>
-                {!! link_to_action('NoteController@create', 'Add Note', array(), ['class' => 'btn btn-info btn-primary']) !!}
-            </div>
-            <div class='col-xs-2 pull-right btn btn-link'>
-                {!! link_to_action('NoteController@index', 'View All') !!}
-            </div>
-        </div>
+<div class="col-md-12">
+    <div class="row">
+        <table class="table table-condensed table-striped">
+            <thead>
+            <tr>
+                <th>Label</th>
+                <th>Detail</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach($notes->slice(0,5) as $note)
+                <tr>
+
+                    <td class=''>{!! link_to_action('NoteController@edit', $note->name, $note->id) !!}</td>
+                    <td>{{ $note->body }}</td>
+                </tr>
+            @endforeach
+
+            </tbody>
+        </table>
+    </div>
+</div>
