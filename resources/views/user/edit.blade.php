@@ -27,7 +27,7 @@
             {!!  Form::model($user, ['route' => ['user.update', $user->id], 'method' => 'PATCH']) !!}
 
             <div class="col-md-3">
-                <div class='panel panel-info'>
+                <div class='panel panel-default'>
                     <div class='panel-heading'>
                         <div class='panel-title text-center'>
                             <h2>Personal Info</h2>
@@ -113,7 +113,7 @@
                     <br>
 
                 </div>
-                <div class="panel panel-info">
+                <div class="panel panel-default">
                     <div class="panel-heading">Advanced Settings</div>
                     <div class="panel-body">
                         <p>{!! link_to_action('UserController@settings', 'Manage your settings', $user->id) !!}</p>
@@ -122,7 +122,7 @@
             </div>
             <div class="col-md-9">
 
-                <div class="panel panel-info">
+                <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4>Medical History</h4>
                     </div>
@@ -177,7 +177,7 @@
 
 
             <div class="col-md-9">
-                <div class="panel panel-info">
+                <div class="panel panel-default">
                     <div class="panel-heading ">
                         <h4>Triggers</h4>
                     </div>
@@ -238,7 +238,7 @@
             </div>
 
             <div class="col-md-9">
-                <div class="panel panel-info">
+                <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4>Medications</h4>
                     </div>

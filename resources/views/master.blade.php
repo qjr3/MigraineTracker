@@ -10,12 +10,12 @@
 
     <title>@yield('title')</title>
 
-    {!! Html::style('css/main.css') !!}
     {!! Html::style('css/bootstrap-switch.min.css') !!}
     {!! Html::script('js/jquery-1.11.3.min.js') !!}
     {!! Html::script('js/bootstrap-switch.min.js') !!}
 
     {!! Html::style('css/bootstrap.min.css') !!}
+    {!! Html::style('css/main.css') !!}
 
 
     <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
@@ -41,38 +41,39 @@
     @yield('style')
 </head>
 
-<body style='background-color: rgb(115, 204, 129)'>
+<body>
 
-<div class='container'>
-    <div class='row'>
-        <div class='col-xs-12'>@include('partials.nav')</div>
-    </div>
-    <div class='row'>
-        <div class='col-xs-12'>
-            <div class='panel panel-info' style='background-color : rgba(255,255,255,.80);'>
-                <div class='panel-body'>
-                    @if (session('status'))
-                        <div class="alert alert-success">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-                    @yield('content')
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class='row'>
-        <div class='col-xs-12'>
-            <div class='panel panel-info' style='background-color : rgba(245,245,245,.80);'>
-                <div class='panel-body'>
-                    @include('partials.footer')
+<header>
 
-                    {!! Html::script('js/bootstrap.min.js') !!}
-                    @yield('footer')
-                </div>
-            </div>
+    @include('partials.nav')
+
+</header>
+
+<div class='content'>
+    <div class="container">
+        <div class="section col-md-12">
+
+                @if (session('status'))
+                    <div class="alert alert-success">
+                        {{ session('status') }}
+                    </div>
+                @endif
+                @yield('content')
+
         </div>
+
     </div>
+
 </div>
+
+<footer>
+    <div class="container">
+        @include('partials.footer')
+        {!! Html::script('js/bootstrap.min.js') !!}
+        @yield('footer')
+    </div>
+</footer>
+
+
 </body>
 </html>

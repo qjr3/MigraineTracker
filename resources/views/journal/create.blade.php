@@ -355,6 +355,7 @@
             request.onreadystatechange = function(){
                 if(request.readyState == 4 && request.status == 200){
                     var data = JSON.parse(request.responseText);
+                    console.log(data);
                     var cistart;
                     switch(data.results[0].address_components.length)
                     {

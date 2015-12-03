@@ -15,7 +15,7 @@ class PagesController extends Controller
         if (Auth::check())
         {
             $user = Auth::user();
-            $notes = $user->notes()->where('journal_id', '==', 'null')->where('created_at', '>=', Carbon::now()->subMonth())->get();
+            $notes = $user->notes()->where('created_at', '>=', Carbon::now()->subMonth())->get();
             $journals = $user->journals()->where('created_at', '>=', Carbon::now()->subMonth())->get();
             return view('pages.dashboard', compact('user', 'journals', 'notes'));
         }

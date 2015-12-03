@@ -14,7 +14,7 @@
     <div class="col-md-12">
         <div class="row">
 
-            <div class='panel panel-info'>
+            <div class='panel panel-default'>
                 <div class='panel-heading'>
                     <div class='panel-title text-center'>
                         <h2>Settings</h2>
